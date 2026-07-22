@@ -91,8 +91,51 @@ export default function WhyUsSection() {
           </p>
         </div>
 
-        {/* Pipeline Step Selection Grid (4 Columns) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-slate-900 bg-white divide-y sm:divide-y-0 divide-slate-900 mb-12 shadow-lg">
+        {/* Pipeline Step Selection — Mobile: compact 2×2 pill grid | sm+: full 4-col cards */}
+
+        {/* Mobile pill grid (< sm) — always shows all 4 phases */}
+        <div className="grid grid-cols-2 gap-2 mb-6 sm:hidden">
+          {steps.map((item, idx) => {
+            const Icon = item.icon;
+            const isActive = activeStep === idx;
+            return (
+              <button
+                key={item.step}
+                onClick={() => setActiveStep(idx)}
+                className={`flex items-center gap-2.5 px-3 py-3 border-2 transition-all duration-200 text-left w-full relative ${
+                  isActive
+                    ? "bg-slate-900 border-slate-900 text-white"
+                    : "bg-white border-[#E2DDD5] text-slate-900"
+                }`}
+              >
+                {/* Active top bar */}
+                {isActive && (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#A90706]" />
+                )}
+                <div
+                  className={`w-7 h-7 shrink-0 flex items-center justify-center border transition-colors ${
+                    isActive
+                      ? "bg-[#A90706] border-[#A90706] text-white"
+                      : "bg-[#FAF8F5] border-[#E2DDD5] text-slate-900"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                </div>
+                <div className="min-w-0">
+                  <span className="font-condensed text-[10px] font-black uppercase tracking-widest block leading-tight">
+                    {item.step}
+                  </span>
+                  <span className="font-condensed text-xs font-normal uppercase tracking-tight block truncate leading-tight">
+                    {item.title}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* sm+ full 4-column card grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 border-2 border-slate-900 bg-white divide-y sm:divide-y-0 sm:divide-x divide-slate-900 mb-12 shadow-lg">
           {steps.map((item, idx) => {
             const Icon = item.icon;
             const isActive = activeStep === idx;

@@ -31,21 +31,69 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "BrosDev | Next-Gen IT Company & Digital Product Engineering",
+  metadataBase: new URL("https://brosdev.com"),
+  title: {
+    default: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
+    template: "%s",
+  },
   description:
-    "Designing seamless & intuitive digital experiences that engage users and simplify complex tasks effortlessly. Custom Web Apps, Mobile Apps & Enterprise AI.",
+    "BrosDev is a premier IT company specializing in custom software development, enterprise AI workflows, cloud engineering, mobile apps, and dedicated software engineering teams.",
   icons: {
     icon: "/logo.svg",
   },
   keywords: [
+    "Brosdev",
     "BrosDev",
+    "Contact BrosDev",
     "IT Company",
     "Software Agency",
-    "Next.js Development",
-    "Mobile Apps",
+    "Digital Product Engineering",
     "Enterprise AI",
-    "UI UX Design Studio",
+    "Custom Software Development",
+    "Hire Software Developers",
+    "Full Stack Development",
+    "Cloud Architecture",
+    "Next.js Development",
+    "Mobile App Development",
   ],
+  authors: [{ name: "BrosDev Engineering Team" }],
+  creator: "BrosDev Technologies",
+  publisher: "BrosDev Technologies",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://brosdev.com",
+    siteName: "BrosDev Technologies",
+    title: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
+    description:
+      "Designing seamless & intuitive digital experiences that engage users and simplify complex tasks effortlessly. Custom Web Apps, Mobile Apps & Enterprise AI.",
+    images: [
+      {
+        url: "/featured-work.png",
+        width: 1200,
+        height: 630,
+        alt: "BrosDev Digital Product Engineering",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
+    description:
+      "BrosDev delivers high-performance digital product engineering, enterprise AI workflows, and dedicated software development teams.",
+    images: ["/featured-work.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -53,12 +101,63 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://brosdev.com/#organization",
+        name: "BrosDev Technologies",
+        url: "https://brosdev.com",
+        logo: "https://brosdev.com/logo.svg",
+        sameAs: [
+          "https://github.com/brosdev",
+          "https://linkedin.com/company/brosdev",
+          "https://twitter.com/brosdev",
+        ],
+        description:
+          "Global IT & product engineering firm delivering enterprise AI, custom cloud software, mobile apps, and dedicated developer teams.",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "GIFT City / Ahmedabad",
+          addressRegion: "Gujarat",
+          addressCountry: "India",
+        },
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://brosdev.com/#service",
+        name: "BrosDev Engineering Services",
+        url: "https://brosdev.com",
+        priceRange: "$$$$",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "GIFT City / Ahmedabad",
+          addressRegion: "Gujarat",
+          addressCountry: "India",
+        },
+        areaServed: ["USA", "Germany", "France", "Canada", "India", "UK"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://brosdev.com/#website",
+        url: "https://brosdev.com",
+        name: "BrosDev Technologies",
+        publisher: { "@id": "https://brosdev.com/#organization" },
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"
       className={`${jakartaSans.variable} ${robotoCondensed.variable} ${outfit.variable} ${geist.variable} scroll-smooth antialiased`}
     >
       <body className="min-h-screen bg-white text-slate-900 font-sans selection:bg-[#A90706] selection:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

@@ -1,10 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import HiringModelFormModal from "@/components/HiringModelFormModal";
 import InstantDeveloperScopingModal from "@/components/InstantDeveloperScopingModal";
 import { BuildTeamRoleDetail, BUILD_TEAM_DATA } from "@/data/buildTeamData";
@@ -33,7 +32,6 @@ interface BuildTeamDetailContentProps {
 }
 
 export default function BuildTeamDetailContent({ role, locale = "en" }: BuildTeamDetailContentProps) {
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [isHiringModelModalOpen, setIsHiringModelModalOpen] = useState(false);
   const [isScopingModalOpen, setIsScopingModalOpen] = useState(false);
   const [selectedModelName, setSelectedModelName] = useState("Dedicated Team Model");
@@ -53,7 +51,7 @@ export default function BuildTeamDetailContent({ role, locale = "en" }: BuildTea
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-      <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+      <Navbar />
 
       {/* Hero Banner */}
       <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -505,7 +503,6 @@ export default function BuildTeamDetailContent({ role, locale = "en" }: BuildTea
       <Footer />
       
       {/* Interactive Form Modals */}
-      <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
       
       <HiringModelFormModal
         isOpen={isHiringModelModalOpen}

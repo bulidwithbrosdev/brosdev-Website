@@ -1,10 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { IndustryDetail, INDUSTRY_DATA } from "@/data/industryData";
 import { 
   ArrowUpRight, 
@@ -28,7 +27,6 @@ interface IndustryDetailContentProps {
 }
 
 export default function IndustryDetailContent({ industry, locale = "en" }: IndustryDetailContentProps) {
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -43,7 +41,7 @@ export default function IndustryDetailContent({ industry, locale = "en" }: Indus
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-      <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+      <Navbar />
 
       {/* Hero Banner */}
       <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -78,13 +76,13 @@ export default function IndustryDetailContent({ industry, locale = "en" }: Indus
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => setIsCallModalOpen(true)}
-              className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-lg flex items-center gap-3 cursor-pointer"
+            <Link
+            href={`/${locale}/book-consultation`}
+            className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-lg flex items-center gap-3 cursor-pointer"
             >
               <span>REQUEST INDUSTRY SCOPING</span>
               <ArrowUpRight className="w-4 h-4" />
-            </button>
+            </Link>
 
             <a
               href="#solutions"
@@ -417,18 +415,17 @@ export default function IndustryDetailContent({ industry, locale = "en" }: Indus
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Schedule a technical consultation to map compliance, architecture, and sprint timelines for your project.
           </p>
-          <button
-            onClick={() => setIsCallModalOpen(true)}
+          <Link
+            href={`/${locale}/book-consultation`}
             className="px-10 py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-xl inline-flex items-center gap-3 cursor-pointer"
           >
             <span>BOOK INDUSTRY SCOPING CALL</span>
             <ArrowUpRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </section>
 
       <Footer />
-      <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
     </main>
   );
 }

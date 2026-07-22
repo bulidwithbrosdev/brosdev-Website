@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
-import { TranslationProvider } from "@/context/TranslationContext";
+import type { Metadata } from "next";
 import TeamContent from "@/components/TeamContent";
+import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleTeamPage({
+export const metadata: Metadata = {
+  title: "Brosdev | Our Leadership & Engineering Team",
+  description:
+    "Meet BrosDev founders and senior engineering leads powering custom software development and AI platform execution.",
+  openGraph: {
+    title: "Brosdev | Our Leadership & Engineering Team",
+    description:
+      "Meet BrosDev founders and senior engineering leads powering custom software development and AI platform execution.",
+  },
+};
+
+export default async function LocaleTeamPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
 
   return (

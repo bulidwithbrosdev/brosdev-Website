@@ -5,16 +5,12 @@ import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/context/TranslationContext";
 
-interface HeroProps {
-  onBookCallClick: () => void;
-}
-
-export default function Hero({ onBookCallClick }: HeroProps) {
+export default function Hero() {
   const { t, locale } = useTranslation();
 
   return (
     <section id="hero" className="relative pt-28 sm:pt-36 pb-12 sm:pb-20 bg-slate-950 text-white overflow-hidden min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-between font-sans antialiased">
-      
+
       {/* Background Full-Screen Video with Clean Dark Cinematic Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
@@ -31,24 +27,17 @@ export default function Hero({ onBookCallClick }: HeroProps) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
-        
+
         {/* Top Minimalist Header Tag */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 mb-8 sm:mb-14 text-xs font-condensed font-normal tracking-widest uppercase text-slate-300">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 bg-[#A90706] rounded-full animate-pulse"></span>
-            <span className="text-white font-normal tracking-widest">BROSDEV // GLOBAL IT &amp; PRODUCT ENGINEERING</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-6 text-slate-300 font-normal">
-            <span>USA • GERMANY • FRANCE • CANADA • INDIA</span>
-            <span className="text-[#A90706] font-normal">★ EST. 2024</span>
-          </div>
+
         </div>
 
         {/* Centered Hero Content */}
         <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 2, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             {/* Simple Headline using Google Font Geist */}

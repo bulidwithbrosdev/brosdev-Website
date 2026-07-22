@@ -302,60 +302,102 @@ export default function TechStackExplorer() {
 
         {/* 2-Column Split: Compact Left Stack + Right Side Tech Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Compact Left Column (3 Cols): Category Stack Selection */}
-          <div
-            onPointerMove={handlePointerMove}
-            className="lg:col-span-3 border-2 border-slate-900 bg-white shadow-md flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible divide-x lg:divide-x-0 lg:divide-y divide-slate-900 select-none"
-          >
-            {categories.map((cat) => {
-              const Icon = cat.icon;
-              const isActive = activeCategory === cat.id;
-              return (
-                <div
-                  key={cat.id}
-                  data-category-id={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  onMouseEnter={() => setActiveCategory(cat.id)}
-                  className={`w-full min-w-[200px] lg:min-w-0 p-4 transition-all duration-200 cursor-pointer flex items-center justify-between text-left group shrink-0 ${
-                    isActive
-                      ? "bg-slate-900 text-white"
-                      : "bg-white text-slate-900 hover:bg-[#FAF8F5]"
-                  }`}
-                >
-                  <div className="flex items-center gap-3 min-w-0">
+
+          {/* Mobile: 2-col pill grid (always visible, no hidden scroll) */}
+          {/* Desktop: vertical sidebar */}
+          <div className="lg:col-span-3 select-none">
+
+            {/* Mobile pill grid — hidden on lg+ */}
+            <div className="grid grid-cols-2 gap-2 lg:hidden">
+              {categories.map((cat) => {
+                const Icon = cat.icon;
+                const isActive = activeCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`flex items-center gap-2.5 px-3 py-3 border-2 transition-all duration-200 text-left w-full ${
+                      isActive
+                        ? "bg-slate-900 border-slate-900 text-white"
+                        : "bg-white border-[#E2DDD5] text-slate-900 hover:border-slate-900"
+                    }`}
+                  >
                     <div
-                      className={`w-8 h-8 shrink-0 flex items-center justify-center border transition-colors ${
+                      className={`w-7 h-7 shrink-0 flex items-center justify-center border transition-colors ${
                         isActive
                           ? "bg-[#A90706] border-[#A90706] text-white"
-                          : "bg-[#FAF8F5] border-[#E2DDD5] text-slate-900 group-hover:border-slate-900"
+                          : "bg-[#FAF8F5] border-[#E2DDD5] text-slate-900"
                       }`}
                     >
                       <Icon className="w-3.5 h-3.5" />
                     </div>
-
                     <div className="min-w-0">
-                      <span className="font-condensed text-sm font-normal uppercase tracking-tight block truncate">
+                      <span className="font-condensed text-xs font-normal uppercase tracking-tight block truncate leading-tight">
                         {cat.name}
                       </span>
-                      <span className={`text-[9px] font-condensed font-normal uppercase block tracking-wider ${
+                      <span className={`text-[9px] font-condensed font-normal uppercase block tracking-wider leading-tight ${
                         isActive ? "text-[#A90706]" : "text-slate-400"
                       }`}>
                         {cat.count}
                       </span>
                     </div>
-                  </div>
+                  </button>
+                );
+              })}
+            </div>
 
-                  <ArrowRight
-                    className={`w-3.5 h-3.5 shrink-0 transition-transform ${
+            {/* Desktop vertical sidebar — hidden on mobile */}
+            <div
+              onPointerMove={handlePointerMove}
+              className="hidden lg:flex border-2 border-slate-900 bg-white shadow-md flex-col divide-y divide-slate-900"
+            >
+              {categories.map((cat) => {
+                const Icon = cat.icon;
+                const isActive = activeCategory === cat.id;
+                return (
+                  <div
+                    key={cat.id}
+                    data-category-id={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    onMouseEnter={() => setActiveCategory(cat.id)}
+                    className={`w-full p-4 transition-all duration-200 cursor-pointer flex items-center justify-between text-left group ${
                       isActive
-                        ? "text-[#A90706] translate-x-1"
-                        : "text-slate-300 group-hover:text-slate-900"
+                        ? "bg-slate-900 text-white"
+                        : "bg-white text-slate-900 hover:bg-[#FAF8F5]"
                     }`}
-                  />
-                </div>
-              );
-            })}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div
+                        className={`w-8 h-8 shrink-0 flex items-center justify-center border transition-colors ${
+                          isActive
+                            ? "bg-[#A90706] border-[#A90706] text-white"
+                            : "bg-[#FAF8F5] border-[#E2DDD5] text-slate-900 group-hover:border-slate-900"
+                        }`}
+                      >
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="font-condensed text-sm font-normal uppercase tracking-tight block truncate">
+                          {cat.name}
+                        </span>
+                        <span className={`text-[9px] font-condensed font-normal uppercase block tracking-wider ${
+                          isActive ? "text-[#A90706]" : "text-slate-400"
+                        }`}>
+                          {cat.count}
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowRight
+                      className={`w-3.5 h-3.5 shrink-0 transition-transform ${
+                        isActive
+                          ? "text-[#A90706] translate-x-1"
+                          : "text-slate-300 group-hover:text-slate-900"
+                      }`}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* Expanded Right Column (9 Cols): Tech Cards with Authentic Cloud Icons */}

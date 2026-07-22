@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
-import { TranslationProvider } from "@/context/TranslationContext";
+import type { Metadata } from "next";
 import BookConsultationContent from "@/components/BookConsultationContent";
+import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleBookConsultationPage({
+export const metadata: Metadata = {
+  title: "Brosdev | Book Technical Consultation",
+  description:
+    "Schedule a 1-on-1 strategy session with BrosDev senior software architects. Evaluate technical scope, architecture roadmaps, and dedicated team estimates.",
+  openGraph: {
+    title: "Brosdev | Book Technical Consultation",
+    description:
+      "Schedule a 1-on-1 strategy session with BrosDev senior software architects. Evaluate technical scope, architecture roadmaps, and dedicated team estimates.",
+  },
+};
+
+export default async function LocaleBookConsultationPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
 
   return (

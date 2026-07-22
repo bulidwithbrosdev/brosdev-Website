@@ -1,28 +1,35 @@
-"use client";
-
-import { use, useState } from "react";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { TranslationProvider } from "@/context/TranslationContext";
 import { Handshake } from "lucide-react";
 
-export default function LocaleAlliancesPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+export const metadata: Metadata = {
+  title: "Brosdev | Strategic Technology Alliances",
+  description:
+    "Explore BrosDev global technology alliances with AWS, Microsoft Cloud, Google Cloud, and Vercel for enterprise digital transformation.",
+  openGraph: {
+    title: "Brosdev | Strategic Technology Alliances",
+    description:
+      "Explore BrosDev global technology alliances with AWS, Microsoft Cloud, Google Cloud, and Vercel for enterprise digital transformation.",
+  },
+};
+
+export default async function LocaleAlliancesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   const partners = [
     { name: "AWS Partner Network", tier: "Advanced Tier Partner", desc: "Co-building cloud native microservices and serverless AI applications." },
     { name: "Microsoft Cloud Partner", tier: "Azure Solution Partner", desc: "Enterprise cloud migrations, Azure Kubernetes, and OpenAI services." },
     { name: "Google Cloud Partner", tier: "Build Partner", desc: "Google Cloud Run, Kubernetes GKE, and BigQuery AI data pipelines." },
-    { name: "Vercel Enterprise Partner", tier: "Frontend Cloud Partner", desc: "Next.js 16 edge deployments, SSR acceleration, and global CDNs." },
+    { name: "Vercel Enterprise Partner", tier: "Frontend Cloud Partner", desc: "Next.js edge deployments, SSR acceleration, and global CDNs." },
   ];
 
   return (
     <TranslationProvider defaultLocale={locale}>
       <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-        <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+        <Navbar />
 
         {/* Header Banner */}
         <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -34,7 +41,7 @@ export default function LocaleAlliancesPage({ params }: { params: Promise<{ loca
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8">
+            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8 font-[var(--font-geist)]">
               GLOBAL ALLIANCES
             </h1>
 
@@ -57,7 +64,7 @@ export default function LocaleAlliancesPage({ params }: { params: Promise<{ loca
                     <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-1">
                       {p.tier}
                     </span>
-                    <h3 className="font-condensed text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">
+                    <h3 className="font-condensed text-2xl font-black text-slate-900 uppercase tracking-tight mb-2 font-[var(--font-geist)]">
                       {p.name}
                     </h3>
                     <p className="text-xs text-slate-600 font-medium leading-relaxed">
@@ -71,7 +78,6 @@ export default function LocaleAlliancesPage({ params }: { params: Promise<{ loca
         </section>
 
         <Footer />
-        <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
       </main>
     </TranslationProvider>
   );

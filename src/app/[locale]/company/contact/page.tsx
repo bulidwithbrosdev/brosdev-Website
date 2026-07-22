@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
-import { TranslationProvider } from "@/context/TranslationContext";
+import type { Metadata } from "next";
 import ContactContent from "@/components/ContactContent";
+import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleCompanyContactPage({
+export const metadata: Metadata = {
+  title: "Brosdev | Contact BrosDev",
+  description:
+    "Connect with our global offices in USA, Germany, France, Canada, UK, and India for technical project inquiries.",
+  openGraph: {
+    title: "Brosdev | Contact BrosDev",
+    description:
+      "Connect with our global offices in USA, Germany, France, Canada, UK, and India for technical project inquiries.",
+  },
+};
+
+export default async function LocaleCompanyContactPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
 
   return (

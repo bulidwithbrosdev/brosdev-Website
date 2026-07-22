@@ -1,16 +1,23 @@
-"use client";
-
-import { use, useState } from "react";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { TranslationProvider } from "@/context/TranslationContext";
 import { Server, Cloud, Database, Lock } from "lucide-react";
 
-export default function LocaleInfrastructurePage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+export const metadata: Metadata = {
+  title: "Brosdev | Enterprise Cloud Infrastructure",
+  description:
+    "Explore BrosDev cloud native hosting, Kubernetes auto-scaling, high-throughput vector databases, and bank-grade encryption infrastructure.",
+  openGraph: {
+    title: "Brosdev | Enterprise Cloud Infrastructure",
+    description:
+      "Explore BrosDev cloud native hosting, Kubernetes auto-scaling, high-throughput vector databases, and bank-grade encryption infrastructure.",
+  },
+};
+
+export default async function LocaleInfrastructurePage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   const infraSpecs = [
     {
@@ -38,7 +45,7 @@ export default function LocaleInfrastructurePage({ params }: { params: Promise<{
   return (
     <TranslationProvider defaultLocale={locale}>
       <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-        <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+        <Navbar />
 
         {/* Header Banner */}
         <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -50,7 +57,7 @@ export default function LocaleInfrastructurePage({ params }: { params: Promise<{
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8">
+            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8 font-[var(--font-geist)]">
               OUR INFRASTRUCTURE
             </h1>
 
@@ -72,7 +79,7 @@ export default function LocaleInfrastructurePage({ params }: { params: Promise<{
                       <div className="w-12 h-12 bg-slate-900 text-white flex items-center justify-center mb-6">
                         <Icon className="w-6 h-6 text-[#A90706]" />
                       </div>
-                      <h3 className="font-condensed text-xl font-black text-slate-900 uppercase tracking-tight mb-3">
+                      <h3 className="font-condensed text-xl font-black text-slate-900 uppercase tracking-tight mb-3 font-[var(--font-geist)]">
                         {spec.title}
                       </h3>
                       <p className="text-xs text-slate-600 leading-relaxed font-normal">
@@ -87,7 +94,6 @@ export default function LocaleInfrastructurePage({ params }: { params: Promise<{
         </section>
 
         <Footer />
-        <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
       </main>
     </TranslationProvider>
   );

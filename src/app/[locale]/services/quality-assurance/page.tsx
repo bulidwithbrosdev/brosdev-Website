@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
+﻿import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { SERVICES_DATA } from "@/data/servicesData";
 import ServiceDetailContent from "@/components/ServiceDetailContent";
 import { TranslationProvider } from "@/context/TranslationContext";
-import { notFound } from "next/navigation";
 
-export default function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+const slug = "quality-assurance";
+const service = SERVICES_DATA[slug];
+
+export const metadata: Metadata = {
+  title: service ? "Brosdev | " + service.title : "Brosdev | Services",
+  description: service?.heroDesc || service?.tagline || "BrosDev digital product engineering services.",
+  openGraph: {
+    title: service ? "Brosdev | " + service.title : "Brosdev | Services",
+    description: service?.heroDesc || service?.tagline || "BrosDev digital product engineering services.",
+  },
+};
+
+export default async function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const service = SERVICES_DATA["quality-assurance"];
   if (!service) notFound();
 
   return (

@@ -1,17 +1,41 @@
-"use client";
-
-import { use } from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SERVICES_DATA } from "@/data/servicesData";
 import ServiceDetailContent from "@/components/ServiceDetailContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleServiceSlugPage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug;
+  const service = SERVICES_DATA[slug];
+
+  if (!service) {
+    return {
+      title: "Brosdev | Service Not Found",
+    };
+  }
+
+  const title = `Brosdev | ${service.title}`;
+  return {
+    title,
+    description: service.heroDesc || service.tagline,
+    openGraph: {
+      title,
+      description: service.heroDesc || service.tagline,
+    },
+  };
+}
+
+export default async function LocaleServiceSlugPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
   const slug = resolvedParams?.slug;
 

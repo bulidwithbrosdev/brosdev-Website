@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
-import { TranslationProvider } from "@/context/TranslationContext";
+import type { Metadata } from "next";
 import InternshipApplicationContent from "@/components/InternshipApplicationContent";
+import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleInternshipApplicationPage({
+export const metadata: Metadata = {
+  title: "Brosdev | Engineering Internship Program",
+  description:
+    "Apply for BrosDev 6-month hands-on engineering internship program in software development, AI systems, and cloud infrastructure.",
+  openGraph: {
+    title: "Brosdev | Engineering Internship Program",
+    description:
+      "Apply for BrosDev 6-month hands-on engineering internship program in software development, AI systems, and cloud infrastructure.",
+  },
+};
+
+export default async function LocaleInternshipApplicationPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
 
   return (

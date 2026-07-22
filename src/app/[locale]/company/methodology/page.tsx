@@ -1,21 +1,28 @@
-"use client";
-
-import { use, useState } from "react";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import WhyUsSection from "@/components/WhyUsSection";
 import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleMethodologyPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+export const metadata: Metadata = {
+  title: "Brosdev | Development Methodology & Agile Process",
+  description:
+    "Discover BrosDev 4-step agile engineering pipeline: Discovery & Architecture, 2-Week Sprints, CI/CD Automated Testing, and 24/7 Production Deployment.",
+  openGraph: {
+    title: "Brosdev | Development Methodology & Agile Process",
+    description:
+      "Discover BrosDev 4-step agile engineering pipeline: Discovery & Architecture, 2-Week Sprints, CI/CD Automated Testing, and 24/7 Production Deployment.",
+  },
+};
+
+export default async function LocaleMethodologyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   return (
     <TranslationProvider defaultLocale={locale}>
       <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-        <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+        <Navbar />
 
         {/* Header Banner */}
         <section className="pt-36 pb-12 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -27,7 +34,7 @@ export default function LocaleMethodologyPage({ params }: { params: Promise<{ lo
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8">
+            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8 font-[var(--font-geist)]">
               DEVELOPMENT METHODOLOGY
             </h1>
 
@@ -41,7 +48,6 @@ export default function LocaleMethodologyPage({ params }: { params: Promise<{ lo
         <WhyUsSection />
 
         <Footer />
-        <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
       </main>
     </TranslationProvider>
   );

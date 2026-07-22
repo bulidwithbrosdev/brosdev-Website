@@ -91,7 +91,7 @@ export default function Footer() {
                   // GLOBAL PRESENCE
                 </span>
                 <p className="font-condensed text-xs sm:text-sm font-normal text-slate-900 uppercase tracking-wider">
-                  USA • GERMANY • FRANCE • CANADA • INDIA
+                  INDIA • USA • UK • GERMANY • CANADA • FRANCE
                 </p>
               </div>
             </div>

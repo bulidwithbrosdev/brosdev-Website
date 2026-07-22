@@ -79,34 +79,38 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
     {
       country: "INDIA (HQ)",
       city: "GIFT City / Ahmedabad",
-      address: "Brosdev IT Park, Tower B, Level 6, Infocity, Gujarat 382007",
-      phone: "+91 98765 43210",
-      email: "hello@brosdev.com",
       hours: "09:00 - 19:00 IST",
+      isHQ: true,
     },
     {
       country: "UNITED STATES",
       city: "San Francisco / New York",
-      address: "500 Howard Street, Suite 400, San Francisco, CA 94105",
-      phone: "+1 (415) 890-1234",
-      email: "us@brosdev.com",
       hours: "08:00 - 18:00 PST",
-    },
-    {
-      country: "GERMANY",
-      city: "Berlin / Munich",
-      address: "Friedrichstraße 68, 10117 Berlin, Deutschland",
-      phone: "+49 30 1234 5678",
-      email: "de@brosdev.com",
-      hours: "09:00 - 18:00 CET",
+      isHQ: false,
     },
     {
       country: "UNITED KINGDOM",
       city: "London",
-      address: "30 St Mary Axe, City of London, EC3A 8EP",
-      phone: "+44 20 7946 0912",
-      email: "uk@brosdev.com",
       hours: "09:00 - 18:00 GMT",
+      isHQ: false,
+    },
+    {
+      country: "GERMANY",
+      city: "Berlin / Munich",
+      hours: "09:00 - 18:00 CET",
+      isHQ: false,
+    },
+    {
+      country: "CANADA",
+      city: "Toronto / Vancouver",
+      hours: "09:00 - 18:00 EST",
+      isHQ: false,
+    },
+    {
+      country: "FRANCE",
+      city: "Paris / Lyon",
+      hours: "09:00 - 18:00 CET",
+      isHQ: false,
     },
   ];
 
@@ -503,7 +507,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
         </div>
       </section>
 
-      {/* Global Offices Section */}
+      {/* Global Locations Section */}
       <section className="py-20 bg-white border-t border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-b-2 border-slate-900 pb-4 mb-12">
@@ -511,13 +515,14 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
               // PHYSICAL LOCATIONS &amp; IT PARKS
             </span>
             <h2 className="text-3xl sm:text-4xl font-normal text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
-              OUR GLOBAL STUDIO LOCATIONS
+              OUR GLOBAL LOCATIONS
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {globalOffices.map((office) => (
-              <div key={office.country} className="p-6 bg-[#FAF8F5] border-2 border-slate-900 space-y-4">
+          {/* Mobile: show only India HQ */}
+          <div className="block sm:hidden">
+            {globalOffices.filter((o) => o.isHQ).map((office) => (
+              <div key={office.country} className="p-6 bg-[#FAF8F5] border-2 border-slate-900 space-y-3">
                 <div className="border-b border-[#E2DDD5] pb-3">
                   <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block">
                     {office.country}
@@ -526,19 +531,90 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                     {office.city}
                   </h3>
                 </div>
+                <p className="font-condensed text-xs font-normal text-slate-500 uppercase">{office.hours}</p>
+              </div>
+            ))}
+          </div>
 
-                <div className="space-y-2 text-xs font-normal text-slate-700 font-condensed">
-                  <p className="text-slate-900 uppercase">{office.address}</p>
-                  <p className="text-slate-500">{office.phone}</p>
-                  <p className="text-slate-500">{office.hours}</p>
+          {/* sm+: show all offices in responsive grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+            {globalOffices.map((office) => (
+              <div
+                key={office.country}
+                className={`p-5 border-2 space-y-3 ${
+                  office.isHQ
+                    ? "bg-slate-900 border-slate-900 text-white"
+                    : "bg-[#FAF8F5] border-slate-900"
+                }`}
+              >
+                <div className={`border-b pb-3 ${ office.isHQ ? "border-white/20" : "border-[#E2DDD5]" }`}>
+                  <span className="font-condensed text-[10px] font-normal text-[#A90706] uppercase tracking-widest block">
+                    {office.country}
+                  </span>
+                  <h3 className={`font-condensed text-sm font-normal uppercase leading-tight ${ office.isHQ ? "text-white" : "text-slate-900" }`}>
+                    {office.city}
+                  </h3>
                 </div>
+                <p className={`font-condensed text-[11px] font-normal uppercase ${ office.isHQ ? "text-slate-300" : "text-slate-500" }`}>
+                  {office.hours}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Accordion Section */}
+      {/* Global Map Section */}
+      <section className="py-16 bg-[#FAF8F5] border-t border-[#E2DDD5] overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Heading */}
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-1">
+                // WORLDWIDE ENGINEERING PRESENCE
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-normal text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
+                Built Across 6 Time Zones
+              </h2>
+            </div>
+            <p className="text-slate-500 text-xs font-condensed uppercase tracking-widest max-w-xs text-right hidden sm:block">
+              India • USA • UK • Germany • Canada • France
+            </p>
+          </div>
+
+          {/* Map Image Container */}
+          <div className="relative w-full border border-[#E2DDD5] bg-white p-4 sm:p-8 rounded-none shadow-xs flex items-center justify-center">
+            <img
+              src="/world-map.png"
+              alt="Global Operations Map - India, USA, Canada, UK, France, Germany"
+              className="w-full h-auto max-h-[500px] object-contain mix-blend-multiply"
+            />
+          </div>
+
+          {/* Country pill row below map */}
+          <div className="flex flex-wrap gap-2 mt-6 justify-center sm:justify-start">
+            {[
+              { code: "🇮🇳", name: "India (HQ)", time: "IST" },
+              { code: "🇺🇸", name: "USA", time: "PST" },
+              { code: "🇨🇦", name: "Canada", time: "EST" },
+              { code: "🇬🇧", name: "United Kingdom", time: "GMT" },
+              { code: "🇩🇪", name: "Germany", time: "CET" },
+              { code: "🇫🇷", name: "France", time: "CET" },
+            ].map((c) => (
+              <div
+                key={c.name}
+                className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E2DDD5] font-condensed text-[11px] uppercase tracking-widest text-slate-800 shadow-2xs"
+              >
+                <span>{c.code}</span>
+                <span className="font-medium">{c.name}</span>
+                <span className="text-[#A90706] font-semibold">{c.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-20 bg-[#FAF8F5] border-t border-[#E2DDD5]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">

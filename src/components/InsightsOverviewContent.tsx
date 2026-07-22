@@ -1,11 +1,10 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { INSIGHTS_DATA, InsightArticle } from "@/data/insightsData";
 import { Search, ArrowUpRight, Sparkles, Filter, Clock, Building2, Terminal, CheckCircle2 } from "lucide-react";
 
@@ -14,7 +13,6 @@ interface InsightsOverviewContentProps {
 }
 
 export default function InsightsOverviewContent({ locale = "en" }: InsightsOverviewContentProps) {
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -52,7 +50,7 @@ export default function InsightsOverviewContent({ locale = "en" }: InsightsOverv
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-      <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+      <Navbar />
 
       {/* Header Banner */}
       <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -287,18 +285,17 @@ export default function InsightsOverviewContent({ locale = "en" }: InsightsOverv
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Schedule an architectural scoping call with our senior software engineers to map out your product strategy.
           </p>
-          <button
-            onClick={() => setIsCallModalOpen(true)}
+          <Link
+            href={`/${locale}/book-consultation`}
             className="px-10 py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-xl inline-flex items-center gap-3 cursor-pointer"
           >
             <span>BOOK AN ARCHITECTURAL SCOPING CALL</span>
             <ArrowUpRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </section>
 
       <Footer />
-      <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
     </main>
   );
 }

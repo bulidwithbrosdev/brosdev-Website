@@ -1,21 +1,28 @@
-"use client";
-
-import { use, useState } from "react";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { TranslationProvider } from "@/context/TranslationContext";
 import { CheckCircle2 } from "lucide-react";
 
-export default function LocaleAboutUsPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+export const metadata: Metadata = {
+  title: "Brosdev | About BrosDev Engineering",
+  description:
+    "Learn about BrosDev history, engineering philosophy, global hub locations, and high-performance product execution team.",
+  openGraph: {
+    title: "Brosdev | About BrosDev Engineering",
+    description:
+      "Learn about BrosDev history, engineering philosophy, global hub locations, and high-performance product execution team.",
+  },
+};
+
+export default async function LocaleAboutUsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   return (
     <TranslationProvider defaultLocale={locale}>
       <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-        <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+        <Navbar />
 
         {/* Header Banner */}
         <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -27,7 +34,7 @@ export default function LocaleAboutUsPage({ params }: { params: Promise<{ locale
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8">
+            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8 font-[var(--font-geist)]">
               ABOUT BROSDEV
             </h1>
 
@@ -69,14 +76,14 @@ export default function LocaleAboutUsPage({ params }: { params: Promise<{ locale
                 <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-4">
                   OUR ENGINEERING PHILOSOPHY
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 uppercase tracking-tight leading-tight mb-6">
+                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 uppercase tracking-tight leading-tight mb-6 font-[var(--font-geist)]">
                   Built for High-Growth Tech Companies
                 </h2>
                 <p className="text-slate-700 text-base leading-relaxed mb-6">
                   At BrosDev, we believe great software is not just about writing code—it is about designing resilient systems that scale effortlessly under high load while delighting users with intuitive UI/UX polish.
                 </p>
                 <p className="text-slate-700 text-base leading-relaxed">
-                  We operate across 5 global hubs (USA, Germany, France, Canada, India), offering round-the-clock engineering execution for fast-growing startups and Fortune 500 enterprises.
+                  We operate across global hubs (USA, Germany, France, Canada, UK, India), offering round-the-clock engineering execution for fast-growing startups and Fortune 500 enterprises.
                 </p>
               </div>
 
@@ -87,7 +94,7 @@ export default function LocaleAboutUsPage({ params }: { params: Promise<{ locale
                   </h3>
                   <div className="space-y-4">
                     {[
-                      "Full-Stack Web & Next.js 16 Applications",
+                      "Full-Stack Web & Next.js Applications",
                       "Native iOS & Android Mobile Development",
                       "Custom LLM & Autonomous AI Agents",
                       "Kubernetes Microservices & AWS Cloud",
@@ -109,7 +116,6 @@ export default function LocaleAboutUsPage({ params }: { params: Promise<{ locale
         </section>
 
         <Footer />
-        <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
       </main>
     </TranslationProvider>
   );

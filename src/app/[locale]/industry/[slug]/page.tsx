@@ -1,17 +1,41 @@
-"use client";
-
-import { use } from "react";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { INDUSTRY_DATA } from "@/data/industryData";
 import IndustryDetailContent from "@/components/IndustryDetailContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleIndustrySlugPage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug;
+  const industry = INDUSTRY_DATA[slug];
+
+  if (!industry) {
+    return {
+      title: "Brosdev | Industry Not Found",
+    };
+  }
+
+  const title = `Brosdev | ${industry.title}`;
+  return {
+    title,
+    description: industry.heroDesc || industry.tagline,
+    openGraph: {
+      title,
+      description: industry.heroDesc || industry.tagline,
+    },
+  };
+}
+
+export default async function LocaleIndustrySlugPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const resolvedParams = use(params);
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
   const slug = resolvedParams?.slug;
 

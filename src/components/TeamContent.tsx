@@ -127,8 +127,8 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
                     <span className="text-[10px] text-slate-500 uppercase">WORLD-CLASS ENGINEERS</span>
                   </div>
                   <div className="p-4 bg-white border border-[#E2DDD5]">
-                    <span className="text-2xl font-normal text-slate-900 block font-[var(--font-geist)]">5</span>
-                    <span className="text-[10px] text-slate-500 uppercase">GLOBAL STUDIO LOCATIONS</span>
+                    <span className="text-2xl font-normal text-slate-900 block font-[var(--font-geist)]">6</span>
+                    <span className="text-[10px] text-slate-500 uppercase">GLOBAL LOCATIONS</span>
                   </div>
                 </div>
               </div>

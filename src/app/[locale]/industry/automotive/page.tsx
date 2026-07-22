@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
+﻿import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { INDUSTRY_DATA } from "@/data/industryData";
 import IndustryDetailContent from "@/components/IndustryDetailContent";
 import { TranslationProvider } from "@/context/TranslationContext";
-import { notFound } from "next/navigation";
 
-export default function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+const slug = "automotive";
+const industry = INDUSTRY_DATA[slug];
+
+export const metadata: Metadata = {
+  title: industry ? "Brosdev | " + industry.title : "Brosdev | Industry Solutions",
+  description: industry?.heroDesc || industry?.tagline || "BrosDev industry software solutions.",
+  openGraph: {
+    title: industry ? "Brosdev | " + industry.title : "Brosdev | Industry Solutions",
+    description: industry?.heroDesc || industry?.tagline || "BrosDev industry software solutions.",
+  },
+};
+
+export default async function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const industry = INDUSTRY_DATA["automotive"];
   if (!industry) notFound();
 
   return (

@@ -1,10 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { BUILD_TEAM_DATA, BuildTeamRoleDetail } from "@/data/buildTeamData";
 import { Search, ArrowUpRight, ShieldCheck, UserCheck, Zap, Terminal, CheckCircle2 } from "lucide-react";
 
@@ -13,7 +12,6 @@ interface BuildTeamOverviewContentProps {
 }
 
 export default function BuildTeamOverviewContent({ locale = "en" }: BuildTeamOverviewContentProps) {
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const roleList = useMemo(() => {
@@ -34,7 +32,7 @@ export default function BuildTeamOverviewContent({ locale = "en" }: BuildTeamOve
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-      <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+      <Navbar />
 
       {/* Header Banner */}
       <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -146,18 +144,17 @@ export default function BuildTeamOverviewContent({ locale = "en" }: BuildTeamOve
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Schedule a 15-minute developer matching call with our engineering leaders. Start with a 2-week risk-free trial.
           </p>
-          <button
-            onClick={() => setIsCallModalOpen(true)}
+          <Link
+            href={`/${locale}/book-consultation`}
             className="px-10 py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-xl inline-flex items-center gap-3 cursor-pointer"
           >
             <span>BOOK DEVELOPER MATCHING CALL</span>
             <ArrowUpRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </section>
 
       <Footer />
-      <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
     </main>
   );
 }

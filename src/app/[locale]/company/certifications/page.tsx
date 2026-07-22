@@ -1,16 +1,23 @@
-"use client";
-
-import { use, useState } from "react";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { TranslationProvider } from "@/context/TranslationContext";
 import { Award } from "lucide-react";
 
-export default function LocaleCertificationsPage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+export const metadata: Metadata = {
+  title: "Brosdev | Security Certifications & Compliance",
+  description:
+    "Review BrosDev ISO 27001:2022, SOC 2 Type II, GDPR, HIPAA, and AWS Certified Solutions Architect security standards.",
+  openGraph: {
+    title: "Brosdev | Security Certifications & Compliance",
+    description:
+      "Review BrosDev ISO 27001:2022, SOC 2 Type II, GDPR, HIPAA, and AWS Certified Solutions Architect security standards.",
+  },
+};
+
+export default async function LocaleCertificationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
 
   const certs = [
     { name: "ISO 27001:2022", category: "Information Security Management", desc: "Certified global security framework for risk management and data confidentiality." },
@@ -22,7 +29,7 @@ export default function LocaleCertificationsPage({ params }: { params: Promise<{
   return (
     <TranslationProvider defaultLocale={locale}>
       <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-        <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+        <Navbar />
 
         {/* Header Banner */}
         <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -34,7 +41,7 @@ export default function LocaleCertificationsPage({ params }: { params: Promise<{
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8">
+            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8 font-[var(--font-geist)]">
               CERTIFICATIONS
             </h1>
 
@@ -57,7 +64,7 @@ export default function LocaleCertificationsPage({ params }: { params: Promise<{
                     <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-1">
                       {c.category}
                     </span>
-                    <h3 className="font-condensed text-2xl font-black text-slate-900 uppercase tracking-tight mb-2">
+                    <h3 className="font-condensed text-2xl font-black text-slate-900 uppercase tracking-tight mb-2 font-[var(--font-geist)]">
                       {c.name}
                     </h3>
                     <p className="text-xs text-slate-600 font-medium leading-relaxed">
@@ -71,7 +78,6 @@ export default function LocaleCertificationsPage({ params }: { params: Promise<{
         </section>
 
         <Footer />
-        <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
       </main>
     </TranslationProvider>
   );

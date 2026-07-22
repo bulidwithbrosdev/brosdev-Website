@@ -4,11 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslation } from "@/context/TranslationContext";
 
-interface ServicesProps {
-  onBookCallClick: () => void;
-}
-
-export default function ServicesSection({ onBookCallClick }: ServicesProps) {
+export default function ServicesSection() {
   const { locale } = useTranslation();
 
   const servicesGrid = [

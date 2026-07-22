@@ -1,10 +1,9 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { SERVICES_DATA, ServiceDetail } from "@/data/servicesData";
 import { Search, ArrowUpRight, CheckCircle2, Cpu, ShieldCheck, Zap, Layers, Sparkles, Filter } from "lucide-react";
 
@@ -13,7 +12,6 @@ interface ServicesOverviewContentProps {
 }
 
 export default function ServicesOverviewContent({ locale = "en" }: ServicesOverviewContentProps) {
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -38,7 +36,7 @@ export default function ServicesOverviewContent({ locale = "en" }: ServicesOverv
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
-      <Navbar onBookCallClick={() => setIsCallModalOpen(true)} />
+      <Navbar />
 
       {/* Header Banner */}
       <section className="pt-36 pb-20 border-b border-[#E2DDD5] bg-[#FAF8F5]">
@@ -217,18 +215,17 @@ export default function ServicesOverviewContent({ locale = "en" }: ServicesOverv
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Let our senior software architects evaluate your technical requirements and construct a tailored delivery roadmap.
           </p>
-          <button
-            onClick={() => setIsCallModalOpen(true)}
+          <Link
+            href={`/${locale}/book-consultation`}
             className="px-10 py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-xl inline-flex items-center gap-3 cursor-pointer"
           >
             <span>BOOK A FREE TECHNICAL CALL</span>
             <ArrowUpRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </section>
 
       <Footer />
-      <CallBookingModal isOpen={isCallModalOpen} onClose={() => setIsCallModalOpen(false)} />
     </main>
   );
 }

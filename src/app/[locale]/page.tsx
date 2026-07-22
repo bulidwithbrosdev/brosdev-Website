@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { use } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechTicker from "@/components/TechTicker";
@@ -11,30 +11,20 @@ import TechStackExplorer from "@/components/TechStackExplorer";
 import WhyUsSection from "@/components/WhyUsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
-import CallBookingModal from "@/components/CallBookingModal";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export default function LocaleHome({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = use(params);
   const locale = resolvedParams?.locale || "en";
-  const [isCallModalOpen, setIsCallModalOpen] = useState(false);
-
-  const handleOpenBookCall = () => {
-    setIsCallModalOpen(true);
-  };
-
-  const handleCloseBookCall = () => {
-    setIsCallModalOpen(false);
-  };
 
   return (
     <TranslationProvider defaultLocale={locale}>
       <main className="min-h-screen bg-white text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
         {/* Header / Navbar */}
-        <Navbar onBookCallClick={handleOpenBookCall} />
+        <Navbar />
 
         {/* Hero Section */}
-        <Hero onBookCallClick={handleOpenBookCall} />
+        <Hero />
 
         {/* Infinite Tech Stack Marquee */}
         <TechTicker />
@@ -43,7 +33,7 @@ export default function LocaleHome({ params }: { params: Promise<{ locale: strin
         <AboutSection />
 
         {/* Core Services Section */}
-        <ServicesSection onBookCallClick={handleOpenBookCall} />
+        <ServicesSection />
 
         {/* Featured Portfolio Insights */}
         <PortfolioSection />
@@ -59,12 +49,6 @@ export default function LocaleHome({ params }: { params: Promise<{ locale: strin
 
         {/* Footer */}
         <Footer />
-
-        {/* Interactive Call Booking Modal Drawer */}
-        <CallBookingModal
-          isOpen={isCallModalOpen}
-          onClose={handleCloseBookCall}
-        />
       </main>
     </TranslationProvider>
   );

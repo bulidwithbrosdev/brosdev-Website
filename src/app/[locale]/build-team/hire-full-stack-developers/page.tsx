@@ -1,15 +1,24 @@
-"use client";
-
-import { use } from "react";
+﻿import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { BUILD_TEAM_DATA } from "@/data/buildTeamData";
 import BuildTeamDetailContent from "@/components/BuildTeamDetailContent";
 import { TranslationProvider } from "@/context/TranslationContext";
-import { notFound } from "next/navigation";
 
-export default function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+const slug = "hire-full-stack-developers";
+const role = BUILD_TEAM_DATA[slug];
+
+export const metadata: Metadata = {
+  title: role ? "Brosdev | " + role.title : "Brosdev | Build Your Team",
+  description: role?.heroDesc || role?.title || "Hire dedicated software developers from BrosDev.",
+  openGraph: {
+    title: role ? "Brosdev | " + role.title : "Brosdev | Build Your Team",
+    description: role?.heroDesc || role?.title || "Hire dedicated software developers from BrosDev.",
+  },
+};
+
+export default async function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
-  const role = BUILD_TEAM_DATA["hire-full-stack-developers"];
   if (!role) notFound();
 
   return (
