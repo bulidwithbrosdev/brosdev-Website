@@ -39,7 +39,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://brosdev.com"),
+  metadataBase: new URL("https://brosdev.site"),
   title: {
     default: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
     template: "%s",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://brosdev.com",
+    url: "https://brosdev.site",
     siteName: "BrosDev Technologies",
     title: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
     description:
@@ -114,10 +114,10 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://brosdev.com/#organization",
+        "@id": "https://brosdev.site/#organization",
         name: "BrosDev Technologies",
-        url: "https://brosdev.com",
-        logo: "https://brosdev.com/logo.svg",
+        url: "https://brosdev.site",
+        logo: "https://brosdev.site/logo.svg",
         sameAs: [
           "https://github.com/brosdev",
           "https://linkedin.com/company/brosdev",
@@ -134,9 +134,9 @@ export default function RootLayout({
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://brosdev.com/#service",
+        "@id": "https://brosdev.site/#service",
         name: "BrosDev Engineering Services",
-        url: "https://brosdev.com",
+        url: "https://brosdev.site",
         priceRange: "$$$$",
         address: {
           "@type": "PostalAddress",
@@ -148,10 +148,10 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://brosdev.com/#website",
-        url: "https://brosdev.com",
+        "@id": "https://brosdev.site/#website",
+        url: "https://brosdev.site",
         name: "BrosDev Technologies",
-        publisher: { "@id": "https://brosdev.com/#organization" },
+        publisher: { "@id": "https://brosdev.site/#organization" },
       },
     ],
   };

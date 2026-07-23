@@ -4,7 +4,48 @@ import { useState } from "react";
 import { Mail, MapPin, Clock, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 export default function ContactSection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "contact-us",
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setSent(true);
+      } else {
+        setErrorMessage(data.error || "Failed to send inquiry. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-24 bg-[#FAF8F5] border-b border-[#E2DDD5]">
@@ -36,10 +77,10 @@ export default function ContactSection() {
                     DIRECT EMAIL
                   </h4>
                   <a
-                    href="mailto:hello@brosdev.com"
+                    href="mailto:hello@brosdev.site"
                     className="text-base font-extrabold text-slate-900 hover:text-[#A90706] transition-colors"
                   >
-                    hello@brosdev.com
+                    hello@brosdev.site
                   </a>
                 </div>
               </div>
@@ -84,21 +125,26 @@ export default function ContactSection() {
                 <h3 className="text-2xl font-black text-slate-900 mb-2 uppercase">
                   Message Received!
                 </h3>
-                <p className="text-slate-600 text-xs max-w-sm mx-auto">
+                <p className="text-slate-600 text-xs max-w-sm mx-auto mb-4">
                   Our technical lead will review your message and reply via email within 1 hour.
                 </p>
+                {referenceId && (
+                  <p className="text-xs font-bold text-[#A90706] font-condensed">
+                    REFERENCE NO: {referenceId}
+                  </p>
+                )}
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSent(true);
-                }}
-                className="space-y-6"
-              >
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <h3 className="text-2xl font-extrabold text-slate-900 mb-2 uppercase tracking-wide">
                   Send Direct Inquiry
                 </h3>
+
+                {errorMessage && (
+                  <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+                    ⚠️ {errorMessage}
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -108,6 +154,8 @@ export default function ContactSection() {
                     <input
                       type="text"
                       required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="Alex Morgan"
                       className="w-full px-4 py-3 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 focus:outline-hidden focus:border-slate-900"
                     />
@@ -120,6 +168,8 @@ export default function ContactSection() {
                     <input
                       type="email"
                       required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value.toLowerCase())}
                       autoCapitalize="none"
                       autoCorrect="off"
                       spellCheck={false}
@@ -135,6 +185,8 @@ export default function ContactSection() {
                   </label>
                   <input
                     type="text"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                     placeholder="e.g. Next.js SaaS Web Application"
                     className="w-full px-4 py-3 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 focus:outline-hidden focus:border-slate-900"
                   />
@@ -147,6 +199,8 @@ export default function ContactSection() {
                   <textarea
                     rows={4}
                     required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell us about your project goals and timeline..."
                     className="w-full px-4 py-3 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 focus:outline-hidden focus:border-slate-900"
                   />
@@ -154,9 +208,10 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-slate-900 hover:bg-[#A90706] text-white font-extrabold text-xs tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-slate-900 hover:bg-[#A90706] text-white font-extrabold text-xs tracking-widest uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
-                  <span>SEND INQUIRY NOW</span>
+                  <span>{isSubmitting ? "SENDING INQUIRY..." : "SEND INQUIRY NOW"}</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </form>

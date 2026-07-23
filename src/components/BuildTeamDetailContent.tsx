@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -86,13 +86,13 @@ export default function BuildTeamDetailContent({ role, locale = "en" }: BuildTea
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => setIsScopingModalOpen(true)}
+            <Link
+              href={`/${locale}/build-team/hire?role=${encodeURIComponent(role.title)}`}
               className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-lg flex items-center gap-3 cursor-pointer"
             >
               <span>HIRE PRE-SCREENED DEVELOPERS NOW</span>
               <ArrowUpRight className="w-4 h-4" />
-            </button>
+            </Link>
 
             <a
               href="#evaluation"
@@ -163,13 +163,13 @@ export default function BuildTeamDetailContent({ role, locale = "en" }: BuildTea
                   </ul>
                 </div>
 
-                <button
-                  onClick={() => handleOpenHiringModelModal(hm.name)}
+                <Link
+                  href={`/${locale}/build-team/hire?role=${encodeURIComponent(role.title)}&model=${encodeURIComponent(hm.name)}`}
                   className="w-full mt-8 py-3.5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black uppercase tracking-widest transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
                 >
                   <span>SELECT MODEL &amp; HIRE</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             ))}
           </div>
@@ -372,12 +372,12 @@ export default function BuildTeamDetailContent({ role, locale = "en" }: BuildTea
                   </ul>
                 </div>
 
-                <button
-                  onClick={() => setIsScopingModalOpen(true)}
-                  className="w-full mt-6 py-3.5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black uppercase tracking-widest transition-all cursor-pointer shadow-md"
+                <Link
+                  href={`/${locale}/build-team/hire?role=${encodeURIComponent(role.title)}&tier=${encodeURIComponent(pp.tier)}`}
+                  className="w-full mt-6 py-3.5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black uppercase tracking-widest transition-all cursor-pointer shadow-md text-center block"
                 >
                   HIRE THIS PROFILE NOW
-                </button>
+                </Link>
               </div>
             ))}
           </div>

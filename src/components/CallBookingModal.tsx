@@ -28,6 +28,10 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
+
   const budgetOptions: Record<"INR" | "USD" | "EUR" | "GBP", string[]> = {
     INR: ["₹1,00,000 - ₹2,50,000", "₹2,50,000 - ₹5,00,000", "₹5,00,000 - ₹10,00,000", "₹10,00,000+"],
     USD: ["< $3,000 USD", "$3,000 - $6,000 USD", "$6,000 - $15,000 USD", "$15,000+ USD"],
@@ -40,9 +44,44 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
     setFormData((prev) => ({ ...prev, budget: budgetOptions[curr][1] }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "book-consultation",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          serviceType: formData.projectType === "Other Custom Service" ? formData.customService : formData.projectType,
+          budgetRange: formData.budget,
+          meetingDate: formData.date,
+          timeSlot: formData.timeSlot,
+          platform: formData.platform,
+          projectNotes: formData.message,
+          currency,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to book call. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -76,9 +115,14 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
                 <h3 className="text-2xl font-black text-slate-900 mb-2 uppercase font-[var(--font-geist)]">
                   CONSULTATION CONFIRMED!
                 </h3>
-                <p className="text-slate-600 text-xs max-w-sm mx-auto mb-6">
+                <p className="text-slate-600 text-xs max-w-sm mx-auto mb-4">
                   Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. We have emailed your calendar invitation for <strong className="text-slate-900">{formData.date} @ {formData.timeSlot}</strong>.
                 </p>
+                {referenceId && (
+                  <p className="text-xs font-black text-[#A90706] font-condensed mb-6">
+                    MEETING ID: {referenceId}
+                  </p>
+                )}
                 <button
                   onClick={handleReset}
                   className="px-8 py-3.5 bg-[#A90706] text-white font-condensed font-black text-xs tracking-widest uppercase cursor-pointer"
@@ -101,6 +145,11 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4 max-h-[70vh] overflow-y-auto pr-1">
+                  {errorMessage && (
+                    <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+                      ⚠️ {errorMessage}
+                    </div>
+                  )}
                   
                   {/* Service & Currency Budget */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -37,9 +37,12 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [fileName, setFileName] = useState("");
+  const [attachment, setAttachment] = useState<{ filename: string; content: string; type: string } | null>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
 
   // FAQ Accordion state
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
@@ -120,8 +123,8 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
       answer: "Our technical strategy leads review all incoming messages within 2 hours during business hours. You will receive an initial response and call invitation within 1 business day.",
     },
     {
-      question: "DO YOU SIGN A NON-DISCLOSURE AGREEMENT (NDA) BEFORE PROJECT DISCUSSIONS?",
-      answer: "Yes, absolutely. We prioritize your IP security. We provide a standard mutual NDA prior to reviewing your wireframes, technical specs, or source code.",
+      question: "DO YOU SIGN AN NDA BEFORE DISCUSSING PROJECT DETAILS?",
+      answer: "Yes, standard mutual NDAs are executed before initial technical scoping calls upon request.",
     },
     {
       question: "WHAT IS THE TYPICAL ENGAGEMENT & START TIMELINE?",
@@ -140,17 +143,59 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
+      const file = e.target.files[0];
+      setFileName(file.name);
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === "string") {
+          setAttachment({
+            filename: file.name,
+            content: reader.result,
+            type: file.type,
+          });
+        }
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "contact-us",
+          name: fullName,
+          email,
+          phone,
+          company,
+          inquiryType,
+          currency,
+          budgetRange,
+          message,
+          attachment: attachment || undefined,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1000);
+    }
   };
 
   return (
@@ -183,14 +228,14 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             <a
-              href="mailto:hello@brosdev.com"
+              href="mailto:hello@brosdev.site"
               className="p-6 bg-[#FAF8F5] border border-[#E2DDD5] hover:border-slate-900 transition-colors group block"
             >
               <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-2">
                 // GENERAL INQUIRIES
               </span>
               <span className="text-xl font-normal text-slate-900 block mb-1 group-hover:text-[#A90706] transition-colors font-condensed lowercase">
-                hello@brosdev.com
+                hello@brosdev.site
               </span>
               <span className="text-xs text-slate-500 font-normal">
                 For company overviews, partnership ideas &amp; media requests.
@@ -198,14 +243,14 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
             </a>
 
             <a
-              href="mailto:projects@brosdev.com"
+              href="mailto:projects@brosdev.site"
               className="p-6 bg-[#FAF8F5] border border-[#E2DDD5] hover:border-slate-900 transition-colors group block"
             >
               <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-2">
                 // PROJECT SCOPING &amp; RFPs
               </span>
               <span className="text-xl font-normal text-slate-900 block mb-1 group-hover:text-[#A90706] transition-colors font-condensed lowercase">
-                projects@brosdev.com
+                projects@brosdev.site
               </span>
               <span className="text-xs text-slate-500 font-normal">
                 Direct channel for RFPs, technical proposals &amp; developer hiring.
@@ -213,14 +258,14 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
             </a>
 
             <a
-              href="mailto:careers@brosdev.com"
+              href="mailto:careers@brosdev.site"
               className="p-6 bg-[#FAF8F5] border border-[#E2DDD5] hover:border-slate-900 transition-colors group block"
             >
               <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-2">
                 // CAREERS &amp; TALENT
               </span>
               <span className="text-xl font-normal text-slate-900 block mb-1 group-hover:text-[#A90706] transition-colors font-condensed lowercase">
-                careers@brosdev.com
+                careers@brosdev.site
               </span>
               <span className="text-xs text-slate-500 font-normal">
                 For software engineers &amp; designers looking to join Brosdev.
@@ -250,9 +295,16 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                   <h2 className="text-3xl sm:text-4xl font-normal text-slate-900 uppercase tracking-tight mb-4 font-[var(--font-geist)]">
                     THANK YOU, {fullName.toUpperCase()}!
                   </h2>
-                  <p className="text-slate-600 text-sm sm:text-base font-normal max-w-lg mx-auto mb-8 leading-relaxed">
+                  <p className="text-slate-600 text-sm sm:text-base font-normal max-w-lg mx-auto mb-6 leading-relaxed">
                     We have received your message regarding <strong className="font-normal text-slate-900">{inquiryType}</strong>. Our engineering leads will reach out to <strong className="font-normal text-slate-900">{email}</strong> within 2 hours.
                   </p>
+
+                  {referenceId && (
+                    <div className="p-4 bg-[#FAF8F5] border border-[#E2DDD5] text-center mb-8 max-w-md mx-auto">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">REFERENCE NO.</span>
+                      <span className="text-sm font-black text-[#A90706] font-condensed">{referenceId}</span>
+                    </div>
+                  )}
 
                   <div className="flex flex-wrap items-center justify-center gap-4">
                     <Link
@@ -271,6 +323,11 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-8 font-normal">
+                  {errorMessage && (
+                    <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+                      ⚠️ {errorMessage}
+                    </div>
+                  )}
                   <div className="border-b-2 border-slate-900 pb-4">
                     <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-1">
                       // DIRECT INQUIRY &amp; SCOPING FORM

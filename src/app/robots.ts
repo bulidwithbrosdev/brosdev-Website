@@ -20,6 +20,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://brosdev.com/sitemap.xml",
+    sitemap: "https://brosdev.site/sitemap.xml",
   };
 }

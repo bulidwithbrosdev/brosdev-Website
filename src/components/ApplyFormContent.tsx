@@ -9,8 +9,12 @@ export default function ApplyFormContent({ locale }: { locale: string }) {
   const searchParams = useSearchParams();
   const positionQuery = searchParams.get("position") || "Product Designer";
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [resumeFileName, setResumeFileName] = useState<string | null>(null);
+  const [attachment, setAttachment] = useState<{ filename: string; content: string; type: string } | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     nameOnAadhar: "",
@@ -44,13 +48,53 @@ export default function ApplyFormContent({ locale }: { locale: string }) {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setResumeFileName(e.target.files[0].name);
+      const file = e.target.files[0];
+      setResumeFileName(file.name);
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === "string") {
+          setAttachment({
+            filename: file.name,
+            content: reader.result,
+            type: file.type,
+          });
+        }
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "careers-application",
+          name: formData.nameOnAadhar,
+          ...formData,
+          attachment: attachment || undefined,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to submit application. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const careersHref = `/${locale}/company/careers`;
@@ -83,6 +127,11 @@ export default function ApplyFormContent({ locale }: { locale: string }) {
           <p className="text-slate-700 text-sm max-w-lg mx-auto leading-relaxed">
             Thank you for applying for <strong className="text-slate-900">{formData.position}</strong> at BrosDev. Our talent squad will review your application and contact you via email at <strong className="text-slate-900">{formData.email}</strong> within 48 hours.
           </p>
+          {referenceId && (
+            <p className="text-xs font-black text-[#A90706] font-condensed">
+              APPLICATION CODE: {referenceId}
+            </p>
+          )}
           <div className="pt-4">
             <Link
               href={careersHref}
@@ -94,6 +143,11 @@ export default function ApplyFormContent({ locale }: { locale: string }) {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-12">
+          {errorMessage && (
+            <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+              ⚠️ {errorMessage}
+            </div>
+          )}
 
           {/* 01 // PERSONAL DETAILS */}
           <div className="p-8 border-2 border-slate-900 bg-[#FAF8F5] shadow-lg">
@@ -418,9 +472,10 @@ export default function ApplyFormContent({ locale }: { locale: string }) {
 
             <button
               type="submit"
-              className="w-full sm:w-auto px-10 py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black tracking-widest uppercase transition-all shadow-lg flex items-center justify-center gap-3 cursor-pointer"
+              disabled={isSubmitting}
+              className="w-full sm:w-auto px-10 py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black tracking-widest uppercase transition-all shadow-lg flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50"
             >
-              <span>SUBMIT APPLICATION</span>
+              <span>{isSubmitting ? "SUBMITTING APPLICATION..." : "SUBMIT APPLICATION"}</span>
               <Send className="w-4 h-4" />
             </button>
           </div>

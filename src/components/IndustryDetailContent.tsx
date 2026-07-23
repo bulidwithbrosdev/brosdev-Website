@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -77,8 +77,8 @@ export default function IndustryDetailContent({ industry, locale = "en" }: Indus
 
           <div className="flex flex-wrap items-center gap-4">
             <Link
-            href={`/${locale}/book-consultation`}
-            className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-lg flex items-center gap-3 cursor-pointer"
+              href={`/${locale}/industry/scoping?domain=${encodeURIComponent(industry.title)}`}
+              className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-black tracking-widest uppercase transition-all shadow-lg flex items-center gap-3 cursor-pointer"
             >
               <span>REQUEST INDUSTRY SCOPING</span>
               <ArrowUpRight className="w-4 h-4" />

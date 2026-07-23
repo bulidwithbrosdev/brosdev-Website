@@ -27,15 +27,52 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
   const [demoModalProduct, setDemoModalProduct] = useState<ProductItem | null>(null);
   const [demoSubmitted, setDemoSubmitted] = useState(false);
 
+  const [demoEmail, setDemoEmail] = useState("");
+  const [demoName, setDemoName] = useState("");
+  const [demoCompany, setDemoCompany] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
+
   const filteredProducts = activeCategory === "ALL" 
     ? PRODUCTS_DATA 
     : PRODUCTS_DATA.filter((p) => p.category === activeCategory);
 
   const categories = ["ALL", "Enterprise AI", "FinTech", "Cloud Infrastructure", "SaaS & CRM"];
 
-  const handleRequestDemoSubmit = (e: React.FormEvent) => {
+  const handleRequestDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setDemoSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "contact-us",
+          name: demoName,
+          email: demoEmail,
+          company: demoCompany,
+          inquiryType: `Enterprise Demo Access Request: ${demoModalProduct?.name || "Suite"}`,
+          productRequested: demoModalProduct?.name || "Suite Product",
+          message: `User requested live demo sandbox access for ${demoModalProduct?.name || "Product"}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setDemoSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to request demo access. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -235,9 +272,14 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
                 <h3 className="text-2xl font-normal text-slate-900 mb-2 uppercase font-[var(--font-geist)]">
                   DEMO REQUEST RECEIVED!
                 </h3>
-                <p className="text-slate-600 text-xs max-w-sm mx-auto mb-6 font-normal">
+                <p className="text-slate-600 text-xs max-w-sm mx-auto mb-4 font-normal">
                   Our product engineering team for <strong className="font-normal text-slate-900">{demoModalProduct.name}</strong> will provision sandbox credentials and reach out within 2 hours.
                 </p>
+                {referenceId && (
+                  <p className="text-xs font-bold text-[#A90706] font-condensed mb-6">
+                    DEMO REQUEST ID: {referenceId}
+                  </p>
+                )}
                 <button
                   onClick={() => setDemoModalProduct(null)}
                   className="px-8 py-3.5 bg-[#A90706] text-white font-condensed text-xs font-normal uppercase tracking-widest cursor-pointer"
@@ -258,6 +300,12 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
                 </p>
 
                 <form onSubmit={handleRequestDemoSubmit} className="space-y-4">
+                  {errorMessage && (
+                    <div className="p-3 bg-red-50 border border-red-600 text-red-700 text-xs font-bold">
+                      ⚠️ {errorMessage}
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-[10px] font-normal text-slate-900 uppercase mb-1 font-condensed">
                       WORK EMAIL *
@@ -265,6 +313,8 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
                     <input
                       type="email"
                       required
+                      value={demoEmail}
+                      onChange={(e) => setDemoEmail(e.target.value.toLowerCase())}
                       placeholder="name@company.com"
                       className="w-full px-3.5 py-2.5 bg-white border border-[#E2DDD5] text-xs font-normal text-slate-900 focus:outline-hidden focus:border-slate-900"
                     />
@@ -277,6 +327,8 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
                     <input
                       type="text"
                       required
+                      value={demoName}
+                      onChange={(e) => setDemoName(e.target.value)}
                       placeholder="John Doe"
                       className="w-full px-3.5 py-2.5 bg-white border border-[#E2DDD5] text-xs font-normal uppercase text-slate-900 focus:outline-hidden focus:border-slate-900"
                     />
@@ -289,6 +341,8 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
                     <input
                       type="text"
                       required
+                      value={demoCompany}
+                      onChange={(e) => setDemoCompany(e.target.value)}
                       placeholder="e.g. Acme Tech Solutions"
                       className="w-full px-3.5 py-2.5 bg-white border border-[#E2DDD5] text-xs font-normal uppercase text-slate-900 focus:outline-hidden focus:border-slate-900"
                     />
@@ -296,9 +350,10 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
-                    <span>REQUEST DEMO ACCESS</span>
+                    <span>{isSubmitting ? "SUBMITTING REQUEST..." : "REQUEST DEMO ACCESS"}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </button>
                 </form>

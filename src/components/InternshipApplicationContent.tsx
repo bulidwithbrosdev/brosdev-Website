@@ -52,30 +52,28 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
   const [portfolioUrl, setPortfolioUrl] = useState("");
   const [coverNote, setCoverNote] = useState("");
   const [resumeName, setResumeName] = useState("");
+  const [attachment, setAttachment] = useState<{ filename: string; content: string; type: string } | null>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
 
   const pipelineTracks = [
     {
       title: "Full-Stack Web Engineering Track",
-      stack: "Next.js 16, React 19, TypeScript, Node.js & PostgreSQL",
-      desc: "Build enterprise SaaS web apps, server-rendered components, and high-volume REST/GraphQL APIs.",
+      stack: "Next.js, Node.js, TypeScript, PostgreSQL & TailwindCSS",
+      desc: "Build scalably architecture for modern web applications and microservice backends.",
     },
     {
-      title: "AI & Enterprise LLM Engineering Track",
-      stack: "Python, PyTorch, vLLM, LangChain & Vector DBs (Pinecone/Qdrant)",
-      desc: "Develop autonomous AI agents, semantic RAG pipelines, and model fine-tuning systems.",
+      title: "AI & Machine Learning Engineering Track",
+      stack: "Python, PyTorch, OpenAI APIs, LangChain, Vector DBs & FastAPI",
+      desc: "Train domain-specific AI models, RAG pipelines, and automated intelligent agents.",
     },
     {
-      title: "Cloud DevOps & Kubernetes Track",
-      stack: "Docker, Kubernetes, AWS, Terraform, ArgoCD & Linux Kernels",
-      desc: "Manage zero-downtime microservices clusters, CI/CD automated deployments, and mesh networks.",
-    },
-    {
-      title: "UI/UX Product Design Systems Track",
-      stack: "Figma, Design System Tokens, Prototyping & Tailwind CSS",
-      desc: "Design state-of-the-art dark mode web interfaces, design tokens, and interactive micro-animations.",
+      title: "DevOps, Cloud & Infrastructure Track",
+      stack: "Docker, Kubernetes, AWS, Terraform, CI/CD & Linux Kernel",
+      desc: "Orchestrate automated multi-cloud deployments, monitoring, and high-availability systems.",
     },
     {
       title: "Mobile Application Engineering Track",
@@ -86,17 +84,67 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
 
   const handleResumeUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setResumeName(e.target.files[0].name);
+      const file = e.target.files[0];
+      setResumeName(file.name);
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === "string") {
+          setAttachment({
+            filename: file.name,
+            content: reader.result,
+            type: file.type,
+          });
+        }
+      };
+      reader.readAsDataURL(file);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "careers-application",
+          name: fullName,
+          email,
+          phone,
+          collegeName,
+          degreeBranch: degreeBranch === "Other Degree / Branch" ? customBranch : degreeBranch,
+          currentSemYear,
+          graduationYear,
+          cgpa,
+          pipelineTrack,
+          duration,
+          locationMode,
+          startDate,
+          githubUrl,
+          linkedinUrl,
+          portfolioUrl,
+          coverNote,
+          attachment: attachment || undefined,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to submit internship application. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1000);
+    }
   };
 
   return (
@@ -247,7 +295,7 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
               {/* Confirmation Summary Box */}
               <div className="p-6 bg-[#FAF8F5] border-2 border-slate-900 text-left mb-8 space-y-3 font-condensed font-normal">
                 <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3 text-xs text-slate-500 uppercase">
-                  <span>APPLICATION ID: #BD-INT-2026-8904</span>
+                  <span>APPLICATION ID: {referenceId}</span>
                   <span>STATUS: UNDER REVIEW</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs uppercase text-slate-900 pt-2 font-normal">
@@ -291,6 +339,11 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
               {/* Left Form Column (8 Cols) */}
               <div className="lg:col-span-8 bg-white border-2 border-slate-900 p-8 sm:p-12 shadow-2xl">
                 <form onSubmit={handleSubmit} className="space-y-10 font-normal">
+                  {errorMessage && (
+                    <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+                      ⚠️ {errorMessage}
+                    </div>
+                  )}
 
                   {/* Step 1: Personal & Contact Information */}
                   <div className="space-y-6">
@@ -660,8 +713,8 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
                   </p>
                   <div className="space-y-2 pt-2 text-xs font-condensed font-normal uppercase">
                     <div className="text-slate-400 text-[10px]">CAREERS EMAIL:</div>
-                    <a href="mailto:careers@brosdev.com" className="text-white hover:text-[#A90706] block underline font-normal">
-                      careers@brosdev.com
+                    <a href="mailto:careers@brosdev.site" className="text-white hover:text-[#A90706] block underline font-normal">
+                      careers@brosdev.site
                     </a>
                   </div>
                 </div>

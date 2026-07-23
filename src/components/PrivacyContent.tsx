@@ -300,7 +300,7 @@ export default function PrivacyContent() {
                   </p>
                   <div className="p-4 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-condensed space-y-1">
                     <p className="font-bold text-slate-900">BROSDEV DATA PROTECTION OFFICER</p>
-                    <p className="text-slate-600">Email: dpo@brosdev.com / privacy@brosdev.com</p>
+                    <p className="text-slate-600">Email: dpo@brosdev.site / privacy@brosdev.site</p>
                     <p className="text-slate-600">Address: GIFT City / Infocity, Gujarat 382007, India</p>
                   </div>
                 </div>
@@ -313,7 +313,7 @@ export default function PrivacyContent() {
                     HAVE PRIVACY OR COMPLIANCE QUESTIONS?
                   </h4>
                   <p className="text-xs text-slate-500 font-condensed uppercase">
-                    Our DPO responds within 24 hours at privacy@brosdev.com
+                    Our DPO responds within 24 hours at privacy@brosdev.site
                   </p>
                 </div>
                 <Link

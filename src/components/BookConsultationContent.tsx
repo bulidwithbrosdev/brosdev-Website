@@ -56,6 +56,8 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
   // Submission State
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
 
   const budgetOptions: Record<"INR" | "USD" | "EUR" | "GBP", string[]> = {
     INR: [
@@ -93,13 +95,47 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
     setBudgetRange(budgetOptions[newCurrency][1]);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "book-consultation",
+          name: fullName,
+          email,
+          phone,
+          company,
+          serviceType: serviceType === "Other Custom Service" ? customService : serviceType,
+          currency,
+          budgetRange,
+          projectStage,
+          timeline,
+          meetingDate,
+          timeSlot,
+          timezone,
+          platform,
+          projectNotes,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to book consultation. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1000);
+    }
   };
 
   return (
@@ -148,7 +184,7 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
               {/* Meeting Summary Ticket */}
               <div className="p-6 bg-[#FAF8F5] border-2 border-slate-900 text-left mb-8 space-y-3 font-condensed font-normal">
                 <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3 text-xs text-slate-500 uppercase">
-                  <span>CONFIRMATION ID: #BD-78942</span>
+                  <span>CONFIRMATION ID: {referenceId}</span>
                   <span>STATUS: SCHEDULED</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs uppercase text-slate-900 pt-2 font-normal">
@@ -192,6 +228,11 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
               {/* Left Form Column (8 Cols) */}
               <div className="lg:col-span-8 bg-white border-2 border-slate-900 p-8 sm:p-12 shadow-2xl">
                 <form onSubmit={handleSubmit} className="space-y-10">
+                  {errorMessage && (
+                    <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+                      ⚠️ {errorMessage}
+                    </div>
+                  )}
 
                   {/* Step 1: Service & Budget */}
                   <div className="space-y-6">
@@ -543,11 +584,11 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
                   </p>
                   <div className="space-y-2 pt-2 text-xs font-condensed font-normal uppercase">
                     <div className="text-slate-400 text-[10px]">DIRECT EMAIL:</div>
-                    <a href="mailto:hello@brosdev.com" className="text-white hover:text-[#A90706] block underline font-normal">
-                      hello@brosdev.com
+                    <a href="mailto:hello@brosdev.site" className="text-white hover:text-[#A90706] block underline font-normal">
+                      hello@brosdev.site
                     </a>
-                    <a href="mailto:projects@brosdev.com" className="text-white hover:text-[#A90706] block underline font-normal">
-                      projects@brosdev.com
+                    <a href="mailto:projects@brosdev.site" className="text-white hover:text-[#A90706] block underline font-normal">
+                      projects@brosdev.site
                     </a>
                   </div>
                 </div>

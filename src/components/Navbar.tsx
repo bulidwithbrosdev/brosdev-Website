@@ -135,6 +135,10 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
       router.push(`/${locale}/industry`);
       return;
     }
+    if (item.label === t.nav.company) {
+      router.push(`/${locale}/company/about-us`);
+      return;
+    }
     if (item.label === t.nav.contact) {
       router.push(`/${locale}/contact`);
       return;
@@ -739,7 +743,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                       {buildTeamData.map((item, i) => {
                         const slug = item === "Contact Us" 
                           ? "hire-dedicated-developers" 
-                          : item.toLowerCase().replace(/ & /g, "-and-").replace(/ \/ /g, "-").replace(/ /g, "-");
+                          : item.toLowerCase().replace(/ & /g, "-and-").replace(/\//g, "-").replace(/ /g, "-");
                         const active = isBuildTeamActive(slug);
                         return (
                           <Link
@@ -841,24 +845,35 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                         <div className="mt-3 pl-4 space-y-2.5 border-l-2 border-[#A90706] pt-2">
 
                           {/* COMPANY */}
-                          {item.label === t.nav.company && companyData.map((sub, idx) => {
-                            const fullHref = `/${locale}${sub.href}`;
-                            const isCardActive =
-                              pathname === fullHref ||
-                              pathname === sub.href ||
-                              pathname?.endsWith(sub.href);
-                            return (
+                          {item.label === t.nav.company && (
+                            <>
                               <Link
-                                key={idx}
-                                href={fullHref}
-                                prefetch={true}
+                                href={`/${locale}/company/about-us`}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`block font-condensed text-sm font-normal uppercase text-left cursor-pointer ${isCardActive ? "text-[#A90706]" : "text-slate-800 hover:text-[#A90706]"}`}
+                                className={`block font-condensed text-xs font-normal uppercase text-left cursor-pointer pb-2 border-b border-[#E2DDD5] ${pathname?.includes("/company/about-us") ? "text-[#A90706]" : "text-slate-500 hover:text-[#A90706]"}`}
                               >
-                                {sub.title} {isCardActive && "✓"}
+                                ABOUT US / COMPANY OVERVIEW {pathname?.includes("/company/about-us") && "✓"}
                               </Link>
-                            );
-                          })}
+                              {companyData.map((sub, idx) => {
+                                const fullHref = `/${locale}${sub.href}`;
+                                const isCardActive =
+                                  pathname === fullHref ||
+                                  pathname === sub.href ||
+                                  pathname?.endsWith(sub.href);
+                                return (
+                                  <Link
+                                    key={idx}
+                                    href={fullHref}
+                                    prefetch={true}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className={`block font-condensed text-sm font-normal uppercase text-left cursor-pointer ${isCardActive ? "text-[#A90706]" : "text-slate-800 hover:text-[#A90706]"}`}
+                                  >
+                                    {sub.title} {isCardActive && "✓"}
+                                  </Link>
+                                );
+                              })}
+                            </>
+                          )}
 
                           {/* SERVICE */}
                           {item.label === t.nav.service && (
@@ -1003,7 +1018,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                                 VIEW ALL ROLES {isBuildTeamActive("all") && "✓"}
                               </Link>
                               {buildTeamData.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/ \/ /g, "-").replace(/ /g, "-");
+                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\//g, "-").replace(/ /g, "-");
                                 const isActive = isBuildTeamActive(slug);
                                 return (
                                   <Link

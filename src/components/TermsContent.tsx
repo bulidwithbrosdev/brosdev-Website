@@ -323,7 +323,7 @@ export default function TermsContent() {
                     QUESTIONS REGARDING LEGAL TERMS?
                   </h4>
                   <p className="text-xs text-slate-500 font-condensed uppercase">
-                    Contact our legal team at legal@brosdev.com
+                    Contact our legal team at legal@brosdev.site
                   </p>
                 </div>
                 <Link

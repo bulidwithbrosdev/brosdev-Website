@@ -1,11 +1,47 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "@/context/TranslationContext";
 import Logo from "./Logo";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function Footer() {
   const { locale, t } = useTranslation();
+
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+  const [newsletterError, setNewsletterError] = useState<string | null>(null);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+
+    setIsSubmittingNewsletter(true);
+    setNewsletterError(null);
+
+    try {
+      const res = await fetch("/api/subscribe-newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setNewsletterSuccess(true);
+        setNewsletterEmail("");
+      } else {
+        setNewsletterError(data.error || "Failed to subscribe. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setNewsletterError("Network error. Please try again.");
+    } finally {
+      setIsSubmittingNewsletter(false);
+    }
+  };
 
   const scrollToSection = (targetId: string) => {
     const el = document.getElementById(targetId);
@@ -31,9 +67,9 @@ export default function Footer() {
   ];
 
   const columnCommunication = [
-    { label: "hello@brosdev.com", href: "mailto:hello@brosdev.com" },
-    { label: "projects@brosdev.com", href: "mailto:projects@brosdev.com" },
-    { label: "careers@brosdev.com", href: "mailto:careers@brosdev.com" },
+    { label: "hello@brosdev.site", href: "mailto:hello@brosdev.site" },
+    { label: "projects@brosdev.site", href: "mailto:projects@brosdev.site" },
+    { label: "careers@brosdev.site", href: "mailto:careers@brosdev.site" },
   ];
 
   const columnSocial = [
@@ -52,6 +88,59 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-[#FAF8F5] text-slate-900 border-t border-[#E2DDD5] pt-16 pb-24 sm:pt-24 sm:pb-32 font-sans antialiased">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+
+        {/* Newsletter Subscription Banner */}
+        <div className="bg-white border-2 border-slate-900 p-8 sm:p-10 mb-16 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-6 space-y-2">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-red-50 text-[#A90706] border border-red-200 text-[10px] font-black uppercase">
+                <span className="w-1.5 h-1.5 bg-[#A90706] rounded-full animate-pulse"></span>
+                <span>// BROSDEV NEWSLETTER &amp; INSIGHTS</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase font-[var(--font-geist)]">
+                SUBSCRIBE TO OUR NEWSLETTER
+              </h3>
+              <p className="text-slate-600 text-xs sm:text-sm font-medium">
+                Get monthly engineering insights, architecture updates, case studies &amp; tech offers directly to your inbox.
+              </p>
+            </div>
+
+            <div className="lg:col-span-6">
+              {newsletterSuccess ? (
+                <div className="p-4 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  <span>Thanks for subscribing! Check your inbox for your confirmation email.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+                  <div className="flex flex-col sm:flex-row items-stretch gap-2">
+                    <input
+                      type="email"
+                      required
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder="Enter your work email address..."
+                      className="flex-1 px-4 py-3.5 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 focus:outline-hidden focus:border-slate-900"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isSubmittingNewsletter}
+                      className="px-8 py-3.5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black uppercase tracking-widest transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shrink-0"
+                    >
+                      <span>{isSubmittingNewsletter ? "SUBSCRIBING..." : "SUBSCRIBE"}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                  {newsletterError && (
+                    <p className="text-xs font-bold text-red-600 pt-1">
+                      ⚠️ {newsletterError}
+                    </p>
+                  )}
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
 
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-[#E2DDD5]/60">

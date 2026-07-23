@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { X, CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, Terminal } from "lucide-react";
 
 interface InstantDeveloperScopingModalProps {
@@ -27,16 +28,48 @@ export default function InstantDeveloperScopingModal({
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [referenceId, setReferenceId] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/send-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "instant-scoping-modal",
+          name: fullName,
+          email,
+          phone,
+          company,
+          roleTitle,
+          techStack,
+          engagementType,
+          duration,
+          budgetRange,
+          description,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setReferenceId(data.referenceId || null);
+        setIsSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Failed to submit developer matching request. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 800);
+    }
   };
 
   const handleResetAndClose = () => {
@@ -77,9 +110,14 @@ export default function InstantDeveloperScopingModal({
             <h4 className="font-condensed text-3xl font-black text-slate-900 uppercase mb-3 font-[var(--font-geist)]">
               DEVELOPER MATCHING REQUEST SUBMITTED
             </h4>
-            <p className="text-slate-600 text-sm max-w-md mx-auto mb-8 font-medium">
+            <p className="text-slate-600 text-sm max-w-md mx-auto mb-4 font-medium">
               Thank you, <strong className="text-slate-900">{fullName}</strong>. Our engineering leads are screening pre-vetted candidate profiles matching <strong className="text-slate-900">{techStack}</strong>. We will email 3 developer CVs to <strong className="text-slate-900">{email}</strong> within 24 hours.
             </p>
+            {referenceId && (
+              <p className="text-xs font-black text-[#A90706] font-condensed mb-8">
+                SCOPING CODE: {referenceId}
+              </p>
+            )}
             <button
               onClick={handleResetAndClose}
               className="px-8 py-3 bg-[#A90706] text-white font-condensed text-xs font-black uppercase tracking-widest shadow-md"
@@ -89,6 +127,11 @@ export default function InstantDeveloperScopingModal({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6 max-h-[80vh] overflow-y-auto bg-white">
+            {errorMessage && (
+              <div className="p-4 bg-red-50 border-2 border-red-600 text-red-700 text-xs font-bold">
+                ⚠️ {errorMessage}
+              </div>
+            )}
             
             {/* Tech Stack & Engagement Details */}
             <div className="space-y-4">
@@ -255,6 +298,16 @@ export default function InstantDeveloperScopingModal({
                 <span>✓ NO LOCK-IN CONTRACT</span>
                 <span>•</span>
                 <span>✓ 100% IP OWNERSHIP</span>
+              </div>
+              <div className="pt-2 text-center">
+                <Link
+                  href={`/build-team/hire?role=${encodeURIComponent(roleTitle)}`}
+                  onClick={onClose}
+                  className="font-condensed text-xs font-bold text-[#A90706] hover:underline uppercase tracking-wider inline-flex items-center gap-1"
+                >
+                  <span>OPEN FULL-PAGE HIRING &amp; RATE CALCULATOR FORM</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
 
