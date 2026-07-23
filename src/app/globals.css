@@ -58,10 +58,30 @@ img, video, canvas, svg {
   background: #B8B0A2;
 }
 
+html, body, button, input, select, textarea, a {
+  touch-action: manipulation;
+}
+
+/* Custom Date Input Styling */
+input[type="date"] {
+  min-height: 44px;
+  color-scheme: light;
+  cursor: pointer;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.2);
+  opacity: 0.8;
+}
+
 /* Touch Friendly Mobile Utility Classes */
 @media (max-width: 768px) {
-  button, input, select, textarea, a {
+  html, body, *, button, input, select, textarea, a {
     touch-action: manipulation;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important;
   }
   
   /* Responsive Table & Overflow Container Wrapper */
@@ -71,3 +91,4 @@ img, video, canvas, svg {
     max-width: 100%;
   }
 }
+

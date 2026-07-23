@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Terminal, Zap, Cpu, ShieldCheck, Award, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { useTranslation } from "@/context/TranslationContext";
 
 export default function AboutSection() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   const pillars = [
     {
@@ -159,16 +160,13 @@ export default function AboutSection() {
                 TRANSPARENT SPRINT PRICING
               </span>
 
-              <button
-                onClick={() => {
-                  const el = document.getElementById("services");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="font-condensed text-xs font-normal text-slate-900 hover:text-[#A90706] uppercase tracking-widest flex items-center gap-1 transition-colors cursor-pointer"
+              <Link
+                href={`/${locale}/services`}
+                className="font-condensed text-xs font-normal text-slate-900 hover:text-[#A90706] uppercase tracking-widest flex items-center gap-1 transition-colors cursor-pointer group"
               >
                 <span>VIEW SERVICES</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
+                <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
             </div>
           </div>
 

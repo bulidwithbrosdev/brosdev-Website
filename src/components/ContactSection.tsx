@@ -120,8 +120,11 @@ export default function ContactSection() {
                     <input
                       type="email"
                       required
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      spellCheck={false}
                       placeholder="alex@company.com"
-                      className="w-full px-4 py-3 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 focus:outline-hidden focus:border-slate-900"
+                      className="w-full px-4 py-3 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 lowercase focus:outline-hidden focus:border-slate-900"
                     />
                   </div>
                 </div>

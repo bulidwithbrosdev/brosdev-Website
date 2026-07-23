@@ -24,11 +24,11 @@ export default function PortfolioSection() {
             </p>
             <div>
               <Link
-                href={`/${locale}/insights/omniflow-ai-saas-platform`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-[#A90706] text-white text-xs font-normal tracking-widest uppercase transition-colors cursor-pointer font-condensed shadow-md"
+                href={`/${locale}/products`}
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-[#A90706] text-white text-xs font-normal tracking-widest uppercase transition-colors cursor-pointer font-condensed shadow-md group"
               >
                 <span>EXPLORE FEATURED PROJECT</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
           </div>
@@ -36,8 +36,8 @@ export default function PortfolioSection() {
           {/* Right Column: Image Blended with Background */}
           <div className="lg:col-span-8">
             <Link
-              href={`/${locale}/insights/omniflow-ai-saas-platform`}
-              className="relative aspect-[16/10] bg-[#FAF8F5] border border-[#E2DDD5] block overflow-hidden shadow-xs"
+              href={`/${locale}/products`}
+              className="relative aspect-[16/10] bg-[#FAF8F5] border border-[#E2DDD5] block overflow-hidden shadow-xs group"
             >
               <Image
                 src="/featured-work.png"
@@ -45,12 +45,12 @@ export default function PortfolioSection() {
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 66vw"
-                className="object-cover object-center mix-blend-multiply opacity-95"
+                className="object-cover object-center mix-blend-multiply opacity-95 transition-transform duration-500 group-hover:scale-[1.02]"
               />
               {/* Soft Background Blend Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5]/70 via-transparent to-[#FAF8F5]/30 pointer-events-none" />
-              <div className="absolute bottom-5 right-5 w-11 h-11 bg-slate-900 text-white flex items-center justify-center border border-slate-700">
-                <ArrowUpRight className="w-5 h-5" />
+              <div className="absolute bottom-5 right-5 w-11 h-11 bg-slate-900 text-white flex items-center justify-center border border-slate-700 transition-colors group-hover:bg-[#A90706] group-hover:border-[#A90706]">
+                <ArrowUpRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </Link>
           </div>

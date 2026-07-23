@@ -232,8 +232,11 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
                         required
                         placeholder="john@company.com"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#E2DDD5] text-xs font-bold text-slate-900 focus:outline-hidden focus:border-slate-900 font-condensed"
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value.toLowerCase() })}
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        spellCheck={false}
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#E2DDD5] text-xs font-bold text-slate-900 lowercase focus:outline-hidden focus:border-slate-900 font-condensed"
                       />
                     </div>
                   </div>
@@ -282,10 +285,12 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed font-black text-xs tracking-widest uppercase transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer mt-2"
+                    className="w-full py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed font-black text-xs tracking-widest uppercase transition-colors shadow-lg flex items-center justify-center gap-2 cursor-pointer mt-2 group"
                   >
-                    <span>CONFIRM &amp; BOOK CONSULTATION</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span className="inline-flex items-center gap-2">
+                      <span>CONFIRM &amp; BOOK CONSULTATION</span>
+                      <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </span>
                   </button>
 
                   <div className="pt-2 text-center">

@@ -61,16 +61,13 @@ export default function Hero() {
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
 
-              <button
-                onClick={() => {
-                  const el = document.getElementById("projects");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
+              <Link
+                href={`/${locale}/products`}
                 className="px-8 py-4 bg-white/10 hover:bg-white hover:text-slate-950 border border-white/20 text-white text-xs sm:text-sm font-condensed font-normal tracking-widest uppercase transition-all duration-300 flex items-center gap-3 group cursor-pointer backdrop-blur-md"
               >
                 <span>{t.hero.exploreWorkBtn}</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+              </Link>
             </div>
           </motion.div>
         </div>

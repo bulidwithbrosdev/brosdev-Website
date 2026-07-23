@@ -426,9 +426,12 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
                           type="email"
                           required
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={(e) => setEmail(e.target.value.toLowerCase())}
+                          autoCapitalize="none"
+                          autoCorrect="off"
+                          spellCheck={false}
                           placeholder="vikram@company.com"
-                          className="w-full p-3.5 bg-[#FAF8F5] border border-[#E2DDD5] font-condensed text-xs font-normal text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-slate-900"
+                          className="w-full p-3.5 bg-[#FAF8F5] border border-[#E2DDD5] font-condensed text-xs font-normal text-slate-900 lowercase placeholder:text-slate-400 focus:outline-hidden focus:border-slate-900"
                         />
                       </div>
                     </div>
@@ -481,10 +484,12 @@ export default function BookConsultationContent({ locale = "en" }: BookConsultat
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-normal tracking-widest uppercase transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50"
+                      className="w-full py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-normal tracking-widest uppercase transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 group"
                     >
-                      <span>{isSubmitting ? "CONFIRMING MEETING SLOT..." : "CONFIRM &amp; BOOK CONSULTATION CALL"}</span>
-                      <ArrowUpRight className="w-5 h-5" />
+                      <span className="inline-flex items-center gap-2">
+                        <span>{isSubmitting ? "CONFIRMING MEETING SLOT..." : "CONFIRM & BOOK CONSULTATION CALL"}</span>
+                        <ArrowUpRight className="w-5 h-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
                     </button>
 
                     <div className="flex items-center justify-center gap-4 mt-4 text-[10px] font-condensed font-normal text-slate-500 uppercase">
