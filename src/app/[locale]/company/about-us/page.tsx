@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EngineeringTeamSquads from "@/components/EngineeringTeamSquads";
+import SquadDeliveryAndCulture from "@/components/SquadDeliveryAndCulture";
 import { TranslationProvider } from "@/context/TranslationContext";
 import { 
   CheckCircle2, 
@@ -275,6 +277,12 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
             </div>
           </div>
         </section>
+
+        {/* Global Engineering Roles & Squads Directory */}
+        <EngineeringTeamSquads />
+
+        {/* Engagement Models, Code Quality Guarantees & Culture */}
+        <SquadDeliveryAndCulture />
 
         <Footer />
       </main>

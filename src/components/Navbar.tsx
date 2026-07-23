@@ -189,11 +189,15 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
   // Data for Mega Dropdowns
   const companyData = [
     { title: "About Us", desc: "Transforming challenges into opportunities with tech.", href: "/company/about-us" },
+    { title: "Our Team & Squads", desc: "Dedicated 52 lead architects and global engineering experts.", href: "/company/team" },
+    { title: "Client Onboarding & Process", desc: "Frictionless Day 1 to 14 onboarding & 2-week risk-free trial.", href: "/company/onboarding" },
+    { title: "Why Brosdev (Comparison)", desc: "Why top brands choose Brosdev over traditional agencies & freelancers.", href: "/company/comparison" },
+    { title: "Enterprise Case Studies", desc: "Proven engineering case studies, cloud savings & AI transformations.", href: "/case-studies" },
+    { title: "Squad Cost Estimator", desc: "Calculate your custom engineering squad budget & timeline.", href: "/cost-calculator" },
+    { title: "Free Code & Security Audit", desc: "Request a complimentary 10-point technical health check.", href: "/audit-request" },
     { title: "Our Infrastructure", desc: "Tech capabilities for scalable and reliable solutions.", href: "/company/infrastructure" },
-    { title: "Our Team", desc: "Dedicated experts transforming ideas into powerful digital solutions.", href: "/company/team" },
     { title: "Development Methodology", desc: "Seamless development with a focus on quality and speed.", href: "/company/methodology" },
-    { title: "Certifications", desc: "Industry-recognized certifications backing our commitment to quality.", href: "/company/certifications" },
-    { title: "Alliances", desc: "Building strong alliances for superior tech solutions.", href: "/company/alliances" },
+    { title: "Certifications & Alliances", desc: "Industry certifications backing our quality commitment.", href: "/company/certifications" },
     { title: "Career Overview", desc: "Grow with us and build rewarding careers with creative cohorts.", href: "/company/careers" },
   ];
 

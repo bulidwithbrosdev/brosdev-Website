@@ -17,6 +17,8 @@ import {
   CheckCircle2,
   Globe
 } from "lucide-react";
+import EngineeringTeamSquads from "@/components/EngineeringTeamSquads";
+import SquadDeliveryAndCulture from "@/components/SquadDeliveryAndCulture";
 
 interface TeamContentProps {
   locale?: string;
@@ -201,6 +203,12 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
 
         </div>
       </section>
+
+      {/* Engineering Roles & Squads Directory (52 Members Category Breakdown) */}
+      <EngineeringTeamSquads />
+
+      {/* Engagement Models, Code Quality Guarantees & Culture */}
+      <SquadDeliveryAndCulture />
 
       {/* Core Cultural Values */}
       <section className="py-20 bg-white border-b border-[#E2DDD5]">

@@ -5,6 +5,12 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "cleanUrls": true,
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

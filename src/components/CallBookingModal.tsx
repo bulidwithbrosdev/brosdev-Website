@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle2, PhoneCall, ArrowUpRight, Calendar, Clock } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "@/context/TranslationContext";
 
 interface CallBookingModalProps {
   isOpen: boolean;
@@ -11,9 +12,10 @@ interface CallBookingModalProps {
 }
 
 export default function CallBookingModal({ isOpen, onClose }: CallBookingModalProps) {
+  const { locale } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
   const [currency, setCurrency] = useState<"INR" | "USD" | "EUR" | "GBP">("INR");
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -150,7 +152,7 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
                       ⚠️ {errorMessage}
                     </div>
                   )}
-                  
+
                   {/* Service & Currency Budget */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -199,9 +201,8 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
                               key={curr}
                               type="button"
                               onClick={() => handleCurrencyChange(curr)}
-                              className={`px-1.5 py-0.5 font-condensed text-[9px] font-black uppercase transition-all cursor-pointer ${
-                                currency === curr ? "bg-[#A90706] text-white" : "bg-white text-slate-600 border border-[#E2DDD5]"
-                              }`}
+                              className={`px-1.5 py-0.5 font-condensed text-[9px] font-black uppercase transition-all cursor-pointer ${currency === curr ? "bg-[#A90706] text-white" : "bg-white text-slate-600 border border-[#E2DDD5]"
+                                }`}
                             >
                               {curr === "INR" ? "₹ INR" : curr === "USD" ? "$ USD" : curr === "EUR" ? "€ EUR" : "£ GBP"}
                             </button>
@@ -344,7 +345,7 @@ export default function CallBookingModal({ isOpen, onClose }: CallBookingModalPr
 
                   <div className="pt-2 text-center">
                     <Link
-                      href="/book-consultation"
+                      href={`/${locale}/book-consultation`}
                       onClick={onClose}
                       className="font-condensed text-xs font-bold text-[#A90706] hover:underline uppercase tracking-wider inline-flex items-center gap-1"
                     >

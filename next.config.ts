@@ -1,8 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable compression for production
+  // Enable compression for fast production loading
   compress: true,
+
+  // Enable React Strict Mode
+  reactStrictMode: true,
+
+  // Disable X-Powered-By header for security & smaller headers
+  poweredByHeader: false,
 
   // Image optimization
   images: {
@@ -10,7 +16,7 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 86400,
   },
 
-  // Production logging
+  // Production logging optimization
   logging: {
     fetches: {
       fullUrl: false,

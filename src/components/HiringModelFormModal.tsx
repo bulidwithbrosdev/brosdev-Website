@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { X, CheckCircle2, ArrowUpRight, ShieldCheck, UserCheck } from "lucide-react";
 
+import { useTranslation } from "@/context/TranslationContext";
+
 interface HiringModelFormModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -17,6 +19,7 @@ export default function HiringModelFormModal({
   initialModelName = "Dedicated Team Model",
   roleTitle = "Software Developer",
 }: HiringModelFormModalProps) {
+  const { locale } = useTranslation();
   const [model, setModel] = useState(initialModelName);
   const [seniority, setSeniority] = useState("Senior (5-8+ Yrs)");
   const [teamSize, setTeamSize] = useState("1 Developer");
@@ -331,7 +334,7 @@ export default function HiringModelFormModal({
               </div>
               <div className="pt-2 text-center">
                 <Link
-                  href="/build-team/hire"
+                  href={`/${locale}/build-team/hire`}
                   onClick={onClose}
                   className="font-condensed text-xs font-bold text-[#A90706] hover:underline uppercase tracking-wider inline-flex items-center gap-1"
                 >

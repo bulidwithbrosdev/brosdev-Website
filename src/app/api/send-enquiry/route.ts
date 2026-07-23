@@ -11,7 +11,9 @@ export type FormType =
   | 'contact-us'
   | 'hiring-model-modal'
   | 'instant-scoping-modal'
-  | 'careers-application';
+  | 'careers-application'
+  | 'cost-calculator'
+  | 'audit-request';
 
 interface EnquiryPayload {
   formType: FormType;
@@ -34,6 +36,8 @@ const FORM_LABELS: Record<FormType, string> = {
   'hiring-model-modal': 'Hiring Model Quick Lead',
   'instant-scoping-modal': 'Instant Developer Scoping',
   'careers-application': 'Careers Application',
+  'cost-calculator': 'Squad Cost Estimator Request',
+  'audit-request': 'Free Architecture & Code Security Audit Request',
 };
 
 const FORM_PREFIXES: Record<FormType, string> = {
@@ -44,6 +48,8 @@ const FORM_PREFIXES: Record<FormType, string> = {
   'hiring-model-modal': 'HM',
   'instant-scoping-modal': 'INST',
   'careers-application': 'APP',
+  'cost-calculator': 'CALC',
+  'audit-request': 'AUDIT',
 };
 
 function formatKey(key: string): string {
