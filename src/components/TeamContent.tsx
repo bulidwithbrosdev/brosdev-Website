@@ -3,16 +3,16 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { 
-  Users, 
-  Code, 
-  Cpu, 
-  ShieldCheck, 
-  Award, 
-  ArrowUpRight, 
-  Sparkles, 
-  Terminal, 
-  Heart, 
+import {
+  Users,
+  Code,
+  Cpu,
+  ShieldCheck,
+  Award,
+  ArrowUpRight,
+  Sparkles,
+  Terminal,
+  Heart,
   Rocket,
   CheckCircle2,
   Globe
@@ -26,15 +26,15 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
 
   const founders = [
     {
-      name: "DHARMIK DUDHAT",
-      role: "CO-FOUNDER & CEO",
+      name: "SHREYASH PATEL",
+      role: "FOUNDER & CEO",
       focus: "Product Strategy, Enterprise Growth & Architecture Innovation",
-      desc: "Co-founded Brosdev with a vision to build a world-class IT engineering firm. Drives global enterprise partnerships, client growth, and high-performance product execution.",
-      badge: "CO-FOUNDER",
+      desc: "Founded Brosdev with a vision to build a world-class IT engineering firm. Drives global enterprise partnerships, client growth, and high-performance product execution.",
+      badge: "FOUNDER",
       stats: "10+ Yrs Systems Leadership",
     },
     {
-      name: "PRIYANSHU",
+      name: "MITAKSHI PATEL",
       role: "CO-FOUNDER & CTO",
       focus: "Principal Systems Architect, Cloud Infrastructure & AI Lead",
       desc: "Architects Brosdev's core tech stack, autonomous AI engines, and microservices infrastructure. Obsessed with sub-millisecond performance, clean code, and zero-downtime scaling.",
@@ -92,7 +92,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
       {/* Hero Founders' Story Feature Section */}
       <section className="py-20 bg-white border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="bg-[#FAF8F5] border-2 border-slate-900 p-8 sm:p-14 shadow-2xl space-y-10">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E2DDD5] pb-6">
               <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest">
@@ -168,7 +168,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
       {/* Core Engineering Squad Roles Grid */}
       <section className="py-20 bg-[#FAF8F5] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="border-b-2 border-slate-900 pb-4 mb-12">
             <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-1">
               // MULTI-DISCIPLINARY COHORTS
@@ -205,7 +205,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
       {/* Core Cultural Values */}
       <section className="py-20 bg-white border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           <div className="text-center max-w-3xl mx-auto">
             <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-2">
               // GUIDING PRINCIPLES
