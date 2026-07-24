@@ -81,36 +81,42 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
   const globalOffices = [
     {
       country: "INDIA (HQ)",
+      fullName: "BrosDev IT Engineering Studio",
       city: "GIFT City / Ahmedabad",
       hours: "09:00 - 19:00 IST",
       isHQ: true,
     },
     {
       country: "UNITED STATES",
+      fullName: "BrosDev IT Engineering Studio",
       city: "San Francisco / New York",
       hours: "08:00 - 18:00 PST",
       isHQ: false,
     },
     {
       country: "UNITED KINGDOM",
+      fullName: "BrosDev IT Engineering Studio",
       city: "London",
       hours: "09:00 - 18:00 GMT",
       isHQ: false,
     },
     {
       country: "GERMANY",
+      fullName: "BrosDev IT Engineering Studio",
       city: "Berlin / Munich",
       hours: "09:00 - 18:00 CET",
       isHQ: false,
     },
     {
       country: "CANADA",
+      fullName: "BrosDev IT Engineering Studio",
       city: "Toronto / Vancouver",
       hours: "09:00 - 18:00 EST",
       isHQ: false,
     },
     {
       country: "FRANCE",
+      fullName: "BrosDev IT Engineering Studio",
       city: "Paris / Lyon",
       hours: "09:00 - 18:00 CET",
       isHQ: false,
@@ -587,7 +593,10 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                   <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block">
                     {office.country}
                   </span>
-                  <h3 className="font-condensed text-lg font-normal text-slate-900 uppercase">
+                  <p className="font-condensed text-xs font-semibold text-slate-700 uppercase mt-0.5 tracking-wider">
+                    {office.fullName}
+                  </p>
+                  <h3 className="font-condensed text-lg font-normal text-slate-900 uppercase mt-0.5">
                     {office.city}
                   </h3>
                 </div>
@@ -611,7 +620,10 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                   <span className="font-condensed text-[10px] font-normal text-[#A90706] uppercase tracking-widest block">
                     {office.country}
                   </span>
-                  <h3 className={`font-condensed text-sm font-normal uppercase leading-tight ${ office.isHQ ? "text-white" : "text-slate-900" }`}>
+                  <p className={`font-condensed text-[10px] font-medium uppercase mt-0.5 tracking-wider leading-tight ${ office.isHQ ? "text-red-300" : "text-slate-600" }`}>
+                    {office.fullName}
+                  </p>
+                  <h3 className={`font-condensed text-sm font-normal uppercase leading-tight mt-1 ${ office.isHQ ? "text-white" : "text-slate-900" }`}>
                     {office.city}
                   </h3>
                 </div>
