@@ -978,9 +978,9 @@ export async function generateQuotePdfBuffer(
   try {
     browser = await puppeteer.launch({
       args: chromium.args || ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-      defaultViewport: chromium.defaultViewport || { width: 1200, height: 800 },
+      defaultViewport: (chromium as any).defaultViewport || { width: 1200, height: 800 },
       executablePath: executablePath || undefined,
-      headless: (chromium.headless as any) ?? true,
+      headless: (chromium as any).headless ?? true,
     });
 
     const page = await browser.newPage();
