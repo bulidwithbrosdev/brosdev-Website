@@ -1,5 +1,4 @@
-import puppeteer from "puppeteer-core";
-import chromium from "@sparticuz/chromium";
+import { jsPDF } from "jspdf";
 
 export interface QuotePdfPayload {
   referenceId: string;
@@ -961,49 +960,500 @@ export function generateQuoteHtml(data: QuotePdfPayload): string {
 export async function generateQuotePdfBuffer(
   data: QuotePdfPayload
 ): Promise<Buffer> {
-  const htmlContent = generateQuotePdfHtml(data);
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4",
+    compress: true,
+  });
 
-  let executablePath: string | undefined;
-  try {
-    executablePath = await chromium.executablePath();
-  } catch (e) {
-    console.warn("Could not get chromium executablePath:", e);
-  }
+  const cleanRef = data.referenceId
+    ? data.referenceId.replace(/^#/, "")
+    : `BD-QUOTE-${Math.floor(100000 + Math.random() * 900000)}`;
 
-  if (!executablePath && process.env.CHROME_EXECUTABLE_PATH) {
-    executablePath = process.env.CHROME_EXECUTABLE_PATH;
-  }
-
-  let browser;
-  try {
-    browser = await puppeteer.launch({
-      args: chromium.args || ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-      defaultViewport: (chromium as any).defaultViewport || { width: 1200, height: 800 },
-      executablePath: executablePath || undefined,
-      headless: (chromium as any).headless ?? true,
+  const now = new Date();
+  const dateStr =
+    data.dateStr ||
+    now.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
     });
 
-    const page = await browser.newPage();
-    await page.setContent(htmlContent, {
-      waitUntil: ["load", "domcontentloaded"],
-    });
+  const validUntil = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const validUntilStr = validUntil.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 
-    const pdfUint8Array = await page.pdf({
-      format: "A4",
-      printBackground: true,
-      margin: {
-        top: "0mm",
-        right: "0mm",
-        bottom: "0mm",
-        left: "0mm",
-      },
-      preferCSSPageSize: true,
-    });
+  const currCode = data.currency || "INR";
+  const categoryName = formatCategoryName(data.projectType);
 
-    return Buffer.from(pdfUint8Array);
-  } finally {
-    if (browser) {
-      await browser.close();
+  const featureChips = parseChips(data.selectedFeatures);
+  const ecommerceChips = parseChips(data.ecommerceOptions);
+
+  const showEcommerce =
+    (data.isEcommerce === "Yes" || ecommerceChips.length > 0) &&
+    ecommerceChips.length > 0;
+
+  const showNotes =
+    data.additionalNotes &&
+    data.additionalNotes.trim() !== "" &&
+    data.additionalNotes !== "None" &&
+    data.additionalNotes !== "N/A";
+
+  const phoneStr = data.phone || "N/A";
+  const waStr = data.whatsappNumber;
+  const combinedPhone =
+    waStr && waStr !== "N/A" && waStr !== phoneStr
+      ? `${phoneStr} / ${waStr}`
+      : phoneStr;
+
+  const totalStr = data.totalEstimate || "₹ 0";
+  const totalValFormatted = totalStr.replace(/^(INR|USD|EUR|GBP|₹|\$)\s*/i, "");
+
+  // Colors Palette
+  const darkRed = [107, 4, 3];    // #6B0403
+  const redAccent = [169, 7, 6];  // #A90706
+  const redTint = [251, 234, 233]; // #FBEAE9
+  const inkDark = [23, 19, 15];    // #17130F
+  const inkSoft = [66, 58, 54];    // #423A36
+  const mutedText = [138, 127, 121]; // #8A7F79
+  const borderCol = [234, 227, 222]; // #EAE3DE
+  const paperBg = [253, 251, 249]; // #FDFBF9
+
+  // Draw Header Helper
+  const drawHeader = (pageNo: string) => {
+    // Header background bar
+    doc.setFillColor(darkRed[0], darkRed[1], darkRed[2]);
+    doc.rect(0, 0, 210, 32, "F");
+
+    // Red Accent Line
+    doc.setFillColor(redAccent[0], redAccent[1], redAccent[2]);
+    doc.rect(0, 32, 210, 2, "F");
+
+    // Logo Mark Box
+    doc.setFillColor(redAccent[0], redAccent[1], redAccent[2]);
+    doc.roundedRect(15, 6, 18, 18, 3, 3, "F");
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.text("B", 24, 18.5, { align: "center" });
+
+    // Brand Name
+    doc.setFontSize(16);
+    doc.text("BrosDev", 37, 15);
+    doc.setFontSize(8.5);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(234, 227, 222);
+    doc.text("IT Engineering Studio", 37, 21);
+
+    // Document Meta (Right aligned)
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.setTextColor(255, 255, 255);
+    doc.text(cleanRef, 195, 13, { align: "right" });
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(234, 227, 222);
+    doc.text(`Issued  ${dateStr}`, 195, 19, { align: "right" });
+    doc.text(`Page  ${pageNo}`, 195, 25, { align: "right" });
+  };
+
+  // Draw Footer Helper
+  const drawFooter = () => {
+    doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+    doc.line(15, 282, 195, 282);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text("BrosDev IT Engineering Studio", 15, 287);
+    doc.setFont("helvetica", "normal");
+    doc.text("brosdev.site · hello@brosdev.site", 195, 287, { align: "right" });
+  };
+
+  // Helper for Eyebrow Headers
+  const drawEyebrow = (num: string, title: string, yPos: number) => {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(redAccent[0], redAccent[1], redAccent[2]);
+    doc.text(num, 15, yPos);
+    doc.setFontSize(11);
+    doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+    doc.text(title.toUpperCase(), 23, yPos);
+  };
+
+  // ==========================================
+  // PAGE 1
+  // ==========================================
+  drawHeader("01 / 02");
+
+  // Document Title Banner below header
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(14);
+  doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+  doc.text("Project & Squad Estimate", 15, 41);
+
+  // Official Badge
+  doc.setFillColor(redTint[0], redTint[1], redTint[2]);
+  doc.roundedRect(88, 36.5, 18, 5.5, 1.5, 1.5, "F");
+  doc.setFontSize(7.5);
+  doc.setTextColor(redAccent[0], redAccent[1], redAccent[2]);
+  doc.text("Official", 97, 40.5, { align: "center" });
+
+  let y = 51;
+
+  // SECTION: CLIENT & CONTACT
+  drawEyebrow("•", "Client & Contact", y);
+  y += 4;
+
+  // Client Grid Box
+  doc.setFillColor(paperBg[0], paperBg[1], paperBg[2]);
+  doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+  doc.roundedRect(15, y, 180, 32, 2, 2, "FD");
+
+  const clientCells = [
+    { k: "Client Name", v: data.name || "N/A" },
+    { k: "Company", v: data.company || "N/A" },
+    { k: "Email", v: data.email || "N/A" },
+    { k: "Phone / WhatsApp", v: combinedPhone },
+    { k: "Country / Currency", v: `${data.country || "Global"} — ${currCode}` },
+    { k: "Quote Status", v: "Pending Acceptance", isRed: true },
+  ];
+
+  clientCells.forEach((c, idx) => {
+    const col = idx % 2;
+    const row = Math.floor(idx / 2);
+    const cellX = col === 0 ? 20 : 110;
+    const cellY = y + 7 + row * 9;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(7.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(c.k.toUpperCase(), cellX, cellY);
+
+    doc.setFontSize(9);
+    if (c.isRed) {
+      doc.setTextColor(redAccent[0], redAccent[1], redAccent[2]);
+      doc.setFont("helvetica", "bold");
+    } else {
+      doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+      doc.setFont("helvetica", "bold");
     }
+    const valText = doc.splitTextToSize(c.v, 75)[0] || "";
+    doc.text(valText, cellX, cellY + 4);
+  });
+
+  y += 40;
+
+  // SECTION 01: TECHNICAL SCOPE & PARAMETERS
+  drawEyebrow("01", "Technical Scope & Parameters", y);
+  y += 4;
+
+  const specSheet = [
+    { label: "Category", val: categoryName },
+    { label: "Target Platform", val: data.platform || "N/A" },
+    { label: "Design Level", val: data.designComplexity || "N/A" },
+    { label: "Pages / Screens", val: data.pagesRange || "N/A" },
+    { label: "Existing Status", val: data.existingProject || "N/A" },
+    { label: "Timeline Requested", val: data.timeline || "N/A" },
+    { label: "Maintenance", val: data.maintenance || "N/A" },
+    { label: "Hosting & Domain", val: `${data.hosting || "N/A"} · ${data.domain || "N/A"}` },
+    { label: "Admin & DB Specs", val: `${data.adminRequirement || "N/A"} · ${data.databaseSize || "N/A"}` },
+    { label: "Expected Scale", val: data.expectedUsers || "N/A" },
+  ];
+
+  doc.setFillColor(paperBg[0], paperBg[1], paperBg[2]);
+  doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+  doc.roundedRect(15, y, 180, specSheet.length * 7.5 + 4, 2, 2, "FD");
+
+  specSheet.forEach((rowItem, idx) => {
+    const rowY = y + 6 + idx * 7.5;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8.5);
+    doc.setTextColor(inkSoft[0], inkSoft[1], inkSoft[2]);
+    doc.text(rowItem.label, 20, rowY);
+
+    // Dotted connector
+    doc.setDrawColor(210, 200, 195);
+    doc.setLineDashPattern([0.8, 1.2], 0);
+    doc.line(65, rowY - 1, 130, rowY - 1);
+    doc.setLineDashPattern([], 0); // reset
+
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+    doc.text(rowItem.val, 190, rowY, { align: "right" });
+  });
+
+  y += specSheet.length * 7.5 + 12;
+
+  // SECTION 02: SELECTED FEATURES & MODULES
+  drawEyebrow("02", "Selected Features & Modules", y);
+  y += 5;
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text("FEATURES & ADD-ONS", 15, y);
+  y += 4;
+
+  const chipsToDraw = featureChips.length > 0 ? featureChips : ["Standard Features"];
+  let chipX = 15;
+  chipsToDraw.forEach((chip) => {
+    const textWidth = doc.getTextWidth(chip);
+    const chipW = textWidth + 8;
+    if (chipX + chipW > 195) {
+      chipX = 15;
+      y += 8;
+    }
+    doc.setFillColor(redTint[0], redTint[1], redTint[2]);
+    doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+    doc.roundedRect(chipX, y, chipW, 6.5, 1.5, 1.5, "FD");
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(darkRed[0], darkRed[1], darkRed[2]);
+    doc.text(chip, chipX + 4, y + 4.5);
+
+    chipX += chipW + 3;
+  });
+
+  y += 12;
+
+  if (showEcommerce) {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text("E-COMMERCE OPTIONS", 15, y);
+    y += 4;
+
+    let ecomX = 15;
+    ecommerceChips.forEach((chip) => {
+      const textWidth = doc.getTextWidth(chip);
+      const chipW = textWidth + 8;
+      if (ecomX + chipW > 195) {
+        ecomX = 15;
+        y += 8;
+      }
+      doc.setFillColor(254, 243, 199); // amber tint
+      doc.setDrawColor(251, 191, 36);
+      doc.roundedRect(ecomX, y, chipW, 6.5, 1.5, 1.5, "FD");
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(8);
+      doc.setTextColor(146, 64, 14);
+      doc.text(chip, ecomX + 4, y + 4.5);
+
+      ecomX += chipW + 3;
+    });
+    y += 12;
   }
+
+  // Client Custom Notes if any
+  if (showNotes) {
+    drawEyebrow("•", "Client Custom Notes", y);
+    y += 4;
+
+    doc.setFillColor(paperBg[0], paperBg[1], paperBg[2]);
+    doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+    doc.roundedRect(15, y, 180, 16, 2, 2, "FD");
+
+    doc.setFillColor(redAccent[0], redAccent[1], redAccent[2]);
+    doc.rect(15, y, 3, 16, "F");
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(redAccent[0], redAccent[1], redAccent[2]);
+    doc.text("NOTE:", 22, y + 5);
+
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(8.5);
+    doc.setTextColor(inkSoft[0], inkSoft[1], inkSoft[2]);
+    const noteLines = doc.splitTextToSize(`"${data.additionalNotes}"`, 165);
+    doc.text(noteLines.slice(0, 2), 22, y + 10);
+  }
+
+  drawFooter();
+
+  // ==========================================
+  // PAGE 2
+  // ==========================================
+  doc.addPage();
+  drawHeader("02 / 02");
+
+  // Title Banner Page 2
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(14);
+  doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+  doc.text("Project & Squad Estimate", 15, 41);
+
+  doc.setFillColor(redTint[0], redTint[1], redTint[2]);
+  doc.roundedRect(88, 36.5, 18, 5.5, 1.5, 1.5, "F");
+  doc.setFontSize(7.5);
+  doc.setTextColor(redAccent[0], redAccent[1], redAccent[2]);
+  doc.text("Official", 97, 40.5, { align: "center" });
+
+  y = 51;
+
+  // SECTION 03: ITEMIZED FINANCIAL BREAKDOWN
+  drawEyebrow("03", "Itemized Financial Breakdown", y);
+  y += 5;
+
+  // Table Header
+  doc.setFillColor(darkRed[0], darkRed[1], darkRed[2]);
+  doc.rect(15, y, 180, 8, "F");
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.5);
+  doc.setTextColor(255, 255, 255);
+  doc.text("ITEM / DESCRIPTION", 20, y + 5.5);
+  doc.text(`AMOUNT (${currCode})`, 190, y + 5.5, { align: "right" });
+
+  y += 8;
+
+  const finRows = [
+    { label: "Development Base — Category + Platform + Design + Pages", val: data.devBaseCost || "₹ 0" },
+    { label: "Features & Technical Modules Add-ons", val: data.featuresCost || "₹ 0" },
+    { label: `Post-Launch Maintenance & Support (${data.maintenance || "1 Yr"})`, val: data.maintenanceCost || "₹ 0" },
+    { label: "GST / Regional Service Tax (18%)", val: data.gstTax || "₹ 0" },
+  ];
+
+  finRows.forEach((r, idx) => {
+    const bgVal = idx % 2 === 0 ? 253 : 247;
+    doc.setFillColor(bgVal, idx % 2 === 0 ? 251 : 243, idx % 2 === 0 ? 249 : 239);
+    doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+    doc.rect(15, y, 180, 8, "FD");
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8.5);
+    doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+    doc.text(r.label, 20, y + 5.5);
+
+    doc.setFont("helvetica", "bold");
+    doc.text(r.val, 190, y + 5.5, { align: "right" });
+
+    y += 8;
+  });
+
+  // Grand Total Highlight Banner
+  doc.setFillColor(redAccent[0], redAccent[1], redAccent[2]);
+  doc.rect(15, y, 180, 14, "F");
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(11);
+  doc.setTextColor(255, 255, 255);
+  doc.text("Grand Total Estimate", 22, y + 9);
+
+  doc.setFontSize(16);
+  doc.text(`${currCode} ${totalValFormatted}`, 190, y + 9.5, { align: "right" });
+
+  y += 18;
+
+  // Validity Strip
+  doc.setFillColor(redTint[0], redTint[1], redTint[2]);
+  doc.setDrawColor(245, 205, 203);
+  doc.roundedRect(15, y, 180, 8, 1.5, 1.5, "FD");
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8);
+  doc.setTextColor(darkRed[0], darkRed[1], darkRed[2]);
+  doc.text(`This quotation is valid for 07 days from the date of issuance — ${validUntilStr}.`, 20, y + 5.2);
+
+  y += 12;
+
+  // Disclaimer Box
+  doc.setFillColor(paperBg[0], paperBg[1], paperBg[2]);
+  doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+  doc.roundedRect(15, y, 180, 12, 1.5, 1.5, "FD");
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text("DISCLAIMER", 20, y + 4.5);
+
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(inkSoft[0], inkSoft[1], inkSoft[2]);
+  doc.text("This is a computer / website generated quotation. The final amount may increase or decrease based on confirmed project scope.", 20, y + 8.5);
+
+  y += 20;
+
+  // SECTION: GUARANTEES & SERVICE TERMS
+  drawEyebrow("•", "Guarantees & Service Terms", y);
+  y += 5;
+
+  const guarantees = [
+    { num: "1", title: "1-Week Risk-Free Trial", desc: "Test your dedicated engineering squad with zero fee obligation if unsatisfied." },
+    { num: "2", title: "100% Code & IP Ownership", desc: "Immediate assignment of all GitHub commits, schemas, and assets." },
+    { num: "3", title: "Sub-100ms API SLA", desc: "Guaranteed API response benchmark across production releases." },
+    { num: "4", title: "85%+ Test Coverage", desc: "Automated test coverage enforced on every production release." },
+  ];
+
+  guarantees.forEach((g, idx) => {
+    const col = idx % 2;
+    const row = Math.floor(idx / 2);
+    const boxX = col === 0 ? 15 : 108;
+    const boxY = y + row * 19;
+
+    doc.setFillColor(paperBg[0], paperBg[1], paperBg[2]);
+    doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+    doc.roundedRect(boxX, boxY, 87, 16, 2, 2, "FD");
+
+    // Number Box
+    doc.setFillColor(redTint[0], redTint[1], redTint[2]);
+    doc.roundedRect(boxX + 3, boxY + 3, 7, 7, 1, 1, "F");
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(redAccent[0], redAccent[1], redAccent[2]);
+    doc.text(g.num, boxX + 6.5, boxY + 7.5, { align: "center" });
+
+    // Title & Desc
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8.5);
+    doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+    doc.text(g.title, boxX + 13, boxY + 6.5);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(7);
+    doc.setTextColor(inkSoft[0], inkSoft[1], inkSoft[2]);
+    const dLines = doc.splitTextToSize(g.desc, 70);
+    doc.text(dLines.slice(0, 2), boxX + 13, boxY + 11);
+  });
+
+  y += 44;
+
+  // SECTION: ACCEPTANCE & SIGNATURES
+  drawEyebrow("•", "Acceptance & Signatures", y);
+  y += 5;
+
+  const sigBoxes = [
+    { role: "Authorized Signature — BrosDev", name: "BrosDev IT Engineering Studio" },
+    { role: "Client Acceptance & Signature", name: `${data.name || "Client"} — ${data.company || "Company"}` },
+  ];
+
+  sigBoxes.forEach((sb, idx) => {
+    const boxX = idx === 0 ? 15 : 108;
+    doc.setFillColor(paperBg[0], paperBg[1], paperBg[2]);
+    doc.setDrawColor(borderCol[0], borderCol[1], borderCol[2]);
+    doc.roundedRect(boxX, y, 87, 24, 2, 2, "FD");
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(7.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(sb.role.toUpperCase(), boxX + 5, y + 6);
+
+    // Signature line
+    doc.setDrawColor(180, 170, 165);
+    doc.line(boxX + 5, y + 16, boxX + 82, y + 16);
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8);
+    doc.setTextColor(inkDark[0], inkDark[1], inkDark[2]);
+    doc.text(sb.name, boxX + 5, y + 20.5);
+  });
+
+  drawFooter();
+
+  const arrayBuffer = doc.output("arraybuffer");
+  return Buffer.from(arrayBuffer);
 }
