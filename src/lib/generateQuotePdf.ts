@@ -1,4 +1,5 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
 
 export interface QuotePdfPayload {
   referenceId: string;
@@ -962,12 +963,26 @@ export async function generateQuotePdfBuffer(
 ): Promise<Buffer> {
   const htmlContent = generateQuotePdfHtml(data);
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-  });
-
+  let executablePath: string | undefined;
   try {
+    executablePath = await chromium.executablePath();
+  } catch (e) {
+    console.warn("Could not get chromium executablePath:", e);
+  }
+
+  if (!executablePath && process.env.CHROME_EXECUTABLE_PATH) {
+    executablePath = process.env.CHROME_EXECUTABLE_PATH;
+  }
+
+  let browser;
+  try {
+    browser = await puppeteer.launch({
+      args: chromium.args || ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+      defaultViewport: chromium.defaultViewport || { width: 1200, height: 800 },
+      executablePath: executablePath || undefined,
+      headless: (chromium.headless as any) ?? true,
+    });
+
     const page = await browser.newPage();
     await page.setContent(htmlContent, {
       waitUntil: ["load", "domcontentloaded"],
@@ -987,6 +1002,8 @@ export async function generateQuotePdfBuffer(
 
     return Buffer.from(pdfUint8Array);
   } finally {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
   }
 }
