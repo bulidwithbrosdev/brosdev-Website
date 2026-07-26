@@ -224,10 +224,26 @@ export async function POST(req: NextRequest) {
 </body>
 </html>`;
 
+const FORM_REPLY_TO: Record<string, string> = {
+  'hire-developer': 'hello@brosdev.site',
+  'industry-scoping': 'industry@brosdev.site',
+  'book-consultation': 'hello@brosdev.site',
+  'contact-us': 'hello@brosdev.site',
+  'hiring-model-modal': 'developers@brosdev.site',
+  'instant-scoping-modal': 'developers@brosdev.site',
+  'careers-application': 'careers@brosdev.site',
+  'cost-calculator': 'billing@brosdev.site',
+  'audit-request': 'hello@brosdev.site',
+};
+
+    const isProductDemo = rest.productRequested || (rest.inquiryType && String(rest.inquiryType).toLowerCase().includes('demo'));
+    const replyToEmail = isProductDemo ? 'projects@brosdev.site' : (FORM_REPLY_TO[formType] || 'hello@brosdev.site');
+
     // 1) Send admin notification email
     const adminResult = await resend.emails.send({
       from: formattedFrom,
       to: adminEmail,
+      replyTo: replyToEmail,
       subject: `New Submission: ${label} - ${name} [#${cleanReference}]`,
       html: adminHtml,
       ...(attachmentsList.length > 0 ? { attachments: attachmentsList } : {}),
@@ -402,6 +418,7 @@ export async function POST(req: NextRequest) {
       autoReplyResult = await resend.emails.send({
         from: formattedFrom,
         to: email,
+        replyTo: replyToEmail,
         subject: `Thank you for contacting BrosDev, ${name}! [${referenceId}]`,
         html: autoReplyHtml,
       });

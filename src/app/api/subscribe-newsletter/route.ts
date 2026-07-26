@@ -85,6 +85,7 @@ export async function POST(req: NextRequest) {
     const adminResult = await resend.emails.send({
       from: formattedFrom,
       to: adminEmail,
+      replyTo: 'hello@brosdev.site',
       subject: `New Newsletter Subscriber: ${email} [${referenceId}]`,
       html: adminHtml,
     });
@@ -152,7 +153,7 @@ export async function POST(req: NextRequest) {
 
 © 2026 BrosDev. All rights reserved.<br><br>
 
-<a href="https://brosdev.site" style="color:#A90706;text-decoration:none;">Unsubscribe</a>
+<a href="mailto:hello@brosdev.site?subject=Unsubscribe%20Newsletter%20-%20${encodeURIComponent(email)}&body=Please%20unsubscribe%20my%20email%20(${encodeURIComponent(email)})%20from%20the%20BrosDev%20newsletter." style="color:#A90706;text-decoration:underline;">Unsubscribe</a>
 &nbsp;|&nbsp;
 <a href="https://brosdev.site" style="color:#A90706;text-decoration:none;">Manage Preferences</a>
 &nbsp;|&nbsp;
@@ -170,6 +171,7 @@ export async function POST(req: NextRequest) {
       autoReplyResult = await resend.emails.send({
         from: formattedFrom,
         to: email,
+        replyTo: 'hello@brosdev.site',
         subject: `Thanks for subscribing to the BrosDev newsletter!`,
         html: autoReplyHtml,
       });
