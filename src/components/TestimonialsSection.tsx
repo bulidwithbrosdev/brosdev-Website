@@ -1,9 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Star, Quote, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { Star, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "@/context/TranslationContext";
 
 export default function TestimonialsSection() {
+  const { locale } = useTranslation();
+
   const testimonials = [
     {
       quote:
@@ -70,7 +73,6 @@ export default function TestimonialsSection() {
   return (
     <section className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DDD5] overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        
         {/* Section Title Header */}
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#E2DDD5] mb-4">
@@ -87,24 +89,15 @@ export default function TestimonialsSection() {
             Here is what engineering leaders and product executives say about partnering with BrosDev.
           </p>
         </div>
-
       </div>
 
-      {/* Infinite Auto-Scroller Ticker Container */}
-      <div className="relative w-full flex overflow-x-hidden items-center py-4">
-        {/* Soft Gradient Fade Edges - Responsive Width for Mobile */}
-        <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-28 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/90 to-transparent z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-28 bg-gradient-to-l from-[#FAF8F5] via-[#FAF8F5]/90 to-transparent z-20 pointer-events-none" />
-
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="flex items-center gap-6 whitespace-normal shrink-0 pt-4 pb-4"
-        >
-          {[...testimonials, ...testimonials, ...testimonials].map((item, idx) => (
+      {/* Grid of Verified Testimonials (No DOM Triplication) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((item) => (
             <div
-              key={`${item.author}-${idx}`}
-              className="w-[380px] sm:w-[440px] shrink-0 p-7 bg-white border-2 border-slate-900 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+              key={item.author}
+              className="p-7 bg-white border-2 border-slate-900 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Rating Stars & Quote Icon */}
@@ -122,16 +115,16 @@ export default function TestimonialsSection() {
 
                 {/* Quote Text */}
                 <p className="text-slate-800 font-medium text-sm sm:text-base leading-relaxed mb-6 italic">
-                  "{item.quote}"
+                  &quot;{item.quote}&quot;
                 </p>
               </div>
 
               {/* Author & Location Footer */}
               <div className="pt-5 border-t border-slate-900 flex items-center justify-between">
                 <div>
-                  <h4 className="font-condensed text-base font-black text-slate-900 uppercase tracking-tight group-hover:text-[#A90706] transition-colors">
+                  <h3 className="font-condensed text-base font-black text-slate-900 uppercase tracking-tight group-hover:text-[#A90706] transition-colors">
                     {item.author}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-slate-600 font-bold font-condensed uppercase">
                     {item.title}
                   </p>
@@ -147,27 +140,30 @@ export default function TestimonialsSection() {
                   </div>
                 </div>
               </div>
-
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom Trust Badge Line */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <div className="p-4 bg-white border border-[#E2DDD5] flex flex-wrap items-center justify-between gap-4 text-xs font-condensed font-black tracking-widest text-slate-600 uppercase">
+        <Link
+          href={`/${locale}/case-studies`}
+          className="p-4 bg-white border border-[#E2DDD5] hover:border-slate-900 flex flex-wrap items-center justify-between gap-4 text-xs font-condensed font-black tracking-widest text-slate-600 uppercase transition-all block group"
+        >
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
-            <span>OVER 100+ VERIFIED FIVE-STAR REVIEWS WORLDWIDE</span>
+            <span className="group-hover:text-[#A90706] transition-colors">
+              OVER 100+ VERIFIED FIVE-STAR REVIEWS WORLDWIDE — EXPLORE CASE STUDIES &rarr;
+            </span>
           </div>
 
           <div className="flex items-center gap-6">
             <span>AVERAGE RATING: 5.0 / 5.0</span>
             <span className="text-[#A90706]">★ GUARANTEED QUALITY</span>
           </div>
-        </div>
+        </Link>
       </div>
-
     </section>
   );
 }

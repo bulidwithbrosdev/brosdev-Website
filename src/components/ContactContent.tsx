@@ -585,49 +585,29 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
             </h2>
           </div>
 
-          {/* Mobile: show only India HQ */}
-          <div className="block sm:hidden">
-            {globalOffices.filter((o) => o.isHQ).map((office) => (
-              <div key={office.country} className="p-6 bg-[#FAF8F5] border-2 border-slate-900 space-y-3">
-                <div className="border-b border-[#E2DDD5] pb-3">
-                  <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block">
-                    {office.country}
-                  </span>
-                  <p className="font-condensed text-xs font-semibold text-slate-700 uppercase mt-0.5 tracking-wider">
-                    {office.fullName}
-                  </p>
-                  <h3 className="font-condensed text-lg font-normal text-slate-900 uppercase mt-0.5">
-                    {office.city}
-                  </h3>
-                </div>
-                <p className="font-condensed text-xs font-normal text-slate-500 uppercase">{office.hours}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* sm+: show all offices in responsive grid */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+          {/* Fully Responsive Grid across Mobile, Tablet, and Desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
             {globalOffices.map((office) => (
               <div
                 key={office.country}
                 className={`p-5 border-2 space-y-3 ${
                   office.isHQ
-                    ? "bg-slate-900 border-slate-900 text-white"
+                    ? "bg-slate-900 border-slate-900 text-white shadow-md"
                     : "bg-[#FAF8F5] border-slate-900"
                 }`}
               >
                 <div className={`border-b pb-3 ${ office.isHQ ? "border-white/20" : "border-[#E2DDD5]" }`}>
-                  <span className="font-condensed text-[10px] font-normal text-[#A90706] uppercase tracking-widest block">
+                  <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block">
                     {office.country}
                   </span>
-                  <p className={`font-condensed text-[10px] font-medium uppercase mt-0.5 tracking-wider leading-tight ${ office.isHQ ? "text-red-300" : "text-slate-600" }`}>
+                  <p className={`font-condensed text-xs font-medium uppercase mt-0.5 tracking-wider leading-tight ${ office.isHQ ? "text-red-300" : "text-slate-600" }`}>
                     {office.fullName}
                   </p>
-                  <h3 className={`font-condensed text-sm font-normal uppercase leading-tight mt-1 ${ office.isHQ ? "text-white" : "text-slate-900" }`}>
+                  <h3 className={`font-condensed text-base font-normal uppercase leading-tight mt-1 ${ office.isHQ ? "text-white" : "text-slate-900" }`}>
                     {office.city}
                   </h3>
                 </div>
-                <p className={`font-condensed text-[11px] font-normal uppercase ${ office.isHQ ? "text-slate-300" : "text-slate-500" }`}>
+                <p className={`font-condensed text-xs font-normal uppercase ${ office.isHQ ? "text-slate-300" : "text-slate-500" }`}>
                   {office.hours}
                 </p>
               </div>

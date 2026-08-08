@@ -1,36 +1,45 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import Logo from "./Logo";
-import { Search, Globe, Menu, X, ArrowUpRight, ChevronDown, Sparkles, Layers, Cpu } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation, LocaleCode } from "@/context/TranslationContext";
+import Logo from "@/components/Logo";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  Search,
+  Globe,
+  ArrowUpRight,
+  Sparkles,
+  Layers,
+  Cpu,
+  Building2
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-interface NavbarProps {
-  onBookCallClick?: () => void;
-}
-
-export default function Navbar({ onBookCallClick }: NavbarProps) {
+export default function Navbar() {
+  const { t, locale, changeLocale } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
-  const { locale, t, changeLocale } = useTranslation();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpandedTab, setMobileExpandedTab] = useState<string | null>(null);
-
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
 
   const isCompanyRoute = pathname?.includes("/company");
   const isServicesRoute = pathname?.includes("/services");
   const isIndustryRoute = pathname?.includes("/industry");
-  const isBuildTeamRoute = pathname?.includes("/build-team");
-  const isHomeRoute = (pathname === "/" || pathname === `/${locale}` || pathname === `/${locale}/`) && !isCompanyRoute && !isServicesRoute && !isIndustryRoute && !isBuildTeamRoute;
+  const isHomeRoute =
+    (pathname === "/" || pathname === `/${locale}` || pathname === `/${locale}/`) &&
+    !isCompanyRoute &&
+    !isServicesRoute &&
+    !isIndustryRoute;
 
   // Helper to check if a specific service page is active
   const isServiceActive = (slug: string) => {
@@ -58,19 +67,6 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
     return pathname?.endsWith(`/industry/${slug}`) || pathname?.includes(`/industry/${slug}/`);
   };
 
-  // Helper to check if a specific build-team page is active
-  const isBuildTeamActive = (slug: string) => {
-    if (slug === "all") {
-      return (
-        pathname === `/build-team` ||
-        pathname === `/${locale}/build-team` ||
-        pathname === `/build-team/` ||
-        pathname === `/${locale}/build-team/`
-      );
-    }
-    return pathname?.endsWith(`/build-team/${slug}`) || pathname?.includes(`/build-team/${slug}/`);
-  };
-
   // Active Tab determination logic
   const isTabActive = (itemLabel: string) => {
     if (isCompanyRoute) {
@@ -81,9 +77,6 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
     }
     if (isIndustryRoute) {
       return itemLabel === t.nav.industry;
-    }
-    if (isBuildTeamRoute) {
-      return itemLabel === t.nav.buildTeam;
     }
     if (isHomeRoute) {
       return itemLabel === t.nav.home;
@@ -123,10 +116,6 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
       router.push(`/${locale}/insights`);
       return;
     }
-    if (item.label === t.nav.buildTeam) {
-      router.push(`/${locale}/build-team`);
-      return;
-    }
     if (item.label === t.nav.product) {
       router.push(`/${locale}/products`);
       return;
@@ -139,12 +128,12 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
       router.push(`/${locale}/company/about-us`);
       return;
     }
-    if (item.label === t.nav.contact) {
-      router.push(`/${locale}/contact`);
-      return;
-    }
     if (item.label === t.nav.service) {
       router.push(`/${locale}/services`);
+      return;
+    }
+    if (item.label === t.nav.contact) {
+      router.push(`/${locale}/company/contact`);
       return;
     }
 
@@ -169,7 +158,6 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
     { label: t.nav.service, targetId: "services", hasDropdown: true },
     { label: t.nav.product, targetId: "projects", hasDropdown: true },
     { label: t.nav.industry, targetId: "industry", hasDropdown: true },
-    { label: t.nav.buildTeam, targetId: "build-team", hasDropdown: true },
     { label: t.nav.insights, targetId: "projects", hasDropdown: false },
     { label: t.nav.contact, targetId: "company", hasDropdown: false },
   ];
@@ -189,12 +177,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
   // Data for Mega Dropdowns
   const companyData = [
     { title: "About Us", desc: "Transforming challenges into opportunities with tech.", href: "/company/about-us" },
-    { title: "Our Team & Squads", desc: "Dedicated 52 lead architects and global engineering experts.", href: "/company/team" },
-    { title: "Client Onboarding & Process", desc: "Frictionless Day 1 to 14 onboarding & 2-week risk-free trial.", href: "/company/onboarding" },
-    { title: "Why Brosdev (Comparison)", desc: "Why top brands choose Brosdev over traditional agencies & freelancers.", href: "/company/comparison" },
-    { title: "Enterprise Case Studies", desc: "Proven engineering case studies, cloud savings & AI transformations.", href: "/case-studies" },
-    { title: "Squad Cost Estimator", desc: "Calculate your custom engineering squad budget & timeline.", href: "/cost-calculator" },
-    { title: "Free Code & Security Audit", desc: "Request a complimentary 10-point technical health check.", href: "/audit-request" },
+    { title: "Our Team & Squads", desc: "Dedicated lead architects and global engineering experts.", href: "/company/team" },
     { title: "Our Infrastructure", desc: "Tech capabilities for scalable and reliable solutions.", href: "/company/infrastructure" },
     { title: "Development Methodology", desc: "Seamless development with a focus on quality and speed.", href: "/company/methodology" },
     { title: "Certifications & Alliances", desc: "Industry certifications backing our quality commitment.", href: "/company/certifications" },
@@ -204,41 +187,31 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
   const serviceData = {
     services: [
       "Digital Product Engineering",
+      "Engagement Models",
       "Legacy Software Modernization",
       "MVP Development",
       "SaaS Development",
       "IoT Development",
       "Cloud Computing",
       "Support and Maintenance",
-      "Mobile App Development",
       "Enterprise AI & Content",
     ],
     expertise: [
       "Custom Software Development",
       "Enterprise Automation",
-      "Web Development",
-      "Mobile Development",
+      "Branding & Web SaaS",
+      "Mobile App Development",
       "DevOps As a Service",
       "Quality Assurance",
       "Business Analysis",
       "UX and Design",
-      "Branding & Web SaaS",
-      "Design & Product UX",
     ],
     platforms: [
-      "DITAworks Webtop",
-      "SAP Commerce Cloud",
-      "Odoo",
-      "Hubspot",
-      "Zoho",
-      "Shopify",
-      "WordPress",
-      "Opencart",
-      "Microsoft Power Apps",
-      "Microsoft Azure",
+      "Platform Integrations",
       "Amazon Web Services",
+      "Microsoft Azure",
       "Google Cloud",
-      "OVHCloud",
+      "Shopify",
     ],
   };
 
@@ -259,45 +232,26 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
       "Technology",
       "Automotive",
       "Ecommerce",
-      "Entertainment and Media",
       "Education and E-learning",
-      "Biotech",
       "Retail",
       "Insurance",
     ],
     solutions: [
-      "Cryptocurrency Exchange",
-      "Advertising Management",
       "Marketplace Development",
       "Supply Chain Management",
-      "Inventory Management",
-      "AI for Underwriting",
-      "AI for Inventory Management",
       "AI Agent For Sales",
     ],
   };
-
-  const buildTeamData = [
-    "Hire Dedicated Developers",
-    "Hire AI/ML Developer",
-    "Hire Mobile App Developers",
-    "Hire Full Stack Developers",
-    "Hire Software Developers",
-    "Hire Web Developers",
-    "Hire Web App Developers",
-    "Hire Web Designers",
-    "Hire Digital Marketing Experts",
-    "Hire Blockchain Developer",
-  ];
 
   return (
     <>
       <header
         onMouseLeave={() => setActiveDropdown(null)}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          isScrolled
             ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E2DDD5] py-3.5 shadow-xs"
             : "bg-[#FAF8F5]/90 backdrop-blur-xs py-5 border-b border-[#E2DDD5]/60"
-          }`}
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
 
@@ -327,10 +281,11 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                   >
                     <button
                       onClick={() => handleNavClick(item)}
-                      className={`font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase transition-colors flex items-center gap-1 whitespace-nowrap cursor-pointer ${active || isHovered
+                      className={`font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase transition-colors flex items-center gap-1 whitespace-nowrap cursor-pointer ${
+                        active || isHovered
                           ? "text-[#A90706]"
                           : "text-slate-800 hover:text-[#A90706]"
-                        }`}
+                      }`}
                     >
                       <span>{item.label}</span>
                       {item.hasDropdown && (
@@ -407,10 +362,11 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                         <button
                           key={c.code}
                           onClick={() => handleSelectCountry(c.code)}
-                          className={`w-full text-left px-3 py-1.5 text-xs font-condensed font-normal transition-colors cursor-pointer ${locale === c.code
+                          className={`w-full text-left px-3 py-1.5 text-xs font-condensed font-normal transition-colors cursor-pointer ${
+                            locale === c.code
                               ? "bg-slate-900 text-white"
                               : "text-slate-700 hover:bg-[#FAF8F5] hover:text-[#A90706]"
-                            }`}
+                          }`}
                         >
                           {c.name}
                         </button>
@@ -424,20 +380,20 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
 
           </div>
 
-          {/* Mobile Action: Hamburger Toggle Only */}
-          <div className="flex lg:hidden items-center gap-2">
+          {/* Mobile Menu Toggle Button */}
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open Full Page Navigation Menu"
-              className="p-2.5 bg-white border border-[#E2DDD5] text-slate-800 hover:bg-[#FAF8F5] cursor-pointer"
+              aria-label="Open Navigation Menu"
+              className="p-2 bg-white border border-[#E2DDD5] text-slate-900 hover:bg-slate-900 hover:text-white transition-colors cursor-pointer"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="w-6 h-6" />
             </button>
           </div>
 
         </div>
 
-        {/* DESKTOP MEGA DROPDOWN PANELS */}
+        {/* MEGA DROPDOWNS OVERLAY (DESKTOP) */}
         <AnimatePresence>
           {activeDropdown && (
             <motion.div
@@ -451,7 +407,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
             >
               <div className="max-w-7xl mx-auto bg-white border border-[#E2DDD5] p-8 shadow-sm">
 
-                {/* COMPANY DROPDOWN WITH INSTANT NEXT.JS LINK ROUTING & ACCURATE CARD HIGHLIGHTING */}
+                {/* COMPANY DROPDOWN */}
                 {activeDropdown === t.nav.company && (
                   <div>
                     <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest block mb-6 border-b border-[#E2DDD5] pb-2 font-[var(--font-geist)]">
@@ -473,22 +429,30 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                             onClick={() => {
                               setActiveDropdown(null);
                             }}
-                            className={`p-4 border transition-all group text-left cursor-pointer block ${isCardActive
+                            className={`p-4 border transition-all group text-left cursor-pointer block ${
+                              isCardActive
                                 ? "border-[#A90706] bg-[#A90706] text-white shadow-lg"
                                 : "border-[#E2DDD5] hover:border-slate-900 bg-[#FAF8F5]/50 hover:bg-white text-slate-900"
-                              }`}
+                            }`}
                           >
-                            <h4 className={`font-condensed text-sm font-normal uppercase transition-colors mb-1.5 flex items-center justify-between ${isCardActive ? "text-white" : "text-slate-900 group-hover:text-[#A90706]"
-                              }`}>
+                            <h4
+                              className={`font-condensed text-base font-bold uppercase transition-colors mb-1.5 flex items-center justify-between ${
+                                isCardActive ? "text-white" : "text-slate-900 group-hover:text-[#A90706]"
+                              }`}
+                            >
                               <span className="flex items-center gap-2">
                                 {isCardActive && <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>}
                                 <span>{item.title}</span>
                               </span>
-                              <ArrowUpRight className={`w-4 h-4 transition-opacity ${isCardActive ? "opacity-100 text-white" : "opacity-0 group-hover:opacity-100 text-[#A90706]"
-                                }`} />
+                              <ArrowUpRight
+                                className={`w-4 h-4 transition-opacity ${
+                                  isCardActive ? "opacity-100 text-white" : "opacity-0 group-hover:opacity-100 text-[#A90706]"
+                                }`}
+                              />
                             </h4>
-                            <p className={`text-xs font-normal leading-normal ${isCardActive ? "text-slate-100" : "text-slate-600"
-                              }`}>{item.desc}</p>
+                            <p className={`text-xs font-normal leading-normal ${isCardActive ? "text-slate-100" : "text-slate-600"}`}>
+                              {item.desc}
+                            </p>
                           </Link>
                         );
                       })}
@@ -501,15 +465,16 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                   <div>
                     <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3 mb-6">
                       <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest font-[var(--font-geist)]">
-                        // ENGINEERING SERVICES & PLATFORMS
+                        // ENGINEERING SERVICES &amp; PLATFORMS
                       </span>
                       <Link
                         href={`/${locale}/services`}
                         onClick={() => setActiveDropdown(null)}
-                        className={`font-condensed text-xs font-normal uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-colors ${isServiceActive("all")
+                        className={`font-condensed text-xs font-normal uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-colors ${
+                          isServiceActive("all")
                             ? "text-[#A90706] bg-red-50 border border-[#A90706]/30 px-2 py-1"
                             : "text-slate-900 hover:text-[#A90706]"
-                          }`}
+                        }`}
                       >
                         <span>VIEW ALL SERVICES</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-[#A90706]" />
@@ -521,7 +486,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                         <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
                           CORE SERVICES
                         </span>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-3">
                           {serviceData.services.map((item, i) => {
                             const slug = item.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
                             const active = isServiceActive(slug);
@@ -530,10 +495,11 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                                 <Link
                                   href={`/${locale}/services/${slug}`}
                                   onClick={() => setActiveDropdown(null)}
-                                  className={`font-condensed text-sm uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${active
-                                      ? "text-[#A90706] font-normal underline underline-offset-4 decoration-[#A90706]"
+                                  className={`font-condensed text-base uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${
+                                    active
+                                      ? "text-[#A90706] font-bold underline underline-offset-4 decoration-[#A90706]"
                                       : "font-normal text-slate-900 hover:text-[#A90706]"
-                                    }`}
+                                  }`}
                                 >
                                   <span className={`w-1.5 h-1.5 ${active ? "bg-[#A90706] animate-pulse" : "bg-[#A90706]"}`}></span>
                                   <span>{item}</span>
@@ -549,7 +515,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                         <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
                           EXPERTISE
                         </span>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-3">
                           {serviceData.expertise.map((item, i) => {
                             const slug = item.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
                             const active = isServiceActive(slug);
@@ -558,10 +524,11 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                                 <Link
                                   href={`/${locale}/services/${slug}`}
                                   onClick={() => setActiveDropdown(null)}
-                                  className={`font-condensed text-sm uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${active
-                                      ? "text-[#A90706] font-normal underline underline-offset-4 decoration-[#A90706]"
+                                  className={`font-condensed text-base uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${
+                                    active
+                                      ? "text-[#A90706] font-bold underline underline-offset-4 decoration-[#A90706]"
                                       : "font-normal text-slate-900 hover:text-[#A90706]"
-                                    }`}
+                                  }`}
                                 >
                                   <span className={`w-1.5 h-1.5 ${active ? "bg-[#A90706] animate-pulse" : "bg-slate-400 group-hover:bg-[#A90706]"}`}></span>
                                   <span>{item}</span>
@@ -575,27 +542,31 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
 
                       <div>
                         <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
-                          PRODUCTS & PLATFORMS
+                          PLATFORMS &amp; CLOUD
                         </span>
-                        <div className="flex flex-wrap gap-2">
+                        <ul className="space-y-3">
                           {serviceData.platforms.map((item, i) => {
                             const slug = item.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
                             const active = isServiceActive(slug);
                             return (
-                              <Link
-                                key={i}
-                                href={`/${locale}/services/${slug}`}
-                                onClick={() => setActiveDropdown(null)}
-                                className={`font-condensed text-xs font-normal px-2.5 py-1 uppercase tracking-wide transition-all cursor-pointer inline-block ${active
-                                    ? "bg-[#A90706] text-white border border-[#A90706] shadow-sm font-normal"
-                                    : "bg-[#FAF8F5] text-slate-800 border border-[#E2DDD5] hover:border-slate-900 hover:text-[#A90706]"
+                              <li key={i}>
+                                <Link
+                                  href={`/${locale}/services/${slug}`}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className={`font-condensed text-base uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${
+                                    active
+                                      ? "text-[#A90706] font-bold underline underline-offset-4 decoration-[#A90706]"
+                                      : "font-normal text-slate-900 hover:text-[#A90706]"
                                   }`}
-                              >
-                                {item} {active && "✓"}
-                              </Link>
+                                >
+                                  <span className={`w-1.5 h-1.5 ${active ? "bg-[#A90706] animate-pulse" : "bg-slate-400 group-hover:bg-[#A90706]"}`}></span>
+                                  <span>{item}</span>
+                                  {active && <span className="text-[10px] bg-[#A90706] text-white px-1.5 py-0.2 rounded-xs ml-auto">OPEN</span>}
+                                </Link>
+                              </li>
                             );
                           })}
-                        </div>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -604,42 +575,25 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                 {/* PRODUCT DROPDOWN */}
                 {activeDropdown === t.nav.product && (
                   <div>
-                    <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3 mb-6">
-                      <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest font-[var(--font-geist)]">
-                        // PROPRIETARY IT PRODUCTS
-                      </span>
-                      <Link
-                        href={`/${locale}/products`}
-                        onClick={() => setActiveDropdown(null)}
-                        className="font-condensed text-xs font-normal uppercase tracking-widest flex items-center gap-1 cursor-pointer text-slate-900 hover:text-[#A90706] transition-colors"
-                      >
-                        <span>VIEW ALL PRODUCTS</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-[#A90706]" />
-                      </Link>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-6">
-                      {productData.map((item, idx) => {
-                        const slug = item.name.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                        return (
-                          <Link
-                            key={idx}
-                            href={`/${locale}/products/${slug}`}
-                            onClick={() => setActiveDropdown(null)}
-                            className="p-5 border border-[#E2DDD5] hover:border-slate-900 bg-[#FAF8F5]/50 hover:bg-white transition-all group flex items-start gap-4 text-left cursor-pointer"
-                          >
-                            <div className="p-3 bg-slate-900 text-white shrink-0">
-                              <Layers className="w-5 h-5 text-[#A90706]" />
-                            </div>
-                            <div>
-                              <h4 className="font-condensed text-base font-normal text-slate-900 uppercase group-hover:text-[#A90706] transition-colors mb-1 font-[var(--font-geist)]">
-                                {item.name}
-                              </h4>
-                              <p className="text-xs text-slate-600 font-normal">{item.desc}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
+                    <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest block mb-6 border-b border-[#E2DDD5] pb-2 font-[var(--font-geist)]">
+                      // READY-TO-DEPLOY ENTERPRISE PRODUCTS
+                    </span>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                      {productData.map((prod, idx) => (
+                        <Link
+                          key={idx}
+                          href={`/${locale}/products/${prod.name.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-")}`}
+                          onClick={() => setActiveDropdown(null)}
+                          className="p-5 border border-[#E2DDD5] hover:border-slate-900 bg-[#FAF8F5]/50 hover:bg-white transition-all group text-left cursor-pointer"
+                        >
+                          <h4 className="font-condensed text-base font-bold uppercase text-slate-900 group-hover:text-[#A90706] transition-colors mb-2">
+                            {prod.name}
+                          </h4>
+                          <p className="text-xs font-normal text-slate-600">
+                            {prod.desc}
+                          </p>
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -649,15 +603,16 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                   <div>
                     <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3 mb-6">
                       <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest font-[var(--font-geist)]">
-                        // INDUSTRY VERTICALS & CUSTOM SOLUTIONS
+                        // INDUSTRY DOMAINS &amp; SOLUTIONS
                       </span>
                       <Link
                         href={`/${locale}/industry`}
                         onClick={() => setActiveDropdown(null)}
-                        className={`font-condensed text-xs font-normal uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-colors ${isIndustryActive("all")
+                        className={`font-condensed text-xs font-normal uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-colors ${
+                          isIndustryActive("all")
                             ? "text-[#A90706] bg-red-50 border border-[#A90706]/30 px-2 py-1"
                             : "text-slate-900 hover:text-[#A90706]"
-                          }`}
+                        }`}
                       >
                         <span>VIEW ALL INDUSTRIES</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-[#A90706]" />
@@ -666,10 +621,10 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
 
                     <div className="grid grid-cols-2 gap-8">
                       <div>
-                        <span className="font-condensed text-xs font-black text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
+                        <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
                           INDUSTRY VERTICALS
                         </span>
-                        <div className="grid grid-cols-2 gap-2.5">
+                        <div className="grid grid-cols-2 gap-3">
                           {industryData.verticals.map((item, i) => {
                             const slug = item.toLowerCase().replace(/ & /g, "-and-").replace(/ and /g, "-and-").replace(/\s+/g, "-");
                             const active = isIndustryActive(slug);
@@ -678,39 +633,13 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                                 key={i}
                                 href={`/${locale}/industry/${slug}`}
                                 onClick={() => setActiveDropdown(null)}
-                                className={`font-condensed text-sm uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${active
-                                    ? "text-[#A90706] font-normal underline underline-offset-4 decoration-[#A90706]"
+                                className={`font-condensed text-base uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${
+                                  active
+                                    ? "text-[#A90706] font-bold underline underline-offset-4 decoration-[#A90706]"
                                     : "font-normal text-slate-900 hover:text-[#A90706]"
-                                  }`}
+                                }`}
                               >
-                                <span className={`w-1.5 h-1.5 ${active ? "bg-[#A90706] animate-pulse" : "bg-slate-900 group-hover:bg-[#A90706]"}`}></span>
-                                <span>{item}</span>
-                                {active && <span className="text-[10px] bg-[#A90706] text-white px-1 py-0.2 rounded-xs ml-auto">OPEN</span>}
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </div>
-
-                      <div>
-                        <span className="font-condensed text-xs font-black text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
-                          CUSTOM SOLUTIONS
-                        </span>
-                        <div className="grid grid-cols-1 gap-2.5">
-                          {industryData.solutions.map((item, i) => {
-                            const slug = item.toLowerCase().replace(/ & /g, "-and-").replace(/ for /g, "-for-").replace(/\s+/g, "-");
-                            const active = isIndustryActive(slug);
-                            return (
-                              <Link
-                                key={i}
-                                href={`/${locale}/industry/${slug}`}
-                                onClick={() => setActiveDropdown(null)}
-                                className={`font-condensed text-sm uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${active
-                                    ? "text-[#A90706] font-normal underline underline-offset-4 decoration-[#A90706]"
-                                    : "font-normal text-slate-900 hover:text-[#A90706]"
-                                  }`}
-                              >
-                                <Sparkles className={`w-3.5 h-3.5 ${active ? "text-[#A90706] animate-pulse" : "text-[#A90706]"}`} />
+                                <span className={`w-1.5 h-1.5 ${active ? "bg-[#A90706] animate-pulse" : "bg-slate-400 group-hover:bg-[#A90706]"}`}></span>
                                 <span>{item}</span>
                                 {active && <span className="text-[10px] bg-[#A90706] text-white px-1.5 py-0.2 rounded-xs ml-auto">OPEN</span>}
                               </Link>
@@ -718,60 +647,35 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                           })}
                         </div>
                       </div>
-                    </div>
-                  </div>
-                )}
 
-                {/* BUILD YOUR TEAM DROPDOWN */}
-                {activeDropdown === t.nav.buildTeam && (
-                  <div>
-                    <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3 mb-6">
-                      <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest font-[var(--font-geist)]">
-                        // HIRE PRE-VETTED DEVELOPERS &amp; AI ENGINEERS
-                      </span>
-                      <Link
-                        href={`/${locale}/build-team`}
-                        onClick={() => setActiveDropdown(null)}
-                        className={`font-condensed text-xs font-normal uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-colors ${
-                          isBuildTeamActive("all")
-                            ? "text-[#A90706] bg-red-50 border border-[#A90706]/30 px-2 py-1"
-                            : "text-slate-900 hover:text-[#A90706]"
-                        }`}
-                      >
-                        <span>VIEW ALL ROLES</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-[#A90706]" />
-                      </Link>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-3">
-                      {buildTeamData.map((item, i) => {
-                        const slug = item === "Contact Us" 
-                          ? "hire-dedicated-developers" 
-                          : item.toLowerCase().replace(/ & /g, "-and-").replace(/\//g, "-").replace(/ /g, "-");
-                        const active = isBuildTeamActive(slug);
-                        return (
-                          <Link
-                            key={i}
-                            href={item === "Contact Us" ? `/${locale}/company/contact` : `/${locale}/build-team/${slug}`}
-                            onClick={() => setActiveDropdown(null)}
-                            className={`p-3 border font-condensed text-xs uppercase tracking-wider transition-all flex items-center justify-between group cursor-pointer ${
-                              active
-                                ? "bg-red-50 border-[#A90706] text-[#A90706] font-normal shadow-sm"
-                                : "bg-[#FAF8F5] border-[#E2DDD5] hover:border-slate-900 hover:bg-white text-slate-900 font-normal"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2">
-                              <Cpu className={`w-4 h-4 ${active ? "text-[#A90706]" : "text-slate-500 group-hover:text-[#A90706]"}`} />
-                              <span>{item}</span>
-                            </div>
-                            {active ? (
-                              <span className="text-[10px] bg-[#A90706] text-white px-1.5 py-0.2 rounded-xs">OPEN</span>
-                            ) : (
-                              <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#A90706]" />
-                            )}
-                          </Link>
-                        );
-                      })}
+                      <div>
+                        <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-4 border-b border-[#E2DDD5] pb-2">
+                          CUSTOM DOMAIN SOLUTIONS
+                        </span>
+                        <ul className="space-y-3">
+                          {industryData.solutions.map((item, i) => {
+                            const slug = item.toLowerCase().replace(/ & /g, "-and-").replace(/ for /g, "-for-").replace(/\s+/g, "-");
+                            const active = isIndustryActive(slug);
+                            return (
+                              <li key={i}>
+                                <Link
+                                  href={`/${locale}/industry/${slug}`}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className={`font-condensed text-base uppercase tracking-wide transition-colors flex items-center gap-2 group cursor-pointer text-left ${
+                                    active
+                                      ? "text-[#A90706] font-bold underline underline-offset-4 decoration-[#A90706]"
+                                      : "font-normal text-slate-900 hover:text-[#A90706]"
+                                  }`}
+                                >
+                                  <Sparkles className={`w-3.5 h-3.5 ${active ? "text-[#A90706] animate-pulse" : "text-[#A90706]"}`} />
+                                  <span>{item}</span>
+                                  {active && <span className="text-[10px] bg-[#A90706] text-white px-1.5 py-0.2 rounded-xs ml-auto">OPEN</span>}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -815,7 +719,6 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
 
             {/* Middle Nav Items */}
             <div className="px-6 py-8 space-y-6 flex-1 overflow-y-auto">
-              {/* Navigation Links Accordion */}
               <nav className="space-y-4 font-normal">
                 {navItems.map((item) => {
                   const isExpanded = mobileExpandedTab === item.label;
@@ -829,8 +732,9 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                             setMobileMenuOpen(false);
                             handleNavClick(item);
                           }}
-                          className={`font-condensed text-2xl font-normal uppercase tracking-wide transition-colors cursor-pointer text-left ${active ? "text-[#A90706]" : "text-slate-900 hover:text-[#A90706]"
-                            }`}
+                          className={`font-condensed text-2xl font-normal uppercase tracking-wide transition-colors cursor-pointer text-left ${
+                            active ? "text-[#A90706]" : "text-slate-900 hover:text-[#A90706]"
+                          }`}
                         >
                           {item.label}
                         </button>
@@ -851,28 +755,17 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                           {/* COMPANY */}
                           {item.label === t.nav.company && (
                             <>
-                              <Link
-                                href={`/${locale}/company/about-us`}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={`block font-condensed text-xs font-normal uppercase text-left cursor-pointer pb-2 border-b border-[#E2DDD5] ${pathname?.includes("/company/about-us") ? "text-[#A90706]" : "text-slate-500 hover:text-[#A90706]"}`}
-                              >
-                                ABOUT US / COMPANY OVERVIEW {pathname?.includes("/company/about-us") && "✓"}
-                              </Link>
                               {companyData.map((sub, idx) => {
                                 const fullHref = `/${locale}${sub.href}`;
-                                const isCardActive =
-                                  pathname === fullHref ||
-                                  pathname === sub.href ||
-                                  pathname?.endsWith(sub.href);
                                 return (
                                   <Link
                                     key={idx}
                                     href={fullHref}
                                     prefetch={true}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm font-normal uppercase text-left cursor-pointer ${isCardActive ? "text-[#A90706]" : "text-slate-800 hover:text-[#A90706]"}`}
+                                    className="block font-condensed text-base font-normal uppercase text-left text-slate-800 hover:text-[#A90706]"
                                   >
-                                    {sub.title} {isCardActive && "✓"}
+                                    {sub.title}
                                   </Link>
                                 );
                               })}
@@ -885,153 +778,22 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                               <Link
                                 href={`/${locale}/services`}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`block font-condensed text-xs font-normal uppercase text-left cursor-pointer pb-2 border-b border-[#E2DDD5] ${isServiceActive("all") ? "text-[#A90706]" : "text-slate-500 hover:text-[#A90706]"}`}
+                                className="block font-condensed text-xs font-normal uppercase text-left text-slate-500 hover:text-[#A90706]"
                               >
-                                VIEW ALL SERVICES {isServiceActive("all") && "✓"}
+                                VIEW ALL SERVICES
                               </Link>
 
-                              <p className="font-condensed text-[10px] font-black uppercase tracking-widest text-slate-400 pt-1">Core Services</p>
+                              <p className="font-condensed text-xs font-black uppercase tracking-widest text-slate-400 pt-1">Core Services</p>
                               {serviceData.services.map((sub, idx) => {
                                 const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                                const isActive = isServiceActive(slug);
                                 return (
                                   <Link
                                     key={idx}
                                     href={`/${locale}/services/${slug}`}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm uppercase text-left cursor-pointer ${isActive ? "text-[#A90706]" : "font-normal text-slate-800 hover:text-[#A90706]"}`}
+                                    className="block font-condensed text-base uppercase text-left font-normal text-slate-800 hover:text-[#A90706]"
                                   >
-                                    {sub} {isActive && "✓"}
-                                  </Link>
-                                );
-                              })}
-
-                              <p className="font-condensed text-[10px] font-black uppercase tracking-widest text-slate-400 pt-2">Expertise</p>
-                              {serviceData.expertise.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                                const isActive = isServiceActive(slug);
-                                return (
-                                  <Link
-                                    key={idx}
-                                    href={`/${locale}/services/${slug}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm uppercase text-left cursor-pointer ${isActive ? "text-[#A90706]" : "font-normal text-slate-800 hover:text-[#A90706]"}`}
-                                  >
-                                    {sub} {isActive && "✓"}
-                                  </Link>
-                                );
-                              })}
-
-                              <p className="font-condensed text-[10px] font-black uppercase tracking-widest text-slate-400 pt-2">Platforms</p>
-                              {serviceData.platforms.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                                const isActive = isServiceActive(slug);
-                                return (
-                                  <Link
-                                    key={idx}
-                                    href={`/${locale}/services/${slug}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm uppercase text-left cursor-pointer ${isActive ? "text-[#A90706]" : "font-normal text-slate-800 hover:text-[#A90706]"}`}
-                                  >
-                                    {sub} {isActive && "✓"}
-                                  </Link>
-                                );
-                              })}
-                            </>
-                          )}
-
-                          {/* PRODUCT */}
-                          {item.label === t.nav.product && (
-                            <>
-                              <Link
-                                href={`/${locale}/products`}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="block font-condensed text-xs font-normal uppercase text-left cursor-pointer pb-2 border-b border-[#E2DDD5] text-slate-500 hover:text-[#A90706]"
-                              >
-                                VIEW ALL PRODUCTS
-                              </Link>
-                              {productData.map((sub, idx) => {
-                                const slug = sub.name.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                                return (
-                                  <Link
-                                    key={idx}
-                                    href={`/${locale}/products/${slug}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="block font-condensed text-sm font-normal uppercase text-left cursor-pointer text-slate-800 hover:text-[#A90706]"
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                );
-                              })}
-                            </>
-                          )}
-
-                          {/* INDUSTRY */}
-                          {item.label === t.nav.industry && (
-                            <>
-                              <Link
-                                href={`/${locale}/industry`}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={`block font-condensed text-xs font-normal uppercase text-left cursor-pointer pb-2 border-b border-[#E2DDD5] ${isIndustryActive("all") ? "text-[#A90706]" : "text-slate-500 hover:text-[#A90706]"}`}
-                              >
-                                VIEW ALL INDUSTRIES {isIndustryActive("all") && "✓"}
-                              </Link>
-
-                              <p className="font-condensed text-[10px] font-black uppercase tracking-widest text-slate-400 pt-1">Industry Verticals</p>
-                              {industryData.verticals.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/ and /g, "-and-").replace(/\s+/g, "-");
-                                const isActive = isIndustryActive(slug);
-                                return (
-                                  <Link
-                                    key={idx}
-                                    href={`/${locale}/industry/${slug}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm uppercase text-left cursor-pointer ${isActive ? "text-[#A90706]" : "font-normal text-slate-800 hover:text-[#A90706]"}`}
-                                  >
-                                    {sub} {isActive && "✓"}
-                                  </Link>
-                                );
-                              })}
-
-                              <p className="font-condensed text-[10px] font-black uppercase tracking-widest text-slate-400 pt-2">Custom Solutions</p>
-                              {industryData.solutions.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/ for /g, "-for-").replace(/\s+/g, "-");
-                                const isActive = isIndustryActive(slug);
-                                return (
-                                  <Link
-                                    key={idx}
-                                    href={`/${locale}/industry/${slug}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm uppercase text-left cursor-pointer ${isActive ? "text-[#A90706]" : "font-normal text-slate-800 hover:text-[#A90706]"}`}
-                                  >
-                                    {sub} {isActive && "✓"}
-                                  </Link>
-                                );
-                              })}
-                            </>
-                          )}
-
-                          {/* BUILD YOUR TEAM */}
-                          {item.label === t.nav.buildTeam && (
-                            <>
-                              <Link
-                                href={`/${locale}/build-team`}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={`block font-condensed text-xs font-normal uppercase text-left cursor-pointer pb-2 border-b border-[#E2DDD5] ${isBuildTeamActive("all") ? "text-[#A90706]" : "text-slate-500 hover:text-[#A90706]"}`}
-                              >
-                                VIEW ALL ROLES {isBuildTeamActive("all") && "✓"}
-                              </Link>
-                              {buildTeamData.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\//g, "-").replace(/ /g, "-");
-                                const isActive = isBuildTeamActive(slug);
-                                return (
-                                  <Link
-                                    key={idx}
-                                    href={`/${locale}/build-team/${slug}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`block font-condensed text-sm uppercase text-left cursor-pointer ${isActive ? "text-[#A90706]" : "font-normal text-slate-800 hover:text-[#A90706]"}`}
-                                  >
-                                    {sub} {isActive && "✓"}
+                                    {sub}
                                   </Link>
                                 );
                               })}
@@ -1045,7 +807,7 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                 })}
               </nav>
 
-              {/* Region / Country Selector (Moved to Bottom) */}
+              {/* Region / Country Selector */}
               <div className="pt-6 border-t border-[#E2DDD5]">
                 <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-3">
                   SELECT COUNTRY / REGION
@@ -1055,10 +817,11 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                     <button
                       key={c.code}
                       onClick={() => handleSelectCountry(c.code)}
-                      className={`px-3 py-1.5 text-xs font-condensed font-normal uppercase tracking-wider border cursor-pointer ${locale === c.code
+                      className={`px-3 py-1.5 text-xs font-condensed font-normal uppercase tracking-wider border cursor-pointer ${
+                        locale === c.code
                           ? "bg-slate-900 text-white border-slate-900"
-                          : "bg-white text-slate-800 border-[#E2DDD5]"
-                        }`}
+                          : "bg-white text-[#E2DDD5]"
+                      }`}
                     >
                       {c.name}
                     </button>
@@ -1077,10 +840,6 @@ export default function Navbar({ onBookCallClick }: NavbarProps) {
                 <span>BOOK A CONSULTATION</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
-
-              <div className="text-center font-condensed text-[11px] font-normal text-slate-500 uppercase tracking-widest pt-1">
-                BROSDEV • EST. 2024
-              </div>
             </div>
 
           </motion.div>

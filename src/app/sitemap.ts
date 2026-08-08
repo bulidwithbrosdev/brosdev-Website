@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://brosdev.site";
-  const locales = ["en", "de", "fr", "es", "hi"];
+  const locales = ["en", "us", "uk", "in", "de", "fr", "es", "ca", "eu"];
 
   const mainPages = [
     "",
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/products",
     "/industry",
-    "/build-team",
+    "/case-studies",
     "/insights",
     "/book-consultation",
     "/terms",
@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const services = [
     "digital-product-engineering",
+    "engagement-models",
+    "platform-integrations",
     "legacy-software-modernization",
     "mvp-development",
     "saas-development",
@@ -36,14 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "enterprise-ai-and-content",
     "custom-software-development",
     "enterprise-automation",
-    "web-development",
-    "mobile-development",
     "devops-as-a-service",
     "quality-assurance",
     "business-analysis",
     "ux-and-design",
     "branding-and-web-saas",
-    "design-and-product-ux",
+    "amazon-web-services",
+    "microsoft-azure",
+    "google-cloud",
+    "shopify",
   ];
 
   const industries = [
@@ -55,32 +58,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "technology",
     "automotive",
     "ecommerce",
-    "entertainment-and-media",
     "education-and-e-learning",
-    "biotech",
     "retail",
     "insurance",
-    "cryptocurrency-exchange",
-    "advertising-management",
     "marketplace-development",
     "supply-chain-management",
-    "inventory-management",
-    "ai-for-underwriting",
-    "ai-for-inventory-management",
     "ai-agent-for-sales",
   ];
 
-  const buildTeamRoles = [
-    "hire-dedicated-developers",
-    "hire-ai-ml-developer",
-    "hire-mobile-app-developers",
-    "hire-full-stack-developers",
-    "hire-software-developers",
-    "hire-web-developers",
-    "hire-web-app-developers",
-    "hire-web-designers",
-    "hire-digital-marketing-experts",
-    "hire-blockchain-developer",
+  const caseStudies = [
+    "apexpay-fintech-core",
+    "omniflow-ai-enterprise-saas",
+    "novacloud-kubernetes-orchestration",
+    "scalestack-ai-crm",
+    "headless-shopify-conversion",
+    "hipaa-telehealth-webrtc",
   ];
 
   const products = [
@@ -120,12 +112,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     });
 
-    buildTeamRoles.forEach((slug) => {
+    caseStudies.forEach((slug) => {
       routes.push({
-        url: `${baseUrl}/${locale}/build-team/${slug}`,
+        url: `${baseUrl}/${locale}/case-studies/${slug}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
-        priority: 0.7,
+        priority: 0.8,
       });
     });
 

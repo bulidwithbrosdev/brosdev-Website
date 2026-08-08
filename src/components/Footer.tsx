@@ -43,29 +43,6 @@ export default function Footer() {
     }
   };
 
-  const scrollToSection = (targetId: string) => {
-    const el = document.getElementById(targetId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.location.href = `/${locale}`;
-    }
-  };
-
-  const columnOverview = [
-    { label: "HOME", targetId: "hero" },
-    { label: "COMPANY", targetId: "company" },
-    { label: "BUILD YOUR TEAM", targetId: "build-team" },
-    { label: "INSIGHTS", targetId: "projects" },
-    { label: "CONTACT", targetId: "company" },
-  ];
-
-  const columnSolutions = [
-    { label: "SERVICE", targetId: "services" },
-    { label: "PRODUCT", targetId: "projects" },
-    { label: "INDUSTRY", targetId: "industry" },
-  ];
-
   const columnCommunication = [
     { label: "hello@brosdev.site", href: "mailto:hello@brosdev.site" },
     { label: "projects@brosdev.site", href: "mailto:projects@brosdev.site" },
@@ -98,106 +75,97 @@ export default function Footer() {
                 <span>// BROSDEV NEWSLETTER &amp; INSIGHTS</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase font-[var(--font-geist)]">
-                SUBSCRIBE TO OUR NEWSLETTER
+                GET ENGINEERING BLUEPRINTS IN YOUR INBOX
               </h3>
-              <p className="text-slate-600 text-xs sm:text-sm font-medium">
-                Get monthly engineering insights, architecture updates, case studies &amp; tech offers directly to your inbox.
+              <p className="text-slate-600 text-xs sm:text-sm">
+                Architectural patterns, cloud cost optimizations, and AI benchmarks written by our principal software engineers.
               </p>
             </div>
 
             <div className="lg:col-span-6">
               {newsletterSuccess ? (
-                <div className="p-4 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                  <span>Thanks for subscribing! Check your inbox for your confirmation email.</span>
+                <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>SUCCESS! YOU ARE SUBSCRIBED TO BROSDEV INSIGHTS.</span>
                 </div>
               ) : (
-                <form onSubmit={handleNewsletterSubmit} className="space-y-2">
-                  <div className="flex flex-col sm:flex-row items-stretch gap-2">
-                    <input
-                      type="email"
-                      required
-                      value={newsletterEmail}
-                      onChange={(e) => setNewsletterEmail(e.target.value)}
-                      placeholder="Enter your work email address..."
-                      className="flex-1 px-4 py-3.5 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-medium text-slate-900 focus:outline-hidden focus:border-slate-900"
-                    />
-                    <button
-                      type="submit"
-                      disabled={isSubmittingNewsletter}
-                      className="px-8 py-3.5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black uppercase tracking-widest transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 shrink-0"
-                    >
-                      <span>{isSubmittingNewsletter ? "SUBSCRIBING..." : "SUBSCRIBE"}</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                  {newsletterError && (
-                    <p className="text-xs font-bold text-red-600 pt-1">
-                      ⚠️ {newsletterError}
-                    </p>
-                  )}
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder="ENTER YOUR WORK EMAIL..."
+                    className="flex-1 px-4 py-3.5 bg-[#FAF8F5] border border-[#E2DDD5] focus:border-slate-900 font-condensed text-xs font-bold uppercase text-slate-900 focus:outline-hidden"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmittingNewsletter}
+                    className="px-6 py-3.5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-black uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  >
+                    <span>{isSubmittingNewsletter ? "SUBSCRIBING..." : "SUBSCRIBE"}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </form>
+              )}
+              {newsletterError && (
+                <p className="text-xs font-condensed font-bold text-red-600 mt-2 uppercase">{newsletterError}</p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Main Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-[#E2DDD5]/60">
+        {/* Footer Navigation Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-[#E2DDD5] pt-16">
 
-          {/* Left Column (Logo + Communication Emails + Global Offices + Copyright) */}
-          <div className="lg:col-span-4 space-y-6 flex flex-col justify-between">
-            <div className="space-y-6">
-              <button
-                onClick={() => scrollToSection("hero")}
-                className="inline-flex items-center text-left cursor-pointer focus:outline-hidden"
-              >
-                <Logo className="w-32 h-32 sm:w-40 sm:h-40" showText={false} />
-              </button>
+          {/* Left Brand Column */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link
+              href={`/${locale}`}
+              className="inline-flex items-center text-left cursor-pointer focus:outline-hidden"
+            >
+              <Logo className="w-32 h-32 sm:w-40 sm:h-40" showText={false} />
+            </Link>
 
-              {/* Communication Emails under Logo */}
-              <div className="space-y-2 pt-2 font-normal">
-                <span className="font-condensed text-[11px] font-normal text-[#A90706] uppercase tracking-widest block">
-                  // COMMUNICATION
-                </span>
-                <ul className="space-y-1.5 font-normal">
-                  {columnCommunication.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        className="font-condensed text-xs sm:text-sm font-normal tracking-wider text-slate-800 hover:text-[#A90706] transition-colors block lowercase hover:underline underline-offset-4 decoration-[#A90706] break-all"
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Global Presence Offices */}
-              <div className="pt-2 space-y-1 font-normal">
-                <span className="font-condensed text-[11px] font-normal text-[#A90706] uppercase tracking-widest block mb-1">
-                  // GLOBAL PRESENCE
-                </span>
-                <p className="font-condensed text-xs sm:text-sm font-normal text-slate-900 uppercase tracking-wider">
-                  INDIA • USA • UK • GERMANY • CANADA • FRANCE
-                </p>
-              </div>
+            <div className="space-y-2 pt-2 font-normal">
+              <span className="font-condensed text-[11px] font-normal text-[#A90706] uppercase tracking-widest block">
+                // COMMUNICATION
+              </span>
+              <ul className="space-y-1.5 font-normal">
+                {columnCommunication.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="font-condensed text-xs sm:text-sm font-normal tracking-wider text-slate-800 hover:text-[#A90706] transition-colors block lowercase hover:underline underline-offset-4 decoration-[#A90706] break-all"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Copyright */}
+            <div className="pt-2 space-y-1 font-normal">
+              <span className="font-condensed text-[11px] font-normal text-[#A90706] uppercase tracking-widest block mb-1">
+                // GLOBAL PRESENCE
+              </span>
+              <p className="font-condensed text-xs sm:text-sm font-normal text-slate-900 uppercase tracking-wider">
+                INDIA • USA • UK • GERMANY • CANADA • FRANCE
+              </p>
+            </div>
+
             <div className="pt-4 border-t border-[#E2DDD5]/60 text-xs font-bold text-slate-500 font-condensed uppercase tracking-wider">
               <p>{t.footer.rights} {new Date().getFullYear()}</p>
             </div>
           </div>
 
-          {/* Right Column: 4 Clean Columns in a Row (OVERVIEW, SOLUTIONS, SOCIAL MEDIA, LEGAL) */}
+          {/* Right Column: 4 Clean Navigation Columns */}
           <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-6 pt-4 lg:pt-0">
 
             {/* Col 1: Overview */}
             <div className="space-y-4 font-normal">
               <h4 className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest border-b border-[#E2DDD5] pb-2 min-h-[29px] flex items-center">
-                {t.footer.overview}
+                OVERVIEW
               </h4>
               <ul className="space-y-3 font-normal">
                 <li>
@@ -216,14 +184,7 @@ export default function Footer() {
                     COMPANY
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href={`/${locale}/build-team`}
-                    className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
-                  >
-                    BUILD YOUR TEAM
-                  </Link>
-                </li>
+
                 <li>
                   <Link
                     href={`/${locale}/insights`}
@@ -234,7 +195,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/contact`}
+                    href={`/${locale}/company/contact`}
                     className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
                   >
                     CONTACT
@@ -243,10 +204,10 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Col 2: Solutions */}
+            {/* Col 2: Services & Solutions */}
             <div className="space-y-4 font-normal">
               <h4 className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest border-b border-[#E2DDD5] pb-2 min-h-[29px] flex items-center">
-                {t.footer.solutions}
+                SERVICES
               </h4>
               <ul className="space-y-3 font-normal">
                 <li>
@@ -254,23 +215,31 @@ export default function Footer() {
                     href={`/${locale}/services`}
                     className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
                   >
-                    SERVICE
+                    ALL SERVICES
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/products`}
+                    href={`/${locale}/services/engagement-models`}
                     className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
                   >
-                    PRODUCT
+                    ENGAGEMENT MODELS
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/industry`}
+                    href={`/${locale}/services/platform-integrations`}
                     className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
                   >
-                    INDUSTRY
+                    PLATFORM INTEGRATIONS
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/case-studies`}
+                    className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
+                  >
+                    CASE STUDIES
                   </Link>
                 </li>
               </ul>
@@ -334,7 +303,7 @@ export default function Footer() {
             x="1000"
             y="215"
             textAnchor="end"
-            fontSize="200"
+            fontSize="180"
             fontWeight="400"
             fontFamily="system-ui, -apple-system, sans-serif"
             stroke="currentColor"

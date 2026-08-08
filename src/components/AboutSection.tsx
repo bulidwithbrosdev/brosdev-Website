@@ -173,19 +173,19 @@ export default function AboutSection() {
           {/* Right Bento Box (5 Cols): High-Contrast Dark Stats Banner */}
           <div className="lg:col-span-5 bg-slate-900 text-white p-8 sm:p-10 border border-slate-900 flex flex-col justify-between shadow-xl">
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-[#A90706] flex items-center justify-center">
+              <Link href={`/${locale}/company/certifications`} className="flex items-center gap-3 mb-6 group cursor-pointer">
+                <div className="w-10 h-10 bg-[#A90706] flex items-center justify-center group-hover:bg-[#880504] transition-colors">
                   <Award className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-condensed text-sm font-normal uppercase tracking-wider text-white">
-                    TOP-RATED IT AGENCY 2024 - 2026
-                  </h4>
-                  <p className="text-[10px] text-slate-400 font-condensed font-normal uppercase">
+                  <h3 className="font-condensed text-sm font-normal uppercase tracking-wider text-white group-hover:text-[#A90706] transition-colors">
                     RECOGNIZED FOR SPEED &amp; CODE QUALITY
+                  </h3>
+                  <p className="text-[10px] text-slate-400 font-condensed font-normal uppercase">
+                    VIEW AWARDS &amp; CERTIFICATIONS &rarr;
                   </p>
                 </div>
-              </div>
+              </Link>
 
               <p className="text-slate-300 text-sm leading-relaxed mb-8 font-normal">
                 Over 100+ digital platforms shipped across Fintech, SaaS, Healthcare, AI, and E-Commerce.
@@ -193,19 +193,19 @@ export default function AboutSection() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 border-t border-slate-800 pt-6">
-              <div>
-                <div className="font-condensed text-3xl font-black text-[#A90706]">99.8%</div>
+              <Link href={`/${locale}/case-studies`} className="group cursor-pointer">
+                <div className="font-condensed text-3xl font-black text-[#A90706] group-hover:underline">99.8%</div>
                 <div className="font-condensed text-[10px] font-normal text-slate-400 uppercase tracking-widest">
                   {t.about.satisfaction}
                 </div>
-              </div>
+              </Link>
 
-              <div>
-                <div className="font-condensed text-3xl font-black text-white">100+</div>
+              <Link href={`/${locale}/case-studies`} className="group cursor-pointer">
+                <div className="font-condensed text-3xl font-black text-white group-hover:text-[#A90706]">100+</div>
                 <div className="font-condensed text-[10px] font-normal text-slate-400 uppercase tracking-widest">
                   {t.about.shipped}
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
 

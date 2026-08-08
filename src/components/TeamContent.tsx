@@ -249,7 +249,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
             </h3>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <Link
-                href={`/${locale}/build-team`}
+                href={`/${locale}/services/engagement-models`}
                 className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <span>HIRE PRE-SCREENED DEVELOPERS</span>

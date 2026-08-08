@@ -1,3 +1,9 @@
+export interface Author {
+  name: string;
+  role: string;
+  credentials: string;
+}
+
 export interface InsightArticle {
   slug: string;
   title: string;
@@ -6,6 +12,7 @@ export interface InsightArticle {
   client: string;
   readTime: string;
   date: string;
+  author: Author;
   featured?: boolean;
   metrics: { label: string; value: string }[];
   summary: string;
@@ -24,7 +31,12 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     category: "AI & Machine Learning",
     client: "OmniFlow Inc. (USA)",
     readTime: "6 min read",
-    date: "July 2026",
+    date: "July 14, 2026",
+    author: {
+      name: "Alexandre Devaux",
+      role: "Principal AI Architect",
+      credentials: "M.Sc. Computer Science (Stanford), Ex-Google Brain, 12+ Yrs AI/LLM Systems"
+    },
     featured: true,
     metrics: [
       { label: "USER ENGAGEMENT GAIN", value: "+340%" },
@@ -50,7 +62,12 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     category: "Fintech & Banking",
     client: "ApexPay Global (UK)",
     readTime: "7 min read",
-    date: "June 2026",
+    date: "June 28, 2026",
+    author: {
+      name: "Marcus Vance",
+      role: "VP of Engineering & Distributed Systems Lead",
+      credentials: "AWS Certified Solutions Architect Professional, 15+ Yrs Banking Technology"
+    },
     featured: false,
     metrics: [
       { label: "TRANSACTION LATENCY", value: "<14ms" },
@@ -76,7 +93,12 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     category: "Cloud Infrastructure",
     client: "NovaCloud Systems (Germany)",
     readTime: "5 min read",
-    date: "May 2026",
+    date: "May 19, 2026",
+    author: {
+      name: "Elena Rostova",
+      role: "Principal Cloud & DevOps Architect",
+      credentials: "CKA Certified Kubernetes Administrator, HashiCorp Terraform Specialist"
+    },
     featured: false,
     metrics: [
       { label: "INFRASTRUCTURE COST SAVINGS", value: "42%" },
@@ -101,7 +123,12 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     category: "AI & Machine Learning",
     client: "ScaleStack SaaS (Canada)",
     readTime: "6 min read",
-    date: "April 2026",
+    date: "April 10, 2026",
+    author: {
+      name: "Rajesh Kumar",
+      role: "Head of AI Product Engineering",
+      credentials: "B.Tech Computer Science (IIT Bombay), LangChain & VectorDB Contributor"
+    },
     featured: false,
     metrics: [
       { label: "QUALIFIED LEADS GAIN", value: "+310%" },
@@ -126,7 +153,12 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     category: "E-Commerce",
     client: "VogueThreads DTC (France)",
     readTime: "5 min read",
-    date: "March 2026",
+    date: "March 22, 2026",
+    author: {
+      name: "Jean-Pierre Laurent",
+      role: "Lead Frontend Engineer & Performance Lead",
+      credentials: "Core Web Vitals Specialist, Ex-Shopify Plus Architect"
+    },
     featured: false,
     metrics: [
       { label: "CORE WEB VITALS SCORE", value: "99/100" },
@@ -151,7 +183,12 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     category: "SaaS Architecture",
     client: "MediConnect Health (USA)",
     readTime: "8 min read",
-    date: "February 2026",
+    date: "February 04, 2026",
+    author: {
+      name: "Sarah Jenkins",
+      role: "HealthTech Engineering Director",
+      credentials: "HIPAA Certified Security Professional (HCISPP), 10+ Yrs WebRTC Architecture"
+    },
     featured: false,
     metrics: [
       { label: "PATIENT CONSULTATIONS", value: "500,000+" },

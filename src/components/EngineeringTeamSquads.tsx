@@ -868,7 +868,7 @@ export default function EngineeringTeamSquads() {
 
             <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
               <Link
-                href={`/${locale}/build-team`}
+                href={`/${locale}/services/engagement-models`}
                 className="w-full text-center px-6 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer"
               >
                 <Users className="w-4 h-4" />

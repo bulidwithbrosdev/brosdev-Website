@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -16,7 +16,8 @@ import {
   ShieldCheck,
   Cpu,
   Layers,
-  FileText
+  FileText,
+  UserCheck
 } from "lucide-react";
 
 interface InsightDetailContentProps {
@@ -101,6 +102,24 @@ export default function InsightDetailContent({ insight, locale = "en" }: Insight
       <section className="py-24 border-b border-[#E2DDD5] bg-[#FAF8F5]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
+          {/* Author Credential Header Box */}
+          <div className="p-6 bg-white border-2 border-slate-900 shadow-md flex items-start gap-4">
+            <div className="w-12 h-12 bg-slate-900 text-white flex items-center justify-center shrink-0">
+              <UserCheck className="w-6 h-6 text-[#A90706]" />
+            </div>
+            <div>
+              <span className="font-condensed text-[10px] font-black text-[#A90706] uppercase tracking-widest block mb-0.5">
+                AUTHOR &amp; PRINCIPAL REVIEWER
+              </span>
+              <h3 className="font-condensed text-lg font-black text-slate-900 uppercase">
+                {insight.author.name} — <span className="text-slate-600 font-bold">{insight.author.role}</span>
+              </h3>
+              <p className="text-xs text-slate-600 font-medium">
+                {insight.author.credentials}
+              </p>
+            </div>
+          </div>
+
           {/* Executive Summary Box */}
           <div className="p-8 border-2 border-slate-900 bg-white shadow-xl">
             <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-2">

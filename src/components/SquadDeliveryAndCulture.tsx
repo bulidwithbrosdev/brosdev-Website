@@ -196,7 +196,7 @@ export default function SquadDeliveryAndCulture() {
 
                 <div className="pt-4 border-t border-[#E2DDD5]">
                   <Link
-                    href={`/${locale}/build-team`}
+                    href={`/${locale}/services/engagement-models`}
                     className="w-full py-3 bg-slate-900 hover:bg-[#A90706] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>ENGAGE THIS POD</span>

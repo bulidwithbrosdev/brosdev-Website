@@ -5,15 +5,9 @@ const apiKey = process.env.RESEND_API_KEY;
 const resend = apiKey ? new Resend(apiKey) : null;
 
 export type FormType =
-  | 'hire-developer'
-  | 'industry-scoping'
   | 'book-consultation'
   | 'contact-us'
-  | 'hiring-model-modal'
-  | 'instant-scoping-modal'
-  | 'careers-application'
-  | 'cost-calculator'
-  | 'audit-request';
+  | 'careers-application';
 
 interface EnquiryPayload {
   formType: FormType;
@@ -29,27 +23,15 @@ interface EnquiryPayload {
 }
 
 const FORM_LABELS: Record<FormType, string> = {
-  'hire-developer': 'Hire Developer Enquiry',
-  'industry-scoping': 'Industry Scoping Request',
   'book-consultation': 'Consultation Booking',
   'contact-us': 'Contact Form Submission',
-  'hiring-model-modal': 'Hiring Model Quick Lead',
-  'instant-scoping-modal': 'Instant Developer Scoping',
   'careers-application': 'Careers Application',
-  'cost-calculator': 'Squad Cost Estimator Request',
-  'audit-request': 'Free Architecture & Code Security Audit Request',
 };
 
 const FORM_PREFIXES: Record<FormType, string> = {
-  'hire-developer': 'DEV',
-  'industry-scoping': 'IND',
   'book-consultation': 'MEET',
   'contact-us': 'INQ',
-  'hiring-model-modal': 'HM',
-  'instant-scoping-modal': 'INST',
   'careers-application': 'APP',
-  'cost-calculator': 'CALC',
-  'audit-request': 'AUDIT',
 };
 
 function formatKey(key: string): string {
@@ -225,15 +207,9 @@ export async function POST(req: NextRequest) {
 </html>`;
 
 const FORM_REPLY_TO: Record<string, string> = {
-  'hire-developer': 'hello@brosdev.site',
-  'industry-scoping': 'industry@brosdev.site',
   'book-consultation': 'hello@brosdev.site',
   'contact-us': 'hello@brosdev.site',
-  'hiring-model-modal': 'developers@brosdev.site',
-  'instant-scoping-modal': 'developers@brosdev.site',
   'careers-application': 'careers@brosdev.site',
-  'cost-calculator': 'billing@brosdev.site',
-  'audit-request': 'hello@brosdev.site',
 };
 
     const isProductDemo = rest.productRequested || (rest.inquiryType && String(rest.inquiryType).toLowerCase().includes('demo'));

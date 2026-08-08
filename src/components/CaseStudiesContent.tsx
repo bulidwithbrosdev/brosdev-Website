@@ -4,76 +4,18 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/context/TranslationContext";
+import { CASE_STUDIES_DATA } from "@/data/caseStudiesData";
 import {
   ArrowUpRight,
   TrendingUp,
   ShieldCheck,
-  Zap,
-  CheckCircle2,
-  Download,
   Building2,
-  Cpu,
-  Layers,
-  Globe2,
-  Server
+  ArrowRight
 } from "lucide-react";
 
 export default function CaseStudiesContent() {
   const { locale } = useTranslation();
-
-  const caseStudies = [
-    {
-      id: "cs-1",
-      badge: "FINTECH & PAYMENTS",
-      title: "APEXPAY: REBUILDING CORE TRANSACTION ENGINE IN GOLANG",
-      client: "ApexPay UK (London, United Kingdom)",
-      metrics: [
-        { label: "TRANSACTION LATENCY", value: "-45%", desc: "Reduced sub-second checkout delays" },
-        { label: "SYSTEM UPTIME", value: "99.999%", desc: "Zero downtime during peak Black Friday" },
-        { label: "PEAK CAPACITY", value: "25,000 req/s", desc: "Handled concurrent payment loads" },
-        { label: "CLOUD BILL SAVINGS", value: "$120,000/yr", desc: "Optimized AWS container infrastructure" }
-      ],
-      problem: "ApexPay was struggling with legacy monolithic API bottlenecks that caused transaction timeouts during high-traffic flash sales and elevated server bills.",
-      solution: "Brosdev deployed a 5-member dedicated squad to decompose the backend into high-concurrency microservices written in Golang, utilizing Redis cluster caching and Event-Driven Kafka message queues.",
-      techStack: ["Golang", "PostgreSQL", "Kafka", "AWS EKS", "Redis", "Docker"],
-      quote: "Brosdev's engineers delivered a bulletproof architecture. Our payment success rate hit an all-time high of 99.98% within 60 days of deployment.",
-      author: "Marcus Vance, CTO at ApexPay UK"
-    },
-    {
-      id: "cs-2",
-      badge: "ENTERPRISE AI & HEALTHCARE",
-      title: "OMNIHEALTH: AUTONOMOUS AI MEDICAL VECTOR SEARCH",
-      client: "OmniHealth Systems (Boston, USA)",
-      metrics: [
-        { label: "QUERY SPEED", value: "< 85ms", desc: "Vector similarity search response" },
-        { label: "DATA PROCESSED", value: "50M+", desc: "HIPAA-compliant EHR medical records" },
-        { label: "CLINICAL ACCURACY", value: "99.4%", desc: "LLM RAG precision score" },
-        { label: "TIME-TO-DIAGNOSE", value: "3x Faster", desc: "Automated physician insights" }
-      ],
-      problem: "OmniHealth required an ultra-secure, HIPAA-compliant AI engine to query 50+ million unstructured patient records, lab reports, and clinical notes in real time without data leakage.",
-      solution: "Brosdev built a proprietary RAG (Retrieval-Augmented Generation) pipeline using vLLM, Qdrant Vector DB, and PyTorch, wrapped in a bank-grade encrypted microservices framework on private Azure GPU instances.",
-      techStack: ["Python", "PyTorch", "vLLM", "Qdrant Vector DB", "Azure Health Data", "React"],
-      quote: "The speed and accuracy of Brosdev's AI RAG system transformed our clinical workflows. They are true principal AI architects.",
-      author: "Dr. Elena Rostova, VP of Digital Health at OmniHealth"
-    },
-    {
-      id: "cs-3",
-      badge: "CLOUD & SAAS INFRASTRUCTURE",
-      title: "CLOUDSCALE: MONOLITH TO SERVERLESS KUBERNETES MIGRATION",
-      client: "CloudScale B2B SaaS (Munich, Germany)",
-      metrics: [
-        { label: "HOSTING COST REDUCTION", value: "-42%", desc: "Direct annual cloud infrastructure savings" },
-        { label: "DEPLOYMENT SPEED", value: "10x Faster", desc: "Automated CI/CD GitHub Actions pipelines" },
-        { label: "ZERO-TRUST RATING", value: "ISO 27001", desc: "Passed third-party security auditing" },
-        { label: "DEVS EMBEDDED", value: "4 Engineers", desc: "Full-stack squad integration" }
-      ],
-      problem: "CloudScale's Node.js monolith was crashing during customer onboarding spikes, taking 45+ minutes for developers to deploy new updates.",
-      solution: "Brosdev executed a zero-downtime migration to Next.js, Golang microservices, and Kubernetes (EKS) with Terraform infrastructure-as-code and Playwright automated testing.",
-      techStack: ["Next.js", "Terraform", "Kubernetes", "Node.js", "GraphQL", "Playwright"],
-      quote: "Brosdev migrated our entire platform with zero downtime. Our developers can now deploy code in under 3 minutes with total confidence.",
-      author: "Lukas Weber, VP of Engineering at CloudScale DE"
-    }
-  ];
+  const caseStudies = Object.values(CASE_STUDIES_DATA);
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-slate-900 selection:bg-[#A90706] selection:text-white font-sans antialiased">
@@ -94,7 +36,7 @@ export default function CaseStudiesContent() {
           </h1>
 
           <p className="text-slate-700 text-lg sm:text-xl font-normal max-w-3xl leading-relaxed font-[var(--font-geist)]">
-            Explore how Brosdev&apos;s dedicated engineering squads build high-throughput microservices, sub-second AI platforms, and zero-downtime cloud architectures for global market leaders.
+            Explore how BrosDev engineering squads build high-throughput microservices, sub-second AI platforms, and zero-downtime cloud architectures for global market leaders.
           </p>
         </div>
       </section>
@@ -102,10 +44,10 @@ export default function CaseStudiesContent() {
       {/* Case Studies List */}
       <section className="py-20 bg-white border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {caseStudies.map((cs, idx) => (
+          {caseStudies.map((cs) => (
             <div
-              key={cs.id}
-              className="bg-[#FAF8F5] border-2 border-slate-900 p-8 sm:p-12 shadow-2xl space-y-8 relative overflow-hidden"
+              key={cs.slug}
+              className="bg-[#FAF8F5] border-2 border-slate-900 p-8 sm:p-12 shadow-xl space-y-8 relative overflow-hidden"
             >
               {/* Header Badge & Client */}
               <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E2DDD5] pb-4">
@@ -120,7 +62,9 @@ export default function CaseStudiesContent() {
 
               {/* Title */}
               <h2 className="text-2xl sm:text-4xl font-normal text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
-                {cs.title}
+                <Link href={`/${locale}/case-studies/${cs.slug}`} className="hover:text-[#A90706] transition-colors">
+                  {cs.title}
+                </Link>
               </h2>
 
               {/* Key Metrics Stats Grid */}
@@ -140,7 +84,7 @@ export default function CaseStudiesContent() {
                 ))}
               </div>
 
-              {/* Problem vs Solution Grid */}
+              {/* Problem vs Solution Summary Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-2">
                 <div className="p-6 bg-white border border-[#E2DDD5] space-y-2">
                   <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block">
@@ -161,11 +105,8 @@ export default function CaseStudiesContent() {
                 </div>
               </div>
 
-              {/* Tech Stack Badges */}
-              <div className="space-y-2">
-                <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block">
-                  TECH STACK &amp; INFRASTRUCTURE USED:
-                </span>
+              {/* Tech Stack Badges & Link to Full Case Study */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-[#E2DDD5]">
                 <div className="flex flex-wrap gap-2">
                   {cs.techStack.map((tech, tIdx) => (
                     <span
@@ -176,17 +117,16 @@ export default function CaseStudiesContent() {
                     </span>
                   ))}
                 </div>
+
+                <Link
+                  href={`/${locale}/case-studies/${cs.slug}`}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-[#A90706] text-white font-condensed text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  <span>READ FULL CASE STUDY</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
 
-              {/* Client Quote Banner */}
-              <div className="p-6 bg-slate-900 text-white space-y-2 border-l-4 border-[#A90706]">
-                <p className="text-xs sm:text-sm italic font-normal leading-relaxed text-slate-200">
-                  &quot;{cs.quote}&quot;
-                </p>
-                <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-wider block">
-                  — {cs.author}
-                </span>
-              </div>
             </div>
           ))}
         </div>
@@ -199,21 +139,21 @@ export default function CaseStudiesContent() {
             // READY FOR SIMILAR RESULTS?
           </span>
           <h2 className="text-3xl sm:text-5xl font-normal text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
-            BUILD YOUR DEDICATED SQUAD TODAY
+            EXPLORE OUR ENGAGEMENT MODELS TODAY
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
-              href={`/${locale}/build-team`}
+              href={`/${locale}/services/engagement-models`}
               className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors flex items-center gap-2 cursor-pointer"
             >
-              <span>HIRE PRE-SCREENED DEVELOPERS</span>
+              <span>VIEW ENGAGEMENT MODELS</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
             <Link
-              href={`/${locale}/cost-calculator`}
+              href={`/${locale}/book-consultation`}
               className="px-8 py-4 bg-white border border-slate-900 text-slate-900 hover:bg-slate-100 font-condensed text-xs font-normal uppercase tracking-widest transition-colors cursor-pointer"
             >
-              CALCULATE ESTIMATED SQUAD BUDGET
+              BOOK TECHNICAL CONSULTATION
             </Link>
           </div>
         </div>
