@@ -57,7 +57,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
   },
   "apexpay-fintech-core": {
     slug: "apexpay-fintech-core",
-    title: "ApexPay: Building a Bank-Grade Multi-Currency Payment Engine with Sub-15ms Latency",
+    title: "ApexPay: Building an Enterprise-Grade Multi-Currency Payment Engine with Sub-15ms Latency",
     subtitle: "Engineering a high-concurrency digital ledger and instant settlement payment gateway handling $500M+ annually.",
     category: "Fintech & Banking",
     client: "ApexPay Global (UK)",
@@ -82,7 +82,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     keyTakeaways: [
       "Atomic in-memory locking prevents transaction race conditions without database locks.",
       "Event-driven Kafka streaming enables instant settlement ledger audits.",
-      "PCI-DSS Level 1 tokenization guarantees bank-grade security.",
+      "PCI-DSS Level 1 tokenization guarantees enterprise-grade security.",
     ],
     techStack: ["Go (Golang)", "PostgreSQL", "Redis", "Apache Kafka", "Docker", "AWS KMS", "Kubernetes"],
   },

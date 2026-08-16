@@ -15,10 +15,10 @@ import {
   Heart,
   Rocket,
   CheckCircle2,
-  Globe
+  Globe,
+  HeartHandshake,
+  Trees
 } from "lucide-react";
-import EngineeringTeamSquads from "@/components/EngineeringTeamSquads";
-import SquadDeliveryAndCulture from "@/components/SquadDeliveryAndCulture";
 
 interface TeamContentProps {
   locale?: string;
@@ -50,6 +50,30 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
     { title: "Full-Stack Software Engineers", count: "14+ Lead Developers", exp: "7+ Yrs Avg Experience", desc: "React, Next.js, Node.js, Python, and Golang backend engineers." },
     { title: "AI & LLM Research Scientists", count: "6+ ML Specialists", exp: "6+ Yrs Avg Experience", desc: "Autonomous AI agents, RAG vector pipelines, and vLLM model optimization." },
     { title: "UI/UX Product Designers", count: "4+ Design Directors", exp: "8+ Yrs Avg Experience", desc: "Figma design systems, glassmorphism UI, and interactive micro-animations." },
+  ];
+
+  const cultureValues = [
+    {
+      title: "FESTIVE DAYS = FAMILY DAYS",
+      tag: "// WORK-LIFE BALANCE",
+      desc: "We strictly uphold a policy where major festival days are dedicated entirely to family. All engineers receive mandatory paid festive leaves to celebrate cultural traditions with their loved ones, recharged and refreshed.",
+      icon: HeartHandshake,
+      color: "bg-red-50 text-[#A90706] border-red-200",
+    },
+    {
+      title: "SUNLIT ECO-FRIENDLY CAMPUS",
+      tag: "// NATURE-INSPIRED WORKSPACE",
+      desc: "Our headquarters features open-air botanical spaces, energy-efficient solar architecture, and quiet green zones. We believe natural surroundings inspire calm problem-solving and break through creative blocks.",
+      icon: Trees,
+      color: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    },
+    {
+      title: "PEOPLE-FIRST & COMPASSIONATE",
+      tag: "// TEAM WELLBEING",
+      desc: "Zero toxic hustle, zero ego. We provide unlimited technical book allowances, mental wellness retreats, quarterly bonus sharing, and a collaborative environment where senior architects mentor junior team members.",
+      icon: Users,
+      color: "bg-blue-50 text-blue-900 border-blue-200",
+    },
   ];
 
   const values = [
@@ -116,7 +140,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
                 </p>
 
                 <p className="text-slate-700 text-base font-normal leading-relaxed font-[var(--font-geist)]">
-                  Fuelled by mutual trust, relentless ambition, and a commitment to radical engineering quality, our founders turned their passion project into a global technology startup. Today, Brosdev powers digital transformation for scaleups and enterprises across the USA, Germany, France, Canada, and India.
+                  Fuelled by mutual trust, relentless ambition, and a commitment to radical engineering quality, our founders turned their passion project into a global technology startup. Today, with engineering hubs in India and Canada, Brosdev powers digital transformation for scaleups and enterprises across AU, UK, NZ, CA, US, DE, FR &amp; NY.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 font-condensed font-normal">
@@ -204,11 +228,50 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
         </div>
       </section>
 
-      {/* Engineering Roles & Squads Directory (52 Members Category Breakdown) */}
-      <EngineeringTeamSquads />
 
-      {/* Engagement Models, Code Quality Guarantees & Culture */}
-      <SquadDeliveryAndCulture />
+      {/* Culture, Family Days & Campus Nature */}
+      <section className="py-24 border-b border-[#E2DDD5] bg-[#FAF8F5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-2">
+              // LIFE AT BROSDEV
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
+              CULTURE, FAMILY &amp; NATURE CAMPUS
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base mt-4 font-normal">
+              We foster an environment where software engineers thrive personally and professionally, grounded in strong values and green serenity.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {cultureValues.map((val, idx) => {
+              const Icon = val.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border-2 border-slate-900 p-8 shadow-xl flex flex-col justify-between hover:translate-y-1 transition-transform"
+                >
+                  <div>
+                    <div className={`w-14 h-14 border flex items-center justify-center mb-6 ${val.color}`}>
+                      <Icon className="w-7 h-7 shrink-0" />
+                    </div>
+                    <span className="font-condensed text-[10px] font-black text-[#A90706] uppercase tracking-widest block mb-1">
+                      {val.tag}
+                    </span>
+                    <h3 className="font-condensed text-xl font-black text-slate-900 uppercase tracking-tight mb-3 font-[var(--font-geist)]">
+                      {val.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                      {val.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* Core Cultural Values */}
       <section className="py-20 bg-white border-b border-[#E2DDD5]">

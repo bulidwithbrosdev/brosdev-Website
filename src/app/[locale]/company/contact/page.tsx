@@ -3,13 +3,13 @@ import ContactContent from "@/components/ContactContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Contact BrosDev",
+  title: "Brosdev | Contact BrosDev Global Hubs",
   description:
-    "Connect with our global offices in USA, Germany, France, Canada, UK, and India for technical project inquiries.",
+    "Connect with our engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, DE, FR & NY.",
   openGraph: {
-    title: "Brosdev | Contact BrosDev",
+    title: "Brosdev | Contact BrosDev Global Hubs",
     description:
-      "Connect with our global offices in USA, Germany, France, Canada, UK, and India for technical project inquiries.",
+      "Connect with our engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, DE, FR & NY.",
   },
 };
 

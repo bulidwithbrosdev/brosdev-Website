@@ -34,7 +34,7 @@ export const INDUSTRY_DATA: Record<string, IndustryDetail> = {
       { title: "Legacy EHR Interoperability", desc: "Healthcare data is locked in siloed legacy EHRs like Epic and Cerner, making real-time data sync complex." },
       { title: "Strict Regulatory & Data Privacy", desc: "Non-compliance with HIPAA, HITECH, or GDPR can result in severe financial penalties and data breaches." },
       { title: "High-Volume Telehealth Latency", desc: "Real-time video consultation streams require sub-second video latency and instant e-prescription routing." },
-      { title: "Patient Data Security & Fraud", desc: "Medical records are prime targets for cyberattacks, requiring bank-grade zero-trust access control." },
+      { title: "Patient Data Security & Fraud", desc: "Medical records are prime targets for cyberattacks, requiring enterprise-grade zero-trust access control." },
     ],
     solutions: [
       { title: "HL7 & FHIR API Integrations", desc: "Building bi-directional HL7 FHIR API bridges connecting custom web/mobile portals directly into hospital EHRs." },
@@ -73,7 +73,7 @@ export const INDUSTRY_DATA: Record<string, IndustryDetail> = {
     title: "Fintech & Banking Software Engineering",
     category: "Industry Vertical",
     tagline: "High-Concurrency Payment Gateways, Neobanks & Core Banking",
-    heroDesc: "We design and deploy bank-grade financial platforms, digital wallets, instant settlement payment gateways, automated loan underwriting systems, and algorithmic trading portals with microsecond latency.",
+    heroDesc: "We design and deploy enterprise-grade financial platforms, digital wallets, instant settlement payment gateways, automated loan underwriting systems, and algorithmic trading portals with microsecond latency.",
     badge: "// FINTECH & BANKING",
     stats: [
       { label: "TRANSACTION LATENCY", value: "<15ms" },
@@ -85,7 +85,7 @@ export const INDUSTRY_DATA: Record<string, IndustryDetail> = {
       { title: "High-Concurrency Transaction Spikes", desc: "Financial applications must process thousands of payment transactions per second without race conditions." },
       { title: "Strict Anti-Money Laundering (AML/KYC)", desc: "Real-time identity verification and transaction monitoring are required to combat fraud." },
       { title: "Legacy Core Banking Monoliths", desc: "Traditional bank backends are slow, making API integrations and instant payments difficult." },
-      { title: "Bank-Grade Cyber Threat Vectors", desc: "Fintech systems face constant penetration attempts, credential stuffing, and spoofing attacks." },
+      { title: "Enterprise-Grade Cyber Threat Vectors", desc: "Fintech systems face constant penetration attempts, credential stuffing, and spoofing attacks." },
     ],
     solutions: [
       { title: "Distributed Ledger & Payment Engines", desc: "Building double-entry bookkeeping engines ensuring 100% transactional consistency across accounts." },
@@ -578,7 +578,7 @@ export const INDUSTRY_DATA: Record<string, IndustryDetail> = {
     ],
     solutions: [
       { title: "C++ / Go Order Matching Engine", desc: "Ultra-fast memory order book matching over 1,000,000 transactions per second." },
-      { title: "MPC Multi-Sig Wallet Custody", desc: "Bank-grade Multi-Party Computation cold wallet infrastructure protecting user funds." },
+      { title: "MPC Multi-Sig Wallet Custody", desc: "Enterprise-grade Multi-Party Computation cold wallet infrastructure protecting user funds." },
     ],
     techStack: ["Go", "C++", "Rust", "Node.js", "Redis", "PostgreSQL", "WebSockets", "Docker"],
     compliance: ["SOC2", "ISO 27001", "KYC/AML Compliant"],

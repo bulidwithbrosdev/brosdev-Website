@@ -60,7 +60,7 @@ export default async function LocaleMethodologyPage({ params }: { params: Promis
       phase: "PHASE 04",
       title: "CI/CD AUTOMATED DEPLOYMENT & MAINTENANCE",
       tag: "// ZERO-DOWNTIME DELIVERY",
-      desc: "Continuous integration pipelines deploy code straight to staging and production with zero downtime. Bank-grade security scanning and automated regression suites ensure pristine stability prior to public launch.",
+      desc: "Continuous integration pipelines deploy code straight to staging and production with zero downtime. Enterprise-grade security scanning and automated regression suites ensure pristine stability prior to public launch.",
       icon: Rocket,
       deliverables: ["Zero-Downtime Deployment", "24/7 SLA Monitoring & Incident Response", "Complete Source Code Ownership"],
     },

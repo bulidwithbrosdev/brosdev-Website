@@ -147,10 +147,11 @@ export default function Footer() {
 
             <div className="pt-2 space-y-1 font-normal">
               <span className="font-condensed text-[11px] font-normal text-[#A90706] uppercase tracking-widest block mb-1">
-                // GLOBAL PRESENCE
+                // GLOBAL PRESENCE &amp; COVERAGE
               </span>
               <p className="font-condensed text-xs sm:text-sm font-normal text-slate-900 uppercase tracking-wider">
-                INDIA • USA • UK • GERMANY • CANADA • FRANCE
+                HUBS: INDIA &amp; CANADA<br />
+                SERVING: AU, UK, NZ, CA, US, DE, FR, NY
               </p>
             </div>
 

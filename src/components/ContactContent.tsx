@@ -80,44 +80,44 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
 
   const globalOffices = [
     {
-      country: "INDIA (HQ)",
-      fullName: "BrosDev IT Engineering Studio",
+      country: "PRESENT: INDIA (HQ)",
+      fullName: "BrosDev IT Engineering HQ",
       city: "GIFT City / Ahmedabad",
       hours: "09:00 - 19:00 IST",
       isHQ: true,
     },
     {
-      country: "UNITED STATES",
-      fullName: "BrosDev IT Engineering Studio",
-      city: "San Francisco / New York",
-      hours: "08:00 - 18:00 PST",
+      country: "PRESENT: CANADA (HUB)",
+      fullName: "BrosDev Product Delivery Studio",
+      city: "Toronto / Vancouver",
+      hours: "09:00 - 18:00 EST",
+      isHQ: true,
+    },
+    {
+      country: "SERVING: US & NY",
+      fullName: "BrosDev US Enterprise Client Hub",
+      city: "New York / San Francisco",
+      hours: "08:00 - 18:00 EST",
       isHQ: false,
     },
     {
-      country: "UNITED KINGDOM",
-      fullName: "BrosDev IT Engineering Studio",
+      country: "SERVING: UK",
+      fullName: "BrosDev UK & Europe Delivery Hub",
       city: "London",
       hours: "09:00 - 18:00 GMT",
       isHQ: false,
     },
     {
-      country: "GERMANY",
-      fullName: "BrosDev IT Engineering Studio",
-      city: "Berlin / Munich",
-      hours: "09:00 - 18:00 CET",
+      country: "SERVING: AU & NZ",
+      fullName: "BrosDev ANZ Region Hub",
+      city: "Sydney / Auckland",
+      hours: "09:00 - 18:00 AEST",
       isHQ: false,
     },
     {
-      country: "CANADA",
-      fullName: "BrosDev IT Engineering Studio",
-      city: "Toronto / Vancouver",
-      hours: "09:00 - 18:00 EST",
-      isHQ: false,
-    },
-    {
-      country: "FRANCE",
-      fullName: "BrosDev IT Engineering Studio",
-      city: "Paris / Lyon",
+      country: "SERVING: DE & FR",
+      fullName: "BrosDev EU Enterprise Hub",
+      city: "Berlin / Paris",
       hours: "09:00 - 18:00 CET",
       isHQ: false,
     },
@@ -629,36 +629,91 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                 Built Across 6 Time Zones
               </h2>
             </div>
-            <p className="text-slate-500 text-xs font-condensed uppercase tracking-widest max-w-xs text-right hidden sm:block">
-              India • USA • UK • Germany • Canada • France
+            <p className="text-slate-500 text-xs font-condensed uppercase tracking-widest max-w-md text-right hidden sm:block">
+              Present: India &amp; Canada • Serving: AU, UK, NZ, CA, US, DE, FR, NY
             </p>
           </div>
 
-          {/* Map Image Container */}
-          <div className="relative w-full border border-[#E2DDD5] bg-white p-4 sm:p-8 rounded-none shadow-xs flex items-center justify-center">
-            <img
-              src="/world-map.png"
-              alt="Global Operations Map - India, USA, Canada, UK, France, Germany"
-              className="w-full h-auto max-h-[500px] object-contain mix-blend-multiply"
-            />
+          {/* Map Image Container with Interactive Pulse Pins */}
+          <div className="border-2 border-slate-900 bg-white p-2 sm:p-6 shadow-xl flex items-center justify-center">
+            <div className="relative w-full max-w-[980px] inline-block overflow-visible">
+              <img
+                src="/world-map.png"
+                alt="Global Operations Map - India &amp; Canada Hubs, Serving: AU, UK, NZ, CA, US, DE, FR &amp; NY"
+                className="w-full h-auto block mix-blend-multiply opacity-95"
+              />
+
+              {/* Map Overlay Pins - Perfectly matched to image bounding box */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[
+                  { label: "IN (HQ)", code: "🇮🇳", role: "DEVELOPMENT HQ", top: "52%", left: "69.5%", isHQ: true, badgePos: "top" },
+                  { label: "CA (HUB)", code: "🇨🇦", role: "NORTH AMERICA HUB", top: "22%", left: "20%", isHQ: true, badgePos: "top" },
+                  { label: "US & NY", code: "🇺🇸", role: "SERVING: US & NY", top: "36%", left: "22.5%", isHQ: false, badgePos: "bottom" },
+                  { label: "UK", code: "🇬🇧", role: "SERVING: UK", top: "23.5%", left: "46.8%", isHQ: false, badgePos: "top" },
+                  { label: "FR", code: "🇫🇷", role: "SERVING: FR", top: "33.5%", left: "47.8%", isHQ: false, badgePos: "bottom" },
+                  { label: "DE", code: "🇩🇪", role: "SERVING: DE", top: "27.5%", left: "50.5%", isHQ: false, badgePos: "top" },
+                  { label: "AU", code: "🇦🇺", role: "SERVING: AU", top: "77%", left: "85.5%", isHQ: false, badgePos: "top" },
+                  { label: "NZ", code: "🇳🇿", role: "SERVING: NZ", top: "87.5%", left: "95.5%", isHQ: false, badgePos: "top" },
+                ].map((pin, idx) => (
+                  <div
+                    key={idx}
+                    style={{ top: pin.top, left: pin.left }}
+                    className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto group cursor-pointer"
+                  >
+                    {/* Glowing Animated Pulse Ring */}
+                    <span className={`absolute -inset-1 sm:-inset-1.5 rounded-full ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} opacity-75 animate-ping`}></span>
+                    
+                    {/* Core Node Badge Pin */}
+                    <div className={`relative w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} border-2 border-white shadow-md flex items-center justify-center`}>
+                      <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></span>
+                    </div>
+
+                    {/* Permanent Mini Badge Tag (Staggered Directions) */}
+                    <div
+                      className={`absolute left-1/2 -translate-x-1/2 flex transition-transform duration-200 group-hover:scale-110 z-30 ${
+                        pin.badgePos === "bottom"
+                          ? "top-full mt-1 flex-col-reverse items-center"
+                          : "bottom-full mb-1 flex-col items-center"
+                      }`}
+                    >
+                      <div
+                        className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[9px] sm:text-[10px] font-condensed uppercase tracking-wider whitespace-nowrap shadow-md border border-slate-900 flex items-center gap-1 ${
+                          pin.isHQ ? "bg-[#A90706] text-white font-black" : "bg-slate-900 text-white font-bold"
+                        }`}
+                      >
+                        <span>{pin.code}</span>
+                        <span>{pin.label}</span>
+                      </div>
+                      <div
+                        className={`w-1.5 h-1.5 ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} rotate-45 ${
+                          pin.badgePos === "bottom" ? "-mb-0.5" : "-mt-0.5"
+                        }`}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Country pill row below map */}
           <div className="flex flex-wrap gap-2 mt-6 justify-center sm:justify-start">
             {[
-              { code: "🇮🇳", name: "India (HQ)", time: "IST" },
-              { code: "🇺🇸", name: "USA", time: "PST" },
-              { code: "🇨🇦", name: "Canada", time: "EST" },
-              { code: "🇬🇧", name: "United Kingdom", time: "GMT" },
-              { code: "🇩🇪", name: "Germany", time: "CET" },
-              { code: "🇫🇷", name: "France", time: "CET" },
+              { code: "🇮🇳", name: "IN (HQ)", time: "IST", status: "HQ" },
+              { code: "🇨🇦", name: "CA (Hub)", time: "EST", status: "HUB" },
+              { code: "🇦🇺", name: "AU", time: "AEST", status: "SERVING" },
+              { code: "🇬🇧", name: "UK", time: "GMT", status: "SERVING" },
+              { code: "🇳🇿", name: "NZ", time: "NZST", status: "SERVING" },
+              { code: "🇺🇸", name: "US / NY", time: "EST", status: "SERVING" },
+              { code: "🇩🇪", name: "DE", time: "CET", status: "SERVING" },
+              { code: "🇫🇷", name: "FR", time: "CET", status: "SERVING" },
             ].map((c) => (
               <div
                 key={c.name}
                 className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E2DDD5] font-condensed text-[11px] uppercase tracking-widest text-slate-800 shadow-2xs"
               >
                 <span>{c.code}</span>
-                <span className="font-medium">{c.name}</span>
+                <span className="font-bold text-slate-900">{c.name}</span>
                 <span className="text-[#A90706] font-semibold">{c.time}</span>
               </div>
             ))}

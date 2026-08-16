@@ -434,76 +434,7 @@ export const SERVICES_DATA: Record<string, ServiceDetail> = {
       { question: "Can you help us migrate to Kubernetes?", answer: "Yes, we design, configure, and migrate applications to production-grade managed Kubernetes clusters (EKS/GKE)." },
     ],
   },
-  "quality-assurance": {
-    slug: "quality-assurance",
-    title: "Quality Assurance",
-    category: "Expertise",
-    tagline: "Automated & Manual Software Testing for Zero Defect Releases",
-    heroDesc: "Protect your brand reputation with rigorous automated E2E testing, API validation, load testing, and manual exploratory testing.",
-    badge: "// QA & AUTOMATED TESTING",
-    stats: [
-      { label: "DEFECT DETECTION RATE", value: "99.4%" },
-      { label: "AUTOMATED SUITE RUNTIME", value: "<8 mins" },
-      { label: "TEST CASES AUTOMATED", value: "5,000+" },
-      { label: "REGRESSION PREVENTION", value: "100%" },
-    ],
-    features: [
-      { title: "Automated End-to-End (E2E) Testing", desc: "Playwright and Cypress automation scripts simulating real user interaction across all browsers." },
-      { title: "API Performance & Stress Testing", desc: "K6 and JMeter load simulations testing system endurance up to 100,000 virtual concurrent users." },
-      { title: "Cross-Device & Browser Matrix", desc: "Validating functional UI consistency across mobile devices, tablets, and screen sizes." },
-      { title: "Security Vulnerability Audits", desc: "Penetration testing, OWASP Top 10 auditing, and SQL injection vulnerability checks." },
-    ],
-    techStack: ["Playwright", "Cypress", "Jest", "k6", "Postman", "Selenium", "Sentry"],
-    process: [
-      { step: "01", title: "Test Strategy", desc: "Creating test plans, boundary condition matrices, and acceptance criteria." },
-      { step: "02", title: "Automation Framework", desc: "Building scalable Playwright/Cypress test scripts integrated into CI/CD pipelines." },
-      { step: "03", title: "Exploratory Testing", desc: "Manual edge-case testing by senior QA specialists to uncover hidden bugs." },
-      { step: "04", title: "Release Certification", desc: "Issuing comprehensive QA certification reports prior to production deployments." },
-    ],
-    useCases: [
-      { title: "E-Commerce Checkout QA", desc: "Automated E2E testing framework preventing payment processing drop-offs." },
-      { title: "Banking API Stress Testing", desc: "Simulated 50,000 concurrent API requests to verify latency limits prior to product launch." },
-    ],
-    faqs: [
-      { question: "Why is automated testing better than manual testing alone?", answer: "Automated testing executes thousands of checks in minutes during every build, preventing regression bugs from reaching production." },
-      { question: "Can QA be integrated into our existing CI/CD workflow?", answer: "Yes! We plug automated test suites directly into your GitHub Actions, GitLab, or Bitbucket pipelines." },
-    ],
-  },
-  "business-analysis": {
-    slug: "business-analysis",
-    title: "Business Analysis",
-    category: "Expertise",
-    tagline: "Translating Complex Business Goals into Technical Execution Plans",
-    heroDesc: "Align stakeholders, map user journeys, write precise technical specifications, and ensure software investments deliver clear business ROI.",
-    badge: "// BUSINESS ANALYSIS",
-    stats: [
-      { label: "REQUIREMENT ACCURACY", value: "98%" },
-      { label: "SCOPE CREEP REDUCTION", value: "80%" },
-      { label: "STAKEHOLDER ALIGNMENT", value: "100%" },
-      { label: "SPECIFICATION ACCELERATION", value: "2x" },
-    ],
-    features: [
-      { title: "Stakeholder Discovery Workshops", desc: "Uncovering hidden business logic, regulatory compliance rules, and operational priorities." },
-      { title: "User Journey & Persona Mapping", desc: "Defining clear user archetypes and step-by-step workflow diagrams." },
-      { title: "Technical Requirements Specification (BRD/SRS)", desc: "Drafting comprehensive API contracts, functional specs, and data models." },
-      { title: "Competitive Market Research", desc: "Analyzing industry benchmarks to identify software features that yield competitive leverage." },
-    ],
-    techStack: ["Miro", "Jira", "Confluence", "Figma", "Mermaid.js", "Lucidchart"],
-    process: [
-      { step: "01", title: "Discovery Interviews", desc: "Deep-dive sessions with business leaders, end-users, and product owners." },
-      { step: "02", title: "Requirements Blueprint", desc: "Drafting functional user stories, data schemas, and system interaction diagrams." },
-      { step: "03", title: "Backlog Structuring", desc: "Prioritizing feature sprints based on business value and technical complexity." },
-      { step: "04", title: "Continuous Alignment", desc: "Serving as the bridge between business stakeholders and software development teams." },
-    ],
-    useCases: [
-      { title: "Enterprise ERP Transformation", desc: "Formulated a 200-page functional spec uniting 4 disparate business units under 1 platform." },
-      { title: "HealthTech Compliance Blueprint", desc: "Mapped FDA and HIPAA data workflow specifications for an AI diagnostic platform." },
-    ],
-    faqs: [
-      { question: "Why do we need a Business Analyst for software development?", answer: "A BA eliminates miscommunication between non-technical business leaders and developers, preventing expensive re-work." },
-      { question: "What deliverables will we receive from the BA team?", answer: "Comprehensive Business Requirement Documents (BRD), User Stories, Flowcharts, API specs, and a prioritized Jira backlog." },
-    ],
-  },
+
   "ux-and-design": {
     slug: "ux-and-design",
     title: "UX and Design",

@@ -1,6 +1,3 @@
-"use client";
-
-import { use } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechTicker from "@/components/TechTicker";
@@ -13,8 +10,8 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import { TranslationProvider } from "@/context/TranslationContext";
 
-export default function LocaleHome({ params }: { params: Promise<{ locale: string }> }) {
-  const resolvedParams = use(params);
+export default async function LocaleHome({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = await params;
   const locale = resolvedParams?.locale || "en";
 
   return (

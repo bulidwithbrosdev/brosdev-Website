@@ -42,7 +42,7 @@ export default function AboutSection() {
   return (
     <section id="company" className="py-24 sm:py-32 bg-[#FAF8F5] border-b border-[#E2DDD5] relative font-sans antialiased">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header Line Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-16">
           <div className="lg:col-span-7">
@@ -63,10 +63,12 @@ export default function AboutSection() {
               <p className="text-slate-800 text-base sm:text-lg font-normal leading-relaxed mb-4 font-[var(--font-geist)]">
                 {t.about.quote}
               </p>
-              <div className="flex items-center gap-4 pt-2 border-t border-[#E2DDD5] text-xs font-condensed font-normal tracking-widest text-slate-500 uppercase">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 pt-2 border-t border-[#E2DDD5] text-xs font-condensed font-normal tracking-widest text-slate-500 uppercase">
                 <span>EST. 2024</span>
                 <span>•</span>
-                <span>USA • GERMANY • FRANCE • CANADA • INDIA</span>
+                <span>HUBS: INDIA &amp; CANADA</span>
+                <span className="hidden sm:inline">•</span>
+                <span className="block sm:inline w-full sm:w-auto">SERVING: AU, UK, NZ, CA, US, DE, FR &amp; NY</span>
               </div>
             </div>
           </div>
@@ -112,7 +114,7 @@ export default function AboutSection() {
 
         {/* Manifesto & Performance Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* Left Bento Box (7 Cols): Studio Capabilities */}
           <div className="lg:col-span-7 bg-white border border-[#E2DDD5] p-8 sm:p-10 flex flex-col justify-between">
             <div>
@@ -173,7 +175,7 @@ export default function AboutSection() {
           {/* Right Bento Box (5 Cols): High-Contrast Dark Stats Banner */}
           <div className="lg:col-span-5 bg-slate-900 text-white p-8 sm:p-10 border border-slate-900 flex flex-col justify-between shadow-xl">
             <div>
-              <Link href={`/${locale}/company/certifications`} className="flex items-center gap-3 mb-6 group cursor-pointer">
+              <Link href={`/${locale}/company/alliances`} className="flex items-center gap-3 mb-6 group cursor-pointer">
                 <div className="w-10 h-10 bg-[#A90706] flex items-center justify-center group-hover:bg-[#880504] transition-colors">
                   <Award className="w-5 h-5 text-white" />
                 </div>
@@ -182,7 +184,7 @@ export default function AboutSection() {
                     RECOGNIZED FOR SPEED &amp; CODE QUALITY
                   </h3>
                   <p className="text-[10px] text-slate-400 font-condensed font-normal uppercase">
-                    VIEW AWARDS &amp; CERTIFICATIONS &rarr;
+                    VIEW GLOBAL ALLIANCES &rarr;
                   </p>
                 </div>
               </Link>

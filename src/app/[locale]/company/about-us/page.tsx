@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import EngineeringTeamSquads from "@/components/EngineeringTeamSquads";
-import SquadDeliveryAndCulture from "@/components/SquadDeliveryAndCulture";
 import { TranslationProvider } from "@/context/TranslationContext";
 import { 
   CheckCircle2, 
@@ -16,7 +14,9 @@ import {
   Milestone,
   ShieldCheck,
   Zap,
-  Rocket
+  Rocket,
+  Building2,
+  Layers
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -37,32 +37,68 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
   const timelineMilestones = [
     {
       year: "2024 Q1",
-      title: "FOUNDING & INCEPTION",
-      desc: "BrosDev was established by veteran software architects with a mission to bridge high-end UI design with enterprise-grade cloud systems.",
+      title: "INCEPTION AS HANGUPHACKERS",
+      desc: "Founded by engineering classmates under the moniker HangupHackers, focusing on high-speed web apps and experimental cloud architectures.",
       icon: Rocket,
     },
     {
+      year: "2024 Q2",
+      title: "FIRST ENTERPRISE CONTRACTS",
+      desc: "HangupHackers expanded from startup prototypes to landing core enterprise software engineering contracts across Fintech and HealthTech.",
+      icon: Building2,
+    },
+    {
       year: "2024 Q3",
-      title: "ENTERPRISE AI DIVISION",
-      desc: "Launched our dedicated Enterprise AI & Autonomous LLM Agent practice, serving high-growth SaaS founders across North America & Europe.",
+      title: "ENTERPRISE AI PRACTICE LAUNCH",
+      desc: "Launched a dedicated AI & Autonomous LLM Agent practice, building custom RAG vector pipelines and intelligent workflow automation.",
       icon: Sparkles,
     },
     {
+      year: "2024 Q4",
+      title: "GLOBAL ARCHITECT EXPANSION",
+      desc: "Grew headcount to 15+ senior full-stack engineers and cloud architects operating across India, Canada, US, UK, and AU time zones.",
+      icon: Users,
+    },
+    {
       year: "2025 Q1",
-      title: "UK PRIVATE SERVER CLUSTER",
-      desc: "Commissioned our proprietary Tier-4 high-security server infrastructure in London, UK, ensuring bank-level security for financial and health tech clients.",
+      title: "TIER-4 UK CLUSTER COMMISSIONED",
+      desc: "Commissioned proprietary Tier-4 high-security server infrastructure in London, UK, ensuring enterprise-grade data security.",
       icon: ShieldCheck,
     },
     {
-      year: "2025 Q4",
-      title: "GREEN ECO-CAMPUS EXPANSION",
-      desc: "Opened our flagship green eco-campus in GIFT City, providing our 30+ principal engineers with a natural, peaceful environment for deep focus.",
+      year: "2025 Q2",
+      title: "AWS & CLOUD ALLIANCES",
+      desc: "Achieved strategic cloud certifications with AWS, Google Cloud, and Azure, enforcing sub-second API latency standards.",
+      icon: Award,
+    },
+    {
+      year: "2025 Q3",
+      title: "SUNLIT ECO-CAMPUS OPENING",
+      desc: "Opened our flagship green eco-campus in GIFT City, providing botanical deep-focus coding zones for system design.",
       icon: Trees,
+    },
+    {
+      year: "2025 Q4",
+      title: "50+ PLATFORMS SHIPPED",
+      desc: "Reached a major delivery milestone with 50+ enterprise digital products shipped across North America and Europe.",
+      icon: CheckCircle2,
+    },
+    {
+      year: "2026 Q1",
+      title: "OFFICIAL REBRANDING TO BROSDEV",
+      desc: "Officially rebranded from HangupHackers to BrosDev, reflecting our growth into a global digital product engineering firm.",
+      icon: Zap,
+    },
+    {
+      year: "2026 Q2",
+      title: "MULTI-SQUAD DELIVERY PODS",
+      desc: "Rolled out structured dedicated full-stack, AI, and staff augmentation pods serving scaleups across global markets (AU, UK, NZ, CA, US, DE, FR, NY).",
+      icon: Layers,
     },
     {
       year: "2026 PRESENT",
       title: "GLOBAL ALLIANCES & 100+ SHIPPED",
-      desc: "Achieved strategic partnerships with AWS, Google Cloud, Microsoft Azure, and Vercel, having delivered over 100+ digital platforms globally.",
+      desc: "Over 100+ enterprise digital products shipped with 99.8% client satisfaction across AU, UK, NZ, CA, US, DE, FR & NY.",
       icon: Globe2,
     },
   ];
@@ -155,7 +191,7 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
                   BrosDev started with a simple observation: most software agencies either deliver beautiful designs that break under heavy user traffic, or robust backends with confusing, outdated interfaces.
                 </p>
                 <p className="text-slate-700 text-base leading-relaxed font-normal">
-                  Our founders set out to build an engineering firm where high-throughput architecture and pixel-perfect design live in total synergy. Operating across global hubs (USA, Germany, France, Canada, UK, and India), we provide 24/7 dedicated engineering teams for enterprise software.
+                  Our founders set out to build an engineering firm where high-throughput architecture and pixel-perfect design live in total synergy. With physical engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, Germany, France, and New York, we provide 24/7 dedicated engineering teams for enterprise software.
                 </p>
               </div>
 
@@ -167,7 +203,7 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
                   <div className="space-y-4">
                     {[
                       "Sub-Second Response Times Across All Digital Products",
-                      "Bank-Level UK Server Security & Zero-Trust Architecture",
+                      "Enterprise-Grade Cloud Security & Zero-Trust Architecture",
                       "AI-Integrated Workflows to Speed Up Development 3x",
                       "Dedicated Senior Engineers with Direct Client Access",
                       "Continuous Integration & Automated Test Pipelines",
@@ -188,48 +224,81 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Company History Timeline Graph */}
-        <section className="py-24 border-b border-[#E2DDD5] bg-white">
+        <section className="py-24 border-b border-[#E2DDD5] bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-2">
-                // CHRONOLOGICAL MILESTONES
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
+            <div className="text-center max-w-3xl mx-auto mb-20 space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FAF8F5] border border-[#E2DDD5]">
+                <span className="w-2 h-2 bg-[#A90706] rounded-full animate-ping"></span>
+                <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest">
+                  // CHRONOLOGICAL EVOLUTION (2024 - PRESENT)
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
                 OUR JOURNEY &amp; TIMELINE
               </h2>
+              <p className="text-slate-600 text-sm sm:text-base font-normal max-w-2xl mx-auto">
+                From our inception as HangupHackers to our global rebrand as BrosDev — a continuous story of relentless software engineering mastery.
+              </p>
             </div>
 
-            {/* Visual Timeline Track */}
-            <div className="relative border-l-2 border-slate-900 pl-6 sm:pl-10 space-y-12 ml-4 sm:ml-8">
-              {timelineMilestones.map((m, idx) => {
-                const Icon = m.icon;
-                return (
-                  <div key={idx} className="relative group">
-                    {/* Timeline Node Point */}
-                    <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-10 h-10 bg-slate-900 text-white rounded-full border-4 border-white flex items-center justify-center group-hover:bg-[#A90706] transition-colors shadow-md">
-                      <Icon className="w-4 h-4 text-white" />
-                    </div>
+            {/* Alternating Centered Timeline Structure */}
+            <div className="relative">
+              {/* Central Timeline Spine Line */}
+              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-slate-900 -translate-x-1/2"></div>
 
-                    {/* Timeline Card */}
-                    <div className="bg-[#FAF8F5] border-2 border-slate-900 p-6 sm:p-8 shadow-md hover:shadow-xl transition-all">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                        <span className="font-condensed text-xs font-black px-3 py-1 bg-[#A90706] text-white uppercase tracking-widest">
-                          {m.year}
-                        </span>
-                        <span className="font-condensed text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                          MILESTONE #{idx + 1}
-                        </span>
+              <div className="space-y-12 md:space-y-16">
+                {timelineMilestones.map((m, idx) => {
+                  const Icon = m.icon;
+                  const isEven = idx % 2 === 0;
+                  return (
+                    <div
+                      key={idx}
+                      className={`relative flex flex-col md:flex-row items-center ${
+                        isEven ? "md:flex-row-reverse" : ""
+                      }`}
+                    >
+                      {/* Timeline Central Node Badge */}
+                      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-12 h-12 bg-slate-900 border-4 border-white text-white rounded-full flex items-center justify-center z-10 group-hover:bg-[#A90706] transition-transform duration-300 hover:scale-110 shadow-lg">
+                        <Icon className="w-5 h-5 text-white" />
                       </div>
-                      <h3 className="font-condensed text-xl sm:text-2xl font-black text-slate-900 uppercase tracking-tight mb-2 font-[var(--font-geist)]">
-                        {m.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-                        {m.desc}
-                      </p>
+
+                      {/* Content Card Box (Alternating Left / Right) */}
+                      <div
+                        className={`w-full pl-12 md:pl-0 md:w-[45%] ${
+                          isEven ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
+                        }`}
+                      >
+                        <div className="bg-[#FAF8F5] border-2 border-slate-900 p-6 sm:p-8 shadow-xl hover:border-[#A90706] hover:shadow-2xl transition-all duration-300 relative group">
+                          
+                          {/* Indicator Notch Pointer */}
+                          <div
+                            className={`hidden md:block absolute top-6 w-4 h-4 bg-[#FAF8F5] border-t-2 border-r-2 border-slate-900 rotate-45 ${
+                              isEven ? "-right-2.5 border-l-0 border-b-0" : "-left-2.5 border-r-0 border-t-0 border-l-2 border-b-2"
+                            }`}
+                          ></div>
+
+                          <div className={`flex flex-wrap items-center gap-2 mb-3 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
+                            <span className="font-condensed text-xs font-black px-3 py-1 bg-[#A90706] text-white uppercase tracking-widest shadow-sm">
+                              {m.year}
+                            </span>
+                            <span className="font-condensed text-[11px] font-bold text-slate-500 uppercase tracking-widest border border-[#E2DDD5] px-2 py-0.5 bg-white">
+                              MILESTONE #{idx < 9 ? `0${idx + 1}` : idx + 1}
+                            </span>
+                          </div>
+
+                          <h3 className="font-condensed text-xl sm:text-2xl font-black text-slate-900 uppercase tracking-tight mb-3 font-[var(--font-geist)]">
+                            {m.title}
+                          </h3>
+
+                          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                            {m.desc}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
@@ -278,11 +347,7 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
           </div>
         </section>
 
-        {/* Global Engineering Roles & Squads Directory */}
-        <EngineeringTeamSquads />
 
-        {/* Engagement Models, Code Quality Guarantees & Culture */}
-        <SquadDeliveryAndCulture />
 
         <Footer />
       </main>

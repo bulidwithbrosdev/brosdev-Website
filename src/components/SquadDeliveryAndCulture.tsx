@@ -47,7 +47,7 @@ export default function SquadDeliveryAndCulture() {
       perks: [
         "Sub-Second Latency Optimization",
         "Proprietary Vector Database Benchmarking",
-        "Bank-Grade SOC-2 & ISO Compliance",
+        "Enterprise-Grade SOC-2 & ISO Compliance",
         "Real-Time ML Pipeline Monitoring"
       ],
       highlightColor: "border-slate-900",
@@ -87,7 +87,7 @@ export default function SquadDeliveryAndCulture() {
       number: "03",
       icon: ShieldCheck,
       title: "ZERO-TRUST SECURITY & SOC-2",
-      desc: "Bank-grade encryption at rest and in transit. Automated SAST/DAST vulnerability scanning, OWASP Top 10 compliance, and secret management."
+      desc: "Enterprise-grade encryption at rest and in transit. Automated SAST/DAST vulnerability scanning, OWASP Top 10 compliance, and secret management."
     },
     {
       number: "04",

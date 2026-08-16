@@ -180,7 +180,8 @@ export default function Navbar() {
     { title: "Our Team & Squads", desc: "Dedicated lead architects and global engineering experts.", href: "/company/team" },
     { title: "Our Infrastructure", desc: "Tech capabilities for scalable and reliable solutions.", href: "/company/infrastructure" },
     { title: "Development Methodology", desc: "Seamless development with a focus on quality and speed.", href: "/company/methodology" },
-    { title: "Certifications & Alliances", desc: "Industry certifications backing our quality commitment.", href: "/company/certifications" },
+    { title: "Partners & Collaborations", desc: "Building better technology together with IT companies & agencies.", href: "/company/partners" },
+    { title: "Global Alliances & Partners", desc: "Strategic cloud partnerships with AWS, GCP, Azure, and Vercel.", href: "/company/alliances" },
     { title: "Career Overview", desc: "Grow with us and build rewarding careers with creative cohorts.", href: "/company/careers" },
   ];
 
@@ -202,8 +203,6 @@ export default function Navbar() {
       "Branding & Web SaaS",
       "Mobile App Development",
       "DevOps As a Service",
-      "Quality Assurance",
-      "Business Analysis",
       "UX and Design",
     ],
     platforms: [

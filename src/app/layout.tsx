@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Roboto_Condensed, Outfit, Geist } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -143,7 +144,7 @@ export default function RootLayout({
           addressRegion: "Gujarat",
           addressCountry: "India",
         },
-        areaServed: ["USA", "Germany", "France", "Canada", "India", "UK"],
+        areaServed: ["IN", "CA", "AU", "UK", "NZ", "US", "NY", "DE", "FR"],
       },
       {
         "@type": "WebSite",
@@ -167,6 +168,7 @@ export default function RootLayout({
         />
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

@@ -87,7 +87,7 @@ export default function WhyUsSection() {
             Transparent Engineering Pipeline
           </h2>
           <p className="text-slate-700 text-base sm:text-lg font-medium leading-relaxed">
-            An agile software development workflow optimized for rapid speed, bank-grade code quality, and measurable business growth.
+            An agile software development workflow optimized for rapid speed, enterprise-grade code quality, and measurable business growth.
           </p>
         </div>
 

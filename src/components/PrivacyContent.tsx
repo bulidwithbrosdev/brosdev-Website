@@ -108,7 +108,7 @@ export default function PrivacyContent() {
                   <span>COMMITMENT TO DATA PROTECTION</span>
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                  BrosDev Technologies (&quot;BrosDev&quot;, &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot;) respects your privacy and is dedicated to managing client information with bank-grade security protocols in compliance with EU General Data Protection Regulation (&quot;GDPR&quot;), California Consumer Privacy Act (&quot;CCPA&quot;), and global cybersecurity standards.
+                  BrosDev Technologies (&quot;BrosDev&quot;, &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot;) respects your privacy and is dedicated to managing client information with enterprise-grade security protocols in compliance with EU General Data Protection Regulation (&quot;GDPR&quot;), California Consumer Privacy Act (&quot;CCPA&quot;), and global cybersecurity standards.
                 </p>
               </div>
 

@@ -62,7 +62,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     name: "ApexPay FinTech Core",
     badge: "DIGITAL PAYMENT GATEWAY",
     tagline: "Multi-Currency Digital Wallet & Instant Ledger Settlement Engine",
-    shortDesc: "Multi-currency digital wallet, ledger reconciliation & instant settlement payment gateway with bank-grade security protocols.",
+    shortDesc: "Multi-currency digital wallet, ledger reconciliation & instant settlement payment gateway with enterprise-grade security protocols.",
     description: "ApexPay FinTech Core provides financial institutions and fintech scaleups with a modular, PCI-DSS Level 1 compliant core banking and payment processing engine supporting multi-currency ledgers, instant UPI / SWIFT / SEPA routing, and tokenized wallet management.",
     category: "FinTech",
     pricingTier: "Transaction Percentage + Tiered SaaS Fee",
