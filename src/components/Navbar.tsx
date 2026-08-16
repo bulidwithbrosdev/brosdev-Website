@@ -725,82 +725,252 @@ export default function Navbar() {
 
                   return (
                     <div key={item.label} className="border-b border-[#E2DDD5]/60 pb-3">
-                      <div className="flex items-center justify-between">
-                        <button
-                          onClick={() => {
+                      <div
+                        onClick={() => {
+                          if (item.hasDropdown) {
+                            setMobileExpandedTab(isExpanded ? null : item.label);
+                          } else {
                             setMobileMenuOpen(false);
                             handleNavClick(item);
-                          }}
-                          className={`font-condensed text-2xl font-normal uppercase tracking-wide transition-colors cursor-pointer text-left ${
-                            active ? "text-[#A90706]" : "text-slate-900 hover:text-[#A90706]"
+                          }
+                        }}
+                        className="flex items-center justify-between cursor-pointer py-1 group"
+                      >
+                        <button
+                          className={`font-condensed text-2xl font-normal uppercase tracking-wide transition-colors text-left cursor-pointer ${
+                            active || isExpanded ? "text-[#A90706]" : "text-slate-900 group-hover:text-[#A90706]"
                           }`}
                         >
                           {item.label}
                         </button>
 
                         {item.hasDropdown && (
-                          <button
-                            onClick={() => setMobileExpandedTab(isExpanded ? null : item.label)}
-                            className="p-2 text-slate-500 cursor-pointer"
-                          >
+                          <div className="p-2 text-slate-500 group-hover:text-[#A90706]">
                             <ChevronDown className={`w-5 h-5 transition-transform ${isExpanded ? "rotate-180 text-[#A90706]" : ""}`} />
-                          </button>
+                          </div>
                         )}
                       </div>
 
-                      {item.hasDropdown && isExpanded && (
-                        <div className="mt-3 pl-4 space-y-2.5 border-l-2 border-[#A90706] pt-2">
+                      <AnimatePresence>
+                        {item.hasDropdown && isExpanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mt-3 pl-4 space-y-4 border-l-2 border-[#A90706] pt-2 pb-2">
 
-                          {/* COMPANY */}
-                          {item.label === t.nav.company && (
-                            <>
-                              {companyData.map((sub, idx) => {
-                                const fullHref = `/${locale}${sub.href}`;
-                                return (
+                              {/* COMPANY */}
+                              {item.label === t.nav.company && (
+                                <div className="space-y-2">
                                   <Link
-                                    key={idx}
-                                    href={fullHref}
-                                    prefetch={true}
+                                    href={`/${locale}/company/about-us`}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="block font-condensed text-base font-normal uppercase text-left text-slate-800 hover:text-[#A90706]"
+                                    className="block font-condensed text-xs font-bold uppercase text-[#A90706] hover:underline mb-2 tracking-wider"
                                   >
-                                    {sub.title}
+                                    VIEW COMPANY OVERVIEW →
                                   </Link>
-                                );
-                              })}
-                            </>
-                          )}
+                                  {companyData.map((sub, idx) => {
+                                    const fullHref = `/${locale}${sub.href}`;
+                                    return (
+                                      <Link
+                                        key={idx}
+                                        href={fullHref}
+                                        prefetch={true}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="block font-condensed text-base font-normal uppercase text-left text-slate-800 hover:text-[#A90706] transition-colors"
+                                      >
+                                        {sub.title}
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
+                              )}
 
-                          {/* SERVICE */}
-                          {item.label === t.nav.service && (
-                            <>
-                              <Link
-                                href={`/${locale}/services`}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="block font-condensed text-xs font-normal uppercase text-left text-slate-500 hover:text-[#A90706]"
-                              >
-                                VIEW ALL SERVICES
-                              </Link>
-
-                              <p className="font-condensed text-xs font-black uppercase tracking-widest text-slate-400 pt-1">Core Services</p>
-                              {serviceData.services.map((sub, idx) => {
-                                const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                                return (
+                              {/* SERVICE */}
+                              {item.label === t.nav.service && (
+                                <div className="space-y-4">
                                   <Link
-                                    key={idx}
-                                    href={`/${locale}/services/${slug}`}
+                                    href={`/${locale}/services`}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="block font-condensed text-base uppercase text-left font-normal text-slate-800 hover:text-[#A90706]"
+                                    className="block font-condensed text-xs font-bold uppercase text-[#A90706] hover:underline tracking-wider"
                                   >
-                                    {sub}
+                                    VIEW ALL SERVICES →
                                   </Link>
-                                );
-                              })}
-                            </>
-                          )}
 
-                        </div>
-                      )}
+                                  {/* Core Services */}
+                                  <div>
+                                    <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
+                                      Core Services
+                                    </p>
+                                    <div className="space-y-2 pl-1">
+                                      {serviceData.services.map((sub, idx) => {
+                                        const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
+                                        return (
+                                          <Link
+                                            key={idx}
+                                            href={`/${locale}/services/${slug}`}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="block font-condensed text-sm uppercase text-left font-normal text-slate-800 hover:text-[#A90706] transition-colors"
+                                          >
+                                            {sub}
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+
+                                  {/* Expertise */}
+                                  <div>
+                                    <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
+                                      Expertise
+                                    </p>
+                                    <div className="space-y-2 pl-1">
+                                      {serviceData.expertise.map((sub, idx) => {
+                                        const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
+                                        return (
+                                          <Link
+                                            key={idx}
+                                            href={`/${locale}/services/${slug}`}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="block font-condensed text-sm uppercase text-left font-normal text-slate-800 hover:text-[#A90706] transition-colors"
+                                          >
+                                            {sub}
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+
+                                  {/* Platforms & Cloud */}
+                                  <div>
+                                    <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
+                                      Platforms & Cloud
+                                    </p>
+                                    <div className="space-y-2 pl-1">
+                                      {serviceData.platforms.map((sub, idx) => {
+                                        const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
+                                        return (
+                                          <Link
+                                            key={idx}
+                                            href={`/${locale}/services/${slug}`}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="block font-condensed text-sm uppercase text-left font-normal text-slate-800 hover:text-[#A90706] transition-colors"
+                                          >
+                                            {sub}
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* PRODUCT */}
+                              {item.label === t.nav.product && (
+                                <div className="space-y-3">
+                                  <Link
+                                    href={`/${locale}/products`}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block font-condensed text-xs font-bold uppercase text-[#A90706] hover:underline tracking-wider mb-2"
+                                  >
+                                    VIEW ALL PRODUCTS →
+                                  </Link>
+
+                                  <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
+                                    Ready-To-Deploy Products
+                                  </p>
+
+                                  <div className="space-y-2.5">
+                                    {productData.map((prod, idx) => {
+                                      const slug = prod.name.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
+                                      return (
+                                        <Link
+                                          key={idx}
+                                          href={`/${locale}/products/${slug}`}
+                                          onClick={() => setMobileMenuOpen(false)}
+                                          className="block p-3 border border-[#E2DDD5] bg-white rounded-xs hover:border-[#A90706] transition-colors group"
+                                        >
+                                          <div className="flex items-center justify-between">
+                                            <span className="font-condensed text-sm font-bold uppercase text-slate-900 group-hover:text-[#A90706]">
+                                              {prod.name}
+                                            </span>
+                                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#A90706]" />
+                                          </div>
+                                          <p className="text-xs text-slate-600 font-normal mt-1 line-clamp-2">
+                                            {prod.desc}
+                                          </p>
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* INDUSTRY */}
+                              {item.label === t.nav.industry && (
+                                <div className="space-y-4">
+                                  <Link
+                                    href={`/${locale}/industry`}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block font-condensed text-xs font-bold uppercase text-[#A90706] hover:underline tracking-wider"
+                                  >
+                                    VIEW ALL INDUSTRIES →
+                                  </Link>
+
+                                  {/* Verticals */}
+                                  <div>
+                                    <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
+                                      Industry Verticals
+                                    </p>
+                                    <div className="grid grid-cols-1 gap-2 pl-1">
+                                      {industryData.verticals.map((sub, idx) => {
+                                        const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/ and /g, "-and-").replace(/\s+/g, "-");
+                                        return (
+                                          <Link
+                                            key={idx}
+                                            href={`/${locale}/industry/${slug}`}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="block font-condensed text-sm uppercase font-normal text-slate-800 hover:text-[#A90706] transition-colors"
+                                          >
+                                            {sub}
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+
+                                  {/* Solutions */}
+                                  <div>
+                                    <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
+                                      Custom Solutions
+                                    </p>
+                                    <div className="space-y-2 pl-1">
+                                      {industryData.solutions.map((sub, idx) => {
+                                        const slug = sub.toLowerCase().replace(/ & /g, "-and-").replace(/ for /g, "-for-").replace(/\s+/g, "-");
+                                        return (
+                                          <Link
+                                            key={idx}
+                                            href={`/${locale}/industry/${slug}`}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="flex items-center gap-1.5 font-condensed text-sm uppercase font-normal text-slate-800 hover:text-[#A90706] transition-colors"
+                                          >
+                                            <Sparkles className="w-3 h-3 text-[#A90706]" />
+                                            <span>{sub}</span>
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   );
                 })}
@@ -816,10 +986,10 @@ export default function Navbar() {
                     <button
                       key={c.code}
                       onClick={() => handleSelectCountry(c.code)}
-                      className={`px-3 py-1.5 text-xs font-condensed font-normal uppercase tracking-wider border cursor-pointer ${
+                      className={`px-3 py-1.5 text-xs font-condensed font-semibold uppercase tracking-wider border cursor-pointer transition-colors ${
                         locale === c.code
                           ? "bg-slate-900 text-white border-slate-900"
-                          : "bg-white text-[#E2DDD5]"
+                          : "bg-white text-slate-800 border-[#E2DDD5] hover:border-slate-800 hover:text-[#A90706]"
                       }`}
                     >
                       {c.name}
