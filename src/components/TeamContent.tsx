@@ -28,20 +28,20 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
 
   const founders = [
     {
-      name: "SHREYASH PATEL",
+      name: "Mr. Prit Gajjar",
       role: "FOUNDER & CEO",
       focus: "Product Strategy, Enterprise Growth & Architecture Innovation",
       desc: "Founded Brosdev with a vision to build a world-class IT engineering firm. Drives global enterprise partnerships, client growth, and high-performance product execution.",
       badge: "FOUNDER",
-      stats: "10+ Yrs Systems Leadership",
+      stats: "",
     },
     {
-      name: "MITAKSHI PATEL",
+      name: "Ms. Yashvi Patel",
       role: "CO-FOUNDER & CTO",
       focus: "Principal Systems Architect, Cloud Infrastructure & AI Lead",
       desc: "Architects Brosdev's core tech stack, autonomous AI engines, and microservices infrastructure. Obsessed with sub-millisecond performance, clean code, and zero-downtime scaling.",
       badge: "CO-FOUNDER",
-      stats: "10+ Yrs Engineering Mastery",
+      stats: "",
     },
   ];
 
