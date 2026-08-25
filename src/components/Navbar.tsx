@@ -3,24 +3,25 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useTranslation, LocaleCode } from "@/context/TranslationContext";
+import { useTranslation } from "@/context/TranslationContext";
 import Logo from "@/components/Logo";
+import SearchModal from "@/components/SearchModal";
 import {
   ChevronDown,
   Menu,
   X,
   Search,
-  Globe,
   ArrowUpRight,
   Sparkles,
   Layers,
   Cpu,
-  Building2
+  Building2,
+  Command
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const { t, locale, changeLocale } = useTranslation();
+  const { t, locale } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -28,9 +29,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpandedTab, setMobileExpandedTab] = useState<string | null>(null);
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
   const isCompanyRoute = pathname?.includes("/company");
   const isServicesRoute = pathname?.includes("/services");
@@ -108,16 +107,24 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Keyboard shortcut listener for Cmd+K / Ctrl+K search popup
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   // Fast Client-Side Navigation & Smooth Scroll Helper
   const handleNavClick = (item: { label: string; targetId: string }) => {
     setActiveDropdown(null);
 
     if (item.label === t.nav.insights) {
       router.push(`/${locale}/insights`);
-      return;
-    }
-    if (item.label === t.nav.product) {
-      router.push(`/${locale}/products`);
       return;
     }
     if (item.label === t.nav.industry) {
@@ -147,31 +154,13 @@ export default function Navbar() {
     }
   };
 
-  const handleSelectCountry = (code: LocaleCode) => {
-    setLangDropdownOpen(false);
-    changeLocale(code);
-  };
-
   const navItems = [
     { label: t.nav.home, targetId: "hero", hasDropdown: false },
     { label: t.nav.company, targetId: "company", hasDropdown: true },
     { label: t.nav.service, targetId: "services", hasDropdown: true },
-    { label: t.nav.product, targetId: "projects", hasDropdown: true },
     { label: t.nav.industry, targetId: "industry", hasDropdown: true },
     { label: t.nav.insights, targetId: "projects", hasDropdown: false },
     { label: t.nav.contact, targetId: "company", hasDropdown: false },
-  ];
-
-  const countries: { code: LocaleCode; name: string }[] = [
-    { code: "en", name: "EN (Global)" },
-    { code: "us", name: "US (USA)" },
-    { code: "uk", name: "UK (UK)" },
-    { code: "in", name: "IN (India / हिन्दी)" },
-    { code: "de", name: "DE (Deutschland)" },
-    { code: "fr", name: "FR (France)" },
-    { code: "es", name: "ES (España)" },
-    { code: "ca", name: "CA (Canada)" },
-    { code: "eu", name: "EU (Europe)" },
   ];
 
   // Data for Mega Dropdowns
@@ -213,13 +202,6 @@ export default function Navbar() {
       "Shopify",
     ],
   };
-
-  const productData = [
-    { name: "OmniFlow AI Engine", desc: "High-throughput autonomous AI workflow platform for enterprises." },
-    { name: "ApexPay FinTech Core", desc: "Multi-currency digital wallet & instant settlement payment gateway." },
-    { name: "NovaCloud Kubernetes", desc: "Zero-downtime microservices container orchestration suite." },
-    { name: "ScaleStack AI CRM", desc: "Intelligent customer relationship management & sales agent." },
-  ];
 
   const industryData = {
     verticals: [
@@ -299,83 +281,15 @@ export default function Navbar() {
             {/* Vertical Divider | */}
             <div className="h-4 w-px bg-[#E2DDD5] mx-1.5 shrink-0" />
 
-            {/* Search Icon & Global Country Code Dropdown */}
-            <div className="flex items-center gap-2 relative">
-
-              {/* Search Toggle */}
-              <div className="relative">
-                {searchOpen ? (
-                  <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 200, opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="flex items-center bg-white border border-[#E2DDD5] px-2.5 py-1"
-                  >
-                    <Search className="w-3.5 h-3.5 text-slate-500 mr-2 shrink-0" />
-                    <input
-                      type="text"
-                      autoFocus
-                      placeholder={t.nav.searchPlaceholder}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-transparent text-xs font-condensed font-bold text-slate-900 focus:outline-hidden"
-                    />
-                    <button
-                      onClick={() => setSearchOpen(false)}
-                      className="text-slate-400 hover:text-slate-800 text-xs ml-1 cursor-pointer"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                    </button>
-                  </motion.div>
-                ) : (
-                  <button
-                    onClick={() => setSearchOpen(true)}
-                    aria-label="Search"
-                    className="p-2 border border-[#E2DDD5] hover:border-slate-900 bg-white flex items-center justify-center text-slate-800 hover:text-[#A90706] transition-colors cursor-pointer"
-                  >
-                    <Search className="w-4 h-4" />
-                  </button>
-                )}
-              </div>
-
-              {/* Global Country Code Selector */}
-              <div className="relative">
-                <button
-                  onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                  aria-label="Country Language Selector"
-                  className="h-8.5 px-2.5 border border-[#E2DDD5] hover:border-slate-900 bg-white flex items-center gap-1.5 text-xs font-normal font-condensed text-slate-800 hover:text-[#A90706] transition-colors cursor-pointer uppercase"
-                >
-                  <Globe className="w-3.5 h-3.5 text-slate-700" />
-                  <span>{locale.toUpperCase()}</span>
-                </button>
-
-                <AnimatePresence>
-                  {langDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 5 }}
-                      className="absolute right-0 mt-2 w-44 bg-white border border-[#E2DDD5] shadow-xl z-50 py-1"
-                    >
-                      {countries.map((c) => (
-                        <button
-                          key={c.code}
-                          onClick={() => handleSelectCountry(c.code)}
-                          className={`w-full text-left px-3 py-1.5 text-xs font-condensed font-normal transition-colors cursor-pointer ${
-                            locale === c.code
-                              ? "bg-slate-900 text-white"
-                              : "text-slate-700 hover:bg-[#FAF8F5] hover:text-[#A90706]"
-                          }`}
-                        >
-                          {c.name}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-            </div>
+            {/* Search Icon Button (Desktop) */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
+              title="Search (⌘K)"
+              className="p-2 border border-[#E2DDD5] hover:border-slate-900 bg-white flex items-center justify-center text-slate-800 hover:text-[#A90706] transition-colors cursor-pointer"
+            >
+              <Search className="w-4 h-4" />
+            </button>
 
           </div>
 
@@ -386,7 +300,7 @@ export default function Navbar() {
               aria-label="Open Navigation Menu"
               className="p-2 bg-white border border-[#E2DDD5] text-slate-900 hover:bg-slate-900 hover:text-white transition-colors cursor-pointer"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             </button>
           </div>
 
@@ -571,31 +485,6 @@ export default function Navbar() {
                   </div>
                 )}
 
-                {/* PRODUCT DROPDOWN */}
-                {activeDropdown === t.nav.product && (
-                  <div>
-                    <span className="font-condensed text-base font-normal text-[#A90706] uppercase tracking-widest block mb-6 border-b border-[#E2DDD5] pb-2 font-[var(--font-geist)]">
-                      // READY-TO-DEPLOY ENTERPRISE PRODUCTS
-                    </span>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                      {productData.map((prod, idx) => (
-                        <Link
-                          key={idx}
-                          href={`/${locale}/products/${prod.name.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-")}`}
-                          onClick={() => setActiveDropdown(null)}
-                          className="p-5 border border-[#E2DDD5] hover:border-slate-900 bg-[#FAF8F5]/50 hover:bg-white transition-all group text-left cursor-pointer"
-                        >
-                          <h4 className="font-condensed text-base font-bold uppercase text-slate-900 group-hover:text-[#A90706] transition-colors mb-2">
-                            {prod.name}
-                          </h4>
-                          <p className="text-xs font-normal text-slate-600">
-                            {prod.desc}
-                          </p>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
 
                 {/* INDUSTRY DROPDOWN */}
                 {activeDropdown === t.nav.industry && (
@@ -718,6 +607,22 @@ export default function Navbar() {
 
             {/* Middle Nav Items */}
             <div className="px-6 py-8 space-y-6 flex-1 overflow-y-auto">
+
+              {/* Mobile Quick Search Bar Button */}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setSearchOpen(true);
+                }}
+                className="w-full flex items-center justify-between px-4 py-3 bg-white border border-[#E2DDD5] hover:border-[#A90706] text-slate-600 text-xs font-condensed uppercase tracking-wider cursor-pointer shadow-2xs"
+              >
+                <div className="flex items-center gap-2">
+                  <Search className="w-4 h-4 text-[#A90706]" />
+                  <span>Search services, pages...</span>
+                </div>
+                <span className="text-[10px] font-mono bg-slate-100 border border-slate-200 px-1.5 py-0.5 text-slate-500">SEARCH</span>
+              </button>
+
               <nav className="space-y-4 font-normal">
                 {navItems.map((item) => {
                   const isExpanded = mobileExpandedTab === item.label;
@@ -868,46 +773,6 @@ export default function Navbar() {
                                 </div>
                               )}
 
-                              {/* PRODUCT */}
-                              {item.label === t.nav.product && (
-                                <div className="space-y-3">
-                                  <Link
-                                    href={`/${locale}/products`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="block font-condensed text-xs font-bold uppercase text-[#A90706] hover:underline tracking-wider mb-2"
-                                  >
-                                    VIEW ALL PRODUCTS →
-                                  </Link>
-
-                                  <p className="font-condensed text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 border-b border-[#E2DDD5]/60 pb-1">
-                                    Ready-To-Deploy Products
-                                  </p>
-
-                                  <div className="space-y-2.5">
-                                    {productData.map((prod, idx) => {
-                                      const slug = prod.name.toLowerCase().replace(/ & /g, "-and-").replace(/\s+/g, "-");
-                                      return (
-                                        <Link
-                                          key={idx}
-                                          href={`/${locale}/products/${slug}`}
-                                          onClick={() => setMobileMenuOpen(false)}
-                                          className="block p-3 border border-[#E2DDD5] bg-white rounded-xs hover:border-[#A90706] transition-colors group"
-                                        >
-                                          <div className="flex items-center justify-between">
-                                            <span className="font-condensed text-sm font-bold uppercase text-slate-900 group-hover:text-[#A90706]">
-                                              {prod.name}
-                                            </span>
-                                            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#A90706]" />
-                                          </div>
-                                          <p className="text-xs text-slate-600 font-normal mt-1 line-clamp-2">
-                                            {prod.desc}
-                                          </p>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
-                                </div>
-                              )}
 
                               {/* INDUSTRY */}
                               {item.label === t.nav.industry && (
@@ -976,27 +841,6 @@ export default function Navbar() {
                 })}
               </nav>
 
-              {/* Region / Country Selector */}
-              <div className="pt-6 border-t border-[#E2DDD5]">
-                <span className="font-condensed text-xs font-normal text-slate-500 uppercase tracking-widest block mb-3">
-                  SELECT COUNTRY / REGION
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {countries.map((c) => (
-                    <button
-                      key={c.code}
-                      onClick={() => handleSelectCountry(c.code)}
-                      className={`px-3 py-1.5 text-xs font-condensed font-semibold uppercase tracking-wider border cursor-pointer transition-colors ${
-                        locale === c.code
-                          ? "bg-slate-900 text-white border-slate-900"
-                          : "bg-white text-slate-800 border-[#E2DDD5] hover:border-slate-800 hover:text-[#A90706]"
-                      }`}
-                    >
-                      {c.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Mobile Footer CTAs */}
@@ -1014,6 +858,13 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* REAL-WORKING SEARCH POPUP MODAL */}
+      <SearchModal
+        isOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        locale={locale}
+      />
     </>
   );
 }
