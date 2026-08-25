@@ -34,11 +34,15 @@ export default function Navbar() {
   const isCompanyRoute = pathname?.includes("/company");
   const isServicesRoute = pathname?.includes("/services");
   const isIndustryRoute = pathname?.includes("/industry");
+  const isInsightsRoute = pathname?.includes("/insights");
+  const isContactRoute = pathname?.includes("/contact") || pathname?.includes("/book-consultation");
   const isHomeRoute =
     (pathname === "/" || pathname === `/${locale}` || pathname === `/${locale}/`) &&
     !isCompanyRoute &&
     !isServicesRoute &&
-    !isIndustryRoute;
+    !isIndustryRoute &&
+    !isInsightsRoute &&
+    !isContactRoute;
 
   // Helper to check if a specific service page is active
   const isServiceActive = (slug: string) => {
@@ -76,6 +80,12 @@ export default function Navbar() {
     }
     if (isIndustryRoute) {
       return itemLabel === t.nav.industry;
+    }
+    if (isInsightsRoute) {
+      return itemLabel === t.nav.insights;
+    }
+    if (isContactRoute) {
+      return itemLabel === t.nav.contact;
     }
     if (isHomeRoute) {
       return itemLabel === t.nav.home;
@@ -140,7 +150,7 @@ export default function Navbar() {
       return;
     }
     if (item.label === t.nav.contact) {
-      router.push(`/${locale}/company/contact`);
+      router.push(`/${locale}/contact`);
       return;
     }
 

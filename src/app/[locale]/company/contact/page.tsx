@@ -13,17 +13,14 @@ export const metadata: Metadata = {
   },
 };
 
+import { redirect } from "next/navigation";
+
 export default async function LocaleCompanyContactPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const resolvedParams = await params;
-  const locale = resolvedParams?.locale || "en";
-
-  return (
-    <TranslationProvider defaultLocale={locale}>
-      <ContactContent locale={locale} />
-    </TranslationProvider>
-  );
+  const locale = resolvedParams?.locale || "com";
+  redirect(`/${locale}/contact`);
 }

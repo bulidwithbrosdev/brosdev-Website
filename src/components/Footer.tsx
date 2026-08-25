@@ -196,7 +196,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/company/contact`}
+                    href={`/${locale}/contact`}
                     className="font-condensed text-xs sm:text-sm font-normal tracking-wider uppercase text-slate-900 hover:text-[#A90706] transition-colors block text-left cursor-pointer"
                   >
                     CONTACT

@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-export type LocaleCode = "en" | "us" | "uk" | "in" | "de" | "fr" | "es" | "ca" | "eu";
+export type LocaleCode = "com" | "en" | "us" | "uk" | "in" | "de" | "fr" | "es" | "ca" | "eu";
 
 interface TranslationDictionary {
   nav: {
@@ -74,6 +74,75 @@ interface TranslationDictionary {
 }
 
 const translations: Record<LocaleCode, TranslationDictionary> = {
+  com: {
+    nav: {
+      home: "HOME",
+      company: "COMPANY",
+      service: "SERVICE",
+      product: "PRODUCT",
+      industry: "INDUSTRY",
+      buildTeam: "BUILD YOUR TEAM",
+      insights: "INSIGHTS",
+      contact: "CONTACT",
+      bookCall: "BOOK A STRATEGY CALL",
+      searchPlaceholder: "Search services...",
+    },
+    hero: {
+      taglinePrefix: "Think Digital",
+      taglineAccent: "Think BrosDev",
+      subheading:
+        "From web applications to AI-powered platforms, Brosdev transforms ideas into reliable, scalable software.",
+      bookCallBtn: "BOOK A STRATEGY CALL",
+      exploreWorkBtn: "EXPLORE OUR WORK",
+      responseTime: "RESPONSE TIME",
+      engineeringTeam: "ENGINEERING TEAM",
+      productsShipped: "PRODUCTS SHIPPED",
+      globalPresence: "GLOBAL PRESENCE",
+      badgeText: "★ BROSDEV IT ★ DESIGN & AI LABS",
+    },
+    about: {
+      tag: "// ABOUT BROSDEV IT",
+      headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
+      quote:
+        '"Founded by engineers for ambitious founders and global enterprises. BrosDev combines bold aesthetic design with robust software craftsmanship."',
+      p1Title: "PRECISION ARCHITECTURE",
+      p1Desc: "Clean modular code built on Next.js 16, microservices, and battle-tested cloud architecture.",
+      p2Title: "RAPID SPRINT EXECUTION",
+      p2Desc: "Agile 2-week sprint cycles designed to launch MVPs and full enterprise apps faster with zero technical debt.",
+      p3Title: "ENTERPRISE AI NATIVE",
+      p3Desc: "Deep integration of LLMs, predictive workflows, vector databases, and automated intelligence.",
+      p4Title: "ENTERPRISE-GRADE SECURITY",
+      p4Desc: "ISO compliant practices, data encryption at rest & transit, and zero-trust security foundations.",
+      satisfaction: "CLIENT SATISFACTION",
+      shipped: "PLATFORMS SHIPPED",
+    },
+    services: {
+      tag: "// OUR SERVICES",
+      headline: "End-to-End Software & AI Solutions",
+      subheading: "High-performance software engineering tailored for modern tech leaders.",
+    },
+    techStack: {
+      tag: "// TECH STACK MASTERY",
+      headline: "Modern Developer Ecosystem",
+      subheading: "We stay at the bleeding edge of software engineering to deliver resilient, scalable, and future-proof applications.",
+    },
+    methodology: {
+      tag: "// OUR METHODOLOGY",
+      headline: "Transparent Engineering Pipeline",
+      subheading: "An agile software development workflow optimized for rapid speed, enterprise-grade code quality, and measurable business growth.",
+    },
+    reviews: {
+      tag: "// CLIENT REVIEWS",
+      headline: "Trusted by Ambitious Founders & CTOs",
+      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev.",
+    },
+    footer: {
+      overview: "OVERVIEW",
+      solutions: "SOLUTIONS",
+      legal: "LEGAL & PRIVACY",
+      rights: "All rights reserved. EST. 2024 ©",
+    },
+  },
   en: {
     nav: {
       home: "HOME",
@@ -715,13 +784,13 @@ const TranslationContext = createContext<TranslationContextType | undefined>(und
 
 export const TranslationProvider: React.FC<{ children: React.ReactNode; defaultLocale?: string }> = ({
   children,
-  defaultLocale = "en",
+  defaultLocale = "com",
 }) => {
   const pathname = usePathname();
   const router = useRouter();
   const [locale, setLocale] = useState<LocaleCode>(() => {
-    const raw = (defaultLocale || "en").toLowerCase() as LocaleCode;
-    return translations[raw] ? raw : "en";
+    const raw = (defaultLocale || "com").toLowerCase() as LocaleCode;
+    return translations[raw] ? raw : "com";
   });
 
   useEffect(() => {
@@ -761,8 +830,8 @@ export const useTranslation = () => {
   if (!context) {
     // Fallback if rendered outside provider
     return {
-      locale: "en" as LocaleCode,
-      t: translations.en,
+      locale: "com" as LocaleCode,
+      t: translations.com || translations.en,
       changeLocale: () => { },
     };
   }

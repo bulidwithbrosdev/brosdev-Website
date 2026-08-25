@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://brosdev.site";
-  const locales = ["en", "us", "uk", "in", "de", "fr", "es", "ca", "eu"];
+  const locales = ["com", "en", "us", "uk", "in", "de", "fr", "es", "ca", "eu"];
 
   const mainPages = [
     "",

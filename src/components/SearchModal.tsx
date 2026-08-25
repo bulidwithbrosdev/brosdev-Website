@@ -133,7 +133,7 @@ export default function SearchModal({ isOpen, onClose, locale }: SearchModalProp
         title: "Contact Us & Global Offices",
         category: "Pages & Resources",
         description: "Get in touch with our leadership team and discuss project requirements.",
-        href: "/company/contact",
+        href: "/contact",
         keywords: ["contact", "email", "address", "phone", "reach out", "location", "inquiry"],
         icon: PhoneCallIcon,
       },
