@@ -195,6 +195,8 @@ export default function Navbar() {
       "Cloud Computing",
       "Support and Maintenance",
       "Enterprise AI & Content",
+      "Custom AI Development",
+      "Data & Analytics",
     ],
     expertise: [
       "Custom Software Development",
@@ -203,6 +205,8 @@ export default function Navbar() {
       "Mobile App Development",
       "DevOps As a Service",
       "UX and Design",
+      "AI Automation",
+      "AI Agents & Multi-Agents",
     ],
     platforms: [
       "Platform Integrations",
@@ -210,6 +214,7 @@ export default function Navbar() {
       "Microsoft Azure",
       "Google Cloud",
       "Shopify",
+      "N8N",
     ],
   };
 

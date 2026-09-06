@@ -45,6 +45,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "microsoft-azure",
     "google-cloud",
     "shopify",
+    "custom-ai-development",
+    "ai-automation",
+    "ai-agents-and-multi-agents",
+    "data-and-analytics",
+    "n8n",
   ];
 
   const industries = [

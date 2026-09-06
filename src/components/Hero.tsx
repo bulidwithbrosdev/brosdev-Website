@@ -42,33 +42,16 @@ export default function Hero() {
           >
             {/* Simple Headline using Google Font Geist */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-white leading-tight mb-6 font-[var(--font-geist)]">
-              Code Beyond <br />
-              <span className="text-[#A90706] font-normal">Boundaries.</span>
+              Build the Future <br />
+              <span className="text-[#A90706] font-normal">with Intelligence.</span>
             </h1>
 
             {/* Simple Subheading / Tagline using Google Font Geist */}
             <p className="text-slate-300 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-2xl mx-auto mb-10 font-[var(--font-geist)]">
-              Creating high-performance digital experiences with modern technologies and intelligent solutions.
+              We combine AI, innovation, and modern software engineering to create intelligent products built for what's next.
             </p>
+            <br />
 
-            {/* Centered Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-              <Link
-                href={`/${locale}/book-consultation`}
-                className="px-8 py-4 bg-[#A90706] hover:bg-[#880504] text-white text-xs sm:text-sm font-condensed font-normal tracking-widest uppercase transition-all duration-300 flex items-center gap-3 group cursor-pointer shadow-2xl border border-red-600/40"
-              >
-                <span>{t.hero.bookCallBtn}</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
-
-              <Link
-                href={`/${locale}/products`}
-                className="px-8 py-4 bg-white/10 hover:bg-white hover:text-slate-950 border border-white/20 text-white text-xs sm:text-sm font-condensed font-normal tracking-widest uppercase transition-all duration-300 flex items-center gap-3 group cursor-pointer backdrop-blur-md"
-              >
-                <span>{t.hero.exploreWorkBtn}</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
-              </Link>
-            </div>
           </motion.div>
         </div>
 
