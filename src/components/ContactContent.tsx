@@ -4,16 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
-  CheckCircle2, 
-  ArrowUpRight, 
-  Globe, 
-  ShieldCheck, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle2,
+  ArrowUpRight,
+  Globe,
+  ShieldCheck,
   MessageSquare,
   Building,
   User,
@@ -30,7 +30,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
   const [inquiryType, setInquiryType] = useState("Project Scoping & Proposal");
   const [currency, setCurrency] = useState<"INR" | "USD" | "EUR" | "GBP">("INR");
   const [budgetRange, setBudgetRange] = useState("₹2,50,000 - ₹5,00,000");
-  
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -232,7 +232,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
       <section className="py-12 bg-white border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             <a
               href="mailto:hello@brosdev.site"
               className="p-6 bg-[#FAF8F5] border border-[#E2DDD5] hover:border-slate-900 transition-colors group block"
@@ -289,7 +289,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
 
             {/* Left Main Form (8 Cols) */}
             <div className="lg:col-span-8 bg-white border-2 border-slate-900 p-8 sm:p-12 shadow-2xl">
-              
+
               {isSubmitted ? (
                 <div className="text-center py-12">
                   <div className="w-20 h-20 bg-red-50 border-2 border-[#A90706] text-[#A90706] rounded-full flex items-center justify-center mx-auto mb-6">
@@ -437,11 +437,10 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                             key={curr}
                             type="button"
                             onClick={() => handleCurrencyChange(curr)}
-                            className={`px-2 py-0.5 font-condensed text-[10px] font-normal uppercase transition-all cursor-pointer ${
-                              currency === curr
+                            className={`px-2 py-0.5 font-condensed text-[10px] font-normal uppercase transition-all cursor-pointer ${currency === curr
                                 ? "bg-[#A90706] text-white"
                                 : "bg-[#FAF8F5] text-slate-600 border border-[#E2DDD5] hover:border-slate-900"
-                            }`}
+                              }`}
                           >
                             {curr === "INR" ? "₹ INR" : curr === "USD" ? "$ USD" : curr === "EUR" ? "€ EUR" : "£ GBP"}
                           </button>
@@ -524,7 +523,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
 
             {/* Right Information Sidebar (4 Cols) */}
             <div className="lg:col-span-4 space-y-6 font-normal">
-              
+
               {/* Direct Booking Promotion */}
               <div className="p-8 border-2 border-slate-900 bg-white shadow-xl space-y-4">
                 <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block border-b border-[#E2DDD5] pb-2">
@@ -590,24 +589,23 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
             {globalOffices.map((office) => (
               <div
                 key={office.country}
-                className={`p-5 border-2 space-y-3 ${
-                  office.isHQ
+                className={`p-5 border-2 space-y-3 ${office.isHQ
                     ? "bg-slate-900 border-slate-900 text-white shadow-md"
                     : "bg-[#FAF8F5] border-slate-900"
-                }`}
+                  }`}
               >
-                <div className={`border-b pb-3 ${ office.isHQ ? "border-white/20" : "border-[#E2DDD5]" }`}>
+                <div className={`border-b pb-3 ${office.isHQ ? "border-white/20" : "border-[#E2DDD5]"}`}>
                   <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block">
                     {office.country}
                   </span>
-                  <p className={`font-condensed text-xs font-medium uppercase mt-0.5 tracking-wider leading-tight ${ office.isHQ ? "text-red-300" : "text-slate-600" }`}>
+                  <p className={`font-condensed text-xs font-medium uppercase mt-0.5 tracking-wider leading-tight ${office.isHQ ? "text-red-300" : "text-slate-600"}`}>
                     {office.fullName}
                   </p>
-                  <h3 className={`font-condensed text-base font-normal uppercase leading-tight mt-1 ${ office.isHQ ? "text-white" : "text-slate-900" }`}>
+                  <h3 className={`font-condensed text-base font-normal uppercase leading-tight mt-1 ${office.isHQ ? "text-white" : "text-slate-900"}`}>
                     {office.city}
                   </h3>
                 </div>
-                <p className={`font-condensed text-xs font-normal uppercase ${ office.isHQ ? "text-slate-300" : "text-slate-500" }`}>
+                <p className={`font-condensed text-xs font-normal uppercase ${office.isHQ ? "text-slate-300" : "text-slate-500"}`}>
                   {office.hours}
                 </p>
               </div>
@@ -630,7 +628,8 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
               </h2>
             </div>
             <p className="text-slate-500 text-xs font-condensed uppercase tracking-widest max-w-md text-right hidden sm:block">
-              Present: India &amp; Canada • Serving: AU, UK, NZ, CA, US, DE, FR, NY
+              • Present: India &amp; Canada
+              <br />• Serving: AU, UK, NZ, CA, US, DE, FR, NY
             </p>
           </div>
 
@@ -662,7 +661,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                   >
                     {/* Glowing Animated Pulse Ring */}
                     <span className={`absolute -inset-1 sm:-inset-1.5 rounded-full ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} opacity-75 animate-ping`}></span>
-                    
+
                     {/* Core Node Badge Pin */}
                     <div className={`relative w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} border-2 border-white shadow-md flex items-center justify-center`}>
                       <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></span>
@@ -670,24 +669,21 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
 
                     {/* Permanent Mini Badge Tag (Staggered Directions) */}
                     <div
-                      className={`absolute left-1/2 -translate-x-1/2 flex transition-transform duration-200 group-hover:scale-110 z-30 ${
-                        pin.badgePos === "bottom"
+                      className={`absolute left-1/2 -translate-x-1/2 flex transition-transform duration-200 group-hover:scale-110 z-30 ${pin.badgePos === "bottom"
                           ? "top-full mt-1 flex-col-reverse items-center"
                           : "bottom-full mb-1 flex-col items-center"
-                      }`}
+                        }`}
                     >
                       <div
-                        className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[9px] sm:text-[10px] font-condensed uppercase tracking-wider whitespace-nowrap shadow-md border border-slate-900 flex items-center gap-1 ${
-                          pin.isHQ ? "bg-[#A90706] text-white font-black" : "bg-slate-900 text-white font-bold"
-                        }`}
+                        className={`px-1.5 py-0.5 sm:px-2 sm:py-1 text-[9px] sm:text-[10px] font-condensed uppercase tracking-wider whitespace-nowrap shadow-md border border-slate-900 flex items-center gap-1 ${pin.isHQ ? "bg-[#A90706] text-white font-black" : "bg-slate-900 text-white font-bold"
+                          }`}
                       >
                         <span>{pin.code}</span>
                         <span>{pin.label}</span>
                       </div>
                       <div
-                        className={`w-1.5 h-1.5 ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} rotate-45 ${
-                          pin.badgePos === "bottom" ? "-mb-0.5" : "-mt-0.5"
-                        }`}
+                        className={`w-1.5 h-1.5 ${pin.isHQ ? "bg-[#A90706]" : "bg-slate-900"} rotate-45 ${pin.badgePos === "bottom" ? "-mb-0.5" : "-mt-0.5"
+                          }`}
                       ></div>
                     </div>
                   </div>
