@@ -81,7 +81,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
   const globalOffices = [
     {
       country: "PRESENT: INDIA (HQ)",
-      fullName: "BrosDev SolutionsHQ",
+      fullName: "BrosDev Solutions HQ",
       city: "GIFT City / Ahmedabad",
       hours: "09:00 - 19:00 IST",
       isHQ: true,
@@ -89,7 +89,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
     {
       country: "PRESENT: CANADA (HUB)",
       fullName: "BrosDev Solutions HUB",
-      city: "Toronto / Vancouver",
+      city: "Toronto",
       hours: "09:00 - 18:00 EST",
       isHQ: true,
     },
