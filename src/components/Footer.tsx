@@ -304,11 +304,11 @@ export default function Footer() {
             x="1000"
             y="215"
             textAnchor="end"
-            fontSize="180"
+            fontSize="120"
             fontWeight="400"
             fontFamily="system-ui, -apple-system, sans-serif"
             stroke="currentColor"
-            strokeWidth="3.5"
+            strokeWidth="2.5"
             fill="none"
             letterSpacing="-0.04em"
           >
