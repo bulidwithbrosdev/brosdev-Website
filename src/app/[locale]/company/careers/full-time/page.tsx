@@ -3,13 +3,13 @@ import FullTimeCareersContent from "@/components/FullTimeCareersContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Full-Time Engineering Careers",
+  title: "BrosDev Solutions | Full-Time Engineering Careers",
   description:
-    "Explore full-time engineering positions at BrosDev: Senior Full Stack Developers, AI/ML Engineers, Cloud Architects, and DevOps leads.",
+    "Explore full-time engineering positions at BrosDev Solutions: Senior Full Stack Developers, AI/ML Engineers, Cloud Architects, and DevOps leads.",
   openGraph: {
-    title: "Brosdev | Full-Time Engineering Careers",
+    title: "BrosDev Solutions | Full-Time Engineering Careers",
     description:
-      "Explore full-time engineering positions at BrosDev: Senior Full Stack Developers, AI/ML Engineers, Cloud Architects, and DevOps leads.",
+      "Explore full-time engineering positions at BrosDev Solutions: Senior Full Stack Developers, AI/ML Engineers, Cloud Architects, and DevOps leads.",
   },
 };
 

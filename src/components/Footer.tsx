@@ -72,7 +72,7 @@ export default function Footer() {
             <div className="lg:col-span-6 space-y-2">
               <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-red-50 text-[#A90706] border border-red-200 text-[10px] font-black uppercase">
                 <span className="w-1.5 h-1.5 bg-[#A90706] rounded-full animate-pulse"></span>
-                <span>// BROSDEV NEWSLETTER &amp; INSIGHTS</span>
+                <span>// BROSDEV SOLUTIONS NEWSLETTER &amp; INSIGHTS</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase font-[var(--font-geist)]">
                 GET ENGINEERING BLUEPRINTS IN YOUR INBOX
@@ -86,7 +86,7 @@ export default function Footer() {
               {newsletterSuccess ? (
                 <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>SUCCESS! YOU ARE SUBSCRIBED TO BROSDEV INSIGHTS.</span>
+                  <span>SUCCESS! YOU ARE SUBSCRIBED TO BROSDEV SOLUTIONS INSIGHTS.</span>
                 </div>
               ) : (
                 <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -312,7 +312,7 @@ export default function Footer() {
             fill="none"
             letterSpacing="-0.04em"
           >
-            BrosDev
+            BrosDev Solutions
           </text>
         </svg>
       </div>

@@ -125,7 +125,7 @@ export default function ApplyFormContent({ locale }: { locale: string }) {
             APPLICATION SUBMITTED SUCCESSFULLY!
           </h2>
           <p className="text-slate-700 text-sm max-w-lg mx-auto leading-relaxed">
-            Thank you for applying for <strong className="text-slate-900">{formData.position}</strong> at BrosDev. Our talent squad will review your application and contact you via email at <strong className="text-slate-900">{formData.email}</strong> within 48 hours.
+            Thank you for applying for <strong className="text-slate-900">{formData.position}</strong> at BrosDev Solutions. Our talent squad will review your application and contact you via email at <strong className="text-slate-900">{formData.email}</strong> within 48 hours.
           </p>
           {referenceId && (
             <p className="text-xs font-black text-[#A90706] font-condensed">

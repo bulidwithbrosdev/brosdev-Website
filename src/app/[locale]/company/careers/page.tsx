@@ -3,13 +3,13 @@ import CareersContent from "@/components/CareersContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Careers & Open Engineering Roles",
+  title: "BrosDev Solutions | Careers & Open Engineering Roles",
   description:
-    "Join BrosDev global technology team. Explore open engineering, UI/UX design, and AI development positions in India and remotely.",
+    "Join BrosDev Solutions global technology team. Explore open engineering, UI/UX design, and AI development positions in India and remotely.",
   openGraph: {
-    title: "Brosdev | Careers & Open Engineering Roles",
+    title: "BrosDev Solutions | Careers & Open Engineering Roles",
     description:
-      "Join BrosDev global technology team. Explore open engineering, UI/UX design, and AI development positions in India and remotely.",
+      "Join BrosDev Solutions global technology team. Explore open engineering, UI/UX design, and AI development positions in India and remotely.",
   },
 };
 

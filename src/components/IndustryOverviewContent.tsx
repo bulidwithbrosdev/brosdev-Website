@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
@@ -176,7 +176,7 @@ export default function IndustryOverviewContent({ locale = "en" }: IndustryOverv
             // NEED A CUSTOM INDUSTRY SOLUTION?
           </span>
           <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6 font-[var(--font-geist)]">
-            BUILD WITH BROSDEV DOMAIN EXPERTS
+            BUILD WITH BROSDEV SOLUTIONS DOMAIN EXPERTS
           </h2>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Schedule a technical scoping session to design your industry-specific software architecture.

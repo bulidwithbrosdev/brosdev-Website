@@ -55,7 +55,7 @@ export default function SearchModal({ isOpen, onClose, locale }: SearchModalProp
     { label: "Cloud Computing & AWS", searchTerm: "Cloud" },
     { label: "Career Opportunities", searchTerm: "Careers" },
     { label: "Book a Consultation", searchTerm: "Consultation" },
-    { label: "About Brosdev", searchTerm: "About" },
+    { label: "About BrosDev Solutions", searchTerm: "About" },
     { label: "Case Studies", searchTerm: "Case Studies" },
   ];
 

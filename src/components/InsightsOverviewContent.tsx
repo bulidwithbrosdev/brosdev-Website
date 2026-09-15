@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
@@ -280,7 +280,7 @@ export default function InsightsOverviewContent({ locale = "en" }: InsightsOverv
             // HAVE AN ENTERPRISE ENGINEERING CHALLENGE?
           </span>
           <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6 font-[var(--font-geist)]">
-            BUILD YOUR NEXT PLATFORM WITH BROSDEV
+            BUILD YOUR NEXT PLATFORM WITH BROSDEV SOLUTIONS
           </h2>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Schedule an architectural scoping call with our senior software engineers to map out your product strategy.

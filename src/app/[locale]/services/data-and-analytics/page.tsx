@@ -8,11 +8,11 @@ const slug = "data-and-analytics";
 const service = SERVICES_DATA[slug];
 
 export const metadata: Metadata = {
-  title: service ? "Brosdev | " + service.title : "Brosdev | Services",
-  description: service?.heroDesc || service?.tagline || "BrosDev data and analytics services.",
+  title: service ? "BrosDev Solutions | " + service.title : "BrosDev Solutions | Services",
+  description: service?.heroDesc || service?.tagline || "BrosDev Solutions data and analytics services.",
   openGraph: {
-    title: service ? "Brosdev | " + service.title : "Brosdev | Services",
-    description: service?.heroDesc || service?.tagline || "BrosDev data and analytics services.",
+    title: service ? "BrosDev Solutions | " + service.title : "BrosDev Solutions | Services",
+    description: service?.heroDesc || service?.tagline || "BrosDev Solutions data and analytics services.",
   },
 };
 

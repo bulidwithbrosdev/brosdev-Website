@@ -41,18 +41,17 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://brosdev.site"),
   title: {
-    default: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
+    default: "BrosDev Solutions | Next-Gen IT Company & Digital Product Engineering",
     template: "%s",
   },
   description:
-    "BrosDev is a premier IT company specializing in custom software development, enterprise AI workflows, cloud engineering, mobile apps, and dedicated software engineering teams.",
+    "BrosDev Solutions is a premier IT company specializing in custom software development, enterprise AI workflows, cloud engineering, mobile apps, and dedicated software engineering teams.",
   icons: {
     icon: "/logo.svg",
   },
   keywords: [
-    "Brosdev",
-    "BrosDev",
-    "Contact BrosDev",
+    "BrosDev Solutions",
+    "Contact BrosDev Solutions",
     "IT Company",
     "Software Agency",
     "Digital Product Engineering",
@@ -64,15 +63,15 @@ export const metadata: Metadata = {
     "Next.js Development",
     "Mobile App Development",
   ],
-  authors: [{ name: "BrosDev Engineering Team" }],
-  creator: "BrosDev Technologies",
-  publisher: "BrosDev Technologies",
+  authors: [{ name: "BrosDev Solutions Engineering Team" }],
+  creator: "BrosDev Solutions",
+  publisher: "BrosDev Solutions",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://brosdev.site",
-    siteName: "BrosDev Technologies",
-    title: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
+    siteName: "BrosDev Solutions",
+    title: "BrosDev Solutions | Next-Gen IT Company & Digital Product Engineering",
     description:
       "Designing seamless & intuitive digital experiences that engage users and simplify complex tasks effortlessly. Custom Web Apps, Mobile Apps & Enterprise AI.",
     images: [
@@ -80,15 +79,15 @@ export const metadata: Metadata = {
         url: "/featured-work.png",
         width: 1200,
         height: 630,
-        alt: "BrosDev Digital Product Engineering",
+        alt: "BrosDev Solutions Digital Product Engineering",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brosdev | Next-Gen IT Company & Digital Product Engineering",
+    title: "BrosDev Solutions | Next-Gen IT Company & Digital Product Engineering",
     description:
-      "BrosDev delivers high-performance digital product engineering, enterprise AI workflows, and dedicated software development teams.",
+      "BrosDev Solutions delivers high-performance digital product engineering, enterprise AI workflows, and dedicated software development teams.",
     images: ["/featured-work.png"],
   },
   robots: {
@@ -115,7 +114,7 @@ export default function RootLayout({
       {
         "@type": "Organization",
         "@id": "https://brosdev.site/#organization",
-        name: "BrosDev Technologies",
+        name: "BrosDev Solutions",
         url: "https://brosdev.site",
         logo: "https://brosdev.site/logo.svg",
         sameAs: [
@@ -135,7 +134,7 @@ export default function RootLayout({
       {
         "@type": "ProfessionalService",
         "@id": "https://brosdev.site/#service",
-        name: "BrosDev Engineering Services",
+        name: "BrosDev Solutions Engineering Services",
         url: "https://brosdev.site",
         priceRange: "$$$$",
         address: {
@@ -150,7 +149,7 @@ export default function RootLayout({
         "@type": "WebSite",
         "@id": "https://brosdev.site/#website",
         url: "https://brosdev.site",
-        name: "BrosDev Technologies",
+        name: "BrosDev Solutions",
         publisher: { "@id": "https://brosdev.site/#organization" },
       },
     ],

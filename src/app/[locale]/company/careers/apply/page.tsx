@@ -6,13 +6,13 @@ import ApplyFormContent from "@/components/ApplyFormContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Apply for Open Engineering Roles",
+  title: "BrosDev Solutions | Apply for Open Engineering Roles",
   description:
-    "Submit your job application for engineering, design, AI development, and full-stack positions at BrosDev.",
+    "Submit your job application for engineering, design, AI development, and full-stack positions at BrosDev Solutions.",
   openGraph: {
-    title: "Brosdev | Apply for Open Engineering Roles",
+    title: "BrosDev Solutions | Apply for Open Engineering Roles",
     description:
-      "Submit your job application for engineering, design, AI development, and full-stack positions at BrosDev.",
+      "Submit your job application for engineering, design, AI development, and full-stack positions at BrosDev Solutions.",
   },
 };
 

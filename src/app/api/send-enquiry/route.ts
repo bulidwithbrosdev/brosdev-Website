@@ -126,7 +126,7 @@ export async function POST(req: NextRequest) {
 
     const formattedFrom = fromEmail.includes('<')
       ? fromEmail
-      : `BrosDev Team <${fromEmail}>`;
+      : `BrosDev Solutions Team <${fromEmail}>`;
 
     const adminHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -144,7 +144,7 @@ export async function POST(req: NextRequest) {
     <tr>
         <td style="padding:30px 40px;background:#A90706;">
             <h2 style="margin:0;color:#ffffff;font-size:28px;">
-                BrosDev
+                BrosDev Solutions
             </h2>
         </td>
     </tr>
@@ -158,7 +158,7 @@ export async function POST(req: NextRequest) {
             </h1>
 
             <p style="font-size:16px;line-height:28px;color:#555;">
-                A new enquiry has been submitted through the BrosDev website.
+                A new enquiry has been submitted through the BrosDev Solutions website.
             </p>
 
             <table width="100%" cellpadding="12" cellspacing="0" style="border:1px solid #e6e6e6;border-collapse:collapse;margin-top:25px;">
@@ -196,7 +196,7 @@ export async function POST(req: NextRequest) {
     <!-- Footer -->
     <tr>
         <td style="padding:25px;background:#fafafa;border-top:1px solid #eee;text-align:center;font-size:13px;color:#777;">
-            This is an automated notification from the BrosDev website.<br>
+            This is an automated notification from the BrosDev Solutions website.<br>
             Please review the enquiry and follow up with the client.
         </td>
     </tr>
@@ -239,7 +239,7 @@ const FORM_REPLY_TO: Record<string, string> = {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrosDev - Enquiry Confirmation</title>
+<title>BrosDev Solutions - Enquiry Confirmation</title>
 </head>
 
 <body style="margin:0;padding:40px;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif;color:#333;">
@@ -251,7 +251,7 @@ const FORM_REPLY_TO: Record<string, string> = {
         <td style="padding:35px 40px;border-bottom:1px solid #eeeeee;">
 
             <h2 style="margin:0;font-size:30px;font-weight:700;color:#A90706;">
-                BrosDev
+                BrosDev Solutions
             </h2>
 
         </td>
@@ -270,7 +270,7 @@ const FORM_REPLY_TO: Record<string, string> = {
             </p>
 
             <p style="margin:0 0 25px;font-size:17px;line-height:30px;color:#555;">
-                Thank you for reaching out to <strong>BrosDev</strong>.
+                Thank you for reaching out to <strong>BrosDev Solutions</strong>.
                 We've successfully received your
                 <strong>${label}</strong>.
                 Our team is currently reviewing your request and will get back to you shortly.
@@ -339,12 +339,12 @@ const FORM_REPLY_TO: Record<string, string> = {
             </p>
 
             <p style="margin:35px 0 0;font-size:17px;line-height:28px;color:#555;">
-                Thank you for choosing BrosDev. We appreciate the opportunity to work with you.
+                Thank you for choosing BrosDev Solutions. We appreciate the opportunity to work with you.
             </p>
 
             <p style="margin:30px 0 0;font-size:17px;line-height:28px;">
                 Best regards,<br>
-                <strong>The BrosDev Team</strong>
+                <strong>The BrosDev Solutions Team</strong>
             </p>
 
         </td>
@@ -355,7 +355,7 @@ const FORM_REPLY_TO: Record<string, string> = {
         <td style="padding:30px;text-align:center;background:#fafafa;border-top:1px solid #eeeeee;">
 
             <p style="margin:0;font-size:14px;color:#777;">
-                © 2026 <strong>BrosDev</strong>. All rights reserved.
+                © 2026 <strong>BrosDev Solutions</strong>. All rights reserved.
             </p>
 
             <p style="margin:15px 0 0;font-size:14px;">
@@ -395,7 +395,7 @@ const FORM_REPLY_TO: Record<string, string> = {
         from: formattedFrom,
         to: email,
         replyTo: replyToEmail,
-        subject: `Thank you for contacting BrosDev, ${name}! [${referenceId}]`,
+        subject: `Thank you for contacting BrosDev Solutions, ${name}! [${referenceId}]`,
         html: autoReplyHtml,
       });
     } catch (err) {

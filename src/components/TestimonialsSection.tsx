@@ -10,7 +10,7 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       quote:
-        "BrosDev delivered our complex multi-tenant SaaS application 3 weeks ahead of schedule. Their attention to clean architecture, Next.js 16 App Router, and UI polish is unparalleled.",
+        "BrosDev Solutions delivered our complex multi-tenant SaaS application 3 weeks ahead of schedule. Their attention to clean architecture, Next.js 16 App Router, and UI polish is unparalleled.",
       author: "Marcus Vance",
       title: "CTO, FinTech Cloud Solutions",
       company: "FINTECH CLOUD",
@@ -20,7 +20,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "Working with BrosDev felt like extending our internal core engineering squad. Communication was instant, and their AI & LLM workflow integration saved us months of dev time.",
+        "Working with BrosDev Solutions felt like extending our internal core engineering squad. Communication was instant, and their AI & LLM workflow integration saved us months of dev time.",
       author: "Elena Rostova",
       title: "Head of Product, OmniHealth AI",
       company: "OMNIHEALTH AI",
@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "The response speed (under 1 hour) and quality of code surpassed all software agencies we worked with previously. Highly recommend BrosDev for any scalable web application.",
+        "The response speed (under 1 hour) and quality of code surpassed all software agencies we worked with previously. Highly recommend BrosDev Solutions for any scalable web application.",
       author: "Rajesh Kumar",
       title: "Founder & CEO, ScaleStack",
       company: "SCALESTACK CRM",
@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "From database schema design to Kubernetes auto-scaling, BrosDev handled our entire digital platform launch with 100% precision and zero downtime.",
+        "From database schema design to Kubernetes auto-scaling, BrosDev Solutions handled our entire digital platform launch with 100% precision and zero downtime.",
       author: "Jean-Pierre Laurent",
       title: "Lead Architect, NovaPay Systems",
       company: "NOVAPAY FINTECH",
@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "BrosDev transformed our legacy PHP monolith into a lightning-fast React microservices architecture. Our customer conversion rate jumped 38% after launch.",
+        "BrosDev Solutions transformed our legacy PHP monolith into a lightning-fast React microservices architecture. Our customer conversion rate jumped 38% after launch.",
       author: "David Miller",
       title: "VP Engineering, Apex Cloud Labs",
       company: "APEX CLOUD LABS",
@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
     },
     {
       quote:
-        "Exceptional engineering standards, transparent 2-week agile sprints, and relentless focus on UI/UX excellence. BrosDev is our go-to technology partner.",
+        "Exceptional engineering standards, transparent 2-week agile sprints, and relentless focus on UI/UX excellence. BrosDev Solutions is our go-to technology partner.",
       author: "Sarah Jenkins",
       title: "Chief Product Officer, ScalePulse",
       company: "SCALEPULSE INC",
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
             Trusted by Ambitious Founders &amp; CTOs
           </h2>
           <p className="text-slate-700 text-base sm:text-lg font-medium leading-relaxed">
-            Here is what engineering leaders and product executives say about partnering with BrosDev.
+            Here is what engineering leaders and product executives say about partnering with BrosDev Solutions.
           </p>
         </div>
       </div>

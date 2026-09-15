@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
 
     const formattedFrom = fromEmail.includes('<')
       ? fromEmail
-      : `BrosDev Team <${fromEmail}>`;
+      : `BrosDev Solutions Team <${fromEmail}>`;
 
     const randomNum = Math.floor(100000 + Math.random() * 900000);
     const referenceId = `#NEWS-${randomNum}`;
@@ -48,14 +48,14 @@ export async function POST(req: NextRequest) {
 <table align="center" width="620" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #e5e5e5;border-radius:8px;overflow:hidden;">
     <tr>
         <td style="padding:30px 40px;background:#A90706;">
-            <h2 style="margin:0;color:#ffffff;font-size:28px;">BrosDev</h2>
+            <h2 style="margin:0;color:#ffffff;font-size:28px;">BrosDev Solutions</h2>
         </td>
     </tr>
     <tr>
         <td style="padding:40px;">
             <h1 style="margin-top:0;font-size:30px;color:#111;">New Newsletter Subscription</h1>
             <p style="font-size:16px;line-height:28px;color:#555;">
-                A new user has subscribed to the BrosDev newsletter.
+                A new user has subscribed to the BrosDev Solutions newsletter.
             </p>
             <table width="100%" cellpadding="12" cellspacing="0" style="border:1px solid #e6e6e6;border-collapse:collapse;margin-top:25px;">
                 <tr>
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     </tr>
     <tr>
         <td style="padding:25px;background:#fafafa;border-top:1px solid #eee;text-align:center;font-size:13px;color:#777;">
-            This is an automated notification from the BrosDev website.
+            This is an automated notification from the BrosDev Solutions website.
         </td>
     </tr>
 </table>
@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrosDev</title>
+<title>BrosDev Solutions</title>
 </head>
 
 <body style="margin:0;padding:40px;background:#f5f5f5;font-family:Arial,Helvetica,sans-serif;">
@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
     <tr>
         <td style="padding:35px 40px 20px;text-align:center;">
             <h2 style="margin:0;font-size:32px;font-weight:bold;color:#A90706;">
-                BrosDev
+                BrosDev Solutions
             </h2>
         </td>
     </tr>
@@ -125,7 +125,7 @@ export async function POST(req: NextRequest) {
             </h1>
 
             <p style="font-size:18px;line-height:30px;color:#555;margin:0 0 18px;">
-                Thank you for joining the <strong style="color:#A90706;">BrosDev</strong> newsletter.
+                Thank you for joining the <strong style="color:#A90706;">BrosDev Solutions</strong> newsletter.
             </p>
 
             <p style="font-size:18px;line-height:30px;color:#555;margin:0 0 18px;">
@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
 
             <p style="font-size:18px;line-height:30px;color:#555;margin:0;">
                 Cheers,<br>
-                <strong style="color:#A90706;">The BrosDev Team</strong>
+                <strong style="color:#A90706;">The BrosDev Solutions Team</strong>
             </p>
 
         </td>
@@ -151,9 +151,9 @@ export async function POST(req: NextRequest) {
 <tr>
 <td style="padding:25px 20px;color:#888;font-size:13px;text-align:center;line-height:22px;">
 
-© 2026 BrosDev. All rights reserved.<br><br>
+© 2026 BrosDev Solutions. All rights reserved.<br><br>
 
-<a href="mailto:hello@brosdev.site?subject=Unsubscribe%20Newsletter%20-%20${encodeURIComponent(email)}&body=Please%20unsubscribe%20my%20email%20(${encodeURIComponent(email)})%20from%20the%20BrosDev%20newsletter." style="color:#A90706;text-decoration:underline;">Unsubscribe</a>
+<a href="mailto:hello@brosdev.site?subject=Unsubscribe%20Newsletter%20-%20${encodeURIComponent(email)}&body=Please%20unsubscribe%20my%20email%20(${encodeURIComponent(email)})%20from%20the%20BrosDev Solutions%20newsletter." style="color:#A90706;text-decoration:underline;">Unsubscribe</a>
 &nbsp;|&nbsp;
 <a href="https://brosdev.site" style="color:#A90706;text-decoration:none;">Manage Preferences</a>
 &nbsp;|&nbsp;
@@ -172,7 +172,7 @@ export async function POST(req: NextRequest) {
         from: formattedFrom,
         to: email,
         replyTo: 'hello@brosdev.site',
-        subject: `Thanks for subscribing to the BrosDev newsletter!`,
+        subject: `Thanks for subscribing to the BrosDev Solutions newsletter!`,
         html: autoReplyHtml,
       });
     } catch (err) {

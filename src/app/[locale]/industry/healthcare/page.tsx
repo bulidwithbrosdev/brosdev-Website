@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { INDUSTRY_DATA } from "@/data/industryData";
 import IndustryDetailContent from "@/components/IndustryDetailContent";
@@ -8,11 +8,11 @@ const slug = "healthcare";
 const industry = INDUSTRY_DATA[slug];
 
 export const metadata: Metadata = {
-  title: industry ? "Brosdev | " + industry.title : "Brosdev | Industry Solutions",
-  description: industry?.heroDesc || industry?.tagline || "BrosDev industry software solutions.",
+  title: industry ? "BrosDev Solutions | " + industry.title : "BrosDev Solutions | Industry Solutions",
+  description: industry?.heroDesc || industry?.tagline || "BrosDev Solutions industry software solutions.",
   openGraph: {
-    title: industry ? "Brosdev | " + industry.title : "Brosdev | Industry Solutions",
-    description: industry?.heroDesc || industry?.tagline || "BrosDev industry software solutions.",
+    title: industry ? "BrosDev Solutions | " + industry.title : "BrosDev Solutions | Industry Solutions",
+    description: industry?.heroDesc || industry?.tagline || "BrosDev Solutions industry software solutions.",
   },
 };
 

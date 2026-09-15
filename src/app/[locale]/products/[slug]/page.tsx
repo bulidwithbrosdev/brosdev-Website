@@ -13,8 +13,8 @@ export async function generateMetadata({
   const product = PRODUCTS_DATA.find((p) => p.slug === slug);
 
   const name = product?.name || "OmniFlow AI Engine";
-  const title = `Brosdev | ${name}`;
-  const desc = product?.shortDesc || product?.description || "BrosDev enterprise software product.";
+  const title = `BrosDev Solutions | ${name}`;
+  const desc = product?.shortDesc || product?.description || "BrosDev Solutions enterprise software product.";
 
   return {
     title,

@@ -15,11 +15,11 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: "Brosdev | Service Not Found",
+      title: "BrosDev Solutions | Service Not Found",
     };
   }
 
-  const title = `Brosdev | ${service.title}`;
+  const title = `BrosDev Solutions | ${service.title}`;
   return {
     title,
     description: service.heroDesc || service.tagline,

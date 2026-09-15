@@ -146,7 +146,7 @@ export default function InsightDetailContent({ insight, locale = "en" }: Insight
           {/* The Engineering Solution */}
           <div className="space-y-4 pt-8 border-t border-[#E2DDD5]">
             <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block">
-              // BROSDEV ENGINEERING SOLUTION
+              // BROSDEV SOLUTIONS ENGINEERING SOLUTION
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
               THE SOLUTION &amp; SYSTEM BLUEPRINT

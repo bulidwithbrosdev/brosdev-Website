@@ -30,13 +30,13 @@ async function handleUnsubscribe(email: string | null) {
 
   if (apiKey) {
     const resend = new Resend(apiKey);
-    const formattedFrom = fromEmail.includes('<') ? fromEmail : `BrosDev Team <${fromEmail}>`;
+    const formattedFrom = fromEmail.includes('<') ? fromEmail : `BrosDev Solutions Team <${fromEmail}>`;
 
     const adminHtml = `<!DOCTYPE html>
 <html>
 <body style="font-family: Arial, sans-serif; padding: 20px;">
   <h2 style="color: #A90706;">Newsletter Unsubscribe Request</h2>
-  <p>The following subscriber has requested to be unsubscribed from the BrosDev newsletter:</p>
+  <p>The following subscriber has requested to be unsubscribed from the BrosDev Solutions newsletter:</p>
   <p style="font-size: 16px; font-weight: bold; background: #f4f4f4; padding: 10px; border-left: 4px solid #A90706;">
     ${email}
   </p>
@@ -59,7 +59,7 @@ async function handleUnsubscribe(email: string | null) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unsubscribed — BrosDev</title>
+<title>Unsubscribed — BrosDev Solutions</title>
 <style>
   body { font-family: system-ui, sans-serif; background: #FAF8F5; color: #0f172a; margin: 0; padding: 40px 20px; text-align: center; }
   .box { max-width: 500px; margin: 60px auto; background: #fff; padding: 40px; border: 2px solid #0f172a; box-shadow: 8px 8px 0 #0f172a; }
@@ -71,9 +71,9 @@ async function handleUnsubscribe(email: string | null) {
 <body>
   <div class="box">
     <h1>UNSUBSCRIBED</h1>
-    <p>You have been successfully removed from the BrosDev newsletter mailing list for <strong>${email}</strong>.</p>
+    <p>You have been successfully removed from the BrosDev Solutions newsletter mailing list for <strong>${email}</strong>.</p>
     <p>You will no longer receive newsletter updates from us.</p>
-    <a href="https://brosdev.site">Return to BrosDev</a>
+    <a href="https://brosdev.site">Return to BrosDev Solutions</a>
   </div>
 </body>
 </html>`,

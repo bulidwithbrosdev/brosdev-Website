@@ -157,7 +157,7 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#E2DDD5] mb-6">
             <span className="w-2 h-2 bg-[#A90706]"></span>
             <span className="font-condensed text-xs font-normal tracking-widest text-[#A90706] uppercase">
-              // BROSDEV ENGINEERING FELLOWSHIP &amp; INTERNSHIP
+              // BROSDEV SOLUTIONS ENGINEERING FELLOWSHIP &amp; INTERNSHIP
             </span>
           </div>
 
@@ -166,7 +166,7 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
           </h1>
 
           <p className="text-slate-700 text-lg sm:text-xl font-normal max-w-3xl leading-relaxed font-[var(--font-geist)]">
-            Join Brosdev's elite software engineering cohort. Hands-on mentorship from principal architects, monthly stipend, real enterprise projects, and PPO full-time job offer opportunity.
+            Join BrosDev Solutions' elite software engineering cohort. Hands-on mentorship from principal architects, monthly stipend, real enterprise projects, and PPO full-time job offer opportunity.
           </p>
         </div>
       </section>
@@ -616,13 +616,13 @@ export default function InternshipApplicationContent({ locale = "en" }: Internsh
 
                     <div>
                       <label className="font-condensed text-xs font-normal text-slate-900 uppercase tracking-wider block mb-1">
-                        STATEMENT OF INTENT / WHY JOIN BROSDEV?
+                        STATEMENT OF INTENT / WHY JOIN BROSDEV SOLUTIONS?
                       </label>
                       <textarea
                         rows={3}
                         value={coverNote}
                         onChange={(e) => setCoverNote(e.target.value)}
-                        placeholder="Briefly describe your key coding projects, programming skills, and why you want to intern at Brosdev..."
+                        placeholder="Briefly describe your key coding projects, programming skills, and why you want to intern at BrosDev Solutions..."
                         className="w-full p-3.5 bg-[#FAF8F5] border border-[#E2DDD5] font-condensed text-xs font-normal text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:border-slate-900"
                       ></textarea>
                     </div>

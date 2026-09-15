@@ -3,13 +3,13 @@ import TermsContent from "@/components/TermsContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Terms & Conditions",
+  title: "BrosDev Solutions | Terms & Conditions",
   description:
-    "Review BrosDev legal terms, Master Services Agreement standards, intellectual property code transfer rights, and sprint delivery commitments.",
+    "Review BrosDev Solutions legal terms, Master Services Agreement standards, intellectual property code transfer rights, and sprint delivery commitments.",
   openGraph: {
-    title: "Brosdev | Terms & Conditions",
+    title: "BrosDev Solutions | Terms & Conditions",
     description:
-      "Review BrosDev legal terms, Master Services Agreement standards, intellectual property code transfer rights, and sprint delivery commitments.",
+      "Review BrosDev Solutions legal terms, Master Services Agreement standards, intellectual property code transfer rights, and sprint delivery commitments.",
   },
 };
 

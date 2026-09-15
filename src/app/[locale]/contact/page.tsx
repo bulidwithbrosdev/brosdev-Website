@@ -3,13 +3,13 @@ import ContactContent from "@/components/ContactContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Contact BrosDev",
+  title: "BrosDev Solutions | Contact BrosDev Solutions",
   description:
-    "Get in touch with BrosDev technical architects for custom software engineering, AI workflow automation, and dedicated developer team inquiries.",
+    "Get in touch with BrosDev Solutions technical architects for custom software engineering, AI workflow automation, and dedicated developer team inquiries.",
   openGraph: {
-    title: "Brosdev | Contact BrosDev",
+    title: "BrosDev Solutions | Contact BrosDev Solutions",
     description:
-      "Get in touch with BrosDev technical architects for custom software engineering, AI workflow automation, and dedicated developer team inquiries.",
+      "Get in touch with BrosDev Solutions technical architects for custom software engineering, AI workflow automation, and dedicated developer team inquiries.",
   },
 };
 

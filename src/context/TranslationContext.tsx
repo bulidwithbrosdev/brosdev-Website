@@ -89,22 +89,22 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Think Digital",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "From web applications to AI-powered platforms, Brosdev transforms ideas into reliable, scalable software.",
+        "From web applications to AI-powered platforms, BrosDev Solutions transforms ideas into reliable, scalable software.",
       bookCallBtn: "BOOK A STRATEGY CALL",
       exploreWorkBtn: "EXPLORE OUR WORK",
       responseTime: "RESPONSE TIME",
       engineeringTeam: "ENGINEERING TEAM",
       productsShipped: "PRODUCTS SHIPPED",
       globalPresence: "GLOBAL PRESENCE",
-      badgeText: "★ BROSDEV IT ★ DESIGN & AI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS IT ★ DESIGN & AI LABS",
     },
     about: {
-      tag: "// ABOUT BROSDEV IT",
+      tag: "// ABOUT BROSDEV SOLUTIONS IT",
       headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
       quote:
-        '"Founded by engineers for ambitious founders and global enterprises. BrosDev combines bold aesthetic design with robust software craftsmanship."',
+        '"Founded by engineers for ambitious founders and global enterprises. BrosDev Solutions combines bold aesthetic design with robust software craftsmanship."',
       p1Title: "PRECISION ARCHITECTURE",
       p1Desc: "Clean modular code built on Next.js 16, microservices, and battle-tested cloud architecture.",
       p2Title: "RAPID SPRINT EXECUTION",
@@ -134,7 +134,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// CLIENT REVIEWS",
       headline: "Trusted by Ambitious Founders & CTOs",
-      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev.",
+      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev Solutions.",
     },
     footer: {
       overview: "OVERVIEW",
@@ -158,22 +158,22 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Think Digital",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "From web applications to AI-powered platforms, Brosdev transforms ideas into reliable, scalable software.",
+        "From web applications to AI-powered platforms, BrosDev Solutions transforms ideas into reliable, scalable software.",
       bookCallBtn: "BOOK A STRATEGY CALL",
       exploreWorkBtn: "EXPLORE OUR WORK",
       responseTime: "RESPONSE TIME",
       engineeringTeam: "ENGINEERING TEAM",
       productsShipped: "PRODUCTS SHIPPED",
       globalPresence: "GLOBAL PRESENCE",
-      badgeText: "★ BROSDEV IT ★ DESIGN & AI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS IT ★ DESIGN & AI LABS",
     },
     about: {
-      tag: "// ABOUT BROSDEV IT",
+      tag: "// ABOUT BROSDEV SOLUTIONS IT",
       headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
       quote:
-        '"Founded by engineers for ambitious founders and global enterprises. BrosDev combines bold aesthetic design with robust software craftsmanship."',
+        '"Founded by engineers for ambitious founders and global enterprises. BrosDev Solutions combines bold aesthetic design with robust software craftsmanship."',
       p1Title: "PRECISION ARCHITECTURE",
       p1Desc: "Clean modular code built on Next.js 16, microservices, and battle-tested cloud architecture.",
       p2Title: "RAPID SPRINT EXECUTION",
@@ -203,7 +203,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// CLIENT REVIEWS",
       headline: "Trusted by Ambitious Founders & CTOs",
-      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev.",
+      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev Solutions.",
     },
     footer: {
       overview: "OVERVIEW",
@@ -228,22 +228,22 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Think Digital",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "From web applications to AI-powered platforms, Brosdev transforms ideas into reliable, scalable software.",
+        "From web applications to AI-powered platforms, BrosDev Solutions transforms ideas into reliable, scalable software.",
       bookCallBtn: "BOOK A STRATEGY CALL",
       exploreWorkBtn: "EXPLORE OUR WORK",
       responseTime: "RESPONSE TIME",
       engineeringTeam: "ENGINEERING TEAM",
       productsShipped: "PRODUCTS SHIPPED",
       globalPresence: "USA & GLOBAL PRESENCE",
-      badgeText: "★ BROSDEV US ★ DESIGN & AI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS US ★ DESIGN & AI LABS",
     },
     about: {
-      tag: "// ABOUT BROSDEV US",
+      tag: "// ABOUT BROSDEV SOLUTIONS US",
       headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
       quote:
-        '"Founded by engineers for ambitious founders and global enterprises. BrosDev combines bold aesthetic design with robust software craftsmanship."',
+        '"Founded by engineers for ambitious founders and global enterprises. BrosDev Solutions combines bold aesthetic design with robust software craftsmanship."',
       p1Title: "PRECISION ARCHITECTURE",
       p1Desc: "Clean modular code built on Next.js 16, microservices, and battle-tested cloud architecture.",
       p2Title: "RAPID SPRINT EXECUTION",
@@ -273,7 +273,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// CLIENT REVIEWS",
       headline: "Trusted by US Founders & CTOs",
-      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev.",
+      subheading: "Here is what engineering leaders and product executives say about partnering with BrosDev Solutions.",
     },
     footer: {
       overview: "OVERVIEW",
@@ -298,19 +298,19 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Think Digital",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "From bespoke web applications to AI platforms, Brosdev transforms ideas into reliable, scalable software.",
+        "From bespoke web applications to AI platforms, BrosDev Solutions transforms ideas into reliable, scalable software.",
       bookCallBtn: "BOOK A STRATEGY CALL",
       exploreWorkBtn: "EXPLORE OUR WORK",
       responseTime: "RESPONSE TIME",
       engineeringTeam: "ENGINEERING TEAM",
       productsShipped: "PRODUCTS SHIPPED",
       globalPresence: "UK & GLOBAL PRESENCE",
-      badgeText: "★ BROSDEV UK ★ DESIGN & AI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS UK ★ DESIGN & AI LABS",
     },
     about: {
-      tag: "// ABOUT BROSDEV UK",
+      tag: "// ABOUT BROSDEV SOLUTIONS UK",
       headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
       quote:
         '"Founded by software engineers for ambitious founders and global enterprises."',
@@ -343,7 +343,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// CLIENT REVIEWS",
       headline: "Trusted by UK Founders & Tech Leaders",
-      subheading: "What engineering executives say about partnering with BrosDev.",
+      subheading: "What engineering executives say about partnering with BrosDev Solutions.",
     },
     footer: {
       overview: "OVERVIEW",
@@ -368,22 +368,22 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Ideen In",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "Von Webanwendungen bis hin zu KI-Plattformen verwandelt Brosdev Ideen in zuverlässige, skalierbare Software.",
+        "Von Webanwendungen bis hin zu KI-Plattformen verwandelt BrosDev Solutions Ideen in zuverlässige, skalierbare Software.",
       bookCallBtn: "STRATEGIEGESPRÄCH BUCHEN",
       exploreWorkBtn: "UNSERE ARBEITEN ERKUNDEN",
       responseTime: "REAKTIONSZEIT",
       engineeringTeam: "ENTWICKLERTEAM",
       productsShipped: "GELIEFERTE PRODUKTE",
       globalPresence: "DEUTSCHLAND & GLOBAL",
-      badgeText: "★ BROSDEV IT ★ DESIGN & KI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS IT ★ DESIGN & KI LABS",
     },
     about: {
-      tag: "// ÜBER BROSDEV IT",
+      tag: "// ÜBER BROSDEV SOLUTIONS IT",
       headline: "Entwickelt für Geschwindigkeit, Skalierbarkeit und Exzellenz.",
       quote:
-        '"Gegründet von Entwicklern für ambitionierte Gründer und weltweite Unternehmen. BrosDev kombiniert modernes Design mit erstklassiger Softwareentwicklung."',
+        '"Gegründet von Entwicklern für ambitionierte Gründer und weltweite Unternehmen. BrosDev Solutions kombiniert modernes Design mit erstklassiger Softwareentwicklung."',
       p1Title: "PRÄZISIONS-ARCHITEKTUR",
       p1Desc: "Sauberer modularer Code auf Next.js 16, Mikrodiensten und Cloud-Architektur.",
       p2Title: "SCHNELLE SPRINT-AUSFÜHRUNG",
@@ -413,7 +413,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// KUNDENBEWERTUNGEN",
       headline: "Vertraut von ambitionierten Gründern & CTOs",
-      subheading: "Das sagen Entwicklungsleiter über die Zusammenarbeit mit BrosDev.",
+      subheading: "Das sagen Entwicklungsleiter über die Zusammenarbeit mit BrosDev Solutions.",
     },
     footer: {
       overview: "ÜBERSICHT",
@@ -438,22 +438,22 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Des Idées Vers",
-      taglineAccent: "L'Think BrosDev",
+      taglineAccent: "L'Think BrosDev Solutions",
       subheading:
-        "Des applications web aux plateformes IA, Brosdev transforme les idées en logiciels fiables et évolutifs.",
+        "Des applications web aux plateformes IA, BrosDev Solutions transforme les idées en logiciels fiables et évolutifs.",
       bookCallBtn: "RÉSERVER UN APPEL STRATÉGIQUE",
       exploreWorkBtn: "EXPLORER NOS TRAVAUX",
       responseTime: "TEMPS DE RÉPONSE",
       engineeringTeam: "ÉQUIPE D'INGÉNIERIE",
       productsShipped: "PRODUITS LIVRÉS",
       globalPresence: "FRANCE & PRÉSENCE MONDIALE",
-      badgeText: "★ BROSDEV IT ★ LABS DESIGN & IA",
+      badgeText: "★ BROSDEV SOLUTIONS IT ★ LABS DESIGN & IA",
     },
     about: {
-      tag: "// À PROPOS DE BROSDEV IT",
+      tag: "// À PROPOS DE BROSDEV SOLUTIONS IT",
       headline: "Conçu pour la vitesse, la scalabilité et l'excellence.",
       quote:
-        '"Fondé par des ingénieurs pour des fondateurs ambitieux et des entreprises mondiales. BrosDev allie design audacieux et ingénierie logicielle robuste."',
+        '"Fondé par des ingénieurs pour des fondateurs ambitieux et des entreprises mondiales. BrosDev Solutions allie design audacieux et ingénierie logicielle robuste."',
       p1Title: "ARCHITECTURE DE PRÉCISION",
       p1Desc: "Code modulaire construit sur Next.js 16, microservices et architecture Cloud.",
       p2Title: "EXÉCUTION RAPIDE EN SPRINTS",
@@ -483,7 +483,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// AVIS CLIENTS",
       headline: "Reconnu par les Fondateurs & Directeurs Techniques",
-      subheading: "Voici ce que disent les leaders technologiques sur leur partenariat avec BrosDev.",
+      subheading: "Voici ce que disent les leaders technologiques sur leur partenariat avec BrosDev Solutions.",
     },
     footer: {
       overview: "APERÇU",
@@ -510,20 +510,20 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
       taglinePrefix: "Ideas En",
       taglineAccent: "Innovación.",
       subheading:
-        "Desde aplicaciones web hasta plataformas de IA, Brosdev transforma ideas en software confiable y escalable.",
+        "Desde aplicaciones web hasta plataformas de IA, BrosDev Solutions transforma ideas en software confiable y escalable.",
       bookCallBtn: "RESERVAR LLAMADA ESTRATÉGICA",
       exploreWorkBtn: "EXPLORAR TRABAJOS",
       responseTime: "TIEMPO DE RESPUESTA",
       engineeringTeam: "EQUIPO DE INGENIERÍA",
       productsShipped: "PRODUCTOS ENTREGADOS",
       globalPresence: "PRESENCIA GLOBAL",
-      badgeText: "★ BROSDEV IT ★ LABS DE DISEÑO E IA",
+      badgeText: "★ BROSDEV SOLUTIONS IT ★ LABS DE DISEÑO E IA",
     },
     about: {
-      tag: "// SOBRE BROSDEV IT",
+      tag: "// SOBRE BROSDEV SOLUTIONS IT",
       headline: "Diseñado para velocidad, escalabilidad y excelencia.",
       quote:
-        '"Fundado por ingenieros para fundadores ambiciosos y empresas globales. BrosDev combina diseño audaz con ingeniería de software robusta."',
+        '"Fundado por ingenieros para fundadores ambiciosos y empresas globales. BrosDev Solutions combina diseño audaz con ingeniería de software robusta."',
       p1Title: "ARQUITECTURA DE PRECISIÓN",
       p1Desc: "Código modular limpio basado en Next.js 16, microservicios y arquitectura cloud.",
       p2Title: "EJECUCIÓN RÁPIDA EN SPRINTS",
@@ -553,7 +553,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// OPINIONES DE CLIENTES",
       headline: "Confianza de Fundadores & CTOs",
-      subheading: "Lo que dicen los ejecutivos tecnológicos sobre colaborar con BrosDev.",
+      subheading: "Lo que dicen los ejecutivos tecnológicos sobre colaborar con BrosDev Solutions.",
     },
     footer: {
       overview: "RESUMEN",
@@ -580,20 +580,20 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
       taglinePrefix: "विचारों से",
       taglineAccent: "नवाचार।",
       subheading:
-        "वेब एप्लिकेशन से लेकर AI-संचालित प्लेटफॉर्म तक, Brosdev विचारों को विश्वसनीय, स्केलेबल सॉफ़्टवेयर में बदलता है।",
+        "वेब एप्लिकेशन से लेकर AI-संचालित प्लेटफॉर्म तक, BrosDev Solutions विचारों को विश्वसनीय, स्केलेबल सॉफ़्टवेयर में बदलता है।",
       bookCallBtn: "रणनीतिक कॉल बुक करें",
       exploreWorkBtn: "हमारा काम देखें",
       responseTime: "प्रतिक्रिया समय",
       engineeringTeam: "इंजीनियरिंग टीम",
       productsShipped: "उत्पाद निर्मित",
       globalPresence: "भारत एवं वैश्विक उपस्थिति",
-      badgeText: "★ BROSDEV IT ★ डिजाइन और AI लैब",
+      badgeText: "★ BROSDEV SOLUTIONS IT ★ डिजाइन और AI लैब",
     },
     about: {
-      tag: "// BROSDEV IT के बारे में",
+      tag: "// BROSDEV SOLUTIONS IT के बारे में",
       headline: "गति, स्केलेबिलिटी और उत्कृष्टता के लिए निर्मित।",
       quote:
-        '"महत्वाकांक्षी संस्थापकों और वैश्विक उद्यमों के लिए इंजीनियरों द्वारा स्थापित। BrosDev मजबूत सॉफ्टवेयर शिल्प कौशल के साथ बोल्ड डिज़ाइन को जोड़ता है।"',
+        '"महत्वाकांक्षी संस्थापकों और वैश्विक उद्यमों के लिए इंजीनियरों द्वारा स्थापित। BrosDev Solutions मजबूत सॉफ्टवेयर शिल्प कौशल के साथ बोल्ड डिज़ाइन को जोड़ता है।"',
       p1Title: "सटीक आर्किटेक्चर",
       p1Desc: "Next.js 16, माइक्रोसर्विसेज और क्लाउड आर्किटेक्चर पर बना स्वच्छ मॉड्यूलर कोड।",
       p2Title: "तेज़ स्प्रिंट निष्पादन",
@@ -623,7 +623,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// ग्राहक समीक्षा",
       headline: "महत्वाकांक्षी संस्थापकों और CTOs द्वारा विश्वसनीय",
-      subheading: "जानिए इंजीनियरिंग लीडर्स का BrosDev के साथ साझेदारी के बारे में क्या कहना है।",
+      subheading: "जानिए इंजीनियरिंग लीडर्स का BrosDev Solutions के साथ साझेदारी के बारे में क्या कहना है।",
     },
     footer: {
       overview: "अवलोकन",
@@ -648,19 +648,19 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Think Digital",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "From web applications to AI-powered platforms, Brosdev transforms ideas into reliable, scalable software.",
+        "From web applications to AI-powered platforms, BrosDev Solutions transforms ideas into reliable, scalable software.",
       bookCallBtn: "BOOK A STRATEGY CALL",
       exploreWorkBtn: "EXPLORE OUR WORK",
       responseTime: "RESPONSE TIME",
       engineeringTeam: "ENGINEERING TEAM",
       productsShipped: "PRODUCTS SHIPPED",
       globalPresence: "CANADA & GLOBAL PRESENCE",
-      badgeText: "★ BROSDEV CA ★ DESIGN & AI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS CA ★ DESIGN & AI LABS",
     },
     about: {
-      tag: "// ABOUT BROSDEV CA",
+      tag: "// ABOUT BROSDEV SOLUTIONS CA",
       headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
       quote:
         '"Founded by software engineers for ambitious founders and global enterprises."',
@@ -693,7 +693,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// CLIENT REVIEWS",
       headline: "Trusted by Canadian Founders & CTOs",
-      subheading: "What engineering leaders say about partnering with BrosDev.",
+      subheading: "What engineering leaders say about partnering with BrosDev Solutions.",
     },
     footer: {
       overview: "OVERVIEW",
@@ -718,19 +718,19 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     },
     hero: {
       taglinePrefix: "Think Digital",
-      taglineAccent: "Think BrosDev",
+      taglineAccent: "Think BrosDev Solutions",
       subheading:
-        "From web applications to AI-powered platforms, Brosdev transforms ideas into reliable, scalable software.",
+        "From web applications to AI-powered platforms, BrosDev Solutions transforms ideas into reliable, scalable software.",
       bookCallBtn: "BOOK A STRATEGY CALL",
       exploreWorkBtn: "EXPLORE OUR WORK",
       responseTime: "RESPONSE TIME",
       engineeringTeam: "ENGINEERING TEAM",
       productsShipped: "PRODUCTS SHIPPED",
       globalPresence: "EUROPE & GLOBAL PRESENCE",
-      badgeText: "★ BROSDEV EU ★ DESIGN & AI LABS",
+      badgeText: "★ BROSDEV SOLUTIONS EU ★ DESIGN & AI LABS",
     },
     about: {
-      tag: "// ABOUT BROSDEV EU",
+      tag: "// ABOUT BROSDEV SOLUTIONS EU",
       headline: "Engineered for Speed, Built for Scale, Designed to Impress.",
       quote:
         '"Founded by software engineers for ambitious founders and European enterprises."',
@@ -763,7 +763,7 @@ const translations: Record<LocaleCode, TranslationDictionary> = {
     reviews: {
       tag: "// CLIENT REVIEWS",
       headline: "Trusted by European Founders & CTOs",
-      subheading: "What engineering leaders say about partnering with BrosDev.",
+      subheading: "What engineering leaders say about partnering with BrosDev Solutions.",
     },
     footer: {
       overview: "OVERVIEW",

@@ -17,13 +17,13 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Agile Methodology & AI-Powered Pipeline",
+  title: "BrosDev Solutions | Agile Methodology & AI-Powered Pipeline",
   description:
-    "Explore BrosDev 4-phase development methodology: Deep Client Research, Architecture Blueprinting, AI-Integrated Coding, and Continuous CI/CD Delivery.",
+    "Explore BrosDev Solutions 4-phase development methodology: Deep Client Research, Architecture Blueprinting, AI-Integrated Coding, and Continuous CI/CD Delivery.",
   openGraph: {
-    title: "Brosdev | Agile Methodology & AI-Powered Pipeline",
+    title: "BrosDev Solutions | Agile Methodology & AI-Powered Pipeline",
     description:
-      "Explore BrosDev 4-phase development methodology: Deep Client Research, Architecture Blueprinting, AI-Integrated Coding, and Continuous CI/CD Delivery.",
+      "Explore BrosDev Solutions 4-phase development methodology: Deep Client Research, Architecture Blueprinting, AI-Integrated Coding, and Continuous CI/CD Delivery.",
   },
 };
 

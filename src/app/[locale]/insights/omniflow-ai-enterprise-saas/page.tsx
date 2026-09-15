@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { INSIGHTS_DATA } from "@/data/insightsData";
 import InsightDetailContent from "@/components/InsightDetailContent";
@@ -8,11 +8,11 @@ const slug = "omniflow-ai-enterprise-saas";
 const insight = INSIGHTS_DATA[slug];
 
 export const metadata: Metadata = {
-  title: insight ? "Brosdev | " + insight.title : "Brosdev | Engineering Insights",
-  description: insight?.summary || insight?.subtitle || "BrosDev architecture case study and engineering insight.",
+  title: insight ? "BrosDev Solutions | " + insight.title : "BrosDev Solutions | Engineering Insights",
+  description: insight?.summary || insight?.subtitle || "BrosDev Solutions architecture case study and engineering insight.",
   openGraph: {
-    title: insight ? "Brosdev | " + insight.title : "Brosdev | Engineering Insights",
-    description: insight?.summary || insight?.subtitle || "BrosDev architecture case study and engineering insight.",
+    title: insight ? "BrosDev Solutions | " + insight.title : "BrosDev Solutions | Engineering Insights",
+    description: insight?.summary || insight?.subtitle || "BrosDev Solutions architecture case study and engineering insight.",
   },
 };
 

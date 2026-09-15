@@ -3,13 +3,13 @@ import InternshipApplicationContent from "@/components/InternshipApplicationCont
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Engineering Internship Program",
+  title: "BrosDev Solutions | Engineering Internship Program",
   description:
-    "Apply for BrosDev 6-month hands-on engineering internship program in software development, AI systems, and cloud infrastructure.",
+    "Apply for BrosDev Solutions 6-month hands-on engineering internship program in software development, AI systems, and cloud infrastructure.",
   openGraph: {
-    title: "Brosdev | Engineering Internship Program",
+    title: "BrosDev Solutions | Engineering Internship Program",
     description:
-      "Apply for BrosDev 6-month hands-on engineering internship program in software development, AI systems, and cloud infrastructure.",
+      "Apply for BrosDev Solutions 6-month hands-on engineering internship program in software development, AI systems, and cloud infrastructure.",
   },
 };
 

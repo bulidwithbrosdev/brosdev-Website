@@ -15,11 +15,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Platform Integrations — Enterprise ERP, CRM & SaaS Ecosystems",
+  title: "BrosDev Solutions | Platform Integrations — Enterprise ERP, CRM & SaaS Ecosystems",
   description:
     "Consolidated enterprise platform integration services covering HubSpot, Odoo, SAP Commerce Cloud, Microsoft Power Apps, Zoho, WordPress, OpenCart, and cloud infrastructure.",
   openGraph: {
-    title: "Brosdev | Platform Integrations — Enterprise ERP, CRM & SaaS Ecosystems",
+    title: "BrosDev Solutions | Platform Integrations — Enterprise ERP, CRM & SaaS Ecosystems",
     description:
       "Consolidated enterprise platform integration services covering HubSpot, Odoo, SAP Commerce Cloud, Microsoft Power Apps, Zoho, WordPress, OpenCart, and cloud infrastructure.",
   },

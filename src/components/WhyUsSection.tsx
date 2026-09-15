@@ -253,7 +253,7 @@ export default function WhyUsSection() {
                 </div>
                 <div className="flex items-center gap-1 text-[10px] font-sans font-bold text-slate-500 uppercase tracking-widest">
                   <Terminal className="w-3.5 h-3.5 text-[#A90706]" />
-                  <span>BROSDEV CLI</span>
+                  <span>BROSDEV SOLUTIONS CLI</span>
                 </div>
               </div>
 
@@ -267,7 +267,7 @@ export default function WhyUsSection() {
                 </p>
                 <div className="pt-3 flex items-center justify-between text-[10px] text-slate-500 font-sans font-bold uppercase tracking-widest border-t border-slate-900">
                   <span>STATUS: ACTIVE</span>
-                  <span className="text-[#A90706]">BROSDEV ENGINE</span>
+                  <span className="text-[#A90706]">BROSDEV SOLUTIONS ENGINE</span>
                 </div>
               </div>
             </div>

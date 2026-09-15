@@ -36,7 +36,7 @@ export default function CaseStudiesContent() {
           </h1>
 
           <p className="text-slate-700 text-lg sm:text-xl font-normal max-w-3xl leading-relaxed font-[var(--font-geist)]">
-            Explore how BrosDev engineering squads build high-throughput microservices, sub-second AI platforms, and zero-downtime cloud architectures for global market leaders.
+            Explore how BrosDev Solutions engineering squads build high-throughput microservices, sub-second AI platforms, and zero-downtime cloud architectures for global market leaders.
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function CaseStudiesContent() {
 
                 <div className="p-6 bg-white border border-[#E2DDD5] space-y-2">
                   <span className="font-condensed text-xs font-normal text-slate-900 uppercase tracking-widest block">
-                    // THE BROSDEV SOLUTION
+                    // THE BROSDEV SOLUTIONS SOLUTION
                   </span>
                   <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                     {cs.solution}

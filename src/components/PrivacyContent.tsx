@@ -108,7 +108,7 @@ export default function PrivacyContent() {
                   <span>COMMITMENT TO DATA PROTECTION</span>
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                  BrosDev Technologies (&quot;BrosDev&quot;, &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot;) respects your privacy and is dedicated to managing client information with enterprise-grade security protocols in compliance with EU General Data Protection Regulation (&quot;GDPR&quot;), California Consumer Privacy Act (&quot;CCPA&quot;), and global cybersecurity standards.
+                  BrosDev Solutions (&quot;BrosDev Solutions&quot;, &quot;We&quot;, &quot;Us&quot;, &quot;Our&quot;) respects your privacy and is dedicated to managing client information with enterprise-grade security protocols in compliance with EU General Data Protection Regulation (&quot;GDPR&quot;), California Consumer Privacy Act (&quot;CCPA&quot;), and global cybersecurity standards.
                 </p>
               </div>
 
@@ -170,7 +170,7 @@ export default function PrivacyContent() {
                     3.2. To engineer custom web, cloud, and mobile software applications specified under signed Statements of Work.
                   </p>
                   <p>
-                    3.3. <strong>Zero Data Monetization Guarantee:</strong> BrosDev never sells, rents, leases, or trades client personal data or proprietary repository code bases to third-party ad networks or data brokers.
+                    3.3. <strong>Zero Data Monetization Guarantee:</strong> BrosDev Solutions never sells, rents, leases, or trades client personal data or proprietary repository code bases to third-party ad networks or data brokers.
                   </p>
                 </div>
               </div>
@@ -224,7 +224,7 @@ export default function PrivacyContent() {
                 </h2>
                 <div className="text-sm text-slate-700 leading-relaxed space-y-3 font-sans">
                   <p>
-                    6.1. BrosDev utilizes enterprise cloud infrastructure providers (e.g., AWS, Vercel, GitHub, Cloudflare, Google Cloud Platform) to host platform infrastructure and run automated CI/CD deployment pipelines.
+                    6.1. BrosDev Solutions utilizes enterprise cloud infrastructure providers (e.g., AWS, Vercel, GitHub, Cloudflare, Google Cloud Platform) to host platform infrastructure and run automated CI/CD deployment pipelines.
                   </p>
                   <p>
                     6.2. All third-party subprocessors undergo rigorous vendor security evaluations and are bound by Data Processing Addendums (DPAs) reflecting equivalent data safety standard guarantees.
@@ -242,7 +242,7 @@ export default function PrivacyContent() {
                 </h2>
                 <div className="text-sm text-slate-700 leading-relaxed space-y-3 font-sans">
                   <p>
-                    7.1. For cross-border data transfers originating from the European Economic Area (EEA), UK, or Switzerland to global delivery centers, BrosDev implements Standard Contractual Clauses (SCCs) approved by the European Commission.
+                    7.1. For cross-border data transfers originating from the European Economic Area (EEA), UK, or Switzerland to global delivery centers, BrosDev Solutions implements Standard Contractual Clauses (SCCs) approved by the European Commission.
                   </p>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function PrivacyContent() {
                 </h2>
                 <div className="text-sm text-slate-700 leading-relaxed space-y-3 font-sans">
                   <p>
-                    8.1. <strong>Right to Access &amp; Portability:</strong> Request copies of personal data held by BrosDev in a structured, machine-readable format.
+                    8.1. <strong>Right to Access &amp; Portability:</strong> Request copies of personal data held by BrosDev Solutions in a structured, machine-readable format.
                   </p>
                   <p>
                     8.2. <strong>Right to Erasure (&quot;Right to be Forgotten&quot;):</strong> Request the permanent deletion of personal information where no overriding legal obligation exists.
@@ -299,7 +299,7 @@ export default function PrivacyContent() {
                     If you have questions regarding this Privacy Policy, wish to exercise your statutory privacy rights, or submit a Data Subject Access Request (DSAR), please contact our Data Protection Officer:
                   </p>
                   <div className="p-4 bg-[#FAF8F5] border border-[#E2DDD5] text-xs font-condensed space-y-1">
-                    <p className="font-bold text-slate-900">BROSDEV DATA PROTECTION OFFICER</p>
+                    <p className="font-bold text-slate-900">BROSDEV SOLUTIONS DATA PROTECTION OFFICER</p>
                     <p className="text-slate-600">Email: dpo@brosdev.site / privacy@brosdev.site</p>
                     <p className="text-slate-600">Address: GIFT City / Infocity, Gujarat 382007, India</p>
                   </div>

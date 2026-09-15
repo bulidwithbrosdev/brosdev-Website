@@ -17,13 +17,13 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Engagement Models — Flexible Engineering Collaboration",
+  title: "BrosDev Solutions | Engagement Models — Flexible Engineering Collaboration",
   description:
-    "Explore BrosDev flexible engagement models: Full Project Delivery, Embedded Dedicated Team Extension, and Enterprise Retainer & SLA Support.",
+    "Explore BrosDev Solutions flexible engagement models: Full Project Delivery, Embedded Dedicated Team Extension, and Enterprise Retainer & SLA Support.",
   openGraph: {
-    title: "Brosdev | Engagement Models — Flexible Engineering Collaboration",
+    title: "BrosDev Solutions | Engagement Models — Flexible Engineering Collaboration",
     description:
-      "Explore BrosDev flexible engagement models: Full Project Delivery, Embedded Dedicated Team Extension, and Enterprise Retainer & SLA Support.",
+      "Explore BrosDev Solutions flexible engagement models: Full Project Delivery, Embedded Dedicated Team Extension, and Enterprise Retainer & SLA Support.",
   },
 };
 
@@ -43,7 +43,7 @@ export default async function EngagementModelsPage({
       icon: Briefcase,
       badge: "MILESTONE-BASED",
       description:
-        "Ideal for companies seeking turn-key product engineering. BrosDev assumes complete ownership from discovery and UI/UX design to cloud architecture, build, automated testing, and launch.",
+        "Ideal for companies seeking turn-key product engineering. BrosDev Solutions assumes complete ownership from discovery and UI/UX design to cloud architecture, build, automated testing, and launch.",
       highlights: [
         "100% Fixed Scope & Budget Certainty",
         "Dedicated Product Manager & Principal Architect",

@@ -8,11 +8,11 @@ const slug = "ai-agents-and-multi-agents";
 const service = SERVICES_DATA[slug];
 
 export const metadata: Metadata = {
-  title: service ? "Brosdev | " + service.title : "Brosdev | Services",
-  description: service?.heroDesc || service?.tagline || "BrosDev AI agents and multi-agent systems.",
+  title: service ? "BrosDev Solutions | " + service.title : "BrosDev Solutions | Services",
+  description: service?.heroDesc || service?.tagline || "BrosDev Solutions AI agents and multi-agent systems.",
   openGraph: {
-    title: service ? "Brosdev | " + service.title : "Brosdev | Services",
-    description: service?.heroDesc || service?.tagline || "BrosDev AI agents and multi-agent systems.",
+    title: service ? "BrosDev Solutions | " + service.title : "BrosDev Solutions | Services",
+    description: service?.heroDesc || service?.tagline || "BrosDev Solutions AI agents and multi-agent systems.",
   },
 };
 

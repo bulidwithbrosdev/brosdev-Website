@@ -115,7 +115,7 @@ export const SERVICES_DATA: Record<string, ServiceDetail> = {
       { title: "B2B SaaS Analytics Platform", desc: "Shipped a multi-tenant dashboard MVP that secured $2.5M Seed funding." },
     ],
     faqs: [
-      { question: "How fast can BrosDev deliver an MVP?", answer: "Our standard MVP delivery sprint lasts between 4 to 8 weeks from scope kickoff to public release." },
+      { question: "How fast can BrosDev Solutions deliver an MVP?", answer: "Our standard MVP delivery sprint lasts between 4 to 8 weeks from scope kickoff to public release." },
       { question: "Is the MVP code rewrite-ready or production-ready?", answer: "It is fully production-ready. We write clean, typed TypeScript and modular code so you can scale seamlessly after launch." },
     ],
   },

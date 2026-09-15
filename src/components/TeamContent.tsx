@@ -31,7 +31,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
       name: "Mr. Prit Gajjar",
       role: "FOUNDER & CEO",
       focus: "Product Strategy, Enterprise Growth & Architecture Innovation",
-      desc: "Founded Brosdev with a vision to build a world-class IT engineering firm. Drives global enterprise partnerships, client growth, and high-performance product execution.",
+      desc: "Founded BrosDev Solutions with a vision to build a world-class IT engineering firm. Drives global enterprise partnerships, client growth, and high-performance product execution.",
       badge: "FOUNDER",
       stats: "",
     },
@@ -39,7 +39,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
       name: "Ms. Yashvi Patel",
       role: "CO-FOUNDER & CTO",
       focus: "Principal Systems Architect, Cloud Infrastructure & AI Lead",
-      desc: "Architects Brosdev's core tech stack, autonomous AI engines, and microservices infrastructure. Obsessed with sub-millisecond performance, clean code, and zero-downtime scaling.",
+      desc: "Architects BrosDev Solutions' core tech stack, autonomous AI engines, and microservices infrastructure. Obsessed with sub-millisecond performance, clean code, and zero-downtime scaling.",
       badge: "CO-FOUNDER",
       stats: "",
     },
@@ -101,7 +101,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#E2DDD5] mb-6">
             <span className="w-2 h-2 bg-[#A90706]"></span>
             <span className="font-condensed text-xs font-normal tracking-widest text-[#A90706] uppercase">
-              // THE PEOPLE BEHIND BROSDEV
+              // THE PEOPLE BEHIND BROSDEV SOLUTIONS
             </span>
           </div>
 
@@ -136,11 +136,11 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
                 </h2>
 
                 <p className="text-slate-700 text-base sm:text-lg font-normal leading-relaxed font-[var(--font-geist)]">
-                  Brosdev was born from an extraordinary friendship between two engineering classmates who shared an obsession for solving complex digital problems. What started as late-night coding sessions, building experimental apps and debugging server architectures in a university dorm, rapidly transformed into a full-scale IT software engineering studio.
+                  BrosDev Solutions was born from an extraordinary friendship between two engineering classmates who shared an obsession for solving complex digital problems. What started as late-night coding sessions, building experimental apps and debugging server architectures in a university dorm, rapidly transformed into a full-scale IT software engineering studio.
                 </p>
 
                 <p className="text-slate-700 text-base font-normal leading-relaxed font-[var(--font-geist)]">
-                  Fuelled by mutual trust, relentless ambition, and a commitment to radical engineering quality, our founders turned their passion project into a global technology startup. Today, with engineering hubs in India and Canada, Brosdev powers digital transformation for scaleups and enterprises across AU, UK, NZ, CA, US, DE, FR &amp; NY.
+                  Fuelled by mutual trust, relentless ambition, and a commitment to radical engineering quality, our founders turned their passion project into a global technology startup. Today, with engineering hubs in India and Canada, BrosDev Solutions powers digital transformation for scaleups and enterprises across AU, UK, NZ, CA, US, DE, FR &amp; NY.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 font-condensed font-normal">
@@ -234,7 +234,7 @@ export default function TeamContent({ locale = "en" }: TeamContentProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-2">
-              // LIFE AT BROSDEV
+              // LIFE AT BROSDEV SOLUTIONS
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
               CULTURE, FAMILY &amp; NATURE CAMPUS

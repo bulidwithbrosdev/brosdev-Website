@@ -3,13 +3,13 @@ import TeamContent from "@/components/TeamContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Our Leadership & Engineering Team",
+  title: "BrosDev Solutions | Our Leadership & Engineering Team",
   description:
-    "Meet BrosDev founders and senior engineering leads powering custom software development and AI platform execution.",
+    "Meet BrosDev Solutions founders and senior engineering leads powering custom software development and AI platform execution.",
   openGraph: {
-    title: "Brosdev | Our Leadership & Engineering Team",
+    title: "BrosDev Solutions | Our Leadership & Engineering Team",
     description:
-      "Meet BrosDev founders and senior engineering leads powering custom software development and AI platform execution.",
+      "Meet BrosDev Solutions founders and senior engineering leads powering custom software development and AI platform execution.",
   },
 };
 

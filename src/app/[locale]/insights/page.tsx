@@ -3,13 +3,13 @@ import { TranslationProvider } from "@/context/TranslationContext";
 import InsightsOverviewContent from "@/components/InsightsOverviewContent";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Technical Insights & Case Studies",
+  title: "BrosDev Solutions | Technical Insights & Case Studies",
   description:
-    "Read BrosDev architecture case studies on Enterprise AI, FinTech core banking ledgers, Kubernetes orchestration, and WebRTC telehealth platforms.",
+    "Read BrosDev Solutions architecture case studies on Enterprise AI, FinTech core banking ledgers, Kubernetes orchestration, and WebRTC telehealth platforms.",
   openGraph: {
-    title: "Brosdev | Technical Insights & Case Studies",
+    title: "BrosDev Solutions | Technical Insights & Case Studies",
     description:
-      "Read BrosDev architecture case studies on Enterprise AI, FinTech core banking ledgers, Kubernetes orchestration, and WebRTC telehealth platforms.",
+      "Read BrosDev Solutions architecture case studies on Enterprise AI, FinTech core banking ledgers, Kubernetes orchestration, and WebRTC telehealth platforms.",
   },
 };
 

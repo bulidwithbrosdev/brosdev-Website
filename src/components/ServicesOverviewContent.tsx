@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
@@ -210,7 +210,7 @@ export default function ServicesOverviewContent({ locale = "en" }: ServicesOverv
             // NEED A CUSTOM SOLUTION?
           </span>
           <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
-            BUILD WITH BROSDEV TODAY
+            BUILD WITH BROSDEV SOLUTIONS TODAY
           </h2>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
             Let our senior software architects evaluate your technical requirements and construct a tailored delivery roadmap.

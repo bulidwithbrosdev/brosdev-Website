@@ -15,11 +15,11 @@ export async function generateMetadata({
 
   if (!insight) {
     return {
-      title: "Brosdev | Insight Not Found",
+      title: "BrosDev Solutions | Insight Not Found",
     };
   }
 
-  const title = `Brosdev | ${insight.title}`;
+  const title = `BrosDev Solutions | ${insight.title}`;
   return {
     title,
     description: insight.summary || insight.subtitle,

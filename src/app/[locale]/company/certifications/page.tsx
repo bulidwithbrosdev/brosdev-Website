@@ -5,13 +5,13 @@ import { TranslationProvider } from "@/context/TranslationContext";
 import { Award, ShieldCheck, CheckCircle2, Trophy, Medal, Star, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Certifications, Compliance & Awards",
+  title: "BrosDev Solutions | Certifications, Compliance & Awards",
   description:
-    "Review BrosDev ISO 27001, SOC 2 Type II, GDPR, HIPAA certifications, purpose for clients, and global industry awards.",
+    "Review BrosDev Solutions ISO 27001, SOC 2 Type II, GDPR, HIPAA certifications, purpose for clients, and global industry awards.",
   openGraph: {
-    title: "Brosdev | Certifications, Compliance & Awards",
+    title: "BrosDev Solutions | Certifications, Compliance & Awards",
     description:
-      "Review BrosDev ISO 27001, SOC 2 Type II, GDPR, HIPAA certifications, purpose for clients, and global industry awards.",
+      "Review BrosDev Solutions ISO 27001, SOC 2 Type II, GDPR, HIPAA certifications, purpose for clients, and global industry awards.",
   },
 };
 
@@ -24,7 +24,7 @@ export default async function LocaleCertificationsPage({ params }: { params: Pro
       name: "ISO 27001:2022 CERTIFIED", 
       category: "Information Security Management System (ISMS)", 
       purpose: "Why it matters to clients:",
-      desc: "Guarantees that BrosDev adheres to globally audited security policies. All client source code, customer databases, and IP are protected under strict access control and risk mitigation protocols.",
+      desc: "Guarantees that BrosDev Solutions adheres to globally audited security policies. All client source code, customer databases, and IP are protected under strict access control and risk mitigation protocols.",
       benefits: ["Zero-Trust Data Protection", "Mandatory Security Audits", "Encrypted Source Code Repositories"]
     },
     { 

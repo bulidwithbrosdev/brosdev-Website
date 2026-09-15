@@ -5,13 +5,13 @@ import { TranslationProvider } from "@/context/TranslationContext";
 import { Handshake, Calendar, CheckCircle2, ShieldCheck, Globe, Sparkles, Zap, Layers } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Global Alliances & Partnerships",
+  title: "BrosDev Solutions | Global Alliances & Partnerships",
   description:
-    "Learn what Strategic Alliance means at BrosDev, establishment dates, AWS, Microsoft Cloud, Google Cloud, Vercel, and OpenAI partner ecosystems.",
+    "Learn what Strategic Alliance means at BrosDev Solutions, establishment dates, AWS, Microsoft Cloud, Google Cloud, Vercel, and OpenAI partner ecosystems.",
   openGraph: {
-    title: "Brosdev | Global Alliances & Partnerships",
+    title: "BrosDev Solutions | Global Alliances & Partnerships",
     description:
-      "Learn what Strategic Alliance means at BrosDev, establishment dates, AWS, Microsoft Cloud, Google Cloud, Vercel, and OpenAI partner ecosystems.",
+      "Learn what Strategic Alliance means at BrosDev Solutions, establishment dates, AWS, Microsoft Cloud, Google Cloud, Vercel, and OpenAI partner ecosystems.",
   },
 };
 
@@ -26,7 +26,7 @@ export default async function LocaleAlliancesPage({ params }: { params: Promise<
     },
     {
       title: "TIER-1 ENTERPRISE CREDITS & DISCOUNTING",
-      desc: "Through our official partner status, BrosDev clients gain access to exclusive cloud architecture credits (up to $100k in AWS/GCP credits) and enterprise tier discounting.",
+      desc: "Through our official partner status, BrosDev Solutions clients gain access to exclusive cloud architecture credits (up to $100k in AWS/GCP credits) and enterprise tier discounting.",
     },
     {
       title: "GUARANTEED 24/7 ESCALATION & SUPPORT",
@@ -103,7 +103,7 @@ export default async function LocaleAlliancesPage({ params }: { params: Promise<
             <div className="text-center max-w-3xl mx-auto mb-16">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#A90706] text-white font-condensed text-xs font-black uppercase tracking-widest mb-3">
                 <Handshake className="w-4 h-4" />
-                <span>WHAT ALLIANCE MEANS AT BROSDEV</span>
+                <span>WHAT ALLIANCE MEANS AT BROSDEV SOLUTIONS</span>
               </div>
               <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white font-[var(--font-geist)]">
                 VALUE TO OUR CLIENTS

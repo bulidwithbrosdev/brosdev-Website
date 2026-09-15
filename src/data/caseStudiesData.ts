@@ -23,7 +23,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
     industry: "Fintech & Global Payments",
     summary: "ApexPay needed a high-performance financial ledger capable of processing thousands of multi-currency transactions per second with microsecond ledger reconciliation.",
     problem: "ApexPay was struggling with legacy monolithic API bottlenecks that caused transaction timeouts during high-traffic flash sales and elevated server bills.",
-    solution: "BrosDev deployed a 5-member dedicated squad to decompose the backend into high-concurrency microservices written in Golang, utilizing Redis cluster caching and Event-Driven Kafka message queues.",
+    solution: "BrosDev Solutions deployed a 5-member dedicated squad to decompose the backend into high-concurrency microservices written in Golang, utilizing Redis cluster caching and Event-Driven Kafka message queues.",
     architectureDetails: "Event-driven microservices architecture using Go, Kafka queues, PostgreSQL relational double-entry ledgers with HSM tokenization, and automated failover clusters.",
     metrics: [
       { label: "TRANSACTION LATENCY", value: "-45%", desc: "Reduced sub-second checkout delays" },
@@ -32,7 +32,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
       { label: "CLOUD BILL SAVINGS", value: "$120,000/yr", desc: "Optimized AWS container infrastructure" }
     ],
     techStack: ["Golang", "PostgreSQL", "Kafka", "AWS EKS", "Redis", "Docker"],
-    quote: "BrosDev's engineers delivered a bulletproof architecture. Our payment success rate hit an all-time high of 99.98% within 60 days of deployment.",
+    quote: "BrosDev Solutions' engineers delivered a bulletproof architecture. Our payment success rate hit an all-time high of 99.98% within 60 days of deployment.",
     author: "Marcus Vance, CTO at ApexPay UK"
   },
   "omniflow-ai-enterprise-saas": {
@@ -43,7 +43,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
     industry: "Enterprise AI & Machine Learning",
     summary: "OmniFlow required an enterprise-grade multi-agent orchestration engine to parse complex multi-step workflow requests from Fortune 500 enterprises.",
     problem: "Processing high-concurrency natural language queries while orchestrating multiple LLMs simultaneously created severe network latency and GPU memory bottlenecks.",
-    solution: "BrosDev built a decoupled microservices platform utilizing Python FastAPI, Redis streaming queues, vector databases, and Next.js App Router.",
+    solution: "BrosDev Solutions built a decoupled microservices platform utilizing Python FastAPI, Redis streaming queues, vector databases, and Next.js App Router.",
     architectureDetails: "Decoupled Serverless & Kubernetes microservices architecture featuring an Envoy API gateway, Redis semantic cache layer, and distributed Python inference workers.",
     metrics: [
       { label: "DAILY AI QUERIES", value: "5,000,000+", desc: "Processed across enterprise accounts" },
@@ -52,7 +52,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
       { label: "LLM API COST SAVINGS", value: "45%", desc: "Achieved via semantic vector caching" }
     ],
     techStack: ["Next.js", "Python FastAPI", "OpenAI GPT-4", "Redis", "Pinecone", "AWS ECS"],
-    quote: "The speed and accuracy of BrosDev's AI RAG system transformed our clinical workflows. They are true principal AI architects.",
+    quote: "The speed and accuracy of BrosDev Solutions' AI RAG system transformed our clinical workflows. They are true principal AI architects.",
     author: "Dr. Elena Rostova, VP of Engineering at OmniFlow"
   },
   "novacloud-kubernetes-orchestration": {
@@ -63,7 +63,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
     industry: "Cloud & Enterprise Software",
     summary: "NovaCloud needed to migrate their legacy monolithic infrastructure to a modern containerized Kubernetes cloud architecture with blue-green automated deployments.",
     problem: "The existing monolithic server suffered from single-point-of-failure risks, slow 3-hour deployment cycles, and ballooning cloud hosting bills.",
-    solution: "BrosDev containerized all backend services into Docker containers, configured Kubernetes (EKS) auto-scaling nodes, and set up automated GitHub Actions CI/CD pipelines.",
+    solution: "BrosDev Solutions containerized all backend services into Docker containers, configured Kubernetes (EKS) auto-scaling nodes, and set up automated GitHub Actions CI/CD pipelines.",
     architectureDetails: "Multi-region AWS EKS Kubernetes cluster connected with Terraform infrastructure-as-code scripts, Prometheus telemetry dashboards, and CloudFront global edge CDNs.",
     metrics: [
       { label: "HOSTING COST REDUCTION", value: "-42%", desc: "Direct annual cloud infrastructure savings" },
@@ -72,7 +72,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
       { label: "AUTO-SCALING VELOCITY", value: "< 30 Secs", desc: "Handled traffic spikes instantly" }
     ],
     techStack: ["Kubernetes", "AWS EKS", "Terraform", "Docker", "Prometheus", "GitHub Actions"],
-    quote: "BrosDev migrated our entire platform with zero downtime. Our developers can now deploy code in under 3 minutes with total confidence.",
+    quote: "BrosDev Solutions migrated our entire platform with zero downtime. Our developers can now deploy code in under 3 minutes with total confidence.",
     author: "Lukas Weber, VP of Infrastructure at NovaCloud"
   },
   "scalestack-ai-crm": {
@@ -83,7 +83,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
     industry: "B2B SaaS & CRM",
     summary: "ScaleStack needed an autonomous AI sales agent capable of engaging website leads instantly, qualifying budget and timelines, and booking meetings.",
     problem: "Standard chatbots failed to answer technical product questions accurately and frequently hallucinated incorrect pricing details.",
-    solution: "BrosDev built a RAG-powered autonomous AI agent trained on product documentation and pricing playbooks with LangChain, OpenAI GPT-4, and HubSpot CRM APIs.",
+    solution: "BrosDev Solutions built a RAG-powered autonomous AI agent trained on product documentation and pricing playbooks with LangChain, OpenAI GPT-4, and HubSpot CRM APIs.",
     architectureDetails: "Python FastAPI inference server utilizing ChromaDB vector store, LangChain agent tooling, and Webhook event listeners.",
     metrics: [
       { label: "QUALIFIED LEADS GAIN", value: "+310%", desc: "Inbound conversion boost" },
@@ -92,7 +92,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
       { label: "CRM DATA ACCURACY", value: "100%", desc: "Zero hallucination pricing" }
     ],
     techStack: ["Python", "LangChain", "OpenAI GPT-4", "ChromaDB", "HubSpot API", "PostgreSQL"],
-    quote: "Responding to leads in under 10 seconds tripled our conversion rate. BrosDev built a game-changing AI product.",
+    quote: "Responding to leads in under 10 seconds tripled our conversion rate. BrosDev Solutions built a game-changing AI product.",
     author: "Rajesh Kumar, CEO at ScaleStack"
   },
   "headless-shopify-conversion": {
@@ -101,7 +101,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
     title: "VOGUETHREADS: HEADLESS STOREFRONT WITH 99+ CORE WEB VITALS",
     client: "VogueThreads DTC (Paris, France)",
     industry: "Retail & E-Commerce",
-    summary: "VogueThreads experienced slow page loads on their legacy Liquid theme. BrosDev built a Next.js 16 Headless Storefront integrated with Shopify Storefront GraphQL API.",
+    summary: "VogueThreads experienced slow page loads on their legacy Liquid theme. BrosDev Solutions built a Next.js 16 Headless Storefront integrated with Shopify Storefront GraphQL API.",
     problem: "Slow mobile page load speeds caused high bounce rates and cart abandonment during international marketing campaigns.",
     solution: "We engineered a Headless Next.js storefront using Tailwind CSS, edge-cached GraphQL queries, and instant optimistic cart updates.",
     architectureDetails: "Headless Composable architecture deploying Next.js on Vercel edge servers connected to Shopify Plus GraphQL APIs.",
@@ -123,7 +123,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
     industry: "HealthTech & Telemedicine",
     summary: "MediConnect required a secure WebRTC telehealth platform supporting encrypted multi-party video consultations and FHIR EHR sync.",
     problem: "Legacy video consultation tools lacked HIPAA compliance safeguards and suffered from lag over mobile cellular networks.",
-    solution: "BrosDev built a custom WebRTC media server with end-to-end AES-256 encryption, bi-directional HL7 FHIR EHR mappers, and automated e-prescription dispatch.",
+    solution: "BrosDev Solutions built a custom WebRTC media server with end-to-end AES-256 encryption, bi-directional HL7 FHIR EHR mappers, and automated e-prescription dispatch.",
     architectureDetails: "Zero-trust microservices stack featuring WebRTC media relays, AWS HealthLake encrypted databases, and SMART-on-FHIR APIs.",
     metrics: [
       { label: "PATIENT CONSULTATIONS", value: "500,000+", desc: "Completed securely" },
@@ -132,7 +132,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudy> = {
       { label: "EHR SYNC VELOCITY", value: "Instant", desc: "Bi-directional chart sync" }
     ],
     techStack: ["React Native", "Next.js", "WebRTC", "Python", "HL7 FHIR API", "AWS HealthLake"],
-    quote: "BrosDev's WebRTC engineering gave us sub-second video latency while passing strict HIPAA compliance audits with flying colors.",
+    quote: "BrosDev Solutions' WebRTC engineering gave us sub-second video latency while passing strict HIPAA compliance audits with flying colors.",
     author: "Sarah Jenkins, CPO at MediConnect Health"
   }
 };

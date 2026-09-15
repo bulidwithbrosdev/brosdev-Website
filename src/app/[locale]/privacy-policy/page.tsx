@@ -3,13 +3,13 @@ import PrivacyContent from "@/components/PrivacyContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Privacy Policy",
+  title: "BrosDev Solutions | Privacy Policy",
   description:
-    "Learn about BrosDev data protection policies, GDPR & CCPA compliance, enterprise security encryption standards, and zero data selling guarantees.",
+    "Learn about BrosDev Solutions data protection policies, GDPR & CCPA compliance, enterprise security encryption standards, and zero data selling guarantees.",
   openGraph: {
-    title: "Brosdev | Privacy Policy",
+    title: "BrosDev Solutions | Privacy Policy",
     description:
-      "Learn about BrosDev data protection policies, GDPR & CCPA compliance, enterprise security encryption standards, and zero data selling guarantees.",
+      "Learn about BrosDev Solutions data protection policies, GDPR & CCPA compliance, enterprise security encryption standards, and zero data selling guarantees.",
   },
 };
 

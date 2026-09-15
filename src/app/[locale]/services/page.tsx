@@ -3,13 +3,13 @@ import ServicesOverviewContent from "@/components/ServicesOverviewContent";
 import { TranslationProvider } from "@/context/TranslationContext";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Software Engineering Services",
+  title: "BrosDev Solutions | Software Engineering Services",
   description:
-    "Explore BrosDev end-to-end IT services: digital product engineering, legacy modernization, SaaS development, enterprise AI, cloud architecture, and DevOps.",
+    "Explore BrosDev Solutions end-to-end IT services: digital product engineering, legacy modernization, SaaS development, enterprise AI, cloud architecture, and DevOps.",
   openGraph: {
-    title: "Brosdev | Software Engineering Services",
+    title: "BrosDev Solutions | Software Engineering Services",
     description:
-      "Explore BrosDev end-to-end IT services: digital product engineering, legacy modernization, SaaS development, enterprise AI, cloud architecture, and DevOps.",
+      "Explore BrosDev Solutions end-to-end IT services: digital product engineering, legacy modernization, SaaS development, enterprise AI, cloud architecture, and DevOps.",
   },
 };
 

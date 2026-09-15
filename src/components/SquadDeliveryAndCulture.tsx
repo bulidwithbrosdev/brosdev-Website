@@ -269,7 +269,7 @@ export default function SquadDeliveryAndCulture() {
       </section>
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 5: BROSDEV CULTURE & LIFE AT BROSDEV */}
+      {/* SECTION 5: BROSDEV SOLUTIONS CULTURE & LIFE AT BROSDEV SOLUTIONS */}
       {/* ------------------------------------------------------------- */}
       <section className="py-20 bg-[#FAF8F5] border-b border-[#E2DDD5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -277,7 +277,7 @@ export default function SquadDeliveryAndCulture() {
           <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-slate-900 pb-6 mb-12 gap-6">
             <div>
               <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest block mb-1">
-                // BROSDEV CULTURE &amp; LIFE
+                // BROSDEV SOLUTIONS CULTURE &amp; LIFE
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
                 LIFE INSIDE OUR GLOBAL STUDIO
@@ -291,7 +291,7 @@ export default function SquadDeliveryAndCulture() {
               href={`/${locale}/company/careers`}
               className="px-6 py-3 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-xs font-normal uppercase tracking-widest transition-colors inline-flex items-center gap-2 shrink-0 self-start md:self-auto cursor-pointer"
             >
-              <span>EXPLORE CAREERS AT BROSDEV</span>
+              <span>EXPLORE CAREERS AT BROSDEV SOLUTIONS</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -325,7 +325,7 @@ export default function SquadDeliveryAndCulture() {
 
                   <div className="pt-4 border-t border-[#E2DDD5] flex items-center justify-between font-condensed text-xs text-slate-500 uppercase tracking-wider">
                     <span>ENGINEERING CULTURE</span>
-                    <span className="text-[#A90706] font-bold">BROSDEV // 2026</span>
+                    <span className="text-[#A90706] font-bold">BROSDEV SOLUTIONS // 2026</span>
                   </div>
                 </div>
               );

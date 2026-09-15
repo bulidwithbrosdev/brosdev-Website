@@ -27,7 +27,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
   "omniflow-ai-enterprise-saas": {
     slug: "omniflow-ai-enterprise-saas",
     title: "OmniFlow AI: Scaling Enterprise Multi-Agent Workflows to 5M+ Daily Queries",
-    subtitle: "How BrosDev engineered a high-throughput AI workflow platform with sub-100ms response latencies and zero data leakage.",
+    subtitle: "How BrosDev Solutions engineered a high-throughput AI workflow platform with sub-100ms response latencies and zero data leakage.",
     category: "AI & Machine Learning",
     client: "OmniFlow Inc. (USA)",
     readTime: "6 min read",
@@ -44,7 +44,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
       { label: "RESPONSE LATENCY", value: "<85ms" },
       { label: "SYSTEM UPTIME SLA", value: "99.99%" },
     ],
-    summary: "OmniFlow required an enterprise-grade multi-agent orchestration engine to parse complex multi-step workflow requests from Fortune 500 enterprises. BrosDev architected a decoupled microservices platform utilizing Python FastAPI, Redis streaming queues, vector databases, and Next.js App Router.",
+    summary: "OmniFlow required an enterprise-grade multi-agent orchestration engine to parse complex multi-step workflow requests from Fortune 500 enterprises. BrosDev Solutions architected a decoupled microservices platform utilizing Python FastAPI, Redis streaming queues, vector databases, and Next.js App Router.",
     challenge: "Processing high-concurrency natural language queries while orchestrating multiple LLMs simultaneously created severe network latency and GPU memory bottlenecks under peak traffic spikes.",
     solution: "We deployed an asynchronous event-driven task queue using Redis streams and Celery workers, implemented semantic response caching with Pinecone vector DBs, and optimized Next.js server component rendering.",
     architectureDetails: "Decoupled Serverless & Kubernetes microservices architecture featuring an Envoy API gateway, Redis semantic cache layer, and distributed Python inference workers running containerized LLM agents.",
@@ -77,7 +77,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     ],
     summary: "ApexPay needed a high-performance double-entry financial ledger capable of processing thousands of multi-currency transactions per second with microsecond ledger reconciliation and instant SWIFT/ACH payouts.",
     challenge: "Database row locking in legacy payment backends caused transaction timeouts and race conditions during high-volume merchant sales events.",
-    solution: "BrosDev built a high-concurrency Go ledger service using PostGIS relational data structures, Redis in-memory atomic locks, and Kafka event streaming queues.",
+    solution: "BrosDev Solutions built a high-concurrency Go ledger service using PostGIS relational data structures, Redis in-memory atomic locks, and Kafka event streaming queues.",
     architectureDetails: "Event-driven microservices architecture using Go, Kafka queues, PostgreSQL relational double-entry ledgers with HSM tokenization, and automated failover clusters.",
     keyTakeaways: [
       "Atomic in-memory locking prevents transaction race conditions without database locks.",
@@ -108,7 +108,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     ],
     summary: "NovaCloud needed to migrate their legacy monolithic infrastructure to a modern containerized Kubernetes cloud architecture with blue-green automated deployments.",
     challenge: "The existing monolithic server suffered from single-point-of-failure risks, slow 3-hour deployment cycles, and ballooning cloud hosting bills.",
-    solution: "BrosDev containerized all backend services into lightweight Docker containers, configured Kubernetes (EKS) auto-scaling nodes, and set up automated GitHub Actions CI/CD pipelines.",
+    solution: "BrosDev Solutions containerized all backend services into lightweight Docker containers, configured Kubernetes (EKS) auto-scaling nodes, and set up automated GitHub Actions CI/CD pipelines.",
     architectureDetails: "Multi-region AWS EKS Kubernetes cluster connected with Terraform infrastructure-as-code scripts, Prometheus telemetry dashboards, and CloudFront global edge CDNs.",
     keyTakeaways: [
       "Kubernetes horizontal pod autoscaling reduces cloud server expenditure by 42%.",
@@ -138,7 +138,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     ],
     summary: "ScaleStack needed an autonomous AI sales agent capable of engaging website leads instantly, qualifying budget and timelines, and booking meetings directly on sales reps' calendars.",
     challenge: "Standard chatbots failed to answer technical product questions accurately and frequently hallucinated incorrect pricing details.",
-    solution: "BrosDev built a RAG-powered autonomous AI agent trained on product documentation and pricing playbooks with LangChain, OpenAI GPT-4, and HubSpot CRM APIs.",
+    solution: "BrosDev Solutions built a RAG-powered autonomous AI agent trained on product documentation and pricing playbooks with LangChain, OpenAI GPT-4, and HubSpot CRM APIs.",
     architectureDetails: "Python FastAPI inference server utilizing ChromaDB vector store, LangChain agent tooling, and Webhook event listeners.",
     keyTakeaways: [
       "RAG vector search eliminates AI pricing hallucinations.",
@@ -166,7 +166,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
       { label: "PAGE LOAD TIME", value: "0.3s" },
       { label: "CART ABANDONMENT DROP", value: "-28%" },
     ],
-    summary: "VogueThreads experienced slow page loads on their legacy Liquid theme. BrosDev built a Next.js 16 Headless Storefront integrated with Shopify Storefront GraphQL API.",
+    summary: "VogueThreads experienced slow page loads on their legacy Liquid theme. BrosDev Solutions built a Next.js 16 Headless Storefront integrated with Shopify Storefront GraphQL API.",
     challenge: "Slow mobile page load speeds caused high bounce rates and cart abandonment during international marketing campaigns.",
     solution: "We engineered a Headless Next.js storefront using Tailwind CSS, edge-cached GraphQL queries, and instant optimistic cart updates.",
     architectureDetails: "Headless Composable architecture deploying Next.js on Vercel edge servers connected to Shopify Plus GraphQL APIs and Stripe Terminal.",
@@ -198,7 +198,7 @@ export const INSIGHTS_DATA: Record<string, InsightArticle> = {
     ],
     summary: "MediConnect required a secure WebRTC telehealth platform supporting encrypted multi-party video consultations, remote patient telemetry, and FHIR EHR sync.",
     challenge: "Legacy video consultation tools lacked HIPAA compliance safeguards and suffered from lag over mobile cellular networks.",
-    solution: "BrosDev built a custom WebRTC media server with end-to-end AES-256 encryption, bi-directional HL7 FHIR EHR mappers, and automated e-prescription dispatch.",
+    solution: "BrosDev Solutions built a custom WebRTC media server with end-to-end AES-256 encryption, bi-directional HL7 FHIR EHR mappers, and automated e-prescription dispatch.",
     architectureDetails: "Zero-trust microservices stack featuring WebRTC media relays, AWS HealthLake encrypted databases, and SMART-on-FHIR APIs.",
     keyTakeaways: [
       "WebRTC adaptive bitrate streaming guarantees crisp video even over 3G cellular connections.",

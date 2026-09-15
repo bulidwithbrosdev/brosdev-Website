@@ -77,7 +77,7 @@ export default function CareersContent({ locale = "en" }: CareersContentProps) {
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-none uppercase mb-6 font-[var(--font-geist)]">
-            BUILD YOUR CAREER WITH BROSDEV
+            BUILD YOUR CAREER WITH BROSDEV SOLUTIONS
           </h1>
 
           <p className="text-slate-700 text-lg sm:text-xl font-normal max-w-3xl leading-relaxed font-[var(--font-geist)] mb-10">
@@ -146,7 +146,7 @@ export default function CareersContent({ locale = "en" }: CareersContentProps) {
                   <GraduationCap className="w-5 h-5" />
                 </span>
                 <span className="font-condensed text-xs font-normal text-[#A90706] uppercase tracking-widest">
-                  // BROSDEV ENGINEERING FELLOWSHIP &amp; INTERNSHIP PIPELINE
+                  // BROSDEV SOLUTIONS ENGINEERING FELLOWSHIP &amp; INTERNSHIP PIPELINE
                 </span>
               </div>
 
@@ -161,7 +161,7 @@ export default function CareersContent({ locale = "en" }: CareersContentProps) {
                   STUDENT &amp; FRESH GRADUATE INTERNSHIP PROGRAM
                 </h2>
                 <p className="text-slate-700 text-sm sm:text-base font-normal leading-relaxed font-[var(--font-geist)]">
-                  Are you a Computer Engineering, IT, AI/DS, or MCA student looking for real-world production engineering experience? Brosdev offers paid 3-month, 6-month (final semester project), and 1-year internship pipelines across 5 specialized tech tracks.
+                  Are you a Computer Engineering, IT, AI/DS, or MCA student looking for real-world production engineering experience? BrosDev Solutions offers paid 3-month, 6-month (final semester project), and 1-year internship pipelines across 5 specialized tech tracks.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 font-condensed font-normal text-xs uppercase">

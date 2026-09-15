@@ -26,14 +26,14 @@ export async function generateMetadata({
   const cs = CASE_STUDIES_DATA[resolvedParams.slug];
 
   if (!cs) {
-    return { title: "Case Study Not Found | Brosdev" };
+    return { title: "Case Study Not Found | BrosDev Solutions" };
   }
 
   return {
-    title: `${cs.title} | Brosdev Case Study`,
+    title: `${cs.title} | BrosDev Solutions Case Study`,
     description: cs.summary,
     openGraph: {
-      title: `${cs.title} | Brosdev Case Study`,
+      title: `${cs.title} | BrosDev Solutions Case Study`,
       description: cs.summary,
     },
   };
@@ -154,7 +154,7 @@ export default async function CaseStudyDetailPage({
             {/* Approach */}
             <div className="bg-white border-2 border-slate-900 p-8 sm:p-10 space-y-4 shadow-lg">
               <span className="font-condensed text-xs font-black text-slate-900 uppercase tracking-widest block">
-                // THE BROSDEV APPROACH &amp; ARCHITECTURE
+                // THE BROSDEV SOLUTIONS APPROACH &amp; ARCHITECTURE
               </span>
               <h3 className="text-2xl font-black text-slate-900 uppercase font-[var(--font-geist)]">
                 ENGINEERING SOLUTION &amp; SYSTEM DESIGN

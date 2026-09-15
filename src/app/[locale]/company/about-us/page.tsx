@@ -20,13 +20,13 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | About Us, History & Culture",
+  title: "BrosDev Solutions | About Us, History & Culture",
   description:
-    "Discover BrosDev story, history timeline, green eco-campus, Festive Days = Family Days work culture, and engineering philosophy.",
+    "Discover BrosDev Solutions story, history timeline, green eco-campus, Festive Days = Family Days work culture, and engineering philosophy.",
   openGraph: {
-    title: "Brosdev | About Us, History & Culture",
+    title: "BrosDev Solutions | About Us, History & Culture",
     description:
-      "Discover BrosDev story, history timeline, green eco-campus, Festive Days = Family Days work culture, and engineering philosophy.",
+      "Discover BrosDev Solutions story, history timeline, green eco-campus, Festive Days = Family Days work culture, and engineering philosophy.",
   },
 };
 
@@ -85,8 +85,8 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
     },
     {
       year: "2026 Q1",
-      title: "OFFICIAL REBRANDING TO BROSDEV",
-      desc: "Officially rebranded from HangupHackers to BrosDev, reflecting our growth into a global digital product engineering firm.",
+      title: "OFFICIAL REBRANDING TO BROSDEV SOLUTIONS",
+      desc: "Officially rebranded from HangupHackers to BrosDev Solutions, reflecting our growth into a global digital product engineering firm.",
       icon: Zap,
     },
     {
@@ -143,11 +143,11 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-none uppercase mb-8 font-[var(--font-geist)]">
-              ABOUT BROSDEV
+              ABOUT BROSDEV SOLUTIONS
             </h1>
 
             <p className="text-slate-700 text-lg sm:text-xl font-medium max-w-3xl leading-relaxed">
-              Founded by engineers for ambitious founders and global enterprises. BrosDev combines bold aesthetic design with robust software craftsmanship, a green nature campus, and a deeply compassionate work culture.
+              Founded by engineers for ambitious founders and global enterprises. BrosDev Solutions combines bold aesthetic design with robust software craftsmanship, a green nature campus, and a deeply compassionate work culture.
             </p>
           </div>
         </section>
@@ -182,13 +182,13 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               <div className="lg:col-span-6 space-y-6">
                 <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block">
-                  // THE BROSDEV ORIGIN STORY
+                  // THE BROSDEV SOLUTIONS ORIGIN STORY
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-black text-slate-900 uppercase tracking-tight leading-tight font-[var(--font-geist)]">
                   Engineering Beyond Boundaries
                 </h2>
                 <p className="text-slate-700 text-base leading-relaxed font-normal">
-                  BrosDev started with a simple observation: most software agencies either deliver beautiful designs that break under heavy user traffic, or robust backends with confusing, outdated interfaces.
+                  BrosDev Solutions started with a simple observation: most software agencies either deliver beautiful designs that break under heavy user traffic, or robust backends with confusing, outdated interfaces.
                 </p>
                 <p className="text-slate-700 text-base leading-relaxed font-normal">
                   Our founders set out to build an engineering firm where high-throughput architecture and pixel-perfect design live in total synergy. With physical engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, Germany, France, and New York, we provide 24/7 dedicated engineering teams for enterprise software.
@@ -237,7 +237,7 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
                 OUR JOURNEY &amp; TIMELINE
               </h2>
               <p className="text-slate-600 text-sm sm:text-base font-normal max-w-2xl mx-auto">
-                From our inception as HangupHackers to our global rebrand as BrosDev — a continuous story of relentless software engineering mastery.
+                From our inception as HangupHackers to our global rebrand as BrosDev Solutions — a continuous story of relentless software engineering mastery.
               </p>
             </div>
 
@@ -308,7 +308,7 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block mb-2">
-                // LIFE AT BROSDEV
+                // LIFE AT BROSDEV SOLUTIONS
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
                 CULTURE, FAMILY &amp; NATURE CAMPUS

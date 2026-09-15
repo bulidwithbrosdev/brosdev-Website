@@ -20,7 +20,7 @@ export default function Logo({
       <div className={`relative ${className}`}>
         <Image
           src="/logo.svg"
-          alt="BrosDev Logo"
+          alt="BrosDev Solutions Logo"
           fill
           className="object-contain"
           priority

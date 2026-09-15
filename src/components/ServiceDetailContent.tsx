@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -349,7 +349,7 @@ export default function ServiceDetailContent({ service, locale = "en" }: Service
             LET'S ARCHITECT YOUR {service.title.toUpperCase()}
           </h2>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-medium">
-            Schedule an architecture scoping session with senior BrosDev engineers today.
+            Schedule an architecture scoping session with senior BrosDev Solutions engineers today.
           </p>
           <Link
             href={`/${locale}/book-consultation`}

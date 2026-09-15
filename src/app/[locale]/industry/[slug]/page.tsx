@@ -15,11 +15,11 @@ export async function generateMetadata({
 
   if (!industry) {
     return {
-      title: "Brosdev | Industry Not Found",
+      title: "BrosDev Solutions | Industry Not Found",
     };
   }
 
-  const title = `Brosdev | ${industry.title}`;
+  const title = `BrosDev Solutions | ${industry.title}`;
   return {
     title,
     description: industry.heroDesc || industry.tagline,

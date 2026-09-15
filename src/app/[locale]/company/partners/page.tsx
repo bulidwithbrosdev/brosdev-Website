@@ -6,13 +6,13 @@ import { TranslationProvider } from "@/context/TranslationContext";
 import PartnersContent from "@/components/PartnersContent";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Partners & Collaborations",
+  title: "BrosDev Solutions | Partners & Collaborations",
   description:
-    "BrosDev IT Engineering Studio collaborates with IT companies, software development teams, digital agencies, technology providers, and specialized technical teams to build better digital products together.",
+    "BrosDev Solutions IT Engineering Studio collaborates with IT companies, software development teams, digital agencies, technology providers, and specialized technical teams to build better digital products together.",
   openGraph: {
-    title: "Brosdev | Partners & Collaborations",
+    title: "BrosDev Solutions | Partners & Collaborations",
     description:
-      "BrosDev IT Engineering Studio collaborates with IT companies, software development teams, digital agencies, technology providers, and specialized technical teams.",
+      "BrosDev Solutions IT Engineering Studio collaborates with IT companies, software development teams, digital agencies, technology providers, and specialized technical teams.",
   },
 };
 

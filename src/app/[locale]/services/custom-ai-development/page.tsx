@@ -8,11 +8,11 @@ const slug = "custom-ai-development";
 const service = SERVICES_DATA[slug];
 
 export const metadata: Metadata = {
-  title: service ? "Brosdev | " + service.title : "Brosdev | Services",
-  description: service?.heroDesc || service?.tagline || "BrosDev custom AI development services.",
+  title: service ? "BrosDev Solutions | " + service.title : "BrosDev Solutions | Services",
+  description: service?.heroDesc || service?.tagline || "BrosDev Solutions custom AI development services.",
   openGraph: {
-    title: service ? "Brosdev | " + service.title : "Brosdev | Services",
-    description: service?.heroDesc || service?.tagline || "BrosDev custom AI development services.",
+    title: service ? "BrosDev Solutions | " + service.title : "BrosDev Solutions | Services",
+    description: service?.heroDesc || service?.tagline || "BrosDev Solutions custom AI development services.",
   },
 };
 

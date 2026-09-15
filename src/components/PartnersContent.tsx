@@ -120,23 +120,23 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
 
   const faqs = [
     {
-      question: "Who can collaborate with BrosDev?",
-      answer: "IT companies, software development studios, digital agencies, technology providers, and specialized technical teams can explore collaboration opportunities with BrosDev.",
+      question: "Who can collaborate with BrosDev Solutions?",
+      answer: "IT companies, software development studios, digital agencies, technology providers, and specialized technical teams can explore collaboration opportunities with BrosDev Solutions.",
     },
     {
       question: "What types of collaborations are available?",
       answer: "Collaborations may include project development, team extension, technical expertise, software delivery, technology partnerships, and strategic initiatives.",
     },
     {
-      question: "Can international companies collaborate with BrosDev?",
-      answer: "Yes. BrosDev can collaborate with companies and technology teams across international markets.",
+      question: "Can international companies collaborate with BrosDev Solutions?",
+      answer: "Yes. BrosDev Solutions can collaborate with companies and technology teams across international markets.",
     },
     {
       question: "Do you offer white-label development?",
-      answer: "BrosDev can work as a technology and development partner for agencies and companies that require behind-the-scenes engineering support.",
+      answer: "BrosDev Solutions can work as a technology and development partner for agencies and companies that require behind-the-scenes engineering support.",
     },
     {
-      question: "How can we become a BrosDev partner?",
+      question: "How can we become a BrosDev Solutions partner?",
       answer: "Contact our team with your company details, capabilities, areas of expertise, and proposed collaboration model. Our team will review the opportunity and get in touch.",
     },
   ];
@@ -164,7 +164,7 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
           </h2>
 
           <p className="text-slate-700 text-base sm:text-lg font-medium max-w-3xl leading-relaxed mb-4">
-            BrosDev IT Engineering Studio collaborates with IT companies, software development teams, digital agencies, technology providers, and specialized professionals to deliver better digital solutions.
+            BrosDev Solutions IT Engineering Studio collaborates with IT companies, software development teams, digital agencies, technology providers, and specialized professionals to deliver better digital solutions.
           </p>
 
           <p className="text-slate-600 text-sm sm:text-base font-normal max-w-3xl leading-relaxed mb-8">
@@ -204,7 +204,7 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
                 TECHNOLOGY IS BETTER WHEN WE COLLABORATE
               </h2>
               <p className="text-slate-700 text-base leading-relaxed font-normal">
-                Great digital products are built through strong collaboration. At BrosDev, we work with trusted technology and development teams to combine different capabilities, expand technical expertise, and deliver solutions that meet the unique requirements of every project.
+                Great digital products are built through strong collaboration. At BrosDev Solutions, we work with trusted technology and development teams to combine different capabilities, expand technical expertise, and deliver solutions that meet the unique requirements of every project.
               </p>
             </div>
 
@@ -327,7 +327,7 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
         </div>
       </section>
 
-      {/* Why Collaborate With BrosDev? */}
+      {/* Why Collaborate With BrosDev Solutions? */}
       <section className="py-24 border-b border-[#E2DDD5] bg-[#FAF8F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -335,7 +335,7 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
               // VALUE PROPOSITION
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-900 uppercase tracking-tight font-[var(--font-geist)]">
-              WHY COLLABORATE WITH BROSDEV?
+              WHY COLLABORATE WITH BROSDEV SOLUTIONS?
             </h2>
           </div>
 
@@ -360,7 +360,7 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
         </div>
       </section>
 
-      {/* Become a BrosDev Partner CTA */}
+      {/* Become a BrosDev Solutions Partner CTA */}
       <section className="py-20 border-b border-[#E2DDD5] bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <span className="font-condensed text-xs font-black text-[#A90706] uppercase tracking-widest block">
@@ -368,7 +368,7 @@ export default function PartnersContent({ locale }: PartnersContentProps) {
           </span>
 
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white font-[var(--font-geist)] leading-tight">
-            BECOME A BROSDEV PARTNER
+            BECOME A BROSDEV SOLUTIONS PARTNER
           </h2>
 
           <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-3xl mx-auto">

@@ -81,42 +81,42 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
   const globalOffices = [
     {
       country: "PRESENT: INDIA (HQ)",
-      fullName: "BrosDev IT Engineering HQ",
+      fullName: "BrosDev SolutionsHQ",
       city: "GIFT City / Ahmedabad",
       hours: "09:00 - 19:00 IST",
       isHQ: true,
     },
     {
       country: "PRESENT: CANADA (HUB)",
-      fullName: "BrosDev Product Delivery Studio",
+      fullName: "BrosDev Solutions HUB",
       city: "Toronto / Vancouver",
       hours: "09:00 - 18:00 EST",
       isHQ: true,
     },
     {
       country: "SERVING: US & NY",
-      fullName: "BrosDev US Enterprise Client Hub",
+      fullName: "BrosDev Solutions Hub",
       city: "New York / San Francisco",
       hours: "08:00 - 18:00 EST",
       isHQ: false,
     },
     {
       country: "SERVING: UK",
-      fullName: "BrosDev UK & Europe Delivery Hub",
+      fullName: "BrosDev Solutions Hub",
       city: "London",
       hours: "09:00 - 18:00 GMT",
       isHQ: false,
     },
     {
       country: "SERVING: AU & NZ",
-      fullName: "BrosDev ANZ Region Hub",
+      fullName: "BrosDev Solutions Hub",
       city: "Sydney / Auckland",
       hours: "09:00 - 18:00 AEST",
       isHQ: false,
     },
     {
       country: "SERVING: DE & FR",
-      fullName: "BrosDev EU Enterprise Hub",
+      fullName: "BrosDev Solutions Hub",
       city: "Berlin / Paris",
       hours: "09:00 - 18:00 CET",
       isHQ: false,
@@ -125,7 +125,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
 
   const faqs = [
     {
-      question: "HOW FAST WILL BROSDEV RESPOND TO MY INQUIRY?",
+      question: "HOW FAST WILL BROSDEV SOLUTIONS RESPOND TO MY INQUIRY?",
       answer: "Our technical strategy leads review all incoming messages within 2 hours during business hours. You will receive an initial response and call invitation within 1 business day.",
     },
     {
@@ -219,7 +219,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-none uppercase mb-6 font-[var(--font-geist)]">
-            CONTACT BROSDEV
+            CONTACT BROSDEV SOLUTIONS
           </h1>
 
           <p className="text-slate-700 text-lg sm:text-xl font-normal max-w-3xl leading-relaxed font-[var(--font-geist)]">
@@ -274,7 +274,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                 careers@brosdev.site
               </span>
               <span className="text-xs text-slate-500 font-normal">
-                For software engineers &amp; designers looking to join Brosdev.
+                For software engineers &amp; designers looking to join BrosDev Solutions.
               </span>
             </a>
 
@@ -506,7 +506,7 @@ export default function ContactContent({ locale = "en" }: ContactContentProps) {
                       disabled={isSubmitting}
                       className="w-full py-5 bg-[#A90706] hover:bg-[#880504] text-white font-condensed text-sm font-normal tracking-widest uppercase transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50"
                     >
-                      <span>{isSubmitting ? "SENDING MESSAGE..." : "SUBMIT INQUIRY TO BROSDEV ARCHITECTS"}</span>
+                      <span>{isSubmitting ? "SENDING MESSAGE..." : "SUBMIT INQUIRY TO BROSDEV SOLUTIONS ARCHITECTS"}</span>
                       <ArrowUpRight className="w-5 h-5" />
                     </button>
 

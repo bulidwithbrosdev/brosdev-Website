@@ -85,7 +85,7 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#E2DDD5] mb-6">
             <span className="w-2 h-2 bg-[#A90706]"></span>
             <span className="font-condensed text-xs font-normal tracking-widest text-[#A90706] uppercase">
-              // BROSDEV PROPRIETARY SOFTWARE SUITE
+              // BROSDEV SOLUTIONS PROPRIETARY SOFTWARE SUITE
             </span>
           </div>
 
@@ -94,7 +94,7 @@ export default function ProductsOverviewContent({ locale = "en" }: ProductsOverv
           </h1>
 
           <p className="text-slate-700 text-lg sm:text-xl font-normal max-w-3xl leading-relaxed font-[var(--font-geist)]">
-            Battle-tested proprietary software platforms engineered by Brosdev. High-performance AI orchestration, multi-currency fintech ledgers, cloud infrastructure, and intelligent SaaS modules.
+            Battle-tested proprietary software platforms engineered by BrosDev Solutions. High-performance AI orchestration, multi-currency fintech ledgers, cloud infrastructure, and intelligent SaaS modules.
           </p>
         </div>
       </section>

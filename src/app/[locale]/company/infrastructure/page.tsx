@@ -18,13 +18,13 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Brosdev | Global Cloud Infrastructure & Multi-Region Presence",
+  title: "BrosDev Solutions | Global Cloud Infrastructure & Multi-Region Presence",
   description:
-    "Explore BrosDev engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, DE, FR & NY.",
+    "Explore BrosDev Solutions engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, DE, FR & NY.",
   openGraph: {
-    title: "Brosdev | Global Cloud Infrastructure & Multi-Region Presence",
+    title: "BrosDev Solutions | Global Cloud Infrastructure & Multi-Region Presence",
     description:
-      "Explore BrosDev engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, DE, FR & NY.",
+      "Explore BrosDev Solutions engineering hubs in India and Canada, serving enterprise clients across AU, UK, NZ, CA, US, DE, FR & NY.",
   },
 };
 

@@ -108,7 +108,7 @@ export default function TermsContent() {
                   <span>PREAMBLE & EXECUTORY AGREEMENT</span>
                 </h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                  These Terms and Conditions (&quot;Terms&quot;) constitute a legally binding agreement between BrosDev Technologies (&quot;BrosDev&quot;, &quot;Company&quot;, &quot;We&quot;, &quot;Us&quot;) and any legal entity or individual (&quot;Client&quot;, &quot;You&quot;) accessing our software engineering services, web applications, custom APIs, or technical consulting solutions.
+                  These Terms and Conditions (&quot;Terms&quot;) constitute a legally binding agreement between BrosDev Solutions (&quot;BrosDev Solutions&quot;, &quot;Company&quot;, &quot;We&quot;, &quot;Us&quot;) and any legal entity or individual (&quot;Client&quot;, &quot;You&quot;) accessing our software engineering services, web applications, custom APIs, or technical consulting solutions.
                 </p>
               </div>
 
@@ -122,10 +122,10 @@ export default function TermsContent() {
                 </h2>
                 <div className="text-sm text-slate-700 leading-relaxed space-y-3 font-sans">
                   <p>
-                    1.1. By signing a Statement of Work (&quot;SOW&quot;), issuing a Purchase Order (&quot;PO&quot;), or utilizing any digital services developed by BrosDev, the Client acknowledges having read, understood, and agreed to be bound by these Terms.
+                    1.1. By signing a Statement of Work (&quot;SOW&quot;), issuing a Purchase Order (&quot;PO&quot;), or utilizing any digital services developed by BrosDev Solutions, the Client acknowledges having read, understood, and agreed to be bound by these Terms.
                   </p>
                   <p>
-                    1.2. BrosDev provides enterprise product engineering, full-stack cloud SaaS development, mobile applications, AI/LLM workflow orchestration, devops infrastructure automation, and team augmentation services.
+                    1.2. BrosDev Solutions provides enterprise product engineering, full-stack cloud SaaS development, mobile applications, AI/LLM workflow orchestration, devops infrastructure automation, and team augmentation services.
                   </p>
                   <p>
                     1.3. Any custom modifications or supplementary terms requested by the Client must be explicitly set forth in a written Addendum signed by authorized signatories of both parties.
@@ -167,10 +167,10 @@ export default function TermsContent() {
                     3.1. The Client agrees to provide timely access to necessary technical documentation, third-party API credentials, domain access, cloud console permissions (AWS, Azure, GCP), and feedback within 48 hours of sprint review requests.
                   </p>
                   <p>
-                    3.2. BrosDev is not liable for project delivery delays resulting from the Client’s failure or delay in providing required access, assets, or approvals.
+                    3.2. BrosDev Solutions is not liable for project delivery delays resulting from the Client’s failure or delay in providing required access, assets, or approvals.
                   </p>
                   <p>
-                    3.3. The Client warrants that all assets, logos, databases, and proprietary software provided to BrosDev do not infringe upon any third-party intellectual property rights.
+                    3.3. The Client warrants that all assets, logos, databases, and proprietary software provided to BrosDev Solutions do not infringe upon any third-party intellectual property rights.
                   </p>
                 </div>
               </div>
@@ -185,10 +185,10 @@ export default function TermsContent() {
                 </h2>
                 <div className="text-sm text-slate-700 leading-relaxed space-y-3 font-sans">
                   <p>
-                    4.1. <strong>Transfer of Ownership:</strong> Upon full and final settlement of all invoices associated with an executed SOW, BrosDev assigns and transfers to the Client all right, title, and interest in and to the custom source code, design assets, and database schemas created specifically for the Client.
+                    4.1. <strong>Transfer of Ownership:</strong> Upon full and final settlement of all invoices associated with an executed SOW, BrosDev Solutions assigns and transfers to the Client all right, title, and interest in and to the custom source code, design assets, and database schemas created specifically for the Client.
                   </p>
                   <p>
-                    4.2. <strong>Pre-existing Components &amp; Libraries:</strong> BrosDev retains ownership of its pre-existing proprietary frameworks, boilerplates, open-source modules, and developer tooling utilized in project creation. Client is granted a perpetual, royalty-free, worldwide license to use such integrated modules within their application.
+                    4.2. <strong>Pre-existing Components &amp; Libraries:</strong> BrosDev Solutions retains ownership of its pre-existing proprietary frameworks, boilerplates, open-source modules, and developer tooling utilized in project creation. Client is granted a perpetual, royalty-free, worldwide license to use such integrated modules within their application.
                   </p>
                   <p>
                     4.3. <strong>Open Source Compliance:</strong> All open-source software libraries integrated into deliverables shall adhere strictly to their respective permissive licenses (e.g., MIT, Apache 2.0).
@@ -233,7 +233,7 @@ export default function TermsContent() {
                     6.2. <strong>Deemed Acceptance:</strong> If no written bug report or rejection notice is provided within the 7-day inspection window, the milestone deliverable shall be deemed accepted.
                   </p>
                   <p>
-                    6.3. <strong>30-Day Bug Warranty:</strong> BrosDev provides a 30-calendar-day warranty following final deployment, covering the rectification of reproducible critical bugs or code defects without additional charge.
+                    6.3. <strong>30-Day Bug Warranty:</strong> BrosDev Solutions provides a 30-calendar-day warranty following final deployment, covering the rectification of reproducible critical bugs or code defects without additional charge.
                   </p>
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function TermsContent() {
                 </h2>
                 <div className="text-sm text-slate-700 leading-relaxed space-y-3 font-sans">
                   <p>
-                    8.1. <strong>Liability Cap:</strong> To the maximum extent permitted by law, BrosDev&apos;s total aggregate liability arising out of or related to any project shall not exceed the total fees paid by the Client under the specific SOW giving rise to the claim in the six (6) months prior to the incident.
+                    8.1. <strong>Liability Cap:</strong> To the maximum extent permitted by law, BrosDev Solutions&apos;s total aggregate liability arising out of or related to any project shall not exceed the total fees paid by the Client under the specific SOW giving rise to the claim in the six (6) months prior to the incident.
                   </p>
                   <p>
                     8.2. <strong>Consequential Damages:</strong> In no event shall either party be liable for indirect, incidental, special, consequential, or punitive damages, including loss of profits, revenue, or business interruption.

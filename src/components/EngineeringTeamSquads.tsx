@@ -843,7 +843,7 @@ export default function EngineeringTeamSquads() {
               </h3>
 
               <p className="text-slate-700 text-xs sm:text-sm font-normal leading-relaxed max-w-3xl">
-                Beyond our key 52 lead architects and directors listed above, Brosdev operates a high-capacity engineering force of over <strong>200+ full-time software specialists</strong> from hubs in India and Canada, serving clients across AU, UK, NZ, CA, US, DE, FR &amp; NY, and beyond.
+                Beyond our key 52 lead architects and directors listed above, BrosDev Solutions operates a high-capacity engineering force of over <strong>200+ full-time software specialists</strong> from hubs in India and Canada, serving clients across AU, UK, NZ, CA, US, DE, FR &amp; NY, and beyond.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-condensed">
