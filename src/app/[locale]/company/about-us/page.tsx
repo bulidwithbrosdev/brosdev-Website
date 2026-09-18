@@ -85,9 +85,9 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
     },
     {
       year: "2026 Q1",
-      title: "OFFICIAL REBRANDING TO BROSDEV SOLUTIONS",
-      desc: "Officially rebranded from HangupHackers to BrosDev Solutions, reflecting our growth into a global digital product engineering firm.",
-      icon: Zap,
+      title: "TAKEOVER BY AAGMAN GROUP & REBRANDING TO BROSDEV SOLUTIONS",
+      desc: "Taken over by Aagman Group in 2026 Q1 and officially rebranded from HangupHackers to BrosDev Solutions, reflecting our growth into a global digital product engineering firm.",
+      icon: Building2,
     },
     {
       year: "2026 Q2",
@@ -237,7 +237,7 @@ export default async function LocaleAboutUsPage({ params }: { params: Promise<{ 
                 OUR JOURNEY &amp; TIMELINE
               </h2>
               <p className="text-slate-600 text-sm sm:text-base font-normal max-w-2xl mx-auto">
-                From our inception as HangupHackers to our global rebrand as BrosDev Solutions — a continuous story of relentless software engineering mastery.
+                From our inception as HangupHackers to our takeover by Aagman Group and global rebrand as BrosDev Solutions — a continuous story of relentless software engineering mastery.
               </p>
             </div>
 

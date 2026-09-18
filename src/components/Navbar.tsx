@@ -176,6 +176,7 @@ export default function Navbar() {
   // Data for Mega Dropdowns
   const companyData = [
     { title: "About Us", desc: "Transforming challenges into opportunities with tech.", href: "/company/about-us" },
+    { title: "Aagman Group", desc: "Building businesses and creating what's next across industries.", href: "/company/aagman-group" },
     { title: "Our Team & Squads", desc: "Dedicated lead architects and global engineering experts.", href: "/company/team" },
     { title: "Our Infrastructure", desc: "Tech capabilities for scalable and reliable solutions.", href: "/company/infrastructure" },
     { title: "Development Methodology", desc: "Seamless development with a focus on quality and speed.", href: "/company/methodology" },
@@ -255,9 +256,16 @@ export default function Navbar() {
           <Link
             href={`/${locale}`}
             prefetch={true}
-            className="flex items-center group focus:outline-hidden shrink-0 text-left cursor-pointer"
+            className="flex flex-col items-center group focus:outline-hidden shrink-0 text-center cursor-pointer"
           >
-            <Logo className="w-8 h-8 sm:w-10 sm:h-10" showText={false} />
+            <Logo className="w-8 h-8 sm:w-9 sm:h-9" showText={false} />
+            <div className="flex items-center gap-1.5 mt-1">
+              <span className="w-3 sm:w-4 h-[1.5px] bg-[#A90706] shrink-0"></span>
+              <span className="text-[8.5px] sm:text-[9.5px] font-semibold tracking-tight text-slate-800 whitespace-nowrap group-hover:text-[#A90706] transition-colors">
+                An Aagman Group Company
+              </span>
+              <span className="w-3 sm:w-4 h-[1.5px] bg-[#A90706] shrink-0"></span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Group */}
